@@ -1,0 +1,855 @@
+{% comment %}
+  Renders the views for the customer accounts section.
+
+  - Accepts the following parameters:
+    - section: The section object.
+    - view: The view to render. Possible values are:
+      - dashboard: The customer dashboard.
+      - orders: The customer orders.
+      - profile: The customer profile.
+
+  PS: This file is a work in progress and will be updated in the future.
+{% endcomment %}
+
+{% case tab %}
+  {% when 'dashboard' %}
+    <gw-customer-accounts-dashboard>
+      {% liquid
+        assign label = 'gw_customer_accounts.tabs.dashboard.label_fallback' | t
+
+        if customer.first_name
+          assign label = 'gw_customer_accounts.tabs.dashboard.label' | t: first_name: customer.first_name
+        endif
+      %}
+
+      <script type="application/json" data-tab-panel-data>
+        {
+          "label": {{ label | json }},
+          "id": "dashboard",
+          "hash": "#my-account",
+          "signInBlockHeading": "{{ 'gw_customer_accounts.sign_in_block.dashboard_title' | t }}"
+        }
+      </script>
+
+      <div class="gw-main-content-container">
+        {% if customer.has_account %}
+          {% if settings.gw_customer_accounts_loyalty_lion_enabled %}
+            <sl-animation duration="250" iterations="1" fill="both">
+              <gw-integrations-loyalty-points
+                points-label="{{ 'gw_customer_accounts.integrations.loyalty_lion.reward_type' | t }}"
+                link-label="{{ 'gw_customer_accounts.integrations.loyalty_lion.link_label' | t }}"
+                integration="loyalty-lion"
+                page-url="{{ settings.gw_customer_accounts_loyalty_lion_page.url }}"
+                style="
+                  --background-color: {{ settings.gw_customer_accounts_loyalty_lion_widget_background_color }};
+                  --text-color: {{ settings.gw_customer_accounts_loyalty_lion_widget_text_color }};
+                "
+              >
+              </gw-integrations-loyalty-points>
+            </sl-animation>
+          {% endif %}
+
+          {% if settings.gw_customer_accounts_yotpo_enabled %}
+            <sl-animation duration="250" iterations="1" fill="both">
+              <gw-integrations-loyalty-points
+                integration="yotpo"
+                points-label="{{ 'gw_customer_accounts.integrations.yotpo.reward_type' | t }}"
+                link-label="{{ 'gw_customer_accounts.integrations.yotpo.link_label' | t }}"
+                page-url="{{ settings.gw_customer_accounts_yotpo_page.url }}"
+                style="
+                  --background-color: {{ settings.gw_customer_accounts_yotpo_widget_background_color }};
+                  --text-color: {{ settings.gw_customer_accounts_yotpo_widget_text_color }};
+                "
+              >
+              </gw-integrations-loyalty-points>
+            </sl-animation>
+          {% endif %}
+
+          {% if settings.gw_customer_accounts_rise_enabled %}
+            <sl-animation duration="250" iterations="1" fill="both">
+              <gw-integrations-loyalty-points
+                integration="rise"
+                points-label="{{ 'gw_customer_accounts.integrations.rise.reward_type' | t }}"
+                link-label="{{ 'gw_customer_accounts.integrations.rise.link_label' | t }}"
+                page-url="{{ settings.gw_customer_accounts_rise_page.url }}"
+                style="
+                  --background-color: {{ settings.gw_customer_accounts_rise_widget_background_color }};
+                  --text-color: {{ settings.gw_customer_accounts_rise_widget_text_color }};
+                "
+              >
+              </gw-integrations-loyalty-points>
+            </sl-animation>
+          {% endif %}
+        {% endif %}
+
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'last-order' %}
+              {% if customer.has_account %}
+                {% assign latest_order = customer.orders.first %}
+                {% if latest_order %}
+                  {% assign drawer_id = 'latest-order-drawer' %}
+
+                  <sl-animation duration="250" iterations="1" fill="both">
+                    <div
+                      class="gw-latest-order-wrapper"
+                      data-drawer-id="{{ drawer_id }}"
+                    >
+                      <div class="gw-latest-order">
+                        <div class="gw-latest-order__image-container">
+                          {{
+                            latest_order.line_items.first.image
+                            | image_url: width: 112
+                            | image_tag: alt: latest_order.line_items.first.name, class: 'gw-latest-order__image'
+                          }}
+                        </div>
+
+                        <div class="gw-latest-order__info">
+                          <h2 class="gw-body--strong">{{ 'Order ' | append: latest_order.order_name }}</h2>
+                          <p>
+                            {% liquid
+                              assign line_item_size = latest_order.line_items.size
+                              assign first_line_item = latest_order.line_items.first
+
+                              echo first_line_item.product.title
+
+                              if line_item_size > 1
+                                assign line_item_size = line_item_size | minus: 1
+                                echo ' and ' | append: line_item_size | append: ' more'
+                              endif
+                            %}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </sl-animation>
+
+                  {% render 'gw-customer-accounts-order-detail', order: latest_order, drawer_id: drawer_id %}
+                {% endif %}
+              {% endif %}
+            {% when 'recent-collections' %}
+              {% if customer.has_account %}
+                <sl-animation duration="250" iterations="1" fill="both">
+                  <div class="gw-recently-viewed-collections" data-recently-viewed-collections-container>
+                    <div class="gw-collections">
+                      <sl-skeleton effect="pulse"></sl-skeleton>
+                      <sl-skeleton effect="pulse"></sl-skeleton>
+                      <sl-skeleton effect="pulse"></sl-skeleton>
+                      <sl-skeleton effect="pulse"></sl-skeleton>
+                    </div>
+                  </div>
+                </sl-animation>
+              {% endif %}
+            {% when 'recent-products' %}
+              <sl-animation duration="250" iterations="1" fill="both">
+                <div class="gw-products-carousel gw-products-carousel--recently-viewed">
+                  {% assign drawer_id = 'Drawer-Recentyl-Viewed-Products' %}
+                  <div
+                    class="gw-products-carousel__header-wrapper"
+                    data-drawer-id="{{ drawer_id }}"
+                  >
+                    <div class="gw-products-carousel__header">
+                      <h2 class="gw-header">
+                        {{ 'gw_customer_accounts.recently_viewed_products.title' | t }}
+                      </h2>
+
+                      <button class="gw-empty-button" aria-label="Open recently viewed products drawer">
+                        {% render 'gw-customer-accounts-icons' with 'arrow_go_forward' %}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div
+                    class="gw-products-carousel__feed-wrapper"
+                    data-recently-viewed-container
+                    data-empty-state-message="{{ 'gw_customer_accounts.recently_viewed_products.empty' | t }}"
+                    data-drawer-selector="{{ drawer_id }}"
+                  >
+                    <div class="gw-products-carousel__feed">
+                      <sl-skeleton effect="pulse"></sl-skeleton>
+                      <sl-skeleton effect="pulse"></sl-skeleton>
+                      <sl-skeleton effect="pulse"></sl-skeleton>
+                      <sl-skeleton effect="pulse"></sl-skeleton>
+                    </div>
+                  </div>
+                </div>
+              </sl-animation>
+
+              <sl-drawer contained style="--size: 100%;" id="{{ drawer_id }}" empty>
+                <button class="gw-secondary-drawer__header" slot="label" data-inner-drawer-close>
+                  {% render 'gw-customer-accounts-icons' with 'arrow_go_back' %}
+                  <span class="gw-header">
+                    {{ 'gw_customer_accounts.recently_viewed_products.title' | t }}
+                  </span>
+                </button>
+
+                <button
+                  slot="header-actions"
+                  class="gw-empty-button"
+                  data-main-drawer-close
+                  aria-label="Close recently viewed products drawer"
+                >
+                  {% render 'gw-customer-accounts-icons' with 'close' %}
+                </button>
+
+                <div class="gw-recently-viewed-items-tab" data-recently-viewed-drawer-container></div>
+              </sl-drawer>
+            {% when 'cart-products' %}
+              <sl-animation duration="250" iterations="1" fill="both">
+                <div class="gw-products-carousel gw-products-carousel--cart">
+                  {% assign drawer_id = 'Drawer-Saved-From-Cart' %}
+                  <div class="gw-products-carousel__header-wrapper" data-drawer-id="{{ drawer_id }}">
+                    <div class="gw-products-carousel__header">
+                      <h2 class="gw-header">
+                        {{ 'gw_customer_accounts.saved_from_cart.title' | t }}
+                      </h2>
+
+                      <button class="gw-empty-button" aria-label="Open saved from cart drawer">
+                        {% render 'gw-customer-accounts-icons' with 'arrow_go_forward' %}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div
+                    class="gw-products-carousel__feed-wrapper"
+                    data-saved-from-cart-items-container
+                    data-empty-state-message="{{ 'gw_customer_accounts.saved_from_cart.empty' | t }}"
+                    data-drawer-selector="{{ drawer_id }}"
+                  >
+                    <div class="gw-products-carousel__feed">
+                      <sl-skeleton effect="pulse"></sl-skeleton>
+                      <sl-skeleton effect="pulse"></sl-skeleton>
+                      <sl-skeleton effect="pulse"></sl-skeleton>
+                      <sl-skeleton effect="pulse"></sl-skeleton>
+                    </div>
+                  </div>
+                </div>
+              </sl-animation>
+
+              <sl-drawer contained style="--size: 100%;" id="{{ drawer_id }}" empty>
+                <button class="gw-secondary-drawer__header" slot="label" data-inner-drawer-close>
+                  {% render 'gw-customer-accounts-icons' with 'arrow_go_back' %}
+                  <span class="gw-header">
+                    {{ 'gw_customer_accounts.saved_from_cart.title' | t }}
+                  </span>
+                </button>
+
+                <button
+                  slot="header-actions"
+                  class="gw-empty-button"
+                  data-main-drawer-close
+                  aria-label="Close saved from cart drawer"
+                >
+                  {% render 'gw-customer-accounts-icons' with 'close' %}
+                </button>
+
+                <div class="gw-saved-from-cart-tab" data-saved-from-cart-drawer-container></div>
+              </sl-drawer>
+            {% when 'favorites' %}
+              {%- if settings.gw_customer_accounts_wishlist_enabled -%}
+                <sl-animation duration="250" iterations="1" fill="both">
+                  {% assign drawer_id = 'Drawer-Favorites' %}
+
+                  <div class="gw-products-carousel gw-products-carousel--favorites">
+                    <div class="gw-products-carousel__header-wrapper" data-drawer-id="{{ drawer_id }}">
+                      <div class="gw-products-carousel__header">
+                        <h2 class="gw-header">
+                          {{ 'gw_customer_accounts.favorites.title' | t }}
+                        </h2>
+
+                        <button class="gw-empty-button" aria-label="Open favorites drawer">
+                          {% render 'gw-customer-accounts-icons' with 'arrow_go_forward' %}
+                        </button>
+                      </div>
+                    </div>
+
+                    <div
+                      class="gw-products-carousel__feed-wrapper"
+                      data-favorites-container
+                      data-empty-state-message="{{ 'gw_customer_accounts.favorites.empty' | t }}"
+                      data-drawer-selector="{{ drawer_id }}"
+                    >
+                      <div class="gw-products-carousel__feed">
+                        <sl-skeleton effect="pulse"></sl-skeleton>
+                        <sl-skeleton effect="pulse"></sl-skeleton>
+                        <sl-skeleton effect="pulse"></sl-skeleton>
+                        <sl-skeleton effect="pulse"></sl-skeleton>
+                      </div>
+                    </div>
+                  </div>
+                </sl-animation>
+
+                <sl-drawer contained style="--size: 100%;" id="{{ drawer_id }}" empty>
+                  <button class="gw-secondary-drawer__header" slot="label" data-inner-drawer-close>
+                    {% render 'gw-customer-accounts-icons' with 'arrow_go_back' %}
+                    <span class="gw-header">
+                      {{ 'gw_customer_accounts.favorites.title' | t }}
+                    </span>
+                  </button>
+
+                  <button
+                    slot="header-actions"
+                    class="gw-empty-button"
+                    data-main-drawer-close
+                    aria-label="Close favorites drawer"
+                  >
+                    {% render 'gw-customer-accounts-icons' with 'close' %}
+                  </button>
+
+                  <div class="gw-favorites-tab" data-favorites-drawer-container></div>
+                </sl-drawer>
+              {%- endif -%}
+            {% when 'quick-links' %}
+              <sl-animation duration="250" iterations="1" fill="both">
+                <ul class="gw-quick-links">
+                  {% for link in section.settings.quick_links.links %}
+                    <li class="gw-quick-link-item">
+                      <a href="{{ link.url }}" class="gw-body--strong gw-unstyled-link gw-quick-link" target="_blank">
+                        {{ link.title }}
+                        {% render 'gw-customer-accounts-icons' with 'link_arrow' %}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </sl-animation>
+            {% when 'card' %}
+              {% if customer.has_account %}
+                <sl-animation duration="250" iterations="1" fill="both">
+                  <div class="gw-card__item">
+                    {% if block.settings.url != blank -%}
+                      <a href="{{ block.settings.url }}" aria-label="{{ block.settings.title }}"></a>
+                    {%- endif %}
+                    <div class="gw-card__item-image-wrapper">
+                      {% if block.settings.image != blank %}
+                        {{
+                          block.settings.image
+                          | image_url: width: 760, height: 480
+                          | image_tag: alt: block.settings.image.alt, class: 'gw-card__item-image'
+                        }}
+                      {% endif %}
+                    </div>
+                    <h2 class="gw-header">{{ block.settings.title }}</h2>
+                    <div class="gw-body">
+                      {{ block.settings.description }}
+                    </div>
+                  </div>
+                </sl-animation>
+              {% endif %}
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </gw-customer-accounts-dashboard>
+  {% when 'orders' %}
+    <gw-customer-accounts-orders>
+      <script type="application/json" data-tab-panel-data>
+        {
+          "label": "{{ 'gw_customer_accounts.tabs.orders.label' | t }}",
+          "id": "orders",
+          "hash": "#my-orders",
+          "signInBlockHeading": "{{ 'gw_customer_accounts.sign_in_block.orders_title' | t }}"
+        }
+      </script>
+
+      {% if customer.has_account %}
+        <div class="gw-main-content-container">
+          {%- for order in customer.orders -%}
+            {% assign drawer_id = 'order-drawer-' | append: order.order_number %}
+
+            <sl-animation duration="250" iterations="1" fill="both">
+              <div class="gw-customer-accounts-order" data-drawer-id="{{ drawer_id }}">
+                <h2 class="gw-customer-accounts-order__header gw-header">
+                  {{ 'gw_customer_accounts.order.title' | t: order_name: order.order_name }}
+
+                  <button class="gw-empty-button" aria-label="Open order detail drawer">
+                    {% render 'gw-customer-accounts-icons' with 'arrow_go_forward' %}
+                  </button>
+                </h2>
+
+                <sl-carousel
+                  class="gw-customer-accounts-order__carousel"
+                  slides-per-page="3"
+                  slides-per-move="2"
+                  style="--scroll-hint: 5%; --aspect-ratio: none"
+                >
+                  {% for line_item in order.line_items %}
+                    <sl-carousel-item>
+                      <div class="gw-product-card">
+                        <div class="gw-product-card__image-container">
+                          {{
+                            line_item.image
+                            | image_url: width: 240
+                            | image_tag: alt: line_item.name, class: 'gw-product-card__image'
+                          }}
+                        </div>
+                      </div>
+                    </sl-carousel-item>
+                  {% endfor %}
+                </sl-carousel>
+              </div>
+            </sl-animation>
+
+            {% render 'gw-customer-accounts-order-detail', order: order, drawer_id: drawer_id %}
+          {%- else -%}
+            <sl-animation duration="250" iterations="1" fill="both">
+              <h2 class="gw-customer-accounts-orders__empty gw-header">
+                {{ 'gw_customer_accounts.tabs.orders.empty' | t }}
+              </h2>
+            </sl-animation>
+          {%- endfor -%}
+        </div>
+      {% endif %}
+    </gw-customer-accounts-orders>
+  {% when 'profile' %}
+    <gw-customer-accounts-profile class="gw-main-content-container">
+      {% liquid
+        assign full_name = customer.first_name | append: ' ' | append: customer.last_name
+        assign label = 'gw_customer_accounts.tabs.profile.label_fallback' | t
+
+        if full_name != blank
+          assign label = 'gw_customer_accounts.tabs.profile.label' | t: full_name: full_name
+        endif
+      %}
+
+      <script type="application/json" data-tab-panel-data>
+        {
+          "label": {{ label | json }},
+          "id": "profile",
+          "hash": "#my-profile",
+          "signInBlockHeading": "{{ 'gw_customer_accounts.sign_in_block.profile_title' | t }}"
+        }
+      </script>
+
+      {% if customer.has_account %}
+        <div class="gw-main-content-container">
+          <sl-animation duration="250" iterations="1" fill="both">
+            {% assign drawer_id = 'Drawer-Preferences' %}
+            <div class="my-preferences" data-drawer-id="{{ drawer_id }}">
+              <h2 class="my-preferences__header">
+                <span class="gw-header">
+                  {{ 'gw_customer_accounts.my_preferences.title' | t }}
+                </span>
+
+                <button class="gw-empty-button" aria-label="Open preferences drawer">
+                  {% render 'gw-customer-accounts-icons' with 'arrow_go_forward' %}
+                </button>
+              </h2>
+
+              <div class="my-preferences__fields" data-my-preference-fields>
+                <div class="my-preferences__field">
+                  <span class="gw-small-text">
+                    {{ 'gw_customer_accounts.my_preferences.email' | t }}
+                  </span>
+                  <span class="gw-body">{{ customer.email }}</span>
+                </div>
+
+                {% if customer.phone != blank %}
+                  <div class="my-preferences__field gw-body">
+                    <span class="gw-small-text">
+                      {{ 'gw_customer_accounts.my_preferences.phone' | t }}
+                    </span>
+                    <span class="gw-body">{{ customer.phone }}</span>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </sl-animation>
+
+          <sl-drawer contained style="--size: 100%;" id="{{ drawer_id }}">
+            <button class="gw-secondary-drawer__header" slot="label" data-inner-drawer-close>
+              {% render 'gw-customer-accounts-icons' with 'arrow_go_back' %}
+              <span class="gw-header">
+                {{ 'gw_customer_accounts.my_preferences.preferences' | t }}
+              </span>
+            </button>
+
+            <button
+              slot="header-actions"
+              class="gw-empty-button"
+              data-main-drawer-close
+              aria-label="Close preferences drawer"
+            >
+              {% render 'gw-customer-accounts-icons' with 'close' %}
+            </button>
+
+            <gw-preferences-form>
+              <form class="gw-preference-details">
+                <div class="gw-preference-details__notification">
+                  <h2 class="gw-header">
+                    {{ 'gw_customer_accounts.my_preferences.notifications' | t }}
+                  </h2>
+
+                  <div class="gw-preference-details__email">
+                    <sl-input
+                      label="Email"
+                      value="{{ customer.email }}"
+                      disabled
+                    >
+                      <span class="gw-small-text" slot="help-text">
+                        {{ 'gw_customer_accounts.my_preferences.email_disclaimer' | t }}
+                      </span>
+                    </sl-input>
+
+                    <sl-checkbox
+                      name="emailSubscribed"
+                      value="true"
+                      {% if customer.tags contains 'Email:subscribed' %}
+                        checked
+                      {% endif %}
+                    >
+                      <span class="gw-body">
+                        {{ 'gw_customer_accounts.my_preferences.marketing_email_opt_in' | t }}
+                      </span>
+                    </sl-checkbox>
+                  </div>
+
+                  <div class="gw-preference-details__phone">
+                    <sl-input
+                      label="Mobile phone number"
+                      name="phone"
+                      value="{{ customer.phone }}"
+                    >
+                    </sl-input>
+
+                    <sl-checkbox
+                      name="smsSubscribed"
+                      value="true"
+                      {% if customer.tags contains 'SMS:subscribed' %}
+                        checked
+                      {% endif %}
+                    >
+                      <span class="gw-body">
+                        {{ 'gw_customer_accounts.my_preferences.marketing_sms_opt_in' | t }}
+                      </span>
+                      <span class="gw-small-text" slot="help-text">
+                        {{ 'gw_customer_accounts.my_preferences.marketing_sms_opt_in_disclaimer_html' | t }}
+                      </span>
+                    </sl-checkbox>
+                  </div>
+                </div>
+
+                <div class="gw-preference-details__personal-info">
+                  <h2 class="gw-header">
+                    {{ 'gw_customer_accounts.my_preferences.personal_info' | t }}
+                  </h2>
+
+                  <div class="gw-preference-details__firstname">
+                    <sl-input
+                      label="{{ 'gw_customer_accounts.my_preferences.first_name' | t }}"
+                      name="firstName"
+                      required
+                      value="{{ customer.first_name }}"
+                    >
+                    </sl-input>
+                  </div>
+
+                  <div class="gw-preference-details__lastname">
+                    <sl-input
+                      label="{{ 'gw_customer_accounts.my_preferences.last_name' | t }}"
+                      name="lastName"
+                      required
+                      value="{{ customer.last_name }}"
+                    >
+                    </sl-input>
+                  </div>
+                </div>
+
+                <div class="gw-button-wrapper">
+                  <button class="gw-button gw-button--solid">
+                    {{ 'gw_customer_accounts.my_preferences.save' | t }}
+                    <span class="gw-loader-container" hidden data-loader>
+                      <span class="gw-loader"></span>
+                    </span>
+                  </button>
+                </div>
+              </form>
+            </gw-preferences-form>
+          </sl-drawer>
+
+          <sl-animation duration="250" iterations="1" fill="both">
+            {% assign drawer_id = 'Drawer-Addresses' %}
+
+            <div class="my-addresses" data-gw-addresses-carousel>
+              <h2 class="my-addresses__header" data-drawer-id="{{ drawer_id }}">
+                <span class="gw-header">
+                  {{ 'gw_customer_accounts.my_preferences.my_addresses' | t }}
+                </span>
+
+                <button class="gw-empty-button" aria-label="Open addresses drawer">
+                  {% render 'gw-customer-accounts-icons' with 'arrow_go_forward' %}
+                </button>
+              </h2>
+
+              {% if customer.addresses.size > 1 %}
+                <sl-carousel
+                  slides-per-page="1"
+                  slides-per-move="1"
+                  style="--scroll-hint: 5%; --aspect-ratio: none"
+                  navigation
+                >
+                  {% for address in customer.addresses %}
+                    <sl-carousel-item data-drawer-id="{{ drawer_id }}">
+                      <div class="my-addresses__address">
+                        <p class="gw-body">
+                          <span class="gw-body--strong">
+                            {{ address.first_name | append: ' ' | append: address.last_name }}
+                          </span>
+
+                          {% if address == customer.default_address %}
+                            <span class="my-addresses__default-badge">
+                              {{ 'gw_customer_accounts.my_preferences.default_address' | t }}
+                            </span>
+                          {% endif %}
+                        </p>
+
+                        <p class="gw-body">
+                          {{ address.address1 }}
+                          <br>
+                          {{ address.city }}
+                          {{ address.province }}
+                          {{ address.zip }}
+                          <br>
+                          {{ address.country }}
+                          <br>
+                          {{ address.phone }}
+                        </p>
+                      </div>
+                    </sl-carousel-item>
+                  {% endfor %}
+                </sl-carousel>
+              {% else %}
+                <div class="my-addresses__list my-addresses__list--single" data-drawer-id="{{ drawer_id }}">
+                  {% for address in customer.addresses %}
+                    <div class="my-addresses__address">
+                      <p class="gw-body">
+                        <span class="gw-body--strong">
+                          {{ address.first_name | append: ' ' | append: address.last_name }}
+                        </span>
+
+                        {% if address == customer.default_address %}
+                          <span class="my-addresses__default-badge">
+                            {{ 'gw_customer_accounts.my_preferences.default_address' | t }}
+                          </span>
+                        {% endif %}
+                      </p>
+
+                      <p class="gw-body">
+                        {{ address.address1 }}
+                        <br>
+                        {{ address.city }}
+                        {{ address.province }}
+                        {{ address.zip }}
+                        <br>
+                        {{ address.country }}
+                        <br>
+                        {{ address.phone }}
+                      </p>
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </sl-animation>
+
+          <sl-drawer contained style="--size: 100%;" id="{{ drawer_id }}">
+            <button class="gw-secondary-drawer__header" slot="label" data-inner-drawer-close>
+              {% render 'gw-customer-accounts-icons' with 'arrow_go_back' %}
+
+              <span class="gw-header">
+                {{ 'gw_customer_accounts.my_preferences.addresses' | t }}
+              </span>
+            </button>
+
+            <button
+              slot="header-actions"
+              class="gw-empty-button"
+              data-main-drawer-close
+              aria-label="Close addresses drawer"
+            >
+              {% render 'gw-customer-accounts-icons' with 'close' %}
+            </button>
+
+            <div class="gw-addresses" data-gw-addresses-list>
+              {% for address in customer.addresses %}
+                <sl-animation duration="250" iterations="1" fill="both">
+                  <div class="gw-address" data-drawer-id="Drawer-{{ address.id }}">
+                    <p class="gw-body">
+                      <span class="gw-body--strong">
+                        {{ address.first_name | append: ' ' | append: address.last_name }}
+                      </span>
+
+                      {% if address == customer.default_address %}
+                        <span class="my-addresses__default-badge">
+                          {{ 'gw_customer_accounts.my_preferences.default_address' | t }}
+                        </span>
+                      {% endif %}
+                    </p>
+
+                    <p class="gw-body">
+                      {{ address.address1 }}
+                      <br>
+                      {{ address.city }}
+                      {{ address.province }}
+                      {{ address.zip }}
+                      <br>
+                      {{ address.country }}
+                      <br>
+                      {{ address.phone }}
+                    </p>
+
+                    <span class="gw-address__icon">
+                      {% render 'gw-customer-accounts-icons' with 'small_arrow' %}
+                    </span>
+                  </div>
+
+                  <sl-drawer contained style="--size: 100%;" id="Drawer-{{ address.id }}">
+                    <button class="gw-secondary-drawer__header" slot="label" data-inner-drawer-close>
+                      {% render 'gw-customer-accounts-icons' with 'arrow_go_back' %}
+
+                      <span class="gw-header">
+                        {{ 'customer.addresses.edit_address' | t }}
+                      </span>
+                    </button>
+
+                    <button
+                      slot="header-actions"
+                      class="gw-empty-button"
+                      data-main-drawer-close
+                      aria-label="Close address drawer"
+                    >
+                      {% render 'gw-customer-accounts-icons' with 'close' %}
+                    </button>
+
+                    <gw-address-form type="edit" address-id="{{ address.id }}">
+                      <form class="gw-address-edit gw-main-content-container gw-main-content-container--small-gap">
+                        <sl-input
+                          name="firstName"
+                          label="First name"
+                          value="{{ address.first_name }}"
+                          required
+                        ></sl-input>
+                        <sl-input name="lastName" label="Last name" value="{{ address.last_name }}" required></sl-input>
+                        <sl-input name="address1" label="Address" value="{{ address.address1 }}" required></sl-input>
+                        <sl-input
+                          name="address2"
+                          label="Apartment, suite, etc. (optional)"
+                          value="{{ address.address2 }}"
+                        ></sl-input>
+                        <sl-input name="city" label="City" value="{{ address.city }}" required></sl-input>
+                        <sl-input name="company" label="Company (optional)" value="{{ address.company }}"></sl-input>
+
+                        <gw-customer-accounts-country-selector>
+                          <sl-select name="country" label="Country" required value="United_States">
+                            {{ all_country_option_tags }}
+                          </sl-select>
+                        </gw-customer-accounts-country-selector>
+
+                        <sl-input name="zip" label="Zip" value="{{ address.zip }}" required></sl-input>
+                        <sl-input name="phone" label="Phone" value="{{ address.phone }}"></sl-input>
+
+                        <sl-checkbox
+                          name="isDefault"
+                          value="true"
+                          {% if address == customer.default_address %}
+                            defaultChecked
+                            checked
+                          {% endif %}
+                        >
+                          {{ 'gw_customer_accounts.my_preferences.make_default_address' | t }}
+                        </sl-checkbox>
+
+                        <button type="submit" class="gw-button gw-button--stroke">
+                          {{ 'gw_customer_accounts.my_preferences.update_address' | t }}
+                          <span class="gw-loader-container" hidden data-loader>
+                            <span class="gw-loader"></span>
+                          </span>
+                        </button>
+
+                        <button
+                          type="button"
+                          class="gw-button gw-button--stroke"
+                          data-delete-address
+                        >
+                          {{ 'gw_customer_accounts.my_preferences.delete_address' | t }}
+                          <span class="gw-loader-container" hidden data-loader>
+                            <span class="gw-loader"></span>
+                          </span>
+                        </button>
+                      </form>
+                    </gw-address-form>
+                  </sl-drawer>
+                </sl-animation>
+              {% endfor %}
+            </div>
+
+            {% assign drawer_id = 'Drawer-Add_Address' %}
+            <div style="padding: var(--tab-panel-vertical-gap) var(--tab-panel-edge-padding);">
+              <button class="gw-button gw-button--stroke" data-drawer-id="{{ drawer_id }}">
+                {{ 'gw_customer_accounts.my_preferences.add_address' | t }}
+              </button>
+            </div>
+
+            <sl-drawer contained style="--size: 100%;" id="{{ drawer_id }}">
+              <button class="gw-secondary-drawer__header" slot="label" data-inner-drawer-close>
+                {% render 'gw-customer-accounts-icons' with 'arrow_go_back' %}
+
+                <span class="gw-header">
+                  {{ 'gw_customer_accounts.my_preferences.add_address' | t }}
+                </span>
+              </button>
+
+              <button
+                slot="header-actions"
+                class="gw-empty-button"
+                data-main-drawer-close
+                aria-label="Close add address drawer"
+              >
+                {% render 'gw-customer-accounts-icons' with 'close' %}
+              </button>
+
+              <gw-address-form type="add">
+                <form class="gw-address-add gw-main-content-container gw-main-content-container--small-gap">
+                  <sl-input name="firstName" label="First name" required></sl-input>
+                  <sl-input name="lastName" label="Last name" required></sl-input>
+                  <sl-input name="address1" label="Address" required></sl-input>
+                  <sl-input name="address2" label="Apartment, suite, etc. (optional)"></sl-input>
+                  <sl-input name="city" label="City" required></sl-input>
+                  <sl-input name="company" label="Company (optional)"></sl-input>
+
+                  <gw-customer-accounts-country-selector>
+                    <sl-select name="country" label="Country" required value="United_States">
+                      {{ all_country_option_tags }}
+                    </sl-select>
+                  </gw-customer-accounts-country-selector>
+
+                  <sl-input name="zip" label="Zip" required></sl-input>
+                  <sl-input name="phone" label="Phone"></sl-input>
+
+                  <sl-checkbox name="isDefault" value="true">
+                    {{ 'gw_customer_accounts.my_preferences.make_default_address' | t }}
+                  </sl-checkbox>
+
+                  <button type="submit" class="gw-button gw-button--stroke">
+                    {{ 'gw_customer_accounts.my_preferences.add_address' | t }}
+                    <span class="gw-loader-container" hidden data-loader>
+                      <span class="gw-loader"></span>
+                    </span>
+                  </button>
+                </form>
+              </gw-address-form>
+            </sl-drawer>
+          </sl-drawer>
+
+          <sl-animation duration="250" iterations="1" fill="both">
+            <div class="gw-button-wrapper">
+              <a href="/account/logout" class="gw-button gw-button--stroke" data-logout-button data-ignore-account-link>
+                {{ 'gw_customer_accounts.my_preferences.sign_out' | t }}
+                <span class="gw-loader-container" hidden data-loader>
+                  <span class="gw-loader"></span>
+                </span>
+              </a>
+            </div>
+          </sl-animation>
+        </div>
+      {% endif %}
+    </gw-customer-accounts-profile>
+{% endcase %}

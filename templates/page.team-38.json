@@ -1,0 +1,419 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "full_width_banner_ADQgKn": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_E3xWqt": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "desktop_image": "shopify://shop_images/team_2200x_4b9bf89b-ef1a-448f-b455-66b76498cff5.webp",
+            "mobile_image": "shopify://shop_images/mobile_banner1_x800_7e5e357e-75a4-427e-b4f3-be65c0f25431.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        },
+        "slide_baLhfd": {
+          "type": "slide",
+          "name": "Hero",
+          "settings": {
+            "desktop_image": "shopify://shop_images/AMBASSADORpage_hero_desktop_2.jpg",
+            "mobile_image": "shopify://shop_images/AMBASSADORpage_hero_mobile.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_E3xWqt",
+        "slide_baLhfd"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "image_with_text_g4DheV": {
+      "type": "text-with-image",
+      "disabled": true,
+      "settings": {
+        "subheading": "Who is a Carbon38",
+        "title": "Ambassador",
+        "image": "shopify://shop_images/workout_1-1200x1200_1000x_7f254f9d-a36c-4cbc-bb61-b63af7a785fb.webp",
+        "image_position": "right",
+        "content": "<p>The Carbon38 Ambassador is a leader in the fitness industry and the best in their field. They are magnetic and authentic influencers. They keep their clients and communities motivated in innovative and exciting ways.</p><p>Check out <a href=\"https://www.instagram.com/teamc38/\"><em><strong>@TeamC38</strong></em></a> on Instagram to see our community in action.</p>",
+        "link_text": "",
+        "link_url": ""
+      }
+    },
+    "image_with_text_Q684Rj": {
+      "type": "text-with-image",
+      "disabled": true,
+      "settings": {
+        "subheading": "The Carbon38 Ambassador program",
+        "title": "How We're Different",
+        "image": "shopify://shop_images/community_1000x_a0715f87-f7bf-42ea-896d-7f559e629bf6.webp",
+        "image_position": "left",
+        "content": "<p>Simply put, community.</p><p></p><p>Katie Warner Johnson, our CEO, was the original Carbon38 Ambassador. Her experience as a celebrity fitness instructor left her determined to create a new kind of ambassador program—one that was thoughtful, engaged, and committed to the growth of its members. By fostering connectivity and supporting each Ambassador in their journey, we've been able to build a network of <strong>over 7,000 Ambassadors</strong> <strong>worldwide.</strong></p>",
+        "link_text": "",
+        "link_url": ""
+      }
+    },
+    "full_width_banner_wKt7E6": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_dMfwPg": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Artboard_2_2200x_05eb0107-5bfe-4a0a-b9e8-36b231f2c489.webp",
+            "mobile_image": "shopify://shop_images/Artboard_3_x800_bc652a57-0618-4743-a872-cd6692e8eff5.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        },
+        "slide_waHD9L": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Artboard_2_2200x_c189fc8b-bb8f-4d2c-a735-a1a715533618.webp",
+            "mobile_image": "shopify://shop_images/Artboard_3_x800_b667727d-4b71-4b98-a4af-d4f7ba6f7cc8.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        },
+        "slide_f4XV7y": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Artboard_2_2200x_a9da7dc1-5d04-4e9d-ac54-f619cbe0c498.webp",
+            "mobile_image": "shopify://shop_images/Artboard_3_x800_843f1eee-9876-4dec-90ed-c3207436b0b3.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        },
+        "slide_EptjJk": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Artboard_2_copy_2200x_908a138e-5fa7-4af0-8c66-a45d62f83d25.webp",
+            "mobile_image": "shopify://shop_images/Artboard_3_copy_x800_c1d23d33-ef3a-4664-8a6b-59cbd02e56d0.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        },
+        "slide_4cUEYP": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Artboard_2_2200x_c189fc8b-bb8f-4d2c-a735-a1a715533618.webp",
+            "mobile_image": "shopify://shop_images/Artboard_3_x800_c4e455c4-7b28-438d-9255-e4cceec41a65.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_dMfwPg",
+        "slide_waHD9L",
+        "slide_f4XV7y",
+        "slide_EptjJk",
+        "slide_4cUEYP"
+      ],
+      "disabled": true,
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": true,
+        "change_slides_every": 3,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "custom_liquid_Urgf9L": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "name": "How It Works",
+      "settings": {
+        "subheading": "",
+        "heading": "",
+        "custom_liquid": "<H2 style=\"font-size:100px; line-height:80px;\"><center>HOW IT WORKS</h2>\n• Share our mission + vision with your community<br>\n\n• Post social content that shows Carbon38 in action<br>\n\n• Model Carbon38 during classes and livestreams<br>\n\n• Foster studio relationships and co-branded opportunities<br>\n\n• Be our experts—share emerging trends in the health + fitness space<br>\n\n• Test-drive new collections to help us perfect them. We’ll look to you for design feedback and style inspiration.",
+        "color_scheme": "",
+        "text_alignment": "center",
+        "padding_top": 88,
+        "padding_bottom": 40
+      }
+    },
+    "image_with_text_4WL6b4": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_6qKa8H": {
+          "type": "heading",
+          "settings": {
+            "heading": "How It Works",
+            "heading_size": "h1"
+          }
+        },
+        "text_WAMPJc": {
+          "type": "text",
+          "settings": {
+            "text": "<p>• Share our mission + vision with your community</p><p>• Post social content that shows Carbon38 in action</p><p>• Model Carbon38 during classes and livestreams</p><p>• Foster studio relationships and co-branded opportunities</p><p>• Be our experts—share emerging trends in the health + fitness space</p><p>• Test-drive new collections to help us perfect them. We’ll look to you for design feedback and style inspiration</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_6qKa8H",
+        "text_WAMPJc"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "disable_page_width": false,
+        "image": "shopify://shop_images/AMBASSADORpage_howitworks.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "about_us_years_7B6Hd6": {
+      "type": "about-us-years",
+      "blocks": {
+        "year_gUNY4R": {
+          "type": "year",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/20percent_1000x_db5e4418-efd3-4592-99ac-519dbec62309.webp",
+            "subtitle": "",
+            "title": "20% off",
+            "year": "Exclusive 20% Off",
+            "description": "<p>Enjoy 20% off every purchase. Consider this our contribution to the inspiration you spread within your community.</p>"
+          }
+        },
+        "year_8bWAFH": {
+          "type": "year",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Community_1000x_c73f0305-3f02-4cf3-980e-83457ef9a36c.webp",
+            "subtitle": "",
+            "title": "How It Works",
+            "year": "",
+            "description": "<p>• Share our mission + vision with your community.</p><p>• Post social content that shows Carbon38 in action.</p><p>• Model Carbon38 during classes and livestreams.</p><p>• Foster studio relationships and co-branded opportunities.</p><p>• Be our experts—share emerging trends in the health + fitness space.</p><p>• Test-drive new collections to help us perfect them. We’ll look to you for design feedback and style inspiration.</p>"
+          }
+        },
+        "year_eNFDyU": {
+          "type": "year",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Campaign_1000x_2b2f686c-7bf2-4849-b1a8-acf053c5463c.webp",
+            "subtitle": "",
+            "title": "CAMPAIGNS",
+            "year": "CAMPAIGNS",
+            "description": "<p>• Opportunities to be featured in Carbon38 content, from eCommerce shoots to social campaigns.</p><p>• Brand-building resources to create content for your own channel + community.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "year_gUNY4R",
+        "year_8bWAFH",
+        "year_eNFDyU"
+      ],
+      "disabled": true,
+      "settings": {
+        "text_color": "#ffffff"
+      }
+    },
+    "image_with_text_W6Bqpp": {
+      "type": "text-with-image",
+      "disabled": true,
+      "settings": {
+        "subheading": "THE FINER DETAILS",
+        "title": "How We Work Together:",
+        "image": "shopify://shop_images/download-1_1000x_57ebb086-dd08-49a6-b9ef-795a1a80187a.webp",
+        "image_position": "right",
+        "content": "<p>• Share our mission + vision with your community.</p><p>• Post social content that shows Carbon38 in action.</p><p>• Model Carbon38 during classes and livestreams.</p><p>• Foster studio relationships and co-branded opportunities.</p><p>• Be our experts—share emerging trends in the health + fitness space.</p><p>• Test-drive new collections to help us perfect them. We’ll look to you for design feedback and style inspiration.</p>",
+        "link_text": "",
+        "link_url": ""
+      }
+    },
+    "custom_liquid_YwnM9A": {
+      "type": "custom-liquid",
+      "settings": {
+        "subheading": "",
+        "heading": "",
+        "custom_liquid": "<H2 style=\"font-size:100px; line-height:80px;\"><center>Join Team38</h2>\n<center>If you're interested in joining our team, email us at <u><a href=\"mailto:team38@carbon38.com\">team38@carbon38.com</a></u>.</center>",
+        "color_scheme": "",
+        "text_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "rich_text_6iy9eh": {
+      "type": "rich-text",
+      "blocks": {
+        "text_PLYXFL": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>“Some of my most cherished friends are my fellow Team38 ambassadors. This program makes me confident that I always have someone in my corner. I feel grateful to have this network, both personally and professionally, and to be part of a brand that continues to change the game. Unlike other ambassador programs, the Team38 program has created a community that spans across the country and globe. I know that anywhere I travel for work or fun, there are other like-minded women and men that I can connect with. This program is deeper than a discount code, trunk show, or promotional platform. This is a team that inspires me to be better and braver in my field. They have revolutionized what it means to be an ambassador in more ways than one, and I feel privileged to be involved.\"</p><p></p><p><strong>—Alyssa Mandel<br/></strong><em>SparksCarbon38 Ambassador, Pilates Instructor<br/>Los Angeles</em></p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_PLYXFL"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": false,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "1725726184f2db4d65": {
+      "type": "apps",
+      "settings": {
+        "include_margins": false
+      }
+    }
+  },
+  "order": [
+    "full_width_banner_ADQgKn",
+    "image_with_text_g4DheV",
+    "image_with_text_Q684Rj",
+    "full_width_banner_wKt7E6",
+    "custom_liquid_Urgf9L",
+    "image_with_text_4WL6b4",
+    "about_us_years_7B6Hd6",
+    "image_with_text_W6Bqpp",
+    "custom_liquid_YwnM9A",
+    "rich_text_6iy9eh",
+    "1725726184f2db4d65"
+  ]
+}

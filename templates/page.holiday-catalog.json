@@ -1,0 +1,381 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "full_width_banner_eMA4QW": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_rkWMM9": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-Landing_2200x_from_Carbon38.webp",
+            "mobile_image": "shopify://shop_images/M-Landing_x800_1.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_rkWMM9"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_large": false,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "full_width_banner_Bz3NHJ": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_JV4VtE": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Holiday_Catalog_2022.webp",
+            "mobile_image": "shopify://shop_images/Holiday_Catalog_2022_1.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/ski",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_JV4VtE"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 80,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 80,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collection_qyiaqH": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "from slope to chalet",
+        "title": "Enter the Winter Destination Shop",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "ski",
+        "fallback_collection": "",
+        "view_all_label": "Shop Now",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "full_width_banner_9jUjxc": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_gVq6wf": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Holiday_Catalog_2022_Ballet_Capsule.webp",
+            "mobile_image": "shopify://shop_images/Holiday_Catalog_2022_Ballet_Capsule_1.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/sugarplum-capsule",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_gVq6wf"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collection_dQUjxQ": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "Eat, drink, and be merry",
+        "title": "For tomorrow, we dance",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "sugarplum-capsule",
+        "fallback_collection": "",
+        "view_all_label": "Shop the Edit",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "full_width_banner_Gbhteb": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_nQaUeY": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/10th_Anniversary_Gamma_Waves.webp",
+            "mobile_image": "shopify://shop_images/10th_Anniversary_Gamma_Waves_1.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/10th-anniversary",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_nQaUeY"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collection_a8cj6F": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "it's time to celebrate",
+        "title": "10th Anniversary",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "10th-anniversary",
+        "fallback_collection": "",
+        "view_all_label": "Shop Now",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "collection_list_G39bQx": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_TD93yJ": {
+          "type": "collection",
+          "settings": {
+            "collection": "shine-metallics",
+            "image_alignment": "center center",
+            "content_position": "middleCenter",
+            "subheading": "",
+            "title": "",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": true
+          }
+        },
+        "collection_wGU9Qg": {
+          "type": "collection",
+          "settings": {
+            "collection": "jackets-outerwear",
+            "image_alignment": "top center",
+            "content_position": "middleCenter",
+            "subheading": "",
+            "title": "Jackets & Outerwear",
+            "link_text": "Shop the edit",
+            "link_url": "",
+            "apply_overlay": true
+          }
+        },
+        "collection_XcaPLP": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/2-up-gift_guide.jpg",
+            "image_alignment": "top center",
+            "content_position": "middleCenter",
+            "subheading": "",
+            "title": "The Gift Shop",
+            "link_text": "Shop now",
+            "link_url": "shopify://pages/gift-shop-2024",
+            "apply_overlay": true
+          }
+        }
+      },
+      "block_order": [
+        "collection_TD93yJ",
+        "collection_wGU9Qg",
+        "collection_XcaPLP"
+      ],
+      "settings": {
+        "title": "",
+        "image_size": "normal",
+        "add_spacing": true,
+        "expand_collection": true,
+        "stack_on_mobile": true,
+        "text_color": "#ffffff",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "text_with_image_N6VGee": {
+      "type": "text-with-image",
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "image": "shopify://shop_images/katie-portrait_9e0528e8-59a3-4ccb-8a25-d537dd9e840f.jpg",
+        "image_position": "left",
+        "content": "<p>The winter months are upon us, ushering in a season of high spirits and well-deserved decadence. <br/><br/>And at Carbon38, we’re celebrating our 10 year anniversary. All the more reason to pop the bubbly and cause a little stir. What better way to ring in the new than by hearkening back to the glitter and gold of the American jazz age–and its classics?<br/></p><p>Our holiday collection is designed to shine with art deco inspired shapes, luxurious knits, and just the right amount of sparkle.<br/><br/>So this season, keep your eye on the green light and let self-reinvention rule the day.</p><p>It’s never too late to be who you want to be.</p>",
+        "link_text": "",
+        "link_url": ""
+      }
+    }
+  },
+  "order": [
+    "full_width_banner_eMA4QW",
+    "main",
+    "full_width_banner_Bz3NHJ",
+    "featured_collection_qyiaqH",
+    "full_width_banner_9jUjxc",
+    "featured_collection_dQUjxQ",
+    "full_width_banner_Gbhteb",
+    "featured_collection_a8cj6F",
+    "collection_list_G39bQx",
+    "text_with_image_N6VGee"
+  ]
+}

@@ -1,0 +1,292 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "1657828400712f24d1": {
+      "type": "custom-html",
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "html": "<h1>Carbon38 Shops</h1><br>We've put together a curated list that celebrates all things new, emerging and trending. From fresh exclusives to inspired pairings, stay up-to-date with collections that help keeps your lifestyle on point.",
+        "text_alignment": "center",
+        "padding_top": 80,
+        "padding_bottom": 52
+      }
+    },
+    "slideshow_JfDE4p": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_pLdWPG": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-LANDING_5f9fb75c-2d54-46b9-a7a9-641ffcceb82e.jpg",
+            "mobile_image": "shopify://shop_images/M-Landing_c0c53ce9-013c-4264-80ca-23f64828854e.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "bottom-left",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "https://carbon38.com/pages/holiday-2024",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_pLdWPG"
+      ],
+      "disabled": true,
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": true,
+        "change_slides_every": 6,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 36,
+        "margin_bottom": 0,
+        "mobile_margin_top": 24,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "shop_by_category_UqVjjb": {
+      "type": "shop-by-category",
+      "blocks": {
+        "collection_fDCXFp": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/021025_Landing_Page_Be_Mine.jpg",
+            "title": "Be Mine",
+            "url": "shopify://collections/be-mine-2025"
+          }
+        },
+        "collection_Hxipf7": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/021025_Landing_Page_Travel_Outfitting.jpg",
+            "title": "Travel Outfitting",
+            "url": "shopify://collections/travel-outfitting"
+          }
+        },
+        "collection_He4Xza": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/021025_Landing_Page_Best_Sellers.jpg",
+            "title": "Best Sellers",
+            "url": "shopify://collections/best-sellers"
+          }
+        },
+        "collection_DnX6UB": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/021025_Landing_Page_The_Core_Guide.jpg",
+            "title": "The Core Guide",
+            "url": "shopify://pages/core-guide"
+          }
+        },
+        "collection_PfNf3G": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/021025_Landing_Page_Bundles.jpg",
+            "title": "Bundles",
+            "url": "shopify://collections/bundles"
+          }
+        },
+        "collection_wqzA4r": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/021025_Landing_Page_Winter_Destination.jpg",
+            "title": "The Winter Destination Shop",
+            "url": "shopify://collections/ski"
+          }
+        }
+      },
+      "block_order": [
+        "collection_fDCXFp",
+        "collection_Hxipf7",
+        "collection_He4Xza",
+        "collection_DnX6UB",
+        "collection_PfNf3G",
+        "collection_wqzA4r"
+      ],
+      "settings": {
+        "title": "Our Shops",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_collection_list_GFRFhR": {
+      "type": "image-collection-list",
+      "blocks": {
+        "collection_9W8hnJ": {
+          "type": "collection",
+          "settings": {
+            "collection": "holiday-24-collection",
+            "image_alignment": "top center",
+            "content_position": "middle-center",
+            "sub_heading": "",
+            "heading": "",
+            "link_text": "Shop now",
+            "link_url": "",
+            "overlay": true
+          }
+        },
+        "collection_UkjAwy": {
+          "type": "collection",
+          "settings": {
+            "collection": "festive-active",
+            "image_alignment": "top center",
+            "content_position": "middle-center",
+            "sub_heading": "",
+            "heading": "",
+            "link_text": "Shop now",
+            "link_url": "",
+            "overlay": true
+          }
+        },
+        "collection_kpWzmr": {
+          "type": "collection",
+          "settings": {
+            "collection": "ski",
+            "image_alignment": "top center",
+            "content_position": "middle-center",
+            "sub_heading": "",
+            "heading": "",
+            "link_text": "Shop Now",
+            "link_url": "",
+            "overlay": true
+          }
+        },
+        "collection_nAxgKx": {
+          "type": "collection",
+          "settings": {
+            "collection": "luxe-layers",
+            "image_alignment": "top center",
+            "content_position": "middle-center",
+            "sub_heading": "",
+            "heading": "",
+            "link_text": "Shop now",
+            "link_url": "",
+            "overlay": true
+          }
+        },
+        "collection_FYPrYA": {
+          "type": "collection",
+          "settings": {
+            "collection": "travel-outfitting",
+            "image_alignment": "top center",
+            "content_position": "middle-center",
+            "sub_heading": "",
+            "heading": "Travel Packing List",
+            "link_text": "Shop Now",
+            "link_url": "",
+            "overlay": true
+          }
+        },
+        "collection_MrqUaJ": {
+          "type": "collection",
+          "settings": {
+            "collection": "best-sellers",
+            "image_alignment": "center center",
+            "content_position": "middle-center",
+            "sub_heading": "",
+            "heading": "Best-Sellers",
+            "link_text": "Shop Now",
+            "link_url": "",
+            "overlay": true
+          }
+        }
+      },
+      "block_order": [
+        "collection_9W8hnJ",
+        "collection_UkjAwy",
+        "collection_kpWzmr",
+        "collection_nAxgKx",
+        "collection_FYPrYA",
+        "collection_MrqUaJ"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "image_size": "75%",
+        "add_spacing": true,
+        "expand_collections": true,
+        "stack_on_mobile": true,
+        "text_color": "#ffffff"
+      }
+    },
+    "84f6454a-466c-46db-a3d0-c971602f5340": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_pLdWPG": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-shop_by_activity_903244d5-d0d7-45e8-b40d-51004ff3c869.jpg",
+            "mobile_image": "shopify://shop_images/M-shop_by_activity_02192054-0cba-4600-b656-f113cb2bccba.jpg",
+            "overlay": true,
+            "overlay_opacity": 0.2,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "SHOP BY ACTIVITY",
+            "button_1_link": "shopify://pages/shop-by-activity",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_pLdWPG"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": true,
+        "change_slides_every": 6,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 50,
+        "padding_bottom": 0,
+        "margin_top": 36,
+        "margin_bottom": 0,
+        "mobile_margin_top": 24,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "1657828400712f24d1",
+    "slideshow_JfDE4p",
+    "shop_by_category_UqVjjb",
+    "image_collection_list_GFRFhR",
+    "84f6454a-466c-46db-a3d0-c971602f5340"
+  ]
+}

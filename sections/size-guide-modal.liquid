@@ -1,0 +1,123 @@
+<div class="size-guide-overlay">
+    <div class="size-guide-content">
+        <a href="#" class="size-guide-close-modal"></a>
+        <div class="size-guide-content-wrapper">
+        {% if product.metafields.custom.size_guide_table %}
+            {% for size_guide in product.metafields.custom.size_guide_table.value %}
+                <h2>{{ size_guide.title }}</h2>
+                <div class="table-container">
+                    <table>
+                        {% if size_guide.table_headings.value %}
+                        <thead>
+                            <tr>
+                            {% for item in size_guide.table_headings.value %}
+                                <th>{{ item }}</th>
+                            {% endfor %}
+                            </tr>
+                        </thead>
+                        {% endif %}
+                        <tbody>
+                        {% for i in (1..10) %}
+                            {%- assign row_name = "row_" | append: i -%}
+                            {% if size_guide[row_name].value %}
+                                <tr>
+                                    {% for item in size_guide[row_name].value %}
+                                        <td>{{ item }}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endfor %}
+        {% else %}
+            {%- assign downcase_product_type = product.type | downcase -%}
+            {% if downcase_product_type == "shoes" %}
+                {% assign size_guide = shop.metaobjects.size_guide_table['shoe-size-guide'] %}
+                <h2>{{ size_guide.title }}</h2>
+                <div class="table-container">
+                    <table>
+                        {% if size_guide.table_headings.value %}
+                        <thead>
+                            <tr>
+                            {% for item in size_guide.table_headings.value %}
+                                <th>{{ item }}</th>
+                            {% endfor %}
+                            </tr>
+                        </thead>
+                        {% endif %}
+                        <tbody>
+                        {% for i in (1..10) %}
+                            {%- assign row_name = "row_" | append: i -%}
+                            {% if size_guide[row_name].value %}
+                                <tr>
+                                    {% for item in size_guide[row_name].value %}
+                                        <td>{{ item }}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                {% assign size_guide = shop.metaobjects.size_guide_table['generic-size-guide'] %}
+                <h2>{{ size_guide.title }}</h2>
+                <div class="table-container">
+                    <table>
+                        {% if size_guide.table_headings.value %}
+                        <thead>
+                            <tr>
+                            {% for item in size_guide.table_headings.value %}
+                                <th>{{ item }}</th>
+                            {% endfor %}
+                            </tr>
+                        </thead>
+                        {% endif %}
+                        <tbody>
+                        {% for i in (1..10) %}
+                            {%- assign row_name = "row_" | append: i -%}
+                            {% if size_guide[row_name].value %}
+                                <tr>
+                                    {% for item in size_guide[row_name].value %}
+                                        <td>{{ item }}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% assign size_guide = shop.metaobjects.size_guide_table['fit-model-guide'] %}
+                <h2>{{ size_guide.title }}</h2>
+                <div class="table-container">
+                    <table>
+                        {% if size_guide.table_headings.value %}
+                        <thead>
+                            <tr>
+                            {% for item in size_guide.table_headings.value %}
+                                <th>{{ item }}</th>
+                            {% endfor %}
+                            </tr>
+                        </thead>
+                        {% endif %}
+                        <tbody>
+                        {% for i in (1..10) %}
+                            {%- assign row_name = "row_" | append: i -%}
+                            {% if size_guide[row_name].value %}
+                                <tr>
+                                    {% for item in size_guide[row_name].value %}
+                                        <td>{{ item }}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endif %}
+        {% endif %}
+        </div>
+    </div>
+</div>

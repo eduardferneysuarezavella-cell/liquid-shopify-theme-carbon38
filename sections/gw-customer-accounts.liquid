@@ -1,0 +1,1282 @@
+{% assign customer_accounts_version = '1.4.8' %}
+
+<script>
+  function handleAccountPageRedirects() {
+    const exceptions = new Set([
+      'account/login?my-account=off',
+      'account/login?my-account=off#recover',
+      'account/reset',
+      'account/invalid_token',
+      {% if section.settings.sign_in_type == 'password' %}
+        'account/login?checkout_url=',
+        'account/register',
+      {% endif %}
+    ].filter(Boolean));
+
+    const { href, origin, search } = window.location;
+    
+    // Check if URL contains /account but isn't in exceptions list
+    const isAccountPage = href.includes('/account');
+    
+    if (!isAccountPage) return;
+    
+    // Use Array.some with more efficient substring check
+    const isExceptionPage = Array.from(exceptions).some(path => href.indexOf(path) !== -1);
+    
+    if (isExceptionPage) return;
+    
+    const params = new URLSearchParams(search);
+    const redirect = params.get('checkout_url');
+    
+    if (redirect) {
+      try {
+        sessionStorage.setItem('gw-customer-accounts-login-redirect', decodeURIComponent(redirect));
+      } catch (e) {
+        console.warn('Unable to store redirect URL in sessionStorage');
+      }
+    }
+
+    const currentUrl = new URL(window.location.href).toString();
+    if (currentUrl.includes('form_id') && currentUrl.includes('customer_login')) {
+      window.location.replace(`${origin}?form_id=customer_login#my-account`);
+    } else {  
+      window.location.replace(`${origin}#my-account`);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', handleAccountPageRedirects);
+  } else {
+    handleAccountPageRedirects();
+  }
+
+  // Determine the base URL based on environment and availability
+  async function getGWBaseUrl() {
+    let baseUrl;
+
+    if (Shopify.theme.role == 'development') {
+      try {
+        // Check if localhost is available with fetch and a timeout
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 1000);
+
+        const response = await fetch('http://localhost:3000/main.js', {
+          method: 'HEAD',
+          signal: controller.signal,
+        });
+
+        clearTimeout(timeoutId);
+
+        if (response.ok) {
+          baseUrl = 'http://localhost:3000';
+        } else {
+          baseUrl = 'https://cdn.jsdelivr.net/npm/gw-customer-accounts@testing/dist';
+        }
+      } catch (error) {
+        // Fallback to testing version if fetch fails
+        baseUrl = 'https://cdn.jsdelivr.net/npm/gw-customer-accounts@testing/dist';
+      }
+    } else if (Shopify.theme.role == 'unpublished') {
+      baseUrl = 'https://cdn.jsdelivr.net/npm/gw-customer-accounts@testing/dist';
+    } else {
+      baseUrl = 'https://cdn.jsdelivr.net/npm/gw-customer-accounts@latest/dist';
+    }
+
+    return baseUrl;
+  }
+
+  customElements.define(
+    'gw-css-loader',
+    class extends HTMLElement {
+      async connectedCallback() {
+        const file = this.getAttribute('file');
+        if (!file) return;
+
+        const baseUrl = await getGWBaseUrl();
+        const link = document.createElement('link');
+
+        link.rel = 'stylesheet';
+        link.href = `${baseUrl}/${file}`;
+
+        // Optional: add print media and onload for non-blocking loading
+        if (this.hasAttribute('defer')) {
+          link.media = 'print';
+          link.onload = function () {
+            this.media = 'all';
+            this.onload = null;
+          };
+        }
+
+        // Dispatch events for tracking load status
+        link.addEventListener('load', () => {
+          this.dispatchEvent(
+            new CustomEvent('css-loaded', {
+              bubbles: true,
+              detail: { file },
+            })
+          );
+        });
+
+        link.addEventListener('error', (error) => {
+          this.dispatchEvent(
+            new CustomEvent('css-error', {
+              bubbles: true,
+              detail: { file, error },
+            })
+          );
+        });
+
+        this.appendChild(link);
+      }
+    }
+  );
+</script>
+
+{%- # theme-check-disable RemoteAsset -%}
+<script
+  type="module"
+  src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.19.1/cdn/components/drawer/drawer.js"
+  async
+></script>
+
+<script
+  type="module"
+  src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.19.1/cdn/components/alert/alert.js"
+  async
+></script>
+{%- # theme-check-disable RemoteAsset -%}
+
+<style>
+  {% liquid
+    # Import fonts from Font Picker if available
+    assign header_font_family = section.settings.header_font_family
+    assign body_font_family = section.settings.body_font_family
+    assign button_font_family = section.settings.button_font_family
+    assign form_font_family = section.settings.form_font_family
+
+    assign header_font_face = section.settings.header_font
+    assign body_font_face = section.settings.body_font
+    assign button_font_face = section.settings.button_font
+    assign form_font_face = section.settings.form_font
+
+    if header_font_family == blank
+      assign header_font_family = header_font_face.family
+
+      for variant in header_font_face.variants
+        if variant.weight == section.settings.header_font_weight
+          echo variant | font_face
+        endif
+      endfor
+    endif
+
+    if body_font_family == blank
+      assign body_font_family = body_font_face.family
+
+      for variant in body_font_face.variants
+        if variant.weight == section.settings.body_font_weight
+          echo body_font_face | font_face
+        endif
+      endfor
+    endif
+
+    if button_font_family == blank
+      assign button_font_family = button_font_face.family
+
+      for variant in button_font_face.variants
+        if variant.weight == section.settings.button_font_weight
+          echo button_font_face | font_face
+        endif
+      endfor
+    endif
+
+    if form_font_family == blank
+      assign form_font_family = form_font_face.family
+
+      for variant in form_font_face.variants
+        if variant.weight == section.settings.form_elements_font_weight
+          echo form_font_face | font_face
+        endif
+      endfor
+    endif
+  %}
+</style>
+
+{% capture main_css %}
+  <style>
+    @layer tokens {
+      :host {
+        --drawer-width: 420px;
+
+        --header-font-family: {{ header_font_family }};
+        --header-font-weight: {{ section.settings.header_font_weight }};
+
+        --body-font-family: {{ body_font_family }};
+        --body-font-weight: {{ section.settings.body_font_weight }};
+
+        --button-font-family: {{ button_font_family }};
+        --button-font-weight: {{ section.settings.button_font_weight }};
+
+        --form-font-family: {{ form_font_family }};
+        --form-font-weight: {{ section.settings.form_elements_font_weight }};
+        --form-elements-text-case: {{ section.settings.form_elements_text_case }};
+        --form-elements-corner-radius: {{ section.settings.form_elements_corner_radius }}px;
+        --form-elements-thickness: {{ section.settings.form_elements_thickness }}px;
+
+        --border-color: {{ section.settings.border_color }};
+        --border-radius: {{ section.settings.corners }}px;
+        --product-card-image-ratio: {{ section.settings.image_ratio }}%;
+
+        --color-text: {{ section.settings.color_text }};
+        --color-text-subdued: {{ section.settings.color_subdued }};
+
+        --color-solid-button-text: {{ section.settings.solid_button_text_color }};
+        --color-solid-button-background: {{ section.settings.solid_button_background_color }};
+        --color-solid-button-border: {{ section.settings.solid_button_border_color }};
+        --color-solid-button-hover-text: {{ section.settings.solid_button_hover_text_color }};
+        --color-solid-button-hover-background: {{ section.settings.solid_button_hover_background_color }};
+        --color-solid-button-hover-border: {{ section.settings.solid_button_hover_border_color }};
+
+        --color-stroke-button-text: {{ section.settings.stroke_button_text_color }};
+        --color-stroke-button-background: {{ section.settings.stroke_button_background_color }};
+        --color-stroke-button-border: {{ section.settings.stroke_button_border_color }};
+        --color-stroke-button-hover-text: {{ section.settings.stroke_button_hover_text_color }};
+        --color-stroke-button-hover-background: {{ section.settings.stroke_button_hover_background_color }};
+        --color-stroke-button-hover-border: {{ section.settings.stroke_button_hover_border_color }};
+
+        --color-disabled-button-text: {{ section.settings.disabled_button_text_color }};
+        --color-disabled-button-background: {{ section.settings.disabled_button_background_color }};
+
+        --text-case-button: {{ section.settings.text_case }};
+        --font-weight-button: {{ section.settings.font_weight }};
+        --corner-radius-button: {{ section.settings.corner_radius }}px;
+        --thickness-button: {{ section.settings.thickness }}px;
+
+        --color-notifications-label: {{ section.settings.color_notifications_label }};
+        --color-notifications-background: {{ section.settings.color_notifications_background }};
+
+        --color-drawer-background: {{ section.settings.color_drawer_background }};
+        --color-drawer-header-background: {{ section.settings.color_drawer_header_background }};
+        --color-drawer-footer-background: {{ section.settings.color_drawer_footer_background }};
+        --color-drawer-overlay: {{ section.settings.color_overlay }};
+        --opacity-drawer-overlay: {{ section.settings.opacity_drawer_overlay }};
+      }
+
+      @media(max-width: 450px) {
+        :host {
+          --drawer-width: 100%;
+        }
+      }
+    }
+  </style>
+{% endcapture %}
+
+{% capture main_data %}
+  <script type="application/json" data-component-data>
+    {
+      "baseUrl": {{ section.settings.base_url | json }},
+      "product": {
+        "handle": "{{ product.handle }}",
+        "title": "{{ product.title }}",
+        "id": "{{ product.id }}",
+        "tags": {{ product.tags | json }},
+        "variantId": "{{ product.selected_or_first_available_variant.id }}",
+        "featuredImage": {
+          "url": "{{ product.featured_image.src | image_url: width: 240 }}",
+          "alt": "{{ product.featured_image.alt  | strip }}"
+        },
+        "variants": {
+          "nodes": {{ product.variants | json }}
+        }
+      },
+      "customer": {
+        "id": {{ customer.id | json }},
+        "firstName": {{ customer.first_name | json }},
+        "email": {{ customer.email | json }},
+        "id_sha256": {{ customer.id | sha256 | json }},
+        "tags": {{ customer.tags | json }}
+      },
+      "collection": {
+        "url": {{ collection.url | json }},
+        "title": {{ collection.title | json }}
+      },
+      "wishlist": {
+        "addToWishlistLabel": {{ 'gw_customer_accounts.wishlist.add_to_wishlist' | t | json }},
+        "addedToWishlistLabel": {{ 'gw_customer_accounts.wishlist.added_to_wishlist' | t | json }}
+      },
+      "cart": {{ cart | json }}
+    }
+  </script>
+{% endcapture %}
+
+<gw-customer-accounts
+  data-section-id="{{ section.id }}"
+  {% if customer.has_account %}
+    has-customer
+  {% endif %}
+></gw-customer-accounts>
+
+{% comment %} Customer Accounts Main Template {% endcomment %}
+<template id="gw-customer-accounts-template">
+  {%- # theme-check-disable RemoteAsset -%}
+  <gw-css-loader file="main.css?v={{ customer_accounts_version }}" defer></gw-css-loader>
+  {%- # theme-check-disable RemoteAsset -%}
+
+  <link rel="stylesheet" href="{{ 'gw-customer-accounts-custom.css' | asset_url }}">
+
+  {{ main_data }}
+  {{ main_css }}
+
+  <sl-drawer
+    class="drawer-placement-start"
+    placement="{{ section.settings.drawer_placement }}"
+    label="Drawer"
+    main-drawer
+    hidden
+  >
+    <div class="gw-header gw-customer-accounts-drawer__header" slot="label" data-main-drawer-label>
+      {% liquid
+        assign label = 'gw_customer_accounts.tabs.dashboard.label_fallback' | t
+
+        if customer.first_name
+          assign label = 'gw_customer_accounts.tabs.dashboard.label' | t: first_name: customer.first_name
+        endif
+
+        echo label
+      %}
+    </div>
+
+    <button slot="header-actions" class="gw-empty-button" data-main-drawer-close aria-label="Close my account drawer">
+      {% render 'gw-customer-accounts-icons' with 'close' %}
+    </button>
+
+    {% unless customer.has_account %}
+      <sl-animation duration="250" iterations="1" fill="both" gw-sign-in-block-animation>
+        <gw-customer-accounts-sign-in type="{{ section.settings.sign_in_type }}">
+          {% if section.settings.sign_in_type == 'passwordless' %}
+            <div class="gw-sign-in" data-sign-in-block>
+              <h3 class="gw-header gw-header--large" data-sign-in-block-heading></h3>
+
+              <form class="gw-sign-in__form" data-sign-in-form>
+                <sl-input name="email" type="email" label="Email" required data-email-input></sl-input>
+                <div class="gw-error-message" aria-live="polite" hidden data-email-error></div>
+                <button type="submit" class="gw-button gw-button--solid">
+                  Sign in
+                  <span class="gw-loader-container" hidden data-loader>
+                    <span class="gw-loader"></span>
+                  </span>
+                </button>
+              </form>
+
+              <span class="gw-small-text">
+                {{ 'gw_customer_accounts.sign_in_block.help_text_html' | t }}
+              </span>
+            </div>
+            <div class="gw-verify-code" data-verify-code-block hidden>
+              <h3 class="gw-header gw-header--large">
+                {{ 'gw_customer_accounts.verify_code_block.title' | t }}
+              </h3>
+              <div>
+                <p>{{ 'gw_customer_accounts.verify_code_block.enter_the_code' | t }}</p>
+                <p class="gw-body--strong" data-code-sent-to></p>
+              </div>
+
+              <div class="input-code-group">
+                <input type="number" name="code" class="code-input" required autocomplete="off">
+                <input type="number" name="code" class="code-input" required autocomplete="off">
+                <input type="number" name="code" class="code-input" required autocomplete="off">
+                <input type="number" name="code" class="code-input" required autocomplete="off">
+              </div>
+
+              <div class="gw-verify-code__actions">
+                <span
+                  class="gw-loader-container gw-loader-container--large gw-loader-container--block"
+                  hidden
+                  data-loader
+                >
+                  <span class="gw-loader gw-loader--white"></span>
+                </span>
+
+                <div class="gw-error-message" aria-live="polite" hidden data-verify-error>
+                  {{ 'gw_customer_accounts.verify_code_block.incorrect_code' | t }}
+                </div>
+
+                <a
+                  href="/account/login?my-account=off&return_url=%2F?my-account-open"
+                  class="gw-button gw-button--text"
+                  data-alt-sign-in-link
+                  data-ignore-account-link
+                >
+                  {{ 'gw_customer_accounts.verify_code_block.having_trouble' | t }}
+                </a>
+
+                <button class="gw-button gw-button--text" data-send-another-code>
+                  {{ 'gw_customer_accounts.verify_code_block.send_another_code' | t }}
+                </button>
+
+                <button class="gw-button gw-button--text" data-try-another-email>
+                  {{ 'gw_customer_accounts.verify_code_block.try_another_email' | t }}
+                </button>
+              </div>
+            </div>
+          {% else %}
+            <div class="gw-sign-in" data-sign-in-block>
+              {% comment %}
+                Customer login form
+              {% endcomment %}
+              {%- form 'customer_login', novalidate: 'novalidate', class: 'gw-sign-in__form', data-sign-in-form: '' -%}
+                <h3 class="gw-header gw-header--large" style="margin-bottom: 8px;">
+                  {{ 'gw_customer_accounts.sign_in_block.dashboard_title' | t }}
+                </h3>
+                <div class="gw-error-message" data-login-error-message style="margin: -8px 0 8px 0;"></div>
+                <sl-input name="customer[email]" type="email" label="Email" required data-email-input></sl-input>
+                <sl-input
+                  name="customer[password]"
+                  type="password"
+                  label="Password"
+                  required
+                  data-password-input
+                ></sl-input>
+                {%- if form.errors -%}
+                  <div class="gw-error-message" hidden aria-live="polite">
+                    {{ form.errors | default_errors }}
+                  </div>
+                {%- else -%}
+                  <div class="gw-error-message" aria-live="polite" hidden data-email-error></div>
+                {%- endif -%}
+
+                <input type="hidden" name="return_url" value="/?my-account-open">
+                <input type="hidden" name="return_to" value="/?my-account-open">
+
+                {% if settings.gw_customer_accounts_marketing_optin_enabled %}
+                  <div class="gw-marketing-optin" style="margin-top: 15px;">
+                    <sl-checkbox
+                      name="accepts_marketing"
+                      value="true"
+                      checked
+                    >
+                      <span class="gw-body">
+                        {{ settings.gw_customer_accounts_marketing_optin_text }}
+                      </span>
+                    </sl-checkbox>
+                  </div>
+                {% endif %}
+
+                <button type="submit" class="gw-button gw-button--solid">
+                  Sign in
+                  <span class="gw-loader-container" hidden data-loader>
+                    <span class="gw-loader"></span>
+                  </span>
+                </button>
+
+                <button type="button" class="gw-empty-button gw-button--text" data-create-account-link>
+                  Create an account
+                </button>
+                <button type="button" class="gw-empty-button gw-button--text" data-forgot-password-link>
+                  Forgot your password?
+                </button>
+              {%- endform -%}
+
+              {% comment %}
+                Customer registration form
+              {% endcomment %}
+              {%- form 'create_customer',
+                novalidate: 'novalidate',
+                class: 'gw-sign-in__form',
+                data-registeration-form: '',
+                hidden: ''
+              -%}
+                <h3 class="gw-header gw-header--large" style="margin-bottom: 8px;">
+                  {{ 'gw_customer_accounts.sign_in_block.create_account_title' | t }}
+                </h3>
+                <div class="gw-error-message" data-create-account-error-message></div>
+                <sl-input name="customer[first_name]" type="text" label="First name" required></sl-input>
+                <sl-input name="customer[last_name]" type="text" label="Last name" required></sl-input>
+                <sl-input name="customer[email]" type="email" label="Email" required></sl-input>
+                <sl-input name="customer[password]" type="password" label="Password" required></sl-input>
+
+                {%- if form.errors -%}
+                  <div class="gw-error-message" aria-live="polite" hidden>
+                    {{ form.errors | default_errors }}
+                  </div>
+                {%- else -%}
+                  <div class="gw-error-message" aria-live="polite" hidden data-email-error></div>
+                {%- endif -%}
+
+                <input type="hidden" name="return_url" value="/?my-account-open">
+                <input type="hidden" name="return_to" value="/?my-account-open">
+
+                <button type="submit" class="gw-button gw-button--solid">
+                  Create an account
+                  <span class="gw-loader-container" hidden data-loader>
+                    <span class="gw-loader"></span>
+                  </span>
+                </button>
+
+                <button type="button" class="gw-empty-button gw-button--text" data-sign-in-link>Sign in</button>
+                <button type="button" class="gw-empty-button gw-button--text" data-forgot-password-link>
+                  Forgot your password?
+                </button>
+              {%- endform -%}
+
+              {% comment %}
+                Customer password recovery form
+              {% endcomment %}
+              {%- form 'recover_customer_password',
+                id: 'recover_customer',
+                class: 'gw-sign-in__form',
+                data-forgot-password-form: '',
+                hidden: ''
+              -%}
+                <h3 class="gw-header gw-header--large">{{ 'gw_customer_accounts.sign_in_block.forgot_password_title' | t }}</h3>
+                <p class="gw-body gw-body--small" style="margin-bottom: 8px;" data-forgot-password-subtext>{{ 'gw_customer_accounts.sign_in_block.forgot_password_subtext' | t }}</p>
+                <div class="gw-error-message" data-forgot-password-error-message style="margin: 0px 0 8px 0;"></div>
+                <sl-input name="email" type="email" label="Email" required data-email-input></sl-input>
+                {%- if form.errors -%}
+                  <div class="gw-error-message" aria-live="polite" hidden>
+                    {{ form.errors | default_errors }}
+                  </div>
+                {%- else -%}
+                  <div class="gw-error-message" aria-live="polite" hidden data-email-error></div>
+                {%- endif -%}
+
+                <input type="hidden" name="return_url" value="/?my-account-open">
+                <input type="hidden" name="return_to" value="/?my-account-open">
+
+                <button type="submit" class="gw-button gw-button--solid">
+                  Submit
+                  <span class="gw-loader-container" hidden data-loader>
+                    <span class="gw-loader"></span>
+                  </span>
+                </button>
+
+                <button type="button" class="gw-empty-button gw-button--text" data-create-account-link>
+                  Create an account
+                </button>
+                <button type="button" class="gw-empty-button gw-button--text" data-sign-in-link>Sign in</button>
+              {% endform %}
+            </div>
+          {% endif %}
+        </gw-customer-accounts-sign-in>
+      </sl-animation>
+    {% endunless %}
+
+    <sl-tab-group
+      placement="bottom"
+      {% if customer.has_account %}
+        has-customer
+      {% endif %}
+      {% if section.settings.sign_in_type == 'password' %}
+        sign-in-type-password
+      {% endif %}
+    >
+      <sl-tab-panel name="dashboard">
+        {% render 'gw-customer-accounts-tabs', tab: 'dashboard', section: section %}
+      </sl-tab-panel>
+
+      <sl-tab-panel
+        name="orders"
+        {% unless customer.has_account %}
+          style="display:none;"
+        {% endunless %}
+      >
+        {% render 'gw-customer-accounts-tabs', tab: 'orders' %}
+      </sl-tab-panel>
+
+      <sl-tab-panel
+        name="profile"
+        {% unless customer.has_account %}
+          style="display:none;"
+        {% endunless %}
+      >
+        {% render 'gw-customer-accounts-tabs', tab: 'profile' %}
+      </sl-tab-panel>
+
+      <sl-tab class="gw-button-text gw-unstyled-link" slot="nav" panel="dashboard">
+        {{ 'gw_customer_accounts.tabs.dashboard.menu_label' | t }}
+      </sl-tab>
+      <sl-tab class="gw-button-text gw-unstyled-link" slot="nav" panel="orders">
+        {{ 'gw_customer_accounts.tabs.orders.menu_label' | t }}
+      </sl-tab>
+      <sl-tab class="gw-button-text gw-unstyled-link" slot="nav" panel="profile">
+        {{ 'gw_customer_accounts.tabs.profile.menu_label' | t }}
+      </sl-tab>
+    </sl-tab-group>
+  </sl-drawer>
+
+  <div class="gw-notifications" data-notifications>
+    <sl-alert variant="success" duration="3000" data-notification-alert>
+      <span data-notification-message class="gw-body"></span>
+    </sl-alert>
+  </div>
+</template>
+
+{% comment %} Standard Product Card Template {% endcomment %}
+<template id="gw-standard-product-card-template">
+  <div class="gw-product-card gw-product-card--reversed">
+    <div class="gw-product-card__info gw-product-card__info--no-gap">
+      <a href="" class="gw-product-card__link gw-unstyled-link" data-product-link>
+        <span class="gw-body--strong visually-hidden" data-product-title></span>
+      </a>
+
+      <gw-price class="gw-product-card__price" data-product-price></gw-price>
+    </div>
+
+    <div class="gw-product-card__image-container">
+      <img src="#" alt="" class="gw-product-card__image" data-product-image width="200" height="300">
+
+      {%- if settings.gw_customer_accounts_wishlist_enabled -%}
+        <gw-wishlist-button
+          product-id=""
+          variant-id=""
+          icon-only
+        >
+          <template name="icon">
+            {% render 'gw-customer-accounts-icons' with 'wishlist_icon' %}
+          </template>
+
+          <template name="filled-icon">
+            {% render 'gw-customer-accounts-icons' with 'wishlist_icon_filled' %}
+          </template>
+        </gw-wishlist-button>
+      {%- endif -%}
+    </div>
+  </div>
+</template>
+
+{% comment %} Form Product Card Template {% endcomment %}
+<template id="gw-form-product-card-template">
+  <div class="gw-product-card gw-product-card--splitted">
+    <div class="gw-product-card__info">
+      <a href="" class="gw-product-card__link gw-product-card__link--hide-after gw-unstyled-link" data-product-link>
+        <span class="gw-body--strong" data-product-title></span>
+      </a>
+
+      <gw-price class="gw-product-card__price" data-product-price></gw-price>
+
+      <gw-quick-add-to-cart-form>
+        <form class="gw-product-card__form" data-quick-add-to-cart-form>
+          <input name="quantity" type="number" value="1" min="1" hidden>
+
+          <div class="gw-product-card__actions">
+            <button class="gw-button gw-button--solid">
+              {{ 'gw_customer_accounts.product_card.add_to_cart' | t }}
+              <span class="gw-loader-container" hidden data-loader>
+                <span class="gw-loader"></span>
+              </span>
+            </button>
+
+            <button type="button" class="gw-empty-button" data-remove-button>
+              {% render 'gw-customer-accounts-icons' with 'remove' %}
+            </button>
+          </div>
+        </form>
+      </gw-quick-add-to-cart-form>
+    </div>
+
+    <div class="gw-product-card__image-container">
+      <a href="" class="gw-product-card__link gw-product-card__link--hide-after gw-unstyled-link" data-product-link>
+        <img src="#" alt="" class="gw-product-card__image" data-product-image width="200" height="300">
+      </a>
+
+      {%- if settings.gw_customer_accounts_wishlist_enabled -%}
+        <gw-wishlist-button
+          product-id=""
+          variant-id=""
+          icon-only
+        >
+          <template name="icon">
+            {% render 'gw-customer-accounts-icons' with 'wishlist_icon' %}
+          </template>
+
+          <template name="filled-icon">
+            {% render 'gw-customer-accounts-icons' with 'wishlist_icon_filled' %}
+          </template>
+        </gw-wishlist-button>
+      {%- endif -%}
+    </div>
+  </div>
+</template>
+
+<script>
+  // GITHUB: https://github.com/sellry/customer-accounts
+  const general_scripts = [
+    'main',
+    "dashboard",
+    'profile',
+    'orders',
+    'wishlist-button',
+    'quick-add-to-cart',
+    'price'
+  ];
+  const loggedin_scripts = ['preferences-form', 'country-selector', 'address-form', 'loyalty-integrations'];
+  const loggedout_scripts = ['sign-in'];
+
+  async function loadAllScripts() {
+    const baseUrl = await getGWBaseUrl();
+
+    // Function to load scripts with determined baseUrl
+    function loadScript(script) {
+      const scriptTag = document.createElement('script');
+      scriptTag.src = `${baseUrl}/${script}.js?v={{ customer_accounts_version }}`;
+      scriptTag.type = 'module';
+      document.body.appendChild(scriptTag);
+    }
+    
+    // Load all scripts
+    general_scripts.forEach(loadScript);
+    
+    {% if customer.has_account %}
+      loggedin_scripts.forEach(loadScript);
+    {% else %}
+      loggedout_scripts.forEach(loadScript);
+    {% endif %}
+  }
+
+  loadAllScripts();
+</script>
+
+{% schema %}
+{
+  "name": "GW Customer Accounts",
+  "settings": [
+    {
+      "type": "header",
+      "content": "API Settings"
+    },
+    {
+      "type": "url",
+      "id": "base_url",
+      "label": "Base URL"
+    },
+    {
+      "type": "link_list",
+      "id": "quick_links",
+      "label": "Quick Links",
+      "info": "Add links to the drawer"
+    },
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "font_picker",
+      "id": "header_font",
+      "label": "Font",
+      "default": "inter_n4"
+    },
+    {
+      "type": "text",
+      "id": "header_font_family",
+      "label": "Font Name",
+      "info": "If you want to use the same font that is already installed on your website for headers, you can just insert the font name here. This will override the font picker above."
+    },
+    {
+      "type": "select",
+      "id": "header_font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "500",
+          "label": "500"
+        },
+        {
+          "value": "600",
+          "label": "600"
+        },
+        {
+          "value": "700",
+          "label": "700"
+        }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "header",
+      "content": "Body"
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font",
+      "label": "Font",
+      "default": "inter_n4"
+    },
+    {
+      "type": "text",
+      "id": "body_font_family",
+      "label": "Font Name",
+      "info": "If you want to use the same font that is already installed on your website for body, you can just insert the font name here. This will override the font picker above."
+    },
+    {
+      "type": "select",
+      "id": "body_font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "300"
+        },
+        {
+          "value": "400",
+          "label": "400"
+        },
+        {
+          "value": "500",
+          "label": "500"
+        },
+        {
+          "value": "600",
+          "label": "600"
+        }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "header",
+      "content": "Corners"
+    },
+    {
+      "type": "range",
+      "id": "corners",
+      "label": "Corner Radius",
+      "min": 0,
+      "max": 15,
+      "step": 1,
+      "default": 0,
+      "info": "All corners will extend from this radius unless specifically set. Use this to set your baseline and then tweak other corner radii as needed."
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#eaeaea"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "text",
+      "id": "image_ratio",
+      "label": "Image Ratio",
+      "default": "150",
+      "info": "This is the percentage of the width that the height will be. For example, 150 will make the height 1.5 times the width."
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Text",
+      "default": "#262626"
+    },
+    {
+      "type": "color",
+      "id": "color_subdued",
+      "label": "Subdued",
+      "default": "#a8a8a8"
+    },
+    {
+      "type": "header",
+      "content": "Solid Button"
+    },
+    {
+      "type": "color",
+      "id": "solid_button_text_color",
+      "label": "Solid Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "solid_button_background_color",
+      "label": "Solid Button Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "solid_button_border_color",
+      "label": "Solid Button Border Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "solid_button_hover_text_color",
+      "label": "Solid Button Hover Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "solid_button_hover_background_color",
+      "label": "Solid Button Hover Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "solid_button_hover_border_color",
+      "label": "Solid Button Hover Border Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Stroke Button"
+    },
+    {
+      "type": "color",
+      "id": "stroke_button_text_color",
+      "label": "Stroke Button Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "stroke_button_background_color",
+      "label": "Stroke Button Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "stroke_button_border_color",
+      "label": "Stroke Button Border Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "stroke_button_hover_text_color",
+      "label": "Stroke Button Hover Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "stroke_button_hover_background_color",
+      "label": "Stroke Button Hover Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "stroke_button_hover_border_color",
+      "label": "Stroke Button Hover Border Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "disabled_button_text_color",
+      "label": "Disabled Button Text Color",
+      "default": "#9f9f9f"
+    },
+    {
+      "type": "color",
+      "id": "disabled_button_background_color",
+      "label": "Disabled Button Background Color",
+      "default": "#eaeaea"
+    },
+
+    {
+      "type": "header",
+      "content": "Notifications"
+    },
+    {
+      "type": "color",
+      "id": "color_notifications_label",
+      "label": "Label",
+      "default": "#262626"
+    },
+    {
+      "type": "color",
+      "id": "color_notifications_background",
+      "label": "Background",
+      "default": "#b3e771"
+    },
+    {
+      "type": "header",
+      "content": "Drawer"
+    },
+    {
+      "type": "color",
+      "id": "color_drawer_background",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_drawer_header_background",
+      "label": "Header Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_drawer_footer_background",
+      "label": "Footer Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_drawer_overlay",
+      "label": "Overlay",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "opacity_drawer_overlay",
+      "label": "Overlay Opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "default": 0.5
+    },
+    {
+      "type": "header",
+      "content": "Form Elements"
+    },
+    {
+      "type": "font_picker",
+      "id": "form_font",
+      "label": "Font",
+      "default": "inter_n4"
+    },
+    {
+      "type": "text",
+      "id": "form_font_family",
+      "label": "Font Name",
+      "info": "If you want to use the same font that is already installed on your website for buttons, you can just insert the font name here. This will override the font picker above."
+    },
+    {
+      "type": "select",
+      "id": "form_elements_text_case",
+      "label": "Text case",
+      "options": [
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize"
+        },
+        {
+          "value": "uppercase",
+          "label": "Uppercase"
+        },
+        {
+          "value": "lowercase",
+          "label": "Lowercase"
+        }
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "select",
+      "id": "form_elements_font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "300"
+        },
+        {
+          "value": "400",
+          "label": "400"
+        },
+        {
+          "value": "500",
+          "label": "500"
+        }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "form_elements_corner_radius",
+      "label": "Corner radius",
+      "min": 0,
+      "max": 16,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "form_elements_thickness",
+      "label": "Thickness",
+      "min": 0,
+      "max": 16,
+      "step": 1,
+      "default": 1,
+      "info": "1px"
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "select",
+      "id": "text_case",
+      "label": "Text case",
+      "options": [
+        {
+          "value": "capitalize",
+          "label": "Capitalize"
+        },
+        {
+          "value": "uppercase",
+          "label": "Uppercase"
+        },
+        {
+          "value": "lowercase",
+          "label": "Lowercase"
+        }
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "font_picker",
+      "id": "button_font",
+      "label": "Font",
+      "default": "inter_n4"
+    },
+    {
+      "type": "text",
+      "id": "button_font_family",
+      "label": "Font Name",
+      "info": "If you want to use the same font that is already installed on your website for buttons, you can just insert the font name here. This will override the font picker above."
+    },
+    {
+      "type": "select",
+      "id": "button_font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "400"
+        },
+        {
+          "value": "500",
+          "label": "500"
+        },
+        {
+          "value": "600",
+          "label": "600"
+        },
+        {
+          "value": "700",
+          "label": "700"
+        }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "label": "Corner radius",
+      "min": 0,
+      "max": 16,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "thickness",
+      "label": "Thickness",
+      "min": 0,
+      "max": 16,
+      "step": 1,
+      "default": 1,
+      "info": "1px"
+    },
+    {
+      "type": "header",
+      "content": "Drawer"
+    },
+    {
+      "type": "select",
+      "id": "drawer_placement",
+      "label": "Placement",
+      "options": [
+        {
+          "value": "start",
+          "label": "Left"
+        },
+        {
+          "value": "end",
+          "label": "Right"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "select",
+      "id": "sign_in_type",
+      "label": "Sign In Type",
+      "options": [
+        {
+          "value": "passwordless",
+          "label": "Login Code"
+        },
+        {
+          "value": "password",
+          "label": "Password"
+        }
+      ],
+      "default": "passwordless"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Card"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "This is a card description"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL"
+        }
+      ]
+    },
+    {
+      "type": "recent-collections",
+      "name": "Recent Collections",
+      "limit": 1
+    },
+    {
+      "type": "recent-products",
+      "name": "Recent Products",
+      "limit": 1
+    },
+    {
+      "type": "cart-products",
+      "name": "Cart Products",
+      "limit": 1
+    },
+    {
+      "type": "favorites",
+      "name": "Favorites",
+      "limit": 1
+    },
+    {
+      "type": "last-order",
+      "name": "Last Order",
+      "limit": 1
+    },
+    {
+      "type": "quick-links",
+      "name": "Quick Links",
+      "limit": 1
+    }
+  ]
+}
+{% endschema %}

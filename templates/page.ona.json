@@ -1,0 +1,67 @@
+{
+  "sections": {
+    "full_width_banner_4qzbwN": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_U4Xywi": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/ONA_BANNER.png",
+            "mobile_image": "shopify:\/\/shop_images\/M-Ona.png",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_U4Xywi"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 80,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "text_with_image_JaLXQb": {
+      "type": "text-with-image",
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "image": "shopify:\/\/shop_images\/Artboard_1_4438b4a4-b1e1-4e65-aacc-fd279c441911.png",
+        "image_position": "left",
+        "content": "<p>ONA: the performance fashion label merging forward-thinking design with flexible, movement-friendly materials. Each collection is designed for easy care and maintenance, making high fashion suitable for everyday wear.<\/p>",
+        "link_text": "",
+        "link_url": ""
+      }
+    }
+  },
+  "order": [
+    "full_width_banner_4qzbwN",
+    "text_with_image_JaLXQb"
+  ]
+}

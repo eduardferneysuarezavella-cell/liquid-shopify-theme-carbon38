@@ -1,0 +1,93 @@
+{
+  "sections": {
+    "1657828400712f24d1": {
+      "type": "custom-html",
+      "disabled": true,
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "html": "<h1>SHOP BY ACTIVITY<\/h1><br>Browse and shop our curated edits to find the perfect look for every activity in your calendar.",
+        "text_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "shop_by_category_m7Fjmj": {
+      "type": "shop-by-category",
+      "blocks": {
+        "collection_TLiAHd": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/020625_Landing_Page_Golf.jpg",
+            "title": "Golf",
+            "url": "shopify:\/\/collections\/tennis"
+          }
+        },
+        "collection_GMGKmq": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/020625_Landing_Page_Pilates.jpg",
+            "title": "Pilates",
+            "url": "shopify:\/\/collections\/pilates"
+          }
+        },
+        "collection_j7KRzr": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/020625_Landing_Page_Yoga.jpg",
+            "title": "Yoga",
+            "url": "shopify:\/\/collections\/pilates"
+          }
+        },
+        "collection_V77rpB": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/020625_Landing_Page_Tennis.jpg",
+            "title": "Tennis",
+            "url": "shopify:\/\/collections\/tennis"
+          }
+        },
+        "collection_nK6dYx": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/020625_Landing_Page_On_the_Slopes.jpg",
+            "title": "Winter Sports",
+            "url": "shopify:\/\/collections\/ski"
+          }
+        },
+        "collection_X3LzjK": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/020625_Landing_Page_Lounge.jpg",
+            "title": "Lounge",
+            "url": "shopify:\/\/collections\/sweatshirts-hoodies"
+          }
+        }
+      },
+      "block_order": [
+        "collection_TLiAHd",
+        "collection_GMGKmq",
+        "collection_j7KRzr",
+        "collection_V77rpB",
+        "collection_nK6dYx",
+        "collection_X3LzjK"
+      ],
+      "settings": {
+        "title": "Shop By Activity",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "1646858079c38f4703": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "1657828400712f24d1",
+    "shop_by_category_m7Fjmj",
+    "1646858079c38f4703"
+  ]
+}

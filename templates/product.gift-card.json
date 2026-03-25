@@ -1,0 +1,145 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-gift-card",
+      "blocks": {
+        "product_meta": {
+          "type": "product_meta",
+          "settings": {
+            "show_vendor": true,
+            "show_sku": false,
+            "show_product_rating": true,
+            "show_taxes_included": false
+          }
+        },
+        "variant_selector": {
+          "type": "variant_selector",
+          "settings": {
+            "selector_mode": "block",
+            "show_color_swatch": true,
+            "show_color_carousel": false,
+            "size_chart": ""
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_price_in_button": false,
+            "show_payment_button": false
+          }
+        },
+        "ef9cb183-df82-473e-b162-820178fd50cd": {
+          "type": "complete-the-look",
+          "settings": {
+            "complete_the_look_title": "Shop this look"
+          }
+        },
+        "018c84c0-1a86-49bc-9b70-3f16da8c0133": {
+          "type": "accordion",
+          "settings": {
+            "title_1": "Editor's Notes",
+            "custom_content_1": "",
+            "liquid_object_1": "{{ product.description }}",
+            "title_2": "Size & Fit",
+            "custom_content_2": "<p>{{ product.metafields.custom_fields.fit.value }}</p>",
+            "liquid_object_2": "",
+            "title_3": "Fabric & Care",
+            "custom_content_3": "<p>{{ product.metafields.custom_fields.care | metafield_tag }}</p>",
+            "liquid_object_3": ""
+          }
+        },
+        "share_buttons": {
+          "type": "share_buttons",
+          "settings": {}
+        },
+        "59cd85ec-c3c9-4b5d-8085-3ad1feeddabb": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<script type=\"text/javascript\">\nvar _learnq = _learnq || [];\n  var classname = document.getElementsByClassName(\"ProductForm__AddToCart Button Button--full Button--primary\");\nvar addToCart = function() {\n_learnq.push(['track', 'Added to Cart', item]);\n}; for (var i = 0; i < classname.length; i++) {\nclassname[i].addEventListener('click', addToCart, false);\n}\n</script>"
+          }
+        }
+      },
+      "block_order": [
+        "product_meta",
+        "variant_selector",
+        "quantity_selector",
+        "buy_buttons",
+        "ef9cb183-df82-473e-b162-820178fd50cd",
+        "018c84c0-1a86-49bc-9b70-3f16da8c0133",
+        "share_buttons",
+        "59cd85ec-c3c9-4b5d-8085-3ad1feeddabb"
+      ],
+      "settings": {
+        "show_thumbnails": true,
+        "enable_video_looping": false,
+        "extra_image_link": "",
+        "extra_image_box1_link": "",
+        "extra_box1_title": "",
+        "extra_box1_text": "",
+        "extra_image_box2_link": "",
+        "extra_image_box3_link": ""
+      }
+    },
+    "920c2a11-e866-4768-8395-842313c5c1f5": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "subheading": ""
+      }
+    },
+    "related-products": {
+      "type": "product-feed",
+      "name": "Product Feed",
+      "settings": {
+        "title": "You May Also Like",
+        "heading_size": "h2",
+        "source": "you-may-also-like",
+        "collection": "best-sellers",
+        "fallback_collection": "carbon38",
+        "margin_top": 36,
+        "margin_bottom": 28,
+        "margin_top_mobile": 18,
+        "margin_bottom_mobile": 14,
+        "background_color": "",
+        "text_color": "",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "recently-viewed-products": {
+      "type": "recently-viewed-products",
+      "settings": {
+        "title": "Recently viewed",
+        "show_product_info": true,
+        "show_vendor": true,
+        "show_color_swatch": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "920c2a11-e866-4768-8395-842313c5c1f5",
+    "related-products",
+    "recently-viewed-products"
+  ]
+}

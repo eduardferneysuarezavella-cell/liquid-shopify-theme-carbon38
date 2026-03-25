@@ -1,0 +1,64 @@
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "link_list_7QXk3T": {
+          "type": "link_list",
+          "settings": {
+            "heading": "SHOP",
+            "menu": "footer"
+          }
+        },
+        "link_list_36BAH3": {
+          "type": "link_list",
+          "settings": {
+            "heading": "INFO",
+            "menu": "footer-info-menu-bva"
+          }
+        },
+        "link_list_jTTCcj": {
+          "type": "link_list",
+          "settings": {
+            "heading": "HELP",
+            "menu": "footer-help-menu-bva"
+          }
+        },
+        "text_ddKEj4": {
+          "type": "text",
+          "settings": {
+            "heading": "Let's keep it fresh",
+            "subtext": "<p>Sign up to receive 15% off your first order + stay in the know for new arrivals & exclusive promotions. <\/p>",
+            "klaviyo_embed_code": "<div class=\"klaviyo-form-XA7x9v\"><\/div>"
+          }
+        }
+      },
+      "block_order": [
+        "link_list_7QXk3T",
+        "link_list_36BAH3",
+        "link_list_jTTCcj",
+        "text_ddKEj4"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "footer_callout": "FREE SHIPPING ON ORDERS $199 + FREE RETURNS",
+        "newsletter_enable": false,
+        "newsletter_heading": "Subscribe to our emails",
+        "enable_follow_on_shop": false,
+        "show_social": false,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": false,
+        "show_policy": true,
+        "margin_top": 0,
+        "padding_top": 76,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

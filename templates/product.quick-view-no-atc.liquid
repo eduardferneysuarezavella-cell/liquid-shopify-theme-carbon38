@@ -1,0 +1,119 @@
+{% layout none %}
+{% liquid
+    assign product = all_products[product]
+
+    if product.title contains ' - ' 
+        assign splitTitle = product.title | split: ' - '
+        assign productTitleWithoutColor = ""
+        assign indexColor = splitTitle.size | minus: 1
+        assign currentColor = splitTitle[indexColor]
+        if splitTitle.size == 2
+            assign productTitleWithoutColor = splitTitle[0]
+        else
+            for titleSection in splitTitle 
+            unless forloop.last == true
+                unless forloop.first == true
+                assign productTitleWithoutColor = productTitleWithoutColor | append: " - "
+                endunless
+        
+                assign productTitleWithoutColor = productTitleWithoutColor | prepend: titleSection
+            endunless
+            endfor
+        endif
+        assign productTitle = productTitleWithoutColor
+    else           
+        assign productTitle = product.title
+    endif 
+%}
+
+<div class="qv-overlay qv-component" {% if splitTitle %}data-color-swatch="true"{% endif %} data-product-id="{{ product.id }}" data-product-title="{{ productTitle }}" {% unless product.available %}data-sold-out="true"{% endunless %} data-gw-product-card-selector>
+    <div class="qv-content">
+        <div class="qv-left">
+            <div class="qv-image-container active" data-product-id="{{ product.id }}">
+                <div class="qv-images">
+                    {% for image in product.images %}
+                        <div class="qv-image-wrapper">{{ image | image_url: width: 500 | image_tag }}</div>
+                    {% endfor %}
+                </div>
+                <div class="qv-thumbs">
+                    {% for image in product.images %}
+                        {{ image | image_url: width: 40 | image_tag: class: 'qv-go-to-image', data-position: forloop.index0 }}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="qv-right">
+        <a href="#" class="qv-close-qv"></a>
+        <div class="qv-vendor">{{ product.vendor }}</div>
+        <div class="qv-title">{{ productTitle }}{% if component.tags contains 'preorder' %}<span class="preorder-badge">PRE-ORDER</span>{% endif %}</div>
+        <div class="qv-reviews ProductMeta__Rating "></div>
+        <div class="qv-payment-terms">{%- form 'product', product, class: 'ProductForm' -%}{{- form | payment_terms -}}{%- endform -%}</div>
+        <div class="qv-price">{{ product.price | money_with_currency }}</div>
+        <div class="qv-component-selection">
+            <div class="qv-variants">
+                {% if currentColor %}
+                    <label class="qv-variants-label qv-label-color">COLOR: <span>{{currentColor}}</span></label>
+                    <div class="qv-colors">                                
+                        <span class="qv-variant-color selected" data-product-id="{{ product.id }}" data-available="{{ product.available }}" data-color-image="{{ product.featured_image | image_url: height: 157 }}" data-tooltip="{{currentColor}}" data-color="{{currentColor}}" data-color-name-lowercase="{{ currentColor | downcase }}"></span>
+                    </div>
+                {% endif %}
+
+                <label class="qv-variants-label qv-label-size">
+                    <span>SIZE:</span>
+                    <span class="low-in-stock-note" style="display:none;margin:0">
+                        Low In Stock
+                    </span>
+                </label>
+                <div class="qv-sizes" {% if currentColor %}data-color="{{currentColor}}"{% endif %} {% if product.tags contains 'preorder' %}data-preorder="true"{% endif %}>
+                    {% for variant in product.variants %}
+                    <span class="qv-variant-size {% unless variant.available%}unavailable{%endunless%}" {% if product.tags contains 'preorder' and variant.metafields.preorder.availability %}data-preorder="true" data-estimated-shipping-date="{{variant.metafields.preorder.estimated_shipping_date}}"{% endif %} data-size="{{variant.option2}}" data-variant-id="{{variant.id}}" data-bundle-component-price="{{variant.price}}" {% if variant.available and variant.inventory_quantity <= 2 %} data-is-low-in-stock="true" {% endif %}>
+                        {% if product.tags contains 'preorder' and variant.metafields.preorder.availability %}{% render 'icon-preorder' %}{% endif %}
+                        {%- unless variant.available%}<svg class="SizeSwatch__Strikethrough"><line x1="0" y1="100%" x2="100%" y2="0" stroke="currentColor"></line></svg>{% endunless -%}
+                        {{variant.option2}}
+                    </span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="qv-description">{{ product.description }}</div>
+
+        {%- if settings.gw_customer_accounts_wishlist_enabled -%}
+            <gw-wishlist-button
+              class="gw-wishlist-button--product-page"
+              product-id="{{ product.id }}"
+              variant-id="{{ product.selected_or_first_available_variant.id }}"
+              style="margin-bottom: 10px;"
+            >
+                <template name="icon">
+                    {% render "gw-customer-accounts-icons" with "wishlist_icon" %}
+                </template>
+
+                <template name="filled-icon">
+                    {% render "gw-customer-accounts-icons" with "wishlist_icon_filled" %}
+                </template>
+
+                <script type="application/json" data-product-data>
+                    {
+                        "handle": "{{ product.handle }}",
+                        "title": "{{ product.title }}",
+                        "id": "{{ product.id }}",
+                        "variantTitle": "{{ product.selected_or_first_available_variant.title }}",
+                        "price": "{{ product.price | money }}",
+                        "url": "{{ shop.url }}{{ product.url }}",
+                        "tags": {{ product.tags | json }},
+                        "variantId": "{{ product.selected_or_first_available_variant.id }}",
+                        "featuredImage": {
+                            "url": "{{ product.featured_image.src | image_url: width: 240 }}",
+                            "alt": "{{ product.featured_image.alt | strip }}"
+                        },
+                        "variants": {
+                            "nodes": {{ product.variants | json }}
+                        }
+                    }
+                </script>
+            </gw-wishlist-button>
+        {%- endif -%}
+        <a href="{{ product.url }}" class="qv-link">More details</a> 
+        </div>
+    </div>
+</div>

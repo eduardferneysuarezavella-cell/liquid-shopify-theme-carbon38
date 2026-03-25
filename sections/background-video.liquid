@@ -1,0 +1,78 @@
+{%- capture section_settings -%}
+{
+  "videoType": {{ section.settings.video_url.type | json }},
+  "videoId": {{ section.settings.video_url.id | json }},
+  "requestHost": {{ request.host | json }}
+}
+{%- endcapture -%}
+
+<section class="Section" id="section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="background-video" data-section-settings='{{ section_settings }}'>
+  <div class="ImageHero {% if section.settings.section_size != 'normal' %}ImageHero--{{ section.settings.section_size }}{% endif %}">
+    <div class="ImageHero__VideoHolder"></div>
+  </div>
+  {%- if section.settings.link_url != blank -%}
+    <a class="Link Link--Overlay" href="{{ section.settings.link_url }}" aria-label="{{ section.settings.link_title }}"></a>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Background video",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Background videos are automatically muted to allow autoplay. If you require audio, use the \"Featured Video\" section."
+    },
+    {
+      "type": "select",
+      "id": "section_size",
+      "label": "Section size",
+      "options": [
+        {
+          "value": "preserveRatio",
+          "label": "Preserve original ratio"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "preserveRatio"
+    },
+    {
+      "type": "video_url",
+      "accept": ["youtube", "vimeo"],
+      "id": "video_url",
+      "label": "Video URL",
+      "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Optional link",
+      "info": "Clicking anywhere on the video will take the user to this URL"
+    },
+    {
+      "type": "text",
+      "id": "link_title",
+      "label": "Link title",
+      "info": "This will be announced to blind users so they know where the link will take them"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Video",
+      "name": "Background video",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

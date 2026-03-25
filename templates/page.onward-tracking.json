@@ -1,0 +1,82 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "1646858079c38f4703": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "collection_list_zjkqw9": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_gKTyBz": {
+          "type": "collection",
+          "settings": {
+            "collection": "shop-all",
+            "image_alignment": "center center",
+            "content_position": "bottomLeft",
+            "subheading": "",
+            "title": "Shop All",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": true
+          }
+        },
+        "collection_HprQrt": {
+          "type": "collection",
+          "settings": {
+            "collection": "best-sellers",
+            "image_alignment": "center center",
+            "content_position": "bottomLeft",
+            "subheading": "",
+            "title": "Best Sellers",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": true
+          }
+        },
+        "collection_xB7bn7": {
+          "type": "collection",
+          "settings": {
+            "collection": "new-arrivals",
+            "image_alignment": "center center",
+            "content_position": "bottomLeft",
+            "subheading": "",
+            "title": "New Arrivals",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": true
+          }
+        }
+      },
+      "block_order": [
+        "collection_gKTyBz",
+        "collection_HprQrt",
+        "collection_xB7bn7"
+      ],
+      "settings": {
+        "title": "",
+        "image_size": "small",
+        "add_spacing": true,
+        "expand_collection": true,
+        "stack_on_mobile": true,
+        "text_color": "#ffffff",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "1646858079c38f4703",
+    "collection_list_zjkqw9"
+  ]
+}

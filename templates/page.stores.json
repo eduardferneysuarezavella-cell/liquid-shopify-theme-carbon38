@@ -1,0 +1,98 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "16464275002cf66c99": {
+      "type": "text-with-image",
+      "custom_css": [],
+      "settings": {
+        "subheading": "",
+        "title": "Come visit us in store",
+        "image_position": "right",
+        "content": "",
+        "link_text": "",
+        "link_url": ""
+      }
+    },
+    "text_with_image_gXfdX9": {
+      "type": "text-with-image",
+      "disabled": true,
+      "settings": {
+        "subheading": "",
+        "title": "Melrose, CA",
+        "image": "shopify://shop_images/2-up_38e40c51-74ed-43b6-bd01-da900dafa0a8.jpg",
+        "image_position": "left",
+        "content": "<p>8101 Melrose<br/>Ave Los Angeles, CA 90046<br/>T: 213-433-3203</p><p>Store Hours:<br/>Monday to Saturday: 11AM - 6PM<br/>Sunday: 11AM - 5PM<br/></p><p>Features: Free Parking</p><p></p>",
+        "link_text": "GET DIRECTIONS",
+        "link_url": "https://www.google.com/maps/place/8101+Melrose+Ave,+Los+Angeles,+CA+90046,+USA/@34.0839573,-118.3683587,17z/data=!3m1!4b1!4m5!3m4!1s0x80c2bec97a6f08dd:0x7933030bf18b27a8!8m2!3d34.0839573!4d-118.36617?shorturl=1"
+      }
+    },
+    "text_with_image_EfDRje": {
+      "type": "text-with-image",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "subheading": "",
+        "title": "Dallas, TX",
+        "image": "shopify://shop_images/dallas_d3ff4792-e5d2-413b-8ba8-f6c3a0e2d3b7.jpg",
+        "image_position": "right",
+        "content": "<p><strong>HIGHLAND PARK VILLAGE</strong><br/>8A Highland Park Village<br/>Dallas, TX 75205<br/>T: 214-559-9124</p><p>Store Hours:<br/>Monday-Saturday: 10am - 6pm<br/>Sunday: 12pm - 5pm</p><p></p>",
+        "link_text": "GET DIRECTIONS",
+        "link_url": "https://www.google.com/maps/place/8+Highland+Park+Village,+Dallas,+TX+75205,+USA/@32.8352137,-96.8074169,17z/data=!3m1!4b1!4m5!3m4!1s0x864e9eefa96f1a69:0x6605990cf10db828!8m2!3d32.8352137!4d-96.8052282?shorturl=1"
+      }
+    },
+    "1646427531215dbf05": {
+      "type": "text-with-image",
+      "disabled": true,
+      "settings": {
+        "subheading": "",
+        "title": "Upper East Side, NYC",
+        "image": "shopify://shop_images/2-up_240559dc-0217-4ee0-8bdf-e2f66b274495.jpg",
+        "image_position": "left",
+        "content": "<p><strong>UPPER EAST SIDE, NYC</strong><br/>1061 Madison Ave (at 80th St.)<br/>New York, NY 10028<br/>T: 212-772-0011</p><p>Store Hours:<br/>Monday to Saturday: 10AM - 6PM<br/>Sunday: 12PM - 5PM</p>",
+        "link_text": "",
+        "link_url": ""
+      }
+    },
+    "text_with_image_tYgnzh": {
+      "type": "text-with-image",
+      "disabled": true,
+      "settings": {
+        "subheading": "",
+        "title": "Flatiron, NYC",
+        "image": "shopify://shop_images/2-up_0ba2ce1e-ea56-4ca7-9476-30cc898796db.jpg",
+        "image_position": "right",
+        "content": "<p>108 Fifth Ave (at 16th St.)<br/>New York, NY 10011<br/>T: 646-360-3345</p><p>Store Hours:<br/>Monday to Saturday: 10AM - 6PM<br/>Sunday: 12PM - 5PM</p>",
+        "link_text": "GET DIRECTIONS",
+        "link_url": "https://www.google.com/maps/place/108+Fifth+Avenue+Condominium/@40.7373613,-73.9952922,17z/data=!3m1!4b1!4m5!3m4!1s0x89c259a298346875:0x371c7371a0ff042c!8m2!3d40.7373613!4d-73.9931035?shorturl=1"
+      }
+    },
+    "text_with_image_wXJAfU": {
+      "type": "text-with-image",
+      "settings": {
+        "subheading": "",
+        "title": "Southampton, NY",
+        "image": "shopify://shop_images/SH.jpg",
+        "image_position": "left",
+        "content": "<p>44B Main St.<br/>Southampton, NY 11968</p><p>T: 631-488-4304</p><p>Store Hours:<br/>Monday to Sunday: 11AM - 6PM</p>",
+        "link_text": "GET DIRECTIONS",
+        "link_url": "https://www.google.com/maps/place/44b+Main+St,+Southampton,+NY+11968/@40.8854225,-72.3913014,17z/data=!3m1!4b1!4m5!3m4!1s0x89e894db5c8d03a5:0x64554497c027ea67!8m2!3d40.8854185!4d-72.3891127?shorturl=1"
+      }
+    }
+  },
+  "order": [
+    "16464275002cf66c99",
+    "text_with_image_gXfdX9",
+    "text_with_image_EfDRje",
+    "1646427531215dbf05",
+    "text_with_image_tYgnzh",
+    "text_with_image_wXJAfU"
+  ]
+}

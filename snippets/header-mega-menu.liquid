@@ -1,0 +1,265 @@
+{% comment %}
+  Renders a megamenu for the header.
+
+  Usage:
+  {% render 'header-mega-menu' %}
+{% endcomment %}
+
+{%- assign mega_menu_names = '' -%}
+{%- assign color_swatches = '' -%}
+{%- assign mega_menu_colored = '' -%}
+
+{%- for block in section.blocks -%}
+  {%- if block.type == 'mega_menu' -%}
+    {%- assign trim_mega_menu_name = block.settings.navigation_mega_menu | strip -%}
+    {%- assign mega_menu_names = mega_menu_names | append: trim_mega_menu_name | append: ',' -%}
+  {%- endif -%}
+  {%- if block.type == 'color_swatch' -%}
+    {%- assign color_swatches = color_swatches | append: block.settings.title | downcase | append: "=" | append: block.settings.color -%}
+    {%- if forloop.last == false -%}
+      {%- assign color_swatches = color_swatches | append: "," -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- assign mega_menu_names = mega_menu_names | downcase | split: ',' | compact -%}
+
+{%- assign color_swatches_array = color_swatches | split: ',' | compact -%}
+
+<nav class="header__inline-menu">
+  <ul class="list-menu list-menu--inline" role="list">
+    {%- for link in section.settings.menu.links -%}
+      {%- liquid
+        assign downcased_link_title = link.title | downcase | strip
+
+        assign link_color_style = ""
+        assign link_title = link.title | downcase
+
+        for swatch in color_swatches_array
+            assign temp = color_swatches | split: "="
+          
+            if temp.size > 1
+              if temp[0] == downcased_link_title
+                assign color_value_array = temp[1] | split: ","
+                assign link_color_style = "color: " | append: color_value_array[0] | append: "; --header-heading-color: " | append: color_value_array[0] | append: ";"
+              endif
+              break
+            endif
+        endfor
+
+        
+
+        if mega_menu_names contains downcased_link_title
+          for block in section.blocks
+            assign downcased_mega_menu_name = block.settings.navigation_mega_menu | downcase
+
+            if downcased_mega_menu_name != downcased_link_title
+              continue
+            endif
+            
+            assign use_mega_menu = true
+            assign push_image_count = 0
+ 
+            if block.settings.push_1_image
+              assign push_image_count = push_image_count | plus: 1
+              assign push_1_image = block.settings.push_1_image
+              assign push_1_heading = block.settings.push_1_heading
+              assign push_1_subheading = block.settings.push_1_subheading
+              assign push_1_url = block.settings.push_1_url
+            endif
+ 
+            if block.settings.push_2_image
+              assign push_image_count = push_image_count | plus: 1
+              assign push_2_image = block.settings.push_2_image
+              assign push_2_heading = block.settings.push_2_heading
+              assign push_2_subheading = block.settings.push_2_subheading
+              assign push_2_url = block.settings.push_2_url
+            endif
+ 
+            assign should_space_evenly = false
+            assign should_space_between = false
+ 
+            if push_image_count == 0 and link.links.size <= 3
+              assign should_space_evenly = true
+            endif
+ 
+            if push_image_count == 1 and link.links.size > 0
+              assign should_space_between = true
+            endif
+ 
+ 
+ 
+            if push_image_count == 2 and link.links.size == 1
+              assign should_space_between = true
+            endif
+ 
+            assign mega_menu_colored = mega_menu_colored | append: block.settings.colored_nav_name | downcase | append: "=" | append: block.settings.colored_nav_color
+          endfor
+        endif
+      -%}
+      
+      <li {% if link.links != blank -%}class="has-mega-menu"{%- endif -%}>
+        {%- if link.links != blank -%}
+          <header-menu>
+            <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
+              <summary
+                id="HeaderMenu-{{ link.handle }}"
+                class="header__menu-item list-menu__item link focus-inset"
+                onclick="window.location.href='{{ link.url }}';"
+                aria-label="Link to {{ link.title }}"
+              >
+                <span
+                  {%- if link.child_active %}
+                    class="header__active-menu-item"
+                  {% endif %}
+                  {% if link_color_style != blank %} data-overwrite-color="true" style="{{ link_color_style }}" {% endif %}
+                >
+                  {{- link.title | escape -}}
+
+                  <span class="Header__LinkSpacer" >{{- link.title | escape -}}</span>
+                </span>
+                {% comment %}{% render 'icon-caret' %}{% endcomment %}
+              </summary>
+              <div
+                id="MegaMenu-Content-{{ forloop.index }}"
+                class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
+                tabindex="-1"
+              >
+                <ul
+                  class="mega-menu__list  {% if push_image_count > 0 %} MegaMenu__has-image{% endif %} {% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
+                  role="list"
+                  data-links="{{ link.links.size }}"
+                >
+                  {%- for childlink in link.links -%}
+                    <li>
+                      <a
+                        id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                        href="{{ childlink.url }}"
+                        class="mega-menu__link mega-menu__link--level-2 link {% comment %}{% if childlink.current %} mega-menu__link--active{% endif %}{% endcomment %}"
+                        {% if childlink.current %}
+                          aria-current="page"
+                        {% endif %}
+                      >
+                        {{ childlink.title | escape }}
+                      </a>
+                      {%- if childlink.links != blank -%}
+                        <ul class="list-unstyled" role="list">
+                          {%- for grandchildlink in childlink.links -%}
+                            {% liquid
+                              assign childlink_color_style = ""
+                              assign childlink_title = grandchildlink.title | downcase
+
+                                if mega_menu_colored contains childlink_title
+                                  assign name_token = childlink_title | append: "="
+                                  assign temp = mega_menu_colored | split: name_token
+
+                                  if temp.size > 1
+                                    assign color_value_array = temp[1] | split: ","
+                                    assign childlink_color_style = "color: " | append: color_value_array[0] | append: ";"
+                                  endif
+                                endif
+                            %}
+                            
+                            <li>
+                              <a
+                                id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                href="{{ grandchildlink.url }}"
+                                class="mega-menu__link link {%comment %}{% if grandchildlink.current %} mega-menu__link--active{% endif %}{% endcomment %}"
+                                {% if grandchildlink.current %}
+                                  aria-current="page"
+                                {% endif %}
+                                {% if childlink_color_style != blank %} style="{{ childlink_color_style }}" {% endif %}
+                              >
+                                {{ grandchildlink.title | escape }}
+                              </a>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      {%- endif -%}
+                    </li>
+                  {%- endfor -%}
+                  {%- if push_image_count > 0 -%}
+                    <li class="MegaMenu__Item {% if push_image_count == 2%}two-images{% endif %}" style="{% if push_image_count == 1 %}width: 30%; min-width: 250px;{% else %}width: 50%; min-width: 425px;{% endif %}">
+                      {%- if push_1_image -%}
+                        <div class="MegaMenu__Push {% if push_image_count == 2 %}MegaMenu__Push--shrink{% endif %}">
+                          {%- if push_1_url != blank -%}
+                            <a class="MegaMenu__PushLink" href="{{ push_1_url }}">
+                          {%- endif -%}
+
+                          <div class="MegaMenu__PushImageWrapper">
+                            {{ push_1_image | image_url: width: 740, height: 460 | image_tag }}
+                            <span class="Image__Loader"></span>
+                          </div>
+                          {%- if push_1_heading != blank or push_1_subheading != blank -%}
+                            <div class="MegaMenu__PushInfo">
+                              {%- if push_1_heading != blank -%}
+                                <p class="MegaMenu__PushHeading Heading u-h3">{{ push_1_heading | escape }}</p>
+                              {%- endif -%}
+
+                              {%- if push_1_subheading != blank -%}
+                                <p class="MegaMenu__PushSubHeading Heading u-h3">{{ push_1_subheading | escape }}</p>
+                              {%- endif -%}
+                            </div>
+                            {%- endif -%}
+
+                          {%- if push_1_url != blank -%}
+                            </a>
+                          {%- endif -%}
+                        </div>
+                      {%- endif -%}
+
+                      {%- if push_2_image -%}
+                        <div class="MegaMenu__Push {% if push_image_count == 2 %}MegaMenu__Push--shrink{% endif %}">
+                          {%- if push_2_url != blank -%}
+                            <a class="MegaMenu__PushLink" href="{{ push_2_url }}">
+                          {%- endif -%}
+
+                            <div class="MegaMenu__PushImageWrapper AspectRatio">
+                              {{ push_2_image | image_url: width: 740, height: 460 | image_tag }}
+
+                              <span class="Image__Loader"></span>
+                            </div>
+
+                            {%- if push_2_heading != blank -%}
+                              <p class="MegaMenu__PushHeading Heading u-h3">{{ push_2_heading | escape }}</p>
+                            {%- endif -%}
+
+                            {%- if push_2_subheading != blank -%}
+                              <p class="MegaMenu__PushSubHeading Heading u-h3">{{ push_2_subheading | escape }}</p>
+                            {%- endif -%}
+
+                          {%- if push_2_url != blank -%}
+                            </a>
+                          {%- endif -%}
+                        </div>
+                      {%- endif -%}
+                    </li>
+                  {%- endif -%}
+                </ul>
+              </div>
+            </details>
+          </header-menu>
+        {%- else -%}
+          <a
+            id="HeaderMenu-{{ link.handle }}"
+            href="{{ link.url }}"
+            class="header__menu-item list-menu__item link link--text focus-inset"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span
+              {%- if link.current %}
+                class="header__active-menu-item"
+              {% endif %}
+              {% if link_color_style != blank %} data-overwrite-color="true" style="{{ link_color_style }}" {% endif %}
+            >
+              {{- link.title | escape -}}
+              <span class="Header__LinkSpacer">{{- link.title | escape -}}</span>
+            </span>
+          </a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>

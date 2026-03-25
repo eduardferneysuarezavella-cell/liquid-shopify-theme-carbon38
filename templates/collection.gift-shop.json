@@ -1,0 +1,117 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "show_collection_info": true,
+        "apply_overlay": true,
+        "show_color_swatch": true,
+        "show_vendor": false,
+        "collection_image_size": "normal",
+        "show_sort_by": true,
+        "show_layout_switch": false,
+        "toolbar_position": "top",
+        "show_filters": true,
+        "show_filter_color_swatch": true,
+        "expand_filters": false,
+        "filter_position": "sidebar",
+        "filter_menu": "",
+        "grid_items_per_page": 96,
+        "grid_mobile_items_per_row": "2",
+        "grid_desktop_items_per_row": 4
+      }
+    },
+    "recently-viewed-products": {
+      "type": "recently-viewed-products",
+      "disabled": true,
+      "settings": {
+        "title": "Recently viewed",
+        "show_product_info": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "background_video_fpYnUb": {
+      "type": "background-video",
+      "settings": {
+        "section_size": "normal",
+        "video_url": "https:\/\/vimeo.com\/704372576",
+        "link_url": "shopify:\/\/collections\/fitness",
+        "link_title": ""
+      }
+    },
+    "image_banner": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_pLdWPG": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/gift-shop-banner_14_324606a4-cb5f-4d55-a6d7-d9efad627422.gif",
+            "mobile_image": "shopify:\/\/shop_images\/gift-shop-banner_20_2b8c3801-c944-44d1-98df-7f13aa6086df.gif",
+            "overlay": false,
+            "overlay_opacity": 1,
+            "content_position": "bottom-left",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "shopify:\/\/pages\/fall-catalog-2024",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_pLdWPG"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": true,
+        "change_slides_every": 6,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 36,
+        "margin_bottom": 0,
+        "mobile_margin_top": 24,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "16511915076d7ba7d9": {
+      "type": "custom-liquid",
+      "settings": {
+        "subheading": "",
+        "heading": "",
+        "custom_liquid": "",
+        "color_scheme": "",
+        "text_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "16464158219739ce3f": {
+      "type": "apps",
+      "settings": {
+        "include_margins": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "recently-viewed-products",
+    "background_video_fpYnUb",
+    "image_banner",
+    "16511915076d7ba7d9",
+    "16464158219739ce3f"
+  ]
+}

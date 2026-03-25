@@ -1,0 +1,275 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_html_ahfWJi": {
+      "type": "custom-html",
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "html": "<h1>CARBON38 SIGNATURE FABRICS</h1><br>You've loved and lived in them and our promise to you is that they'll never go away. Take a deep dive into the pride of our design team, featuring our signature best-selling fabrics, exclusive to us.",
+        "text_alignment": "center",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "image_collection_list_E9XKwj": {
+      "type": "image-collection-list",
+      "blocks": {
+        "collection_BfXezH": {
+          "type": "collection",
+          "settings": {
+            "collection": "takara-shine",
+            "image": "shopify://shop_images/takara_8469f19d-8af4-4e1d-8005-417940d580f5.jpg",
+            "image_alignment": "center center",
+            "content_position": "middle-center",
+            "sub_heading": "",
+            "heading": "Takara Shine",
+            "link_text": "Shop now",
+            "link_url": "",
+            "overlay": true
+          }
+        },
+        "collection_8wqfRx": {
+          "type": "collection",
+          "settings": {
+            "collection": "ribbed-melt",
+            "image": "shopify://shop_images/2-up-ribbed_496bd070-6df7-45ce-8861-7a11b6b64a46.jpg",
+            "image_alignment": "center center",
+            "content_position": "middle-center",
+            "sub_heading": "",
+            "heading": "Ribbed Melt",
+            "link_text": "Shop now",
+            "link_url": "",
+            "overlay": true
+          }
+        },
+        "collection_BPYnRY": {
+          "type": "collection",
+          "settings": {
+            "collection": "diamond-compression",
+            "image": "shopify://shop_images/diamond_94ab38f7-105b-4ba8-8e40-b600279910d9.jpg",
+            "image_alignment": "center center",
+            "content_position": "middle-center",
+            "sub_heading": "",
+            "heading": "Diamond Compression",
+            "link_text": "Shop now",
+            "link_url": "",
+            "overlay": true
+          }
+        },
+        "collection_dmXXhQ": {
+          "type": "collection",
+          "settings": {
+            "collection": "melt",
+            "image": "shopify://shop_images/2-upmelt.jpg",
+            "image_alignment": "center center",
+            "content_position": "middle-center",
+            "sub_heading": "",
+            "heading": "Melt",
+            "link_text": "Shop Now",
+            "link_url": "",
+            "overlay": true
+          }
+        }
+      },
+      "block_order": [
+        "collection_BfXezH",
+        "collection_8wqfRx",
+        "collection_BPYnRY",
+        "collection_dmXXhQ"
+      ],
+      "settings": {
+        "title": "",
+        "image_size": "75%",
+        "add_spacing": true,
+        "expand_collections": true,
+        "stack_on_mobile": true,
+        "text_color": "#ffffff"
+      }
+    },
+    "1646079106f07bcc3e": {
+      "type": "text-with-image",
+      "settings": {
+        "subheading": "takara shine",
+        "title": "",
+        "image": "shopify://shop_images/Takara-cover.jpg",
+        "image_position": "left",
+        "content": "<p><strong>REASONS TO LOVE<br/></strong>Compressive + breathable<br/>Smooth with a bright liquid finish<br/>Studio-to-street approved</p><p><strong>HOW IT FEELS<br/></strong>Lightweight + sweat-wicking<br/>Wide, compressive, ultra-flattering waistband</p><p><strong>INSIDER TIP</strong><br/>These are our #1 leggings, with over 500,000 pairs sold.</p>",
+        "link_text": "LEARN MORE ABOUT TAKARA SHINE",
+        "link_url": "shopify://pages/info-takara-shine"
+      }
+    },
+    "featured_collection_AacHVR": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "",
+        "title": "Pick Your Favorite:",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "takara-shine",
+        "fallback_collection": "",
+        "view_all_label": "shop all takara shine",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": true
+      }
+    },
+    "164607955568b45d10": {
+      "type": "text-with-image",
+      "settings": {
+        "subheading": "MEET MELT",
+        "title": "",
+        "image": "shopify://shop_images/melt-cover.jpg",
+        "image_position": "right",
+        "content": "<p><strong>REASONS TO LOVE<br/></strong>All-day comfort with the sculpting power of high-compression fabric<br/>Great for low-impact workouts<br/>Studio-to-street approved</p><p><strong>HOW IT FEELS<br/></strong>Buttery-soft, second skin feel<br/>4-way stretch with moisture-wicking properties</p><p><strong>INSIDER TIP</strong><br/>Designed to look as good on the street as it does in the studio—it’s our most versatile collection to date.</p>",
+        "link_text": "LEARN MORE ABOUT MELT",
+        "link_url": "shopify://pages/info-melt"
+      }
+    },
+    "featured_collection_Lw3xAM": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "",
+        "title": "Pick Your Favorite:",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "melt",
+        "fallback_collection": "",
+        "view_all_label": "shop all melt",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": true
+      }
+    },
+    "16460792655fa7da8c": {
+      "type": "text-with-image",
+      "settings": {
+        "subheading": "RIBBED MELT",
+        "title": "",
+        "image": "shopify://shop_images/ribbed-cover_605a4aa5-09f0-4bbf-bc2b-d39c5498aa23.jpg",
+        "image_position": "left",
+        "content": "<p><strong>REASONS TO LOVE<br/></strong>Perfect for low-impact activities <br/>Full coverage in every color<br/>Studio-to-street approved</p><p><strong>HOW IT FEELS<br/></strong>Features the perfect, no-roll waistband<br/>Lightweight for any climate<br/>Soft with flaw-erasing textures</p><p><strong>INSIDER TIP</strong><br/>if you're looking for a more compressive fit, we suggest sizing down.</p>",
+        "link_text": "LEARN MORE ABOUT RIBBED",
+        "link_url": "shopify://pages/info-ribbed"
+      }
+    },
+    "1646079269759a60b1": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "",
+        "title": "Pick Your Favorite:",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "ribbed-melt",
+        "fallback_collection": "",
+        "view_all_label": "",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": true
+      }
+    },
+    "164607941572a34761": {
+      "type": "text-with-image",
+      "settings": {
+        "subheading": "DIAMOND COMPRESSION",
+        "title": "",
+        "image": "shopify://shop_images/diamond-cover.jpg",
+        "image_position": "right",
+        "content": "<p><strong>REASONS TO LOVE<br/></strong>HIIT-level compression with full-coverage<br/>Reinforced high-waist locks you in for perfect form<br/>Shielded by UV protection factor of 50+</p><p><strong>HOW IT FEELS<br/></strong>Smooth, airbrushed effect<br/>Lightweight with a second skin feel<br/>Bonded waistband holds its shape for all-day comfort</p><p><strong>INSIDER TIP</strong><br/>Fits true to size, but if you're looking for a more compressive fit, we suggest sizing down.</p>",
+        "link_text": "LEARN MORE ABOUT DIAMOND COMPRESSION",
+        "link_url": "shopify://pages/info-diamond-compression"
+      }
+    },
+    "164607941708a6d5dd": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "",
+        "title": "Pick Your Favorite:",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "diamond-compression",
+        "fallback_collection": "",
+        "view_all_label": "SHOP ALL DIAMOND COMPRESSION",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": true
+      }
+    }
+  },
+  "order": [
+    "custom_html_ahfWJi",
+    "image_collection_list_E9XKwj",
+    "1646079106f07bcc3e",
+    "featured_collection_AacHVR",
+    "164607955568b45d10",
+    "featured_collection_Lw3xAM",
+    "16460792655fa7da8c",
+    "1646079269759a60b1",
+    "164607941572a34761",
+    "164607941708a6d5dd"
+  ]
+}

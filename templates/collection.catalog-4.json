@@ -1,0 +1,144 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "show_collection_info": true,
+        "show_metafield_collection_image": true,
+        "apply_overlay": true,
+        "show_color_swatch": true,
+        "show_vendor": true,
+        "collection_image_size": "normal",
+        "show_sort_by": true,
+        "show_layout_switch": false,
+        "toolbar_position": "top",
+        "show_filters": true,
+        "show_filter_color_swatch": true,
+        "expand_filters": false,
+        "filter_position": "sidebar",
+        "filter_menu": "",
+        "grid_items_per_page": 96,
+        "grid_mobile_items_per_row": "2",
+        "grid_desktop_items_per_row": 4
+      }
+    },
+    "collection_list_JV8P7d": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_AWWm36": {
+          "type": "collection",
+          "settings": {
+            "collection": "holiday-24-collection",
+            "image_alignment": "center center",
+            "content_position": "middleCenter",
+            "subheading": "",
+            "title": "",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": false
+          }
+        },
+        "collection_WggHLh": {
+          "type": "collection",
+          "settings": {
+            "collection": "luxe-layers",
+            "image_alignment": "center center",
+            "content_position": "middleCenter",
+            "subheading": "",
+            "title": "",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": false
+          }
+        },
+        "collection_Uf9tiU": {
+          "type": "collection",
+          "settings": {
+            "collection": "holiday-dressing-1",
+            "image_alignment": "top center",
+            "content_position": "middleCenter",
+            "subheading": "",
+            "title": "",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "collection_AWWm36",
+        "collection_WggHLh",
+        "collection_Uf9tiU"
+      ],
+      "settings": {
+        "title": "<h6><center>Discover the holiday '24 catalog</center></h6>",
+        "image_size": "normal",
+        "add_spacing": true,
+        "expand_collection": true,
+        "stack_on_mobile": true,
+        "text_color": "#ffffff",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collection_list_Bi6mHA": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_Lm6KyU": {
+          "type": "collection",
+          "settings": {
+            "collection": "ski",
+            "image_alignment": "top left",
+            "content_position": "middleCenter",
+            "subheading": "",
+            "title": "",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": false
+          }
+        },
+        "collection_ahVkzi": {
+          "type": "collection",
+          "settings": {
+            "collection": "bundles",
+            "image_alignment": "top center",
+            "content_position": "middleCenter",
+            "subheading": "",
+            "title": "Exclusive Holiday Bundles",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "collection_Lm6KyU",
+        "collection_ahVkzi"
+      ],
+      "settings": {
+        "title": "",
+        "image_size": "normal",
+        "add_spacing": true,
+        "expand_collection": true,
+        "stack_on_mobile": true,
+        "text_color": "#ffffff",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "collection_list_JV8P7d",
+    "collection_list_Bi6mHA"
+  ]
+}

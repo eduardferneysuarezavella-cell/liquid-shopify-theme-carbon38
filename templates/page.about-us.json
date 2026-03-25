@@ -1,0 +1,334 @@
+{
+  "sections": {
+    "full_width_banner_z6NVaF": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_YKwFLw": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/032725_About_Us_Desktop_1_copy.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/032725_About_Us_Mobile_1_copy.jpg",
+            "overlay": false,
+            "overlay_opacity": 0,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_YKwFLw"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "custom_liquid_gh7pzD": {
+      "type": "custom-liquid",
+      "settings": {
+        "subheading": "",
+        "heading": "",
+        "custom_liquid": "<div>\n<center><H3 style=\"font-size:28px;font-family: Moneta; line-height:40px;\">Carbon38 was born from an innovative idea, a spontaneous contest entry, a fake website, and 14 post-it notes.<\/h3><br><h2 style=\"font-size:100px; line-height:80px;\">\nToday, we are—\n<\/div>",
+        "color_scheme": "",
+        "text_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "full_width_banner_yeqQp8": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_Y3dFF9": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/032725_About_Us_Desktop_3.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/032725_About_Us_Mobile_3.jpg",
+            "overlay": false,
+            "overlay_opacity": 0,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_Y3dFF9"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "about-us-years": {
+      "type": "about-us-years",
+      "blocks": {
+        "year_6jgUJ6": {
+          "type": "year",
+          "settings": {
+            "subtitle": "",
+            "title": "2011",
+            "year": "2011",
+            "description": "<p>In November, Katie Warner Johnson attended the Women 2.0 Startup weekend and purchased our URL—www.carbon38.com.<\/p>"
+          }
+        },
+        "year_mHwe9y": {
+          "type": "year",
+          "settings": {
+            "subtitle": "",
+            "title": "2012",
+            "year": "2012",
+            "description": "<p>In January, we launched the official Carbon38 Instagram. <\/p><p>Wondering why we posted a picture of Tilapia? Same.<\/p>"
+          }
+        },
+        "year_XXMpMA": {
+          "type": "year",
+          "settings": {
+            "subtitle": "",
+            "title": "2013",
+            "year": "2013",
+            "description": "<p>In January, we started conducting business from a one-bedroom apartment and hired our first employee.<\/p><p><\/p><p>In July, we began fundraising.<\/p><p><\/p><p>In September, we received our first check for $100K from the Winklevosss Twins—yes, <em>those<\/em> twins.<\/p><p><\/p><p>In November, we launched as an E-commerce site focusing only on activewear. <\/p>"
+          }
+        },
+        "year_t98VdD": {
+          "type": "year",
+          "settings": {
+            "subtitle": "",
+            "title": "2014",
+            "year": "2014",
+            "description": "<p>In February, we brought our total fundraising to $1 million.<\/p><p><\/p><p>In September, we leased an office in West Hollywood with desks and computers for all 9 employees.<\/p>"
+          }
+        },
+        "year_wmbxcc": {
+          "type": "year",
+          "settings": {
+            "subtitle": "",
+            "title": "2015",
+            "year": "2015",
+            "description": "<p>In September, we started our Series Seed fundraising, raising $11 million.<\/p><p><\/p><p>In November, we launched the first exclusive Carbon38 Branded Label Collection—a mix of active, elevated basics, and signature prints.<\/p>"
+          }
+        },
+        "year_CMNnUE": {
+          "type": "year",
+          "settings": {
+            "subtitle": "",
+            "title": "2016",
+            "year": "2016",
+            "description": "<p>In August, our exclusive Takara Shine was born (to date, we’ve sold over 500,000 pairs).<\/p><p>In November, we hit the other coast and opened a pop-up shop on Los Angeles’ famous Roberston Blvd.<\/p><p>In December, we launched our first collaboration with \"Love Me\" artist, Curtis Kulig.<\/p>"
+          }
+        },
+        "year_bcRgV3": {
+          "type": "year",
+          "settings": {
+            "subtitle": "",
+            "title": "2017",
+            "year": "2017",
+            "description": "<p>In January, we partnered with award-winning designer Jonathan Simkhai for our second collaboration.<\/p><p><\/p><p>In March, we launched our first line of ready-to-wear pieces—<em>The Met Collection.<\/em><\/p>"
+          }
+        },
+        "year_NnCnW7": {
+          "type": "year",
+          "settings": {
+            "subtitle": "",
+            "title": "2018",
+            "year": "2018",
+            "description": "<p>In January, a new investor contributed $15 million.<\/p><p>In December, we grew up and moved to our Culver City offices.<\/p>"
+          }
+        },
+        "year_bkfq6R": {
+          "type": "year",
+          "settings": {
+            "subtitle": "",
+            "title": "2019",
+            "year": "2019",
+            "description": "<p>We made a name for ourselves in the world of luxury fashion, partnering with a new wave of high-end labels and designers.<\/p>"
+          }
+        },
+        "year_wce7Fx": {
+          "type": "year",
+          "settings": {
+            "subtitle": "",
+            "title": "2020",
+            "year": "2020",
+            "description": "<p>In March, the global pandemic began.<\/p><p><\/p><p>We sold our Culver City offices, set up shop as a remote team, and threw ourselves into learning how we could best serve our customers and community. <\/p>"
+          }
+        },
+        "year_C9TA3x": {
+          "type": "year",
+          "settings": {
+            "subtitle": "",
+            "title": "2021",
+            "year": "2021",
+            "description": "<p>In March, we partnered with Girls Inc, of Greater Los Angeles.<\/p><p><\/p><p>In August, we launched a collaboration with EleVen by Venus Williams—our first tennis collection.<\/p><p><\/p><p>In September, we re-platformed to Shopify.<\/p><p><\/p><p>In October, we partnered with the Breast Cancer Research Foundation to raise funds for the world's most promising research and awareness campaigns. <\/p>"
+          }
+        },
+        "year_CCWWaY": {
+          "type": "year",
+          "settings": {
+            "subtitle": "IT'S TIME FOR SOMETHING NEW",
+            "title": "2022",
+            "year": "2022",
+            "description": "<p>In March, we announced our rebranding, including a new logo, a new feel, and a new us.<\/p>"
+          }
+        },
+        "year_x4jTzr": {
+          "type": "year",
+          "settings": {
+            "subtitle": "",
+            "title": "2024",
+            "year": "2024",
+            "description": "<p>By recognizing the potential and success of e-commerce and retail collaborations, BC Brands has acquired Carbon38, ushering in an exciting new era in activewear.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "year_6jgUJ6",
+        "year_mHwe9y",
+        "year_XXMpMA",
+        "year_t98VdD",
+        "year_wmbxcc",
+        "year_CMNnUE",
+        "year_bcRgV3",
+        "year_NnCnW7",
+        "year_bkfq6R",
+        "year_wce7Fx",
+        "year_C9TA3x",
+        "year_CCWWaY",
+        "year_x4jTzr"
+      ],
+      "settings": {
+        "text_color": "#ffffff"
+      }
+    },
+    "full_width_banner_TmJDRe": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_8Jckwp": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/032725_About_Us_Desktop_2.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/032725_About_Us_Mobile_2_copy.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_8Jckwp"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "about-us-info": {
+      "type": "about-us-info",
+      "blocks": {
+        "subtitle_FFkhL7": {
+          "type": "subtitle",
+          "settings": {
+            "subtitle": "<h3> WHY THE NAME<\/h3>"
+          }
+        },
+        "title_xRY9V9": {
+          "type": "title",
+          "settings": {
+            "title": "<br>Carbon38?"
+          }
+        },
+        "richtext_HrBGQP": {
+          "type": "richtext",
+          "settings": {
+            "richtext": "<p>“I always loved chemistry as a subject and was thoroughly enthralled by the periodic table. I knew I needed a name to encompass all the unforeseen that was to come. As Carbon is one of the most abundant elements in our bodies, it felt compelling for the business I was beginning to create. I added on a number sequence, and our name was born.”<\/p><p><strong>—Katie Warner Johnson<br\/><\/strong><em>Co-Founder - Carbon38<\/em><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subtitle_FFkhL7",
+        "title_xRY9V9",
+        "richtext_HrBGQP"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "full_width_banner_z6NVaF",
+    "custom_liquid_gh7pzD",
+    "full_width_banner_yeqQp8",
+    "about-us-years",
+    "full_width_banner_TmJDRe",
+    "about-us-info"
+  ]
+}

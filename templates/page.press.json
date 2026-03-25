@@ -1,0 +1,191 @@
+{
+  "sections": {
+    "1646710390b0f8b477": {
+      "type": "text-with-image",
+      "disabled": true,
+      "settings": {
+        "subheading": "Visit us",
+        "title": "IN REAL LIFE",
+        "image_position": "right",
+        "content": "<p>Come see us in-store for a personal shopping experience<\/p>",
+        "link_text": "",
+        "link_url": ""
+      }
+    },
+    "164671042629d4b7cc": {
+      "type": "text-with-image",
+      "disabled": true,
+      "settings": {
+        "subheading": "",
+        "title": "Bridgehampton, NY",
+        "image": "shopify:\/\/shop_images\/Store_Page_Desktop_-_Update_0607_720x_0f2962b3-78cd-466a-96d3-24f0be921053.jpg",
+        "image_position": "left",
+        "content": "<p>2424 Montauk Highway<br\/>Bridgehampton, NY 11932<\/p><p><strong>Hours<\/strong>: Monday - Saturday, 10am - 5pm<br\/>Closed on Sunday<\/p><p><strong>Phone<\/strong>: 631.919.5444<br\/><strong>Email<\/strong>: bridgehampton@carbon38.com<\/p><p><em>Please note: face coverings are required while shopping in-store.<\/em><\/p>",
+        "link_text": "",
+        "link_url": ""
+      }
+    },
+    "16467104706e72bcef": {
+      "type": "text-with-image",
+      "disabled": true,
+      "settings": {
+        "subheading": "",
+        "title": "Pacific Palisades, CA",
+        "image": "shopify:\/\/shop_images\/Store_Page_Desktop_-_Update_0607_2_720x_d59ad160-c96a-4ace-a991-11710ae113d7.jpg",
+        "image_position": "left",
+        "content": "<p>15272 Palisades Village Lane<br\/>Pacific Palisades, CA 90272<\/p><p><strong>Hours<\/strong>: Monday - Saturday, 11am - 7pm<br\/>Sunday, 11am - 6pm<\/p><p><strong>Phone<\/strong>: 310.300.3806<br\/><strong>Email<\/strong>: palisades@carbon38.com<\/p><p><em>Please note: face coverings are required while shopping in-store.<\/em> <\/p>",
+        "link_text": "See upcoming events",
+        "link_url": "shopify:\/\/pages\/palisades-events"
+      }
+    },
+    "1646858079c38f4703": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "165383057576389c9d": {
+      "type": "text-with-image",
+      "settings": {
+        "subheading": "",
+        "title": "IN THE PRESS",
+        "image_position": "right",
+        "content": "",
+        "link_text": "",
+        "link_url": ""
+      }
+    },
+    "video_kTdKpc": {
+      "type": "video",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "enable_video_looping": false,
+        "video_url": "https:\/\/www.youtube.com\/watch?v=NDjASmj0uEg&t=3s",
+        "cover_image": "shopify:\/\/shop_images\/Press-Video-Thumbnail-4.jpg",
+        "description": "",
+        "full_width": true,
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "16538369084cf04948": {
+      "type": "text-with-image",
+      "settings": {
+        "subheading": "MARCH 8, 2022",
+        "title": "Carbon38 Reveals New Brand Identity, Website Enhancements",
+        "image": "shopify:\/\/shop_images\/WWD-REFRESH.jpg",
+        "image_position": "left",
+        "content": "<p>Carbon38, a direct-to-consumer leader in performance apparel, is being refreshed with a new brand identity and an enhanced website. Founded in 2012 by Katie Warner Johnson, Carbon38 has created a new logo that mirrors the brand’s progression in a sleek, clean typeface. It also has updated the digital user experience, following its...<\/p>",
+        "link_text": "READ THE FULL STORY",
+        "link_url": "https:\/\/wwd.com\/business-news\/retail\/carbon38-reveals-new-brand-identity-web-site-enhancements-1235118327\/"
+      }
+    },
+    "165383059869b066e0": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_E3xWqt": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/Press-Desktop-1.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/Press-Mobil-1.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "bottom-left",
+            "content_position_mobile": "bottom-left",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_E3xWqt"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "1653834884a1689dab": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_E3xWqt": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/Press-Desktop-2.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/Press-Mobil-2.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "bottom-left",
+            "content_position_mobile": "bottom-left",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_E3xWqt"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "1646710390b0f8b477",
+    "164671042629d4b7cc",
+    "16467104706e72bcef",
+    "1646858079c38f4703",
+    "165383057576389c9d",
+    "video_kTdKpc",
+    "16538369084cf04948",
+    "165383059869b066e0",
+    "1653834884a1689dab"
+  ]
+}

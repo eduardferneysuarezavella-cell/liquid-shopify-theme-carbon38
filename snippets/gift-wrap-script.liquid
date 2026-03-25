@@ -1,0 +1,87 @@
+<script>
+    function checkGiftWrap() {
+      var giftWrapProductId = {{ settings.gift_wrap_product.id }};
+      var hasGiftWrap = false;
+      var hasGiftCartAttribute = false;
+
+      fetch(window.Shopify.routes.root + 'cart.json', {
+        method: 'GET',
+        headers: {
+        'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+          return response.json();
+      })
+      .then(data => {
+        if(data.attributes['Is Gift'] && data.attributes['Is Gift'] == "Yes") {
+          hasGiftCartAttribute = true;
+        }
+        data.items.forEach(item => {
+          if(item.product_id == giftWrapProductId) {
+            hasGiftWrap = true;
+          }
+        });
+
+        if(hasGiftCartAttribute && !hasGiftWrap) {
+          fetch("".concat(window.routes.cartUrl, "/update.js"), {
+            body: JSON.stringify({
+              attributes: {
+                'Is Gift': ''
+              },
+              note: ''
+            }),
+            credentials: 'same-origin',
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-Requested-With': 'XMLHttpRequest'
+            }
+          }).then(response2 => {
+            return response2.json();
+          })
+          .then(data2 => {
+            document.querySelector('.cart-gift').classList.remove('added');
+            document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+          }).catch((error2) => {
+            console.error('Error:', error2);
+          });
+        }
+
+        if(!hasGiftCartAttribute && hasGiftWrap) {
+          fetch("".concat(window.routes.cartUrl, "/update.js"), {
+            body: JSON.stringify({
+              attributes: {
+                'Is Gift': 'Yes'
+              },
+              note: document.querySelector('input[name="cart-gift-note"]').value
+            }),
+            credentials: 'same-origin',
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-Requested-With': 'XMLHttpRequest'
+            }
+          }).then(response2 => {
+            return response2.json();
+          })
+          .then(data2 => {
+            document.querySelector('.cart-gift').classList.add('added');
+            document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+          }).catch((error2) => {
+            console.error('Error:', error2);
+          });
+        }
+      });
+    }
+
+    checkGiftWrap(); //check on load
+
+    document.addEventListener('product:added', function(event) {
+      checkGiftWrap();
+    });
+
+    document.addEventListener('cart:updated', function(event) {
+      checkGiftWrap();
+    });
+  </script>

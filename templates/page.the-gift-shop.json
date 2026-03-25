@@ -1,0 +1,577 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "1650991607a709b49d": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_fDtbAA": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-Landing_2c583aef-c29f-4f93-8f0b-3dea360415d6.jpg",
+            "mobile_image": "shopify://shop_images/M-Landing_9997e4bd-04ec-43fd-827f-9e8f59edeb07.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "bottom-left",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_fDtbAA"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "88cf5141-522c-4e51-9012-d3f6b3c1c51a": {
+      "type": "custom-liquid",
+      "settings": {
+        "subheading": "",
+        "heading": "",
+        "custom_liquid": "SHOP BY CATEGORY",
+        "color_scheme": "",
+        "text_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "088f770f-ea52-4485-8125-2a9b9c865213": {
+      "type": "collection-list",
+      "blocks": {
+        "template--16283437531325__088f770f-ea52-4485-8125-2a9b9c865213-collection-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "gifts-under-100",
+            "image_alignment": "center center",
+            "content_position": "middleCenter",
+            "subheading": "",
+            "title": "",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": false
+          }
+        },
+        "template--16283437531325__088f770f-ea52-4485-8125-2a9b9c865213-collection-2": {
+          "type": "collection",
+          "settings": {
+            "collection": "for-the-athlete",
+            "image_alignment": "bottom center",
+            "content_position": "middleCenter",
+            "subheading": "",
+            "title": "For the Athlete",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "template--16283437531325__088f770f-ea52-4485-8125-2a9b9c865213-collection-1",
+        "template--16283437531325__088f770f-ea52-4485-8125-2a9b9c865213-collection-2"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "SHOP BY CATEGORY",
+        "image_size": "small",
+        "add_spacing": true,
+        "expand_collection": true,
+        "stack_on_mobile": true,
+        "text_color": "#ffffff",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "a121059f-c438-4221-808c-1650cfdc6e3a": {
+      "type": "product-feed",
+      "disabled": true,
+      "settings": {
+        "pretitle": "Our Handpicked Favorites",
+        "title": "the wishlist",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "best-sellers",
+        "fallback_collection": "",
+        "view_all_label": "shop now",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 20,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "slideshow_zwtqB6": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_fDtbAA": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-LP-traveler_76c47895-adbd-4e10-8a89-190b750262bb.jpg",
+            "mobile_image": "shopify://shop_images/M-LP-Traveler_07bed2cb-fdd5-43de-a81d-7c83b660437b.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "bottom-left",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/for-the-traveler",
+            "button_1_text": "",
+            "button_1_link": "shopify://collections/for-the-traveler",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_fDtbAA"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collections_r9fr8e": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "Gifting made easy",
+        "title": "For the Traveler",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "for-the-traveler",
+        "fallback_collection": "",
+        "view_all_label": "shop now",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 24,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "slideshow_XdrACH": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_fDtbAA": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-LP-Finer_c56c6284-840b-4589-9c61-dfe9e30fb4bf.jpg",
+            "mobile_image": "shopify://shop_images/M-L-Finer_22e4f8af-d6c9-44ff-9e44-3e8ec41f1cab.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "bottom-left",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/the-finer-things",
+            "button_1_text": "",
+            "button_1_link": "shopify://collections/the-finer-things",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_fDtbAA"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collections_FBHgDL": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "Elevated Gifts",
+        "title": "The Finer Things",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "the-finer-things",
+        "fallback_collection": "",
+        "view_all_label": "shop now",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 24,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "slideshow_DLNqT9": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_fDtbAA": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-LP-Athlete_6720cbc0-c5b5-448b-98a9-4a302564df8d.jpg",
+            "mobile_image": "shopify://shop_images/M-LP-Athlete_8d0bf942-9882-49b0-b99a-595fc08d1496.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "bottom-left",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/for-the-athlete",
+            "button_1_text": "",
+            "button_1_link": "shopify://collections/for-the-athlete",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_fDtbAA"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collections_t6tira": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "from pilates to barre",
+        "title": "For the Athlete",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "for-the-athlete",
+        "fallback_collection": "",
+        "view_all_label": "shop now",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 24,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "slideshow_GfH7xR": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_fDtbAA": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-LP-Gifts_Under_6abd4b43-201f-42e3-adcd-28da0f0d8a88.jpg",
+            "mobile_image": "shopify://shop_images/M-L-Gifts_Under_ef882689-bb2e-4e12-a083-3a70fe3a858c.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "bottom-left",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/gifts-under-100",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_fDtbAA"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collections_HEkxW8": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "GIFTS FOR ALL",
+        "title": "Gifts Under $150",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "gifts-under-100",
+        "fallback_collection": "",
+        "view_all_label": "shop now",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 24,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "collection_list_4aHCdr": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_CbReAg": {
+          "type": "collection",
+          "settings": {
+            "collection": "bundles",
+            "image": "shopify://shop_images/C-Bundles_fdf2b98e-c573-40b0-b68b-b5cfced1fc29.jpg",
+            "image_alignment": "center center",
+            "content_position": "middleCenter",
+            "subheading": "",
+            "title": "Giftable Bundles",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": false
+          }
+        },
+        "collection_FVMzjz": {
+          "type": "collection",
+          "settings": {
+            "collection": "for-the-traveler",
+            "image": "shopify://shop_images/C-Gift_Card_60cca2a1-b5d8-41f3-b01f-1f3d9521bf9c.jpg",
+            "image_alignment": "top right",
+            "content_position": "middleCenter",
+            "subheading": "",
+            "title": "Gift Cards",
+            "link_text": "Shop now",
+            "link_url": "shopify://products/digital-gift-card-1",
+            "apply_overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "collection_CbReAg",
+        "collection_FVMzjz"
+      ],
+      "settings": {
+        "title": "",
+        "image_size": "small",
+        "add_spacing": true,
+        "expand_collection": true,
+        "stack_on_mobile": true,
+        "text_color": "#ffffff",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "text_with_image_XCjfPq": {
+      "type": "text-with-image",
+      "settings": {
+        "subheading": "GIFT WRAPPING MADE EASY",
+        "title": "",
+        "image": "shopify://shop_images/d-gift_card_copy_5d924f28-f1de-44b3-97c4-7544fbf9a672.jpg",
+        "image_position": "left",
+        "content": "<p>Giving a gift? Let us wrap it for you! Simply add our gift box to cart, and let us make your lovely gesture into a ‘ta-da’ moment!</p>",
+        "link_text": "",
+        "link_url": ""
+      }
+    },
+    "1815211a-d871-42f2-9a8e-a071aade2bb9": {
+      "type": "featured-product",
+      "blocks": {
+        "title_mrArjY": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price_W83P9w": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_mbYTXe": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "dropdown",
+            "swatch_shape": "circle"
+          }
+        },
+        "buy_buttons_ykQ8rQ": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true
+          }
+        }
+      },
+      "block_order": [
+        "title_mrArjY",
+        "price_W83P9w",
+        "variant_picker_mbYTXe",
+        "buy_buttons_ykQ8rQ"
+      ],
+      "settings": {
+        "product": "digital-gift-card-1",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 80,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "1650991607a709b49d",
+    "88cf5141-522c-4e51-9012-d3f6b3c1c51a",
+    "088f770f-ea52-4485-8125-2a9b9c865213",
+    "a121059f-c438-4221-808c-1650cfdc6e3a",
+    "slideshow_zwtqB6",
+    "featured_collections_r9fr8e",
+    "slideshow_XdrACH",
+    "featured_collections_FBHgDL",
+    "slideshow_DLNqT9",
+    "featured_collections_t6tira",
+    "slideshow_GfH7xR",
+    "featured_collections_HEkxW8",
+    "collection_list_4aHCdr",
+    "text_with_image_XCjfPq",
+    "1815211a-d871-42f2-9a8e-a071aade2bb9"
+  ]
+}

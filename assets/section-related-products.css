@@ -1,0 +1,13 @@
+.related-products {
+  display: block;
+}
+
+.related-products__heading {
+  color: #2E2E2E;
+  font-family: Moneta;
+  font-size: 35.04px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px; /* 114.155% */
+  margin: 0 0 2rem;
+}

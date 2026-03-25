@@ -1,0 +1,95 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "show_collection_info": true,
+        "apply_overlay": true,
+        "show_color_swatch": true,
+        "show_vendor": false,
+        "collection_image_size": "normal",
+        "show_sort_by": true,
+        "show_layout_switch": false,
+        "toolbar_position": "top",
+        "show_filters": true,
+        "show_filter_color_swatch": true,
+        "expand_filters": false,
+        "filter_position": "sidebar",
+        "filter_menu": "",
+        "grid_items_per_page": 96,
+        "grid_mobile_items_per_row": "2",
+        "grid_desktop_items_per_row": 4
+      }
+    },
+    "16464158219739ce3f": {
+      "type": "apps",
+      "settings": {
+        "include_margins": false
+      }
+    },
+    "collection_list_tYqPFW": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_VbKatQ": {
+          "type": "collection",
+          "settings": {
+            "collection": "pilates",
+            "image_alignment": "center center",
+            "content_position": "bottomLeft",
+            "subheading": "",
+            "title": "Pilates, Yoga, Barre",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": false
+          }
+        },
+        "collection_xfVEep": {
+          "type": "collection",
+          "settings": {
+            "collection": "stillness",
+            "image_alignment": "center center",
+            "content_position": "bottomLeft",
+            "subheading": "",
+            "title": "",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": false
+          }
+        },
+        "collection_jY3njr": {
+          "type": "collection",
+          "settings": {
+            "collection": "walking",
+            "image_alignment": "center center",
+            "content_position": "bottomLeft",
+            "subheading": "",
+            "title": "Hike, Walk, Run",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "collection_VbKatQ",
+        "collection_xfVEep",
+        "collection_jY3njr"
+      ],
+      "settings": {
+        "title": "Shop by Activity",
+        "image_size": "normal",
+        "add_spacing": true,
+        "expand_collection": true,
+        "stack_on_mobile": true,
+        "text_color": "#ffffff",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16464158219739ce3f",
+    "collection_list_tYqPFW"
+  ]
+}

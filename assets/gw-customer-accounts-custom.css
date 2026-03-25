@@ -1,0 +1,97 @@
+/*
+  Custom CSS for the Customer Accounts page
+  You can add your own CSS here to customize the Customer Accounts Drawer
+  This CSS files lies in the overrides layer and has the highest priority
+*/
+
+@layer overrides {
+
+  /* Wishlist */
+  gw-wishlist-button {
+    display: block;
+    width: 30px;
+    height: 30px;
+    bottom: 8px;
+    right: 8px;
+  }
+
+  gw-wishlist-button::part(button) {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, .22);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  gw-wishlist-button[saved]::part(button) {
+    background-color: #f45b5b;
+  }
+
+  gw-wishlist-button::part(icon),
+  gw-wishlist-button::part(filled-icon) {
+    width: 14px;
+    height: 14px;
+  }
+
+  gw-wishlist-button::part(icon),
+  gw-wishlist-button::part(filled-icon) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Buttons */
+  .gw-empty-button {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Animations */
+  .my-preferences__header button,
+  .my-addresses__header button,
+  .gw-customer-accounts-order__header button,
+  .gw-products-carousel__header button {
+    transform: translateX(-5px);
+    transition: transform 0.3s;
+  }
+
+  .my-preferences__header:hover button,
+  .my-addresses__header:hover button,
+  .gw-customer-accounts-order__header:hover button,
+  .gw-products-carousel__header:hover button {
+    transform: translateX(0);
+  }
+
+  .gw-quick-link svg {
+    transition: transform 0.3s;
+  }
+
+  .gw-quick-link:hover svg {
+    transform: translate3d(1px, -1px, 0);
+  }
+
+  /* Verify Code */
+  .gw-verify-code__actions .gw-button--text {
+    text-decoration: none;
+  }
+
+  .gw-verify-code__actions .gw-button--text:hover {
+    text-decoration: underline;
+  }
+
+  /* Recently Viewed Collections */
+  .gw-recently-viewed-collection {
+    transition: 0.3s;
+  }
+
+  .gw-recently-viewed-collection:hover {
+    color: #ffffff;
+    background-color: var(--color-text);
+  }
+}

@@ -1,0 +1,476 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "full_width_banner_JPMPRM": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_EEmfw3": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-LANDING_2faefb87-2a86-401b-bc9a-1b0c395cd436.jpg",
+            "mobile_image": "shopify://shop_images/M-Landing_4756032c-4b02-4fc2-ab67-95690df94652.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_EEmfw3"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_large": false,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "full_width_banner_zytFnk": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_gjQY96": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-Gather_Round_6b077d61-bea1-4917-a37a-8ff366cc6641.jpg",
+            "mobile_image": "shopify://shop_images/M-Gather_Round_216432ac-dadd-44f1-81e3-429d79f89dc5.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/fall-24-collection",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_gjQY96"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 80,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 80,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collection_mkABf3": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "the romance of fall",
+        "title": "fall '24 collection",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "fall-24-collection",
+        "fallback_collection": "",
+        "view_all_label": "Shop Now",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "full_width_banner_WaXPn3": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_hVnNe8": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-seasonal_active.jpg",
+            "mobile_image": "shopify://shop_images/M-seasonal_active.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/seasonal-active",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_hVnNe8"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collection_Yb3Tpk": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "live deliciously",
+        "title": "Seasonal Active",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "seasonal-active",
+        "fallback_collection": "",
+        "view_all_label": "Shop Now",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "full_width_banner_jYJLDR": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_aP7WER": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-Outerwear.jpg",
+            "mobile_image": "shopify://shop_images/M-Outerwear.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/black-tie-active",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_aP7WER"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collection_nN9x9g": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "sweater weather only better",
+        "title": "Jackets & Outerwear",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "jackets-outerwear",
+        "fallback_collection": "",
+        "view_all_label": "Shop Now",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "full_width_banner_6AwFxH": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_MxEeba": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-luxe_knits.jpg",
+            "mobile_image": "shopify://shop_images/M-luxe_knits.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/melt",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_MxEeba"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collection_9mYFL9": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "style goes beyond seasons",
+        "title": "Luxe Knits",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "luxe-knits",
+        "fallback_collection": "",
+        "view_all_label": "Shop Now",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "full_width_banner_k6xwt4": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_VebmBb": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-fall_bundles_6ff1f01b-76d4-4d1a-a270-76148894934f.jpg",
+            "mobile_image": "shopify://shop_images/M-fall_bundles.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/bundles",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_VebmBb"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collection_xbT6MW": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "make it a set and save 15%",
+        "title": "Exclusive Fall Bundles",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "bundles",
+        "fallback_collection": "",
+        "view_all_label": "Shop all bundles",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "image_with_text_HHJQeF": {
+      "type": "text-with-image",
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "image": "shopify://shop_images/rich_text_c462749d-fd1b-4f11-ba95-d5bc747692d2.jpg",
+        "image_position": "right",
+        "content": "<p>Fall has a restless spirit. As shadows lengthen and the air turns crisp, change is imminent. Tanned skin slips into sumptuous fabrics, preparing for the season ahead. There's a rush to return—to the city, to work, to life. Our elevated essentials walk the line between timeless and transitional, crafted with precision and care. Each piece, a testament to exquisite craftsmanship, honors the legacies created from mother to daughter.</p><p>Now, with an autumnal bite in the air, it’s time to switch gears and step back into the rhythm of a vibrant life. Let this wear-forever capsule be your armor for the season’s adventures. Autumn awaits.</p>",
+        "link_text": "",
+        "link_url": ""
+      }
+    }
+  },
+  "order": [
+    "full_width_banner_JPMPRM",
+    "main",
+    "full_width_banner_zytFnk",
+    "featured_collection_mkABf3",
+    "full_width_banner_WaXPn3",
+    "featured_collection_Yb3Tpk",
+    "full_width_banner_jYJLDR",
+    "featured_collection_nN9x9g",
+    "full_width_banner_6AwFxH",
+    "featured_collection_9mYFL9",
+    "full_width_banner_k6xwt4",
+    "featured_collection_xbT6MW",
+    "image_with_text_HHJQeF"
+  ]
+}

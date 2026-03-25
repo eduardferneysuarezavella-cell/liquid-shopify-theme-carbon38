@@ -1,0 +1,277 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "full_width_banner_gHLmcH": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_fFUzcy": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-diamond_1_e5464f1f-1a89-4d4d-af33-8564624fcdf8.jpg",
+            "mobile_image": "shopify://shop_images/m-diamond_1_5f897cb1-d4f2-4ff3-a8d8-de4378b905a5.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_fFUzcy"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "custom_liquid_6BmaWc": {
+      "type": "custom-liquid",
+      "custom_css": [
+        "* {text-align: center;}"
+      ],
+      "settings": {
+        "subheading": "",
+        "heading": "",
+        "custom_liquid": "SLEEK IS THE KEY WORD.<br><br>\n\nThis sleek fabric is your go-to for HIIT-level compression. Made with SPF protection and from recycled water bottles, they are smooth, lightweight, and feel like your second skin. The waistband sculpts to keep you secure and the t-back bra ensures posture and alignment as well as keeping everything in place. Diamond Compression is meant to be mixed and matched so you will be supported in all your fashionable pursuits.",
+        "color_scheme": "",
+        "text_alignment": "center",
+        "padding_top": 80,
+        "padding_bottom": 20
+      }
+    },
+    "custom_html_Ywj7q8": {
+      "type": "custom-html",
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "html": "PERFECT FOR:",
+        "text_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "full_width_banner_F4wEci": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_Vb8D4D": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-Diamond_2.jpg",
+            "mobile_image": "shopify://shop_images/diamond_13.gif",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "bottom-left",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_Vb8D4D"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": true,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "full_width_banner_hx7zwi": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_8QwjbJ": {
+          "type": "slide",
+          "settings": {
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_8QwjbJ"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collection_YjXY3Y": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "GO AHEAD, TRY THEM ON",
+        "title": "Discover Diamond Compression",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "7-8-leggings",
+        "fallback_collection": "",
+        "view_all_label": "Shop all diamond compression",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": true,
+        "layout_mode": "grid",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "custom_liquid_LAiMKf": {
+      "type": "custom-liquid",
+      "settings": {
+        "subheading": "",
+        "heading": "",
+        "custom_liquid": "<p></p><h5><center>SEE OUR FAVORITES IN THE WILD</center></h5><p></p><script src=\"https://cdn.dashhudson.com/web/js/board-carousel-embed.js\" type=\"text/javascript\" data-name=\"dhboard-carousel\" data-gallery-id=\"100145\" data-row-size=\"4\" data-gap-size=\"4\" data-mobile-row-size=\"4\" data-autoplay=\"true\" data-mobile-gap-size=\"2\"></script>",
+        "color_scheme": "",
+        "text_alignment": "center",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "image_collection_list_AMVKBn": {
+      "type": "image-collection-list",
+      "blocks": {
+        "collection_krmn3z": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/info-takara.jpg",
+            "image_alignment": "top center",
+            "content_position": "middle-center",
+            "sub_heading": "",
+            "heading": "Takara Shine",
+            "link_text": "Learn more",
+            "link_url": "shopify://pages/info-takara-shine",
+            "overlay": true
+          }
+        },
+        "collection_M3Rg8q": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/melt-info.jpg",
+            "image_alignment": "center center",
+            "content_position": "middle-center",
+            "sub_heading": "",
+            "heading": "Melt",
+            "link_text": "LEARN MORE",
+            "link_url": "shopify://pages/info-melt",
+            "overlay": true
+          }
+        }
+      },
+      "block_order": [
+        "collection_krmn3z",
+        "collection_M3Rg8q"
+      ],
+      "custom_css": [
+        ".image-collection-list-wrapper__title {font-family: \"Euclid\", sans-serif; text-transform: uppercase; font-size: 13px;}"
+      ],
+      "settings": {
+        "title": "Learn more about our other signature fabrics",
+        "image_size": "75%",
+        "add_spacing": true,
+        "expand_collections": true,
+        "stack_on_mobile": true,
+        "text_color": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "full_width_banner_gHLmcH",
+    "custom_liquid_6BmaWc",
+    "custom_html_Ywj7q8",
+    "full_width_banner_F4wEci",
+    "full_width_banner_hx7zwi",
+    "featured_collection_YjXY3Y",
+    "custom_liquid_LAiMKf",
+    "image_collection_list_AMVKBn"
+  ]
+}

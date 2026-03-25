@@ -1,0 +1,74 @@
+{
+  "sections": {
+    "full_width_banner_JzYADD": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_f4gVLN": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/img-header_2200x_f4b1332a-e4d8-4e14-85aa-882c82811045.webp",
+            "mobile_image": "shopify:\/\/shop_images\/img-header_x800_49a33839-cba9-458d-b046-30a6045e273c.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify:\/\/pages\/holiday-catalog-2022",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_f4gVLN"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "custom_html_yfyMBE": {
+      "type": "custom-html",
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "html": "<p style=\"color:gray\"><\/p><p style=\"font-size:13px\"><i>Did you receive our catalog and want to opt out? Unsubscribe <a href=\"https:\/\/carbon38.com\/pages\/catalog-unsubscribe\"><u>here<\/u><\/a>.<\/i><\/p>",
+        "text_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "full_width_banner_JzYADD",
+    "main",
+    "custom_html_yfyMBE"
+  ]
+}

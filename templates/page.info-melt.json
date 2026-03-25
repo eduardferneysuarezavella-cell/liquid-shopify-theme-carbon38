@@ -1,0 +1,232 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "show_large": false,
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "full_width_banner_RPj4TV": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_BtHGpM": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-Melt_1_2200x_cffc5568-0354-4fdb-8832-f3fa3e16d40a.webp",
+            "mobile_image": "shopify://shop_images/M-Melt_1_x800_5907fd25-9fab-4c1a-a3e9-9af0d2346a11.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_BtHGpM"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "custom_html_rh7yBe": {
+      "type": "custom-html",
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "html": "The fabric is softest yet with a buttery texture, thus earning its name, “Melt”. These pieces offer a 4-way stretch and are moisture wicking–perfect for all-day comfort and lower impact activities. The Split Bootcut Pant is our fan-favorite, having already sold out twice, but each piece has generated a waiting list. This collection is our latest to garner a following of Melt devotees.",
+        "text_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "custom_html_xwMxxM": {
+      "type": "custom-html",
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "html": "<h4>PERFECT FOR:</h4>",
+        "text_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "full_width_banner_acxCBf": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_KKeYhh": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-Melt_2_2200x_0403eb58-aedb-4276-97ee-ddde3db6de4d.webp",
+            "mobile_image": "shopify://shop_images/Working_file_13_x800_853816a8-286d-41aa-bad8-cb606bd42dd8.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_KKeYhh"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collection_6UyPNE": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "GO AHEAD, TRY THEM ON",
+        "title": "See the Latest in Melt",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "melt",
+        "fallback_collection": "",
+        "view_all_label": "SHOP ALL MELT",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "grid",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "custom_html_44kAEJ": {
+      "type": "custom-html",
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "html": "<p></p><h5><center>SEE OUR FAVORITES IN THE WILD</center></h5><p></p><script src=\"https://cdn.dashhudson.com/web/js/board-embed.js\" type=\"text/javascript\" data-name=\"dhboard\" data-gallery-id=\"3625297\" data-row-size=\"4\" data-gap-size=\"4\" data-row-limit=\"auto\" data-mobile-row-size=\"4\" data-mobile-gap-size=\"2\"></script>",
+        "text_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "image_collection_list_VR7d3F": {
+      "type": "image-collection-list",
+      "blocks": {
+        "collection_YE3rme": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/info-takara.jpg",
+            "image_alignment": "top center",
+            "content_position": "middle-center",
+            "sub_heading": "",
+            "heading": "Takara Shine",
+            "link_text": "Learn More",
+            "link_url": "shopify://pages/info-takara-shine",
+            "overlay": true
+          }
+        },
+        "collection_FmVj4a": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/info-diamond.jpg",
+            "image_alignment": "bottom left",
+            "content_position": "middle-center",
+            "sub_heading": "",
+            "heading": "Diamond Compresion",
+            "link_text": "Learn More",
+            "link_url": "shopify://pages/info-diamond-compression",
+            "overlay": true
+          }
+        }
+      },
+      "block_order": [
+        "collection_YE3rme",
+        "collection_FmVj4a"
+      ],
+      "settings": {
+        "title": "Learn more about our other signature fabrics",
+        "image_size": "75%",
+        "add_spacing": true,
+        "expand_collections": true,
+        "stack_on_mobile": true,
+        "text_color": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "full_width_banner_RPj4TV",
+    "custom_html_rh7yBe",
+    "custom_html_xwMxxM",
+    "full_width_banner_acxCBf",
+    "featured_collection_6UyPNE",
+    "custom_html_44kAEJ",
+    "image_collection_list_VR7d3F"
+  ]
+}

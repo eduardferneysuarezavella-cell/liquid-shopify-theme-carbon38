@@ -1,0 +1,56 @@
+{
+  "sections": {
+    "full_width_banner_iQVmgy": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_fDtbAA": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/THE_UPSIDE_BANNER_2200x_f90b84ca-12d6-415d-b678-8bdf7066427d.webp",
+            "mobile_image": "shopify:\/\/shop_images\/M-Upside_x800_9882f88d-b624-4cad-98e9-dc32b0b39473.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "sub_heading": "",
+            "heading": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_fDtbAA"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0
+      }
+    },
+    "image_with_text_caqmUN": {
+      "type": "text-with-image",
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "image": "shopify:\/\/shop_images\/THE_UPSIDE_PIC_1000x_2b3443dc-a2e0-4941-94a8-cdda15ca93f0.webp",
+        "image_position": "left",
+        "content": "<p>Placing equal emphasis on style and function, THE UPSIDE’s Jodhi Meares injects a bright energy into the world of performance fashion. Each collection expresses the mood and trends of a season via palette, motif, and silhouette—all while staying true to core values of peace, balance, and integrity.<\/p>",
+        "link_text": "",
+        "link_url": ""
+      }
+    }
+  },
+  "order": [
+    "full_width_banner_iQVmgy",
+    "image_with_text_caqmUN"
+  ]
+}

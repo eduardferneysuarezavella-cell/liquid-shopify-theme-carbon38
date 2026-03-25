@@ -1,0 +1,476 @@
+@media screen and (max-width: 749px) {
+  .collection .grid__item:only-child {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 1139px) {
+  .collection .slider.slider--tablet {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.collection.page-width {
+  max-width: unset;
+  padding: 0 50px;
+}
+
+.collection .loading-overlay {
+  position: absolute;
+  z-index: 1;
+  width: 1.8rem;
+}
+
+@media screen and (max-width: 749px) {
+  .collection .loading-overlay {
+    top: 0;
+    right: 0;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .collection .loading-overlay {
+    left: 0;
+  }
+}
+
+.collection .loading-overlay {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  padding: 0 1.5rem;
+  opacity: 0.7;
+}
+
+@media screen and (min-width: 750px) {
+  .collection .loading-overlay {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+.collection.loading .loading-overlay {
+  display: block;
+}
+
+.collection--empty .title-wrapper {
+  margin-top: 10rem;
+  margin-bottom: 15rem;
+}
+
+@media screen and (max-width: 1139px) {
+  .collection .slider--tablet.product-grid {
+    scroll-padding-left: 1.5rem;
+  }
+}
+
+.collection__description > * {
+  margin: 0;
+}
+
+.collection__title.title-wrapper {
+  margin-bottom: 2.5rem;
+}
+
+.collection__title .title:not(:only-child) {
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 1140px) {
+  .collection__title--desktop-slider .title {
+    margin-bottom: 2.5rem;
+  }
+
+  .collection__title.title-wrapper--self-padded-tablet-down {
+    padding: 0 5rem;
+  }
+
+  .collection slider-component:not(.page-width-desktop) {
+    padding: 0;
+  }
+
+  .collection--full-width slider-component:not(.slider-component-desktop) {
+    padding: 0 1.5rem;
+    max-width: none;
+  }
+}
+
+.collection__view-all a:not(.link) {
+  margin-top: 6rem;
+}
+
+@media screen and (max-width: 1140px) {
+  .collection__view-all a:not(.link) {
+    margin-top: 3rem;
+  }
+}
+
+.Popover {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background: #fff;
+  z-index: 10;
+  box-shadow: 0 -2px 10px rgba(54, 54, 54, 0.2);
+  touch-action: manipulation;
+  transform: translateY(100%);
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.Popover--secondary {
+  background: var(--background);
+}
+
+.Popover[aria-hidden=false] {
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.Popover__Header {
+  position: relative;
+  padding: 13px 20px;
+  border-bottom: 1px solid rgba(var(--border-color-rgb), 0.4);
+  text-align: center;
+}
+
+.Popover__Close {
+  position: absolute;
+  left: 20px;
+  top: calc(50% - 7px);
+  line-height: 0;
+}
+.Popover__Close svg {
+  stroke-width: 1.1px;
+}
+
+.Popover__ValueList {
+  list-style: none;
+  max-height: 385px;
+  padding: 18px 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.Popover__Value {
+  display: block;
+  padding: 12px 20px;
+  width: 100%;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  color: var(--text-color-light);
+  text-align: center;
+  transition: color 0.2s ease-in-out;
+}
+
+.Popover__Value:focus {
+  background: var(--background);
+  outline: none;
+}
+
+.Popover__Value.is-selected {
+  color: var(--text-color);
+}
+
+.Popover__FooterHelp {
+  width: 100%;
+  padding: 18px 20px;
+  text-align: center;
+  border-top: 1px solid rgba(var(--border-color-rgb), 0.4);
+}
+
+@supports (padding: max(0px)) {
+  .Popover__ValueList {
+    max-height: calc(385px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: max(18px, env(safe-area-inset-bottom, 0px) + 18px);
+  }
+}
+
+@media screen and (min-width: 320px) {
+  .Popover {
+    transform: none;
+    width: auto;
+    bottom: auto;
+    left: auto;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  }
+
+  .Popover--noWrap {
+    white-space: nowrap;
+  }
+
+  .Popover--withMinWidth {
+    min-width: 375px;
+  }
+
+  .Popover--positionBottom::before {
+    bottom: 100%;
+    border-width: 0 10px 10px 10px;
+    border-color: transparent transparent #fff transparent;
+    filter: drop-shadow(0 -2px 2px rgba(54, 54, 54, 0.2));
+  }
+
+  .Popover--positionTop::before {
+    top: 100%;
+    border-width: 10px 10px 0 10px;
+    border-color: #fff transparent transparent transparent;
+    filter: drop-shadow(0 2px 2px rgba(54, 54, 54, 0.2));
+  }
+
+  .Popover--positionLeft::before {
+    left: 100%;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent #fff;
+    filter: drop-shadow(2px 0 2px rgba(54, 54, 54, 0.2));
+  }
+
+  .Popover--positionTop.Popover--alignCenter::before,
+  .Popover--positionBottom.Popover--alignCenter::before {
+    left: calc(50% - 10px);
+  }
+
+  .Popover--positionLeft.Popover--alignCenter::before {
+    top: calc(50% - 10px);
+  }
+
+  .Popover--positionLeft.Popover--alignBottom::before {
+    top: 15px;
+  }
+
+  .Popover--positionLeft.Popover--alignTop::before {
+    bottom: 10px;
+  }
+
+  .Popover[aria-hidden=false] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .Popover__Header {
+    display: none;
+  }
+
+  .Popover__Value {
+    padding-left: 50px;
+    padding-right: 50px;
+    text-align: right;
+  }
+
+  .Popover--withMinWidth .Popover__Value,
+  .Popover__ValueList--center .Popover__Value {
+    text-align: center;
+  }
+
+  .Popover--small.Popover--positionTop::before {
+    border-width: 8px 8px 0 8px;
+  }
+  .Popover--small.Popover--positionBottom::before {
+    border-width: 0 8px 8px 8px;
+  }
+  .Popover--small .Popover__Value {
+    padding: 5px 32px;
+  }
+  .features--heading-small .Popover--small .Popover__Value {
+    font-size: 10px;
+  }
+  .features--heading-normal .Popover--small .Popover__Value {
+    font-size: 12px;
+  }
+  .features--heading-large .Popover--small .Popover__Value {
+    font-size: 13px;
+  }
+}
+
+/**
+ * ----------------------------------------------------------------------------
+ * Collection toolbar
+ * ----------------------------------------------------------------------------
+ */
+
+ .CollectionToolbar {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background: var(--background);
+  box-shadow: 1px 1px var(--border-color), -1px -1px var(--border-color);
+  z-index: 2;
+}
+
+.CollectionToolbar--top {
+  top: var(--header-base-height);
+}
+
+@supports (--css: variables) {
+  .CollectionToolbar--top {
+    top: calc(var(--header-height) * 0);
+    top: calc(var(--header-height) * var(--use-sticky-header, 0));
+  }
+}
+
+.supports-sticky .CollectionToolbar--bottom {
+  bottom: 0; /* as of today the best polyfill I've found does not support polyfilling sticky on bottom. As a consequence on those old
+                browsers, the stickiness is always at the top */
+}
+
+.CollectionToolbar__Group {
+  display: flex;
+  flex: 1 0 auto;
+}
+
+.CollectionToolbar__Item {
+  flex: 1 0 auto;
+  padding: 13px 0;
+  border-left: 1px solid var(--border-color);
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.CollectionToolbar__Item--sort .Icon--select-arrow {
+  height: 6px;
+  margin-left: 2px;
+  pointer-events: none;
+}
+
+.CollectionToolbar__Item--layout {
+  flex: none;
+  width: 95px;
+  line-height: 1;
+  cursor: auto;
+  cursor: initial;
+}
+
+.CollectionToolbar__LayoutType {
+  margin: 0 6px;
+  opacity: 0.2;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.CollectionToolbar__LayoutType svg {
+  width: 18px;
+  height: 18px;
+}
+
+.CollectionToolbar__LayoutType.is-active {
+  opacity: 1;
+}
+.CollectionToolbar__Item--sort {
+  position: relative;
+  padding-right: 30px;
+}
+.CollectionToolbar__Item--sort::after {  
+  content: '';
+  position: absolute!important;
+  right: 10px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border-top-color: #2c2c2c!important;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px!important;
+  vertical-align: middle;
+  border-top: 4px solid;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  font-weight: 700;
+  padding: 0;
+}
+
+@media (max-width: 1007px) {
+  .CollectionToolbar__Group {
+    justify-content: flex-end;
+    padding: 0 18px;
+  }
+  .CollectionToolbar__Item--sort {
+    width: auto;
+    flex: none;
+  }
+  .CollectionToolbar__Item--sort span {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .CollectionToolbar__Item:first-child {
+    border-left: none;
+  }
+}
+
+@media screen and (min-width: 641px) {
+  .CollectionToolbar--reverse,
+  .CollectionToolbar__Group {
+    flex-direction: row-reverse;
+  }
+
+  .CollectionToolbar__Group {
+    flex: none;
+  }
+
+  .CollectionToolbar__Item {
+    padding: 18px 0;
+  }
+
+  .CollectionToolbar__Group .CollectionToolbar__Item {
+    padding-left: 45px;
+    padding-right: 30px;
+  }
+
+  .CollectionToolbar__Item--layout {
+    border-left: none;
+    width: 115px;
+    border-right: 1px solid var(--border-color);
+    white-space: nowrap;
+  }
+}
+
+.CollectionToolbar--top {
+  border: 0;
+  position: relative;
+  top: 0;
+  box-shadow: none;
+}
+.CollectionToolbar__Item {
+  border: 0;  
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  font-family: Euclid !important;
+  line-height: 14px;
+  letter-spacing: 1.1px !important;
+  color: #2e2e2e;
+  text-transform: uppercase;
+}
+.Popover--positionBottom:before {
+  display: none;
+}
+.Popover__ValueList {
+  padding: 0;
+  text-align: left;
+}
+.Popover__Value {
+  padding: 10px;
+  text-align: left;
+  font: normal normal 500 12px/14px 'Euclid' !important;
+  font-family: 'Euclid', sans-serif !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.Popover__Value:hover,
+.Popover__Value.is-selected {
+  background-color: #eaeaea;
+}
+#collection-sort-popover {
+  margin-top: -65px;
+}

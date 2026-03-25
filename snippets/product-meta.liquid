@@ -1,0 +1,198 @@
+{% for tag in product.tags %}
+    {% if tag contains 'badge::' %}
+      {% assign badge = tag | split: 'badge::' | last %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  
+  <div class="ProductMeta {% if block.settings.show_payment_terms == false %}hide-payment-terms{% endif %}" {{ block.shopify_attributes }}>
+    {% unless template == "product.bundle" %}
+      {%- if block.settings.show_vendor and product.vendor != blank -%}
+        <h2 class="ProductMeta__Vendor Heading u-h1">
+          {%- assign vendor_handle = product.vendor | handle -%}
+          {%- assign collection_for_vendor = collections[vendor_handle] -%}
+  
+          {%- unless collection_for_vendor.empty? -%}
+            <a href="{{ collection_for_vendor.url }}">{{ product.vendor }}</a>
+          {%- else -%}
+            {{- product.vendor -}}
+          {%- endunless -%}
+        </h2>
+      {%- endif -%}
+    {% else %}
+      <span class="bundle-badge">bundle</span>
+    {% endunless %}
+  
+    {%- if template.name != 'product' -%}
+      <a href="{{ product.url }}">
+    {%- endif -%}
+  
+      {%- if product.title contains ' - ' -%}
+        {% assign splitTitle = product.title | split: ' - ' %}
+        {% assign productTitleWithoutColor = "" %}
+        {% assign indexColor = splitTitle.size | minus: 1 %}
+        {% assign currentColor = splitTitle[indexColor] %}
+        {% if splitTitle.size == 2%}
+          {% assign productTitleWithoutColor = splitTitle[0] %}
+        {% else %}
+          {% for titleSection in splitTitle  %}
+            {% unless forloop.last == true %}
+              {% unless forloop.first == true %}
+                {% assign productTitleWithoutColor = productTitleWithoutColor | append: " - " %}
+              {% endunless %}
+      
+              {% assign productTitleWithoutColor = productTitleWithoutColor | prepend: titleSection %}
+            {% endunless %}
+          {% endfor %}
+        {% endif %}
+        {% assign productTitle = productTitleWithoutColor %}
+      {%- else -%}          
+        {% assign productTitle = product.title %}
+      {%- endif -%}
+  
+      {% liquid 
+        assign linked_styles = 0
+        assign hasStyles = false
+        if template.name == 'product'
+          for component in product.metafields.style.linked_products.value
+            if component.id != product.id 
+            assign linked_styles = linked_styles | plus: 1
+            endif
+          endfor 
+  
+          if linked_styles >= 1 and product.metafields.style.current != blank
+            assign hasStyles = true
+            assign productTitle = productTitle | remove: product.metafields.style.current
+            assign firstLetterInTitle = productTitle | slice: 0
+            if firstLetterInTitle == " "
+              assign productTitle = productTitle | remove_first: " "
+            endif
+          endif
+        endif
+      %}
+  
+      <h1 class="ProductMeta__Title Heading u-h3">{{- productTitle -}}</h1>
+            
+    {%- if template.name != 'product' -%}
+      </a>
+    {%- endif -%}
+  
+    {% unless template == "product.bundle" %}
+    {% else %}
+      {% if product.metafields.bundle.slogan != blank %}
+        <div class="ProductMeta__BundleSlogan">
+          {{product.metafields.bundle.slogan}}
+        </div>
+      {% endif %}
+    {% endunless %}
+  
+    {%- if block.settings.show_sku and product.selected_or_first_available_variant.sku != blank -%}
+      <p class="ProductMeta__Sku Heading Text--subdued">{{ 'product.form.sku' | t }}: <span class="ProductMeta__SkuNumber">{{ product.selected_or_first_available_variant.sku }}</span></p>
+    {%- endif -%}
+  
+      <div class="ProductMeta__Price-Rating">
+        {%- if product.template_suffix != 'coming-soon' -%}
+        <div class="ProductMeta__Price">
+          {%- assign compare_at_price = product.selected_or_first_available_variant.compare_at_price | times: 1.00 -%}
+          {%- assign price = product.selected_or_first_available_variant.price | times: 1.00 -%}
+          {%- assign discount_ratio = price | divided_by: compare_at_price -%}
+          {%- assign discount_percentage = 1.00 | minus: discount_ratio | times: 100.00 -%}
+  
+          <div class="ProductMeta__PriceList Heading {% if product.tags contains "final-sale" or product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price and discount_percentage >= settings.final_sale_threshold_percentage -%}final-sale-pricing{% endif %}">
+            {%- if settings.currency_code_enabled -%}
+              {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price or product.tags contains 'final-sale' -%}
+                <span class="ProductMeta__Price Price Price--highlight Text--subdued">{{ product.selected_or_first_available_variant.price | money_with_currency }}</span>
+                <span class="ProductMeta__Price Price Price--compareAt Text--subdued">{{ product.selected_or_first_available_variant.compare_at_price | money_with_currency }}</span>
+                <span class="ProductMeta__Price Price Price--sale">
+                  {%- unless template == "product.bundle" -%}
+                    {% render 'final-sale-tag', product: product %}
+                  {%- else -%}
+                    {% assign discount_off = product.metafields.bundle.discount | plus: 0 %}
+                    {{discount_off}}% OFF
+                  {%- endunless -%}
+                </span>
+              {%- else -%}
+                <span class="ProductMeta__Price Price">{{ product.selected_or_first_available_variant.price | money_with_currency }}</span>
+              {%- endif -%}
+            {%- else -%}
+              {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price or product.tags contains 'final-sale' -%}
+                <span class="ProductMeta__Price Price Price--highlight Text--subdued">{{ product.selected_or_first_available_variant.price | money_with_currency  }}</span>
+                <span class="ProductMeta__Price Price Price--compareAt Text--subdued">{{ product.selected_or_first_available_variant.compare_at_price | money_with_currency  }}</span>
+                <span class="ProductMeta__Price Price Price--sale">
+                  {%- unless template == "product.bundle" -%}
+                    {% render 'final-sale-tag', product: product %}
+                  {%- else -%}
+                    {% assign discount_off = product.metafields.bundle.discount | plus: 0 %}
+                    {{discount_off}}% OFF
+                  {%- endunless -%}
+                </span>
+              {%- else -%}
+                <span class="ProductMeta__Price Price">{{ product.selected_or_first_available_variant.price | money_with_currency  }}</span>
+              {%- endif -%}
+            {%- endif -%}
+            {%- if product.tags contains 'preorder' -%}
+              {% if product.variants.size == 1 and product.selected_or_first_available_variant.metafields.preorder.availability %}
+                <span class="preorder-badge">PRE-ORDER</span>
+              {% else %}
+                <span class="preorder-badge hide">PRE-ORDER</span>
+              {% endif %}        
+            {%- endif -%}
+            {% if badge %}
+              <br/>
+              <span class="ProductBadge">{{ badge }}</span>
+            {% endif %}
+          </div>
+  
+          <div class="ProductMeta__UnitPriceMeasurement" style="display: {%- if product.selected_or_first_available_variant.unit_price_measurement -%}block{% else %}none{% endif %}">
+            <div class="UnitPriceMeasurement Heading Text--subdued">
+              <span class="UnitPriceMeasurement__Price">{{ product.selected_or_first_available_variant.unit_price | money_with_currency  }}</span>
+              <span class="UnitPriceMeasurement__Separator">/ </span>
+              <span class="UnitPriceMeasurement__ReferenceValue" style="display: {% if product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 %}inline{% else %}none{% endif %}">{{ product.selected_or_first_available_variant.unit_price_measurement.reference_value }}</span>
+              <span class="UnitPriceMeasurement__ReferenceUnit">{{ product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}</span>
+            </div>
+          </div>
+        </div>
+        {%- endif -%}
+  
+        {%- if block.settings.show_product_rating -%}
+          <div class="ProductMeta__Rating Heading Text--subdued">
+            <!-- YOTPO PRODUCT PAGE STAR RATING | location: snippets > product-meta.liquid -->
+            {% render 'yotpo-reviews', yotpo_widget: 'pdp_star_rating', product: product %}
+            <!-- END | YOTPO STAR RATING (CATEGORY PAGE) -->
+          </div>
+        {%- endif -%}
+      </div>
+  
+      {% for tag in product.tags %}
+        {% if tag contains 'Promo_text' %}
+          {% assign split_tag = tag | split: ';' %}
+          {% assign promo_text_split = split_tag[0] | remove: 'Promo_text:' | remove: 'promo_text:' %}
+          {% assign promo_color_split = split_tag[1] | split: ':' %}
+          <div class="promo_text" style="order: 999; color: #{{ promo_color_split[1] }}">{{ promo_text_split | replace: '_', ' ' }}</div>
+  
+          {% break %}
+        {% endif %}
+      {% endfor %}
+  
+      
+    
+    {%- if template == "product.bundle" -%}
+    <div class="ge-show bundle-currency-disclaimer">Final cost may vary slightly due to exchange rate</div>
+    {%- endif -%}
+    {%- if block.settings.show_taxes_included -%}
+      {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
+        <p class="ProductMeta__TaxNotice Rte">
+          {%- if shop.taxes_included -%}
+            {{ 'product.general.include_taxes' | t }}
+          {%- endif -%}
+  
+          {%- if shop.shipping_policy.body != blank -%}
+            {{ 'product.general.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+          {%- endif -%}
+        </p>
+      {%- endif -%}
+    {%- endif -%}
+    
+  
+  </div>
+  

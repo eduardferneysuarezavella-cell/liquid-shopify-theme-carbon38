@@ -1,0 +1,121 @@
+{
+  "sections": {
+    "main": {
+      "type": "bundle-product",
+      "blocks": {
+        "product_meta": {
+          "type": "product_meta",
+          "settings": {
+            "show_vendor": true,
+            "show_sku": false,
+            "show_product_rating": true,
+            "show_taxes_included": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "disabled": true,
+          "settings": {}
+        },
+        "variant_selector": {
+          "type": "variant_selector",
+          "settings": {
+            "selector_mode": "block",
+            "show_color_swatch": true,
+            "show_color_carousel": false,
+            "size_chart": ""
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_price_in_button": false,
+            "show_payment_button": false
+          }
+        },
+        "4316dc40-1c8a-4c3c-bc6e-7e3405216ee0": {
+          "type": "pdp-addon-donation",
+          "disabled": true,
+          "settings": {
+            "is_enable_product": true,
+            "custom_product_title": "",
+            "select_product": "donation",
+            "hide_product_title": true,
+            "is_hide_product_logo": false,
+            "section_background_color": "rgba(0,0,0,0)",
+            "label_color": "rgba(0,0,0,0)",
+            "label_txtcolor": "#2e2e2e",
+            "label_bordercolor": "#e0e0e0",
+            "label_borderwidth": 1,
+            "label_borderradius": 40,
+            "label_width": 58
+          }
+        },
+        "018c84c0-1a86-49bc-9b70-3f16da8c0133": {
+          "type": "accordion",
+          "settings": {
+            "title_1": "Editor's Notes",
+            "custom_content_1": "",
+            "liquid_object_1": "{{ product.description }}",
+            "title_2": "Size & Fit",
+            "custom_content_2": "<p>{{ product.metafields.custom_fields.fit.value }}<\/p>",
+            "liquid_object_2": "",
+            "title_3": "Fabric & Care",
+            "custom_content_3": "<p>{{ product.metafields.custom_fields.care | metafield_tag }}<\/p>",
+            "liquid_object_3": ""
+          }
+        },
+        "share_buttons": {
+          "type": "share_buttons",
+          "settings": {}
+        },
+        "59cd85ec-c3c9-4b5d-8085-3ad1feeddabb": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<script type=\"text\/javascript\">\nvar _learnq = _learnq || [];\n  var classname = document.getElementsByClassName(\"ProductForm__AddToCart Button Button--full Button--primary\");\nvar addToCart = function() {\n_learnq.push(['track', 'Added to Cart', item]);\n}; for (var i = 0; i < classname.length; i++) {\nclassname[i].addEventListener('click', addToCart, false);\n}\n<\/script>"
+          }
+        }
+      },
+      "block_order": [
+        "product_meta",
+        "description",
+        "variant_selector",
+        "quantity_selector",
+        "buy_buttons",
+        "4316dc40-1c8a-4c3c-bc6e-7e3405216ee0",
+        "018c84c0-1a86-49bc-9b70-3f16da8c0133",
+        "share_buttons",
+        "59cd85ec-c3c9-4b5d-8085-3ad1feeddabb"
+      ],
+      "settings": {
+        "show_thumbnails": true,
+        "enable_video_looping": false
+      }
+    },
+    "1681509725264cacda": {
+      "type": "apps",
+      "blocks": {
+        "8bbecbbf-38be-45fb-9641-c1d81e5d5440": {
+          "type": "shopify:\/\/apps\/yotpo-product-reviews\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "8bbecbbf-38be-45fb-9641-c1d81e5d5440"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1681509725264cacda"
+  ]
+}

@@ -1,0 +1,137 @@
+{% if all_products[settings.gwp_product] and all_products[settings.gwp_product].available %}
+<script>
+    var gwp_variant_id = {{ all_products[settings.gwp_product].selected_or_first_available_variant.id }};
+    {% if settings.gwp_variant_id != blank and settings.gwp_variant_id != 0 %}
+        gwp_variant_id = {{ settings.gwp_variant_id }};
+    {% endif %}
+    {% if settings.gwp_threshold == blank %}
+    var gwp_threshold = 0;
+    {% else %}
+    var gwp_threshold = {{ settings.gwp_threshold }};
+    {% endif %}
+    
+    var gwp_threshold_product = {% if settings.gwp_threshold_product != blank %}{{ all_products[settings.gwp_threshold_product].id }}{% else %}false{% endif %};
+    var gwp_threshold_tag = {% if settings.gwp_threshold_tag != blank %}{{ settings.gwp_threshold_tag | json }}{% else %}false{% endif %};
+    
+    function gwp() {
+        if(sessionStorage.getItem('removed-gwp')) return;
+        
+        fetch(window.Shopify.routes.root + 'cart?view=tags', {
+            method: 'GET',
+            headers: {
+            'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            var itemCount = data.item_count;
+            var totalEligible = 0;
+            if(gwp_threshold_product) {
+                var has_gwp_threshold_product = false;
+            } else {
+                var has_gwp_threshold_product = true; 
+            }
+            if(gwp_threshold_tag) {
+                var has_gwp_threshold_tag = {% if customer and settings.gwp_threshold_tag != blank and customer.tags contains settings.gwp_threshold_tag %}true{% else %}false{% endif %};
+            } else {
+                var has_gwp_threshold_tag = true; 
+            }
+            var contains_gwp = false;
+            if(itemCount) {
+                data.items.forEach(item => {
+                    if(item.id != gwp_variant_id && !item.tags.includes('exclude-gwp')) {
+                        totalEligible += item.final_line_price; 
+                    } else {
+                        if(item.properties._is_gwp) {
+                            contains_gwp = true;
+                        }
+                    }
+                    
+                    if(gwp_threshold_product && gwp_threshold_product == item.product_id) {
+                        has_gwp_threshold_product = true;
+                    }
+                });    
+                if(totalEligible > gwp_threshold && !contains_gwp && has_gwp_threshold_product && has_gwp_threshold_tag) {
+                    addGWP(gwp_variant_id);
+                }
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+    gwp();
+
+    document.addEventListener('product:added', function(event) {
+        gwp();
+    });
+
+    document.addEventListener('cart:refresh', function(event) {
+        gwp();
+    });
+
+    document.addEventListener('cart:updated', function(event) {
+        gwp();
+    });
+    
+    function addGWP(gwp_variant_id) {
+        var formData = {
+            'items': []
+        };
+        var itemData = {
+            'id': gwp_variant_id,
+            'quantity': 1,
+            'properties': {
+                _is_gwp: true
+            }
+        }
+        formData.items.push(itemData);
+    
+        fetch(window.Shopify.routes.root + 'cart/add.js', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+        })
+        .then(response => {
+        return response.json();
+        })
+        .then(data => {
+            document.documentElement.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+            // open cart drawer
+            if(typeof item === 'undefined') {
+                var itemData = data.items[0];
+                var item = {
+                    "Name": itemData.title,
+                    "ProductID": itemData.product_id,
+                    "ImageURL": itemData.image,
+                    "URL": "https://carbon38.com"+itemData.url,
+                    "Brand": itemData.vendor,
+                    "Price": Shopify.formatMoney(itemData.price, window.theme.moneyWithCurrencyFormat),
+                    "Value": itemData.price / 100,
+                    "CompareAtPrice": "$0.00"
+                }
+                if(itemData.compare_at_price) {
+                item["CompareAtPrice"] = Shopify.formatMoney(itemData.compare_at_price, window.theme.moneyWithCurrencyFormat);
+                }
+              }
+              document.documentElement.dispatchEvent(
+                new CustomEvent('product:added', {
+                  bubbles: true,
+                  detail: {
+                    variant: gwp_variant_id,
+                    quantity: 1,
+                    item: item
+                  },
+                })
+              );
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+</script>
+{% endif %}

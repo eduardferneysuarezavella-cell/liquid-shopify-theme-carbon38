@@ -1,0 +1,218 @@
+<style>
+  .accordion-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .accordion-item {
+    width: 100%;
+    max-width: 68rem;
+    margin: 0 auto;
+    overflow: hidden;
+    border-bottom: 0.1rem solid #2e2e2e;
+  }
+
+  .accordion-icon {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .accordion-item[open] .accordion-icon {
+    transform: rotate(180deg);
+  }
+
+  .accordion-summary {
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.2rem 0;
+    font-size: 1.2rem;
+    font-family: 'quiche-text', sans-serif;
+  }
+
+  .accordion-content {
+    font-size: 1.2rem;
+    padding-bottom: 2.4rem;
+  }
+
+  .accordion-content a {
+    color: #000;
+  }
+
+  .accordion-content p {
+    margin: 0;
+    padding: 1.2rem 0;
+  }
+</style>
+
+<div class="accordion-section page-width">
+  <div class="accordion-list">
+    {% for block in section.blocks %}
+      <details class="accordion-item">
+        <summary class="accordion-summary">
+          <span>{{ block.settings.title }}</span>
+          <span class="accordion-icon">
+            <svg
+              width="9"
+              height="9"
+              viewBox="0 0 9 9"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M3.875 8.83496V5.08496H0.125V3.83496H3.875V0.0849609H5.125V3.83496H8.875V5.08496H5.125V8.83496H3.875Z" fill="black"></path>
+            </svg>
+            <svg
+              width="9"
+              height="3"
+              viewBox="0 0 9 3"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M0.125 0.834961H8.875V2.08496H0.125V0.834961Z" fill="black"></path>
+            </svg>
+          </span>
+        </summary>
+        <div class="text-5 accordion-content content">{{ block.settings.content }}</div>
+      </details>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  class Accordion {
+    constructor(el) {
+      this.el = el;
+      this.summary = el.querySelector('summary');
+      this.content = el.querySelector('.content');
+
+      this.animation = null;
+      this.isClosing = false;
+      this.isExpanding = false;
+      this.summary.addEventListener('click', (e) => this.onClick(e));
+    }
+
+    onClick(e) {
+      e.preventDefault();
+      this.el.style.overflow = 'hidden';
+      if (this.isClosing || !this.el.open) {
+        this.open();
+      } else if (this.isExpanding || this.el.open) {
+        this.shrink();
+      }
+    }
+
+    shrink() {
+      this.isClosing = true;
+
+      const startHeight = `${this.el.offsetHeight}px`;
+      const endHeight = `${this.summary.offsetHeight}px`;
+
+      if (this.animation) {
+        this.animation.cancel();
+      }
+
+      this.animation = this.el.animate(
+        {
+          height: [startHeight, endHeight],
+        },
+        {
+          duration: 400,
+          easing: 'ease-out',
+        }
+      );
+
+      this.animation.onfinish = () => this.onAnimationFinish(false);
+      this.animation.oncancel = () => (this.isClosing = false);
+    }
+
+    open() {
+      this.el.style.height = `${this.el.offsetHeight}px`;
+      this.el.open = true;
+      window.requestAnimationFrame(() => this.expand());
+    }
+
+    expand() {
+      this.isExpanding = true;
+      const startHeight = `${this.el.offsetHeight}px`;
+      const endHeight = `${this.summary.offsetHeight + this.content.offsetHeight}px`;
+
+      if (this.animation) {
+        this.animation.cancel();
+      }
+
+      this.animation = this.el.animate(
+        {
+          height: [startHeight, endHeight],
+        },
+        {
+          duration: 400,
+          easing: 'ease-out',
+        }
+      );
+      this.animation.onfinish = () => this.onAnimationFinish(true);
+      this.animation.oncancel = () => (this.isExpanding = false);
+    }
+
+    onAnimationFinish(open) {
+      this.el.open = open;
+      this.animation = null;
+      this.isClosing = false;
+      this.isExpanding = false;
+      this.el.style.height = this.el.style.overflow = '';
+    }
+  }
+
+  document.querySelectorAll('.accordion-list details').forEach((el) => {
+    new Accordion(el);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Accordion",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Default Title"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#fff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Toggle"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Custom Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Accordion",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

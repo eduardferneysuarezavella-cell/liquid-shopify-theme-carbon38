@@ -1,0 +1,879 @@
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<script defer>
+    deferjQuery(function() {
+        var slickScript = document.createElement('script');
+        slickScript.src = "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js";
+
+        document.head.appendChild(slickScript);
+
+        function deferSlick(method) {
+            if (window.jQuery('body').slick) {
+                method();
+            } else {
+                setTimeout(function() { deferSlick(method) }, 50);
+            }
+        }
+        
+        jQuery(document).ready(function($) {
+
+            if($('.ctl-slider').length) {
+                deferSlick(function() {
+                    $('.ctl-slider').slick({
+                        slidesToShow: 3,
+                        infinite: false,
+                        prevArrow: `<button class="slick-prev slick-arrow" aria-label="Previous" type="button" aria-disabled="true" style=""><svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.90967 7.34019L0.999216 4.42974" stroke="#717171" stroke-linecap="square"/>
+                            <path d="M1 4.43045L3.91045 1.52" stroke="#717171" stroke-linecap="square"/>
+                            <path d="M1.20093 4.44408H9.19393H1.20093Z" fill="white"/>
+                            <path d="M1.20093 4.44408H9.19393" stroke="#717171"/>
+                            </svg>              
+                            </button>`,
+                        nextArrow: `<button class="slick-next slick-arrow" aria-label="Next" type="button" style="" aria-disabled="false"><svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.09033 1.54799L9.00078 4.45844" stroke="#717171" stroke-linecap="square"/>
+                            <path d="M9 4.45773L6.08955 7.36818" stroke="#717171" stroke-linecap="square"/>
+                            <path d="M8.79907 4.44411L0.806072 4.44411L8.79907 4.44411Z" fill="white"/>
+                            <path d="M8.79907 4.44411L0.806072 4.44411" stroke="#717171"/>
+                            </svg></button>`,
+                        responsive: [
+                            {
+                                breakpoint: 1024,
+                                settings: {
+                                  slidesToShow: 4,
+                                }
+                            },
+                            {
+                                breakpoint: 749,
+                                settings: {
+                                  slidesToShow: 3,
+                                }
+                            },
+                            {
+                                breakpoint: 480,
+                                settings: {
+                                  slidesToShow: 2,
+                                }
+                            }
+                        ]
+                    });
+                })
+            }
+            
+
+            $(document).on('overlay:updated', function() {
+                document.querySelectorAll('.qv-overlay[data-color-swatch]').forEach(swatch => {
+                    window.qvColorSwatches.push(swatch);    
+                });
+                window.qvColorSwatches = window.qvColorSwatches || [];
+                deferSlick(function() {
+                    $('body > .qv-overlay .qv-image-container.active .qv-images').slick({
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        infinite: false,
+                        buttons: false,
+                        arrows: false,
+                        touchMove: false,
+                        adaptiveHeight: true
+                    });
+                });
+            });
+
+            $('body').on('click', '.qv-go-to-image', function(e) {
+                e.preventDefault();
+                var position = $(this).data('position');
+                deferSlick(function() {
+                    $('body').find('.qv-overlay .qv-image-container.active .qv-images.slick-slider').slick("slickGoTo",position);
+                });
+            })
+            
+        });
+    });
+</script>
+<script defer>
+    document.addEventListener('click',function(e){
+        if(e.target && (e.target.classList.contains('qv-close-qv') || e.target.classList.contains('qv-overlay'))){
+            e.preventDefault();
+            // Destroy pinch-to-zoom before removing modal
+            destroyPinchZoom();
+            e.target.closest(".qv-overlay").remove();
+            // Re-enable body scroll
+            document.body.classList.remove('modal-open');
+        }
+
+        if(e.target.classList.contains('quickshop_trigger')){
+            e.preventDefault();
+
+            var buttonInitialText = e.target.innerHTML;
+
+            e.target.innerText = "Opening...";
+            e.target.classList.add('opening');
+
+            fetch(window.Shopify.routes.root + 'products/'+e.target.dataset.productHandle+'?view=quick-view').then(function (response) {
+                // The API call was successful!
+                return response.text();
+            }).then(function (html) {
+                // This is the HTML from our response as a text string
+                document.body.insertAdjacentHTML('beforeend', html);
+                document.documentElement.dispatchEvent(new CustomEvent('overlay:updated', { bubbles: true }));
+                e.target.innerHTML = buttonInitialText;
+                e.target.classList.remove('opening');
+                // Disable body scroll when modal opens
+                document.body.classList.add('modal-open');
+                // Initialize pinch-to-zoom functionality
+                setTimeout(initializePinchZoom, 100);
+            }).catch(function (err) {
+                // There was an error
+                console.warn('Something went wrong.', err);
+            });
+        }
+
+        if(e.target.classList.contains('quickview_trigger') || e.target.closest('.quickview_trigger')){
+            e.preventDefault();
+            if (e.target.classList.contains('quickview_trigger')) {
+                var quickviewButton = e.target;
+            } else {
+                var quickviewButton = e.target.closest('.quickview_trigger');
+            }
+            
+
+            fetch(window.Shopify.routes.root + 'products/'+quickviewButton.dataset.productHandle+'?view=quick-view-no-atc').then(function (response) {
+                // The API call was successful!
+                return response.text();
+            }).then(function (html) {
+                // This is the HTML from our response as a text string
+                document.body.insertAdjacentHTML('beforeend', html);
+                document.documentElement.dispatchEvent(new CustomEvent('overlay:updated', { bubbles: true }));
+                // Disable body scroll when modal opens
+                document.body.classList.add('modal-open');
+                // Initialize pinch-to-zoom functionality
+                setTimeout(initializePinchZoom, 100);
+            }).catch(function (err) {
+                // There was an error
+                console.warn('Something went wrong.', err);
+            });
+        }
+
+        if(e.target && e.target.classList.contains('ctl-open-qv')) {
+            e.preventDefault();
+
+            if(e.target.closest('.ctl-product').querySelector('.ctl-quickview-template')) {
+                const qvTemplate = e.target.closest('.ctl-product').querySelector('.ctl-quickview-template');
+                const qvTemplateContent = qvTemplate.content.cloneNode(true);
+    
+                document.body.appendChild(qvTemplateContent);
+                // Disable body scroll when modal opens
+                document.body.classList.add('modal-open');
+            }
+
+            document.documentElement.dispatchEvent(new CustomEvent('overlay:updated', { bubbles: true }));
+        }
+
+        if(e.target && e.target.classList.contains('qv-variant-size') && !e.target.classList.contains('unavailable')){
+            e.preventDefault();
+            var thisSize = e.target;
+            if(!thisSize.classList.contains('selected')) {
+                var qvComponent = thisSize.closest('.qv-component');
+                var lowInStockNote = qvComponent.querySelector('.low-in-stock-note');
+                if(qvComponent.querySelector('.qv-variant-size.selected')) qvComponent.querySelector('.qv-variant-size.selected').classList.remove('selected');                
+                thisSize.classList.add('selected');
+                if(thisSize.dataset.preorder == "true") {
+                    qvComponent.dataset.preorder = "true";
+                    qvComponent.dataset.estimatedShippingDate = thisSize.dataset.estimatedShippingDate;
+                    if (qvComponent.querySelector('.qv-selection-estimated-shipping-date')) {
+                        qvComponent.querySelector('.qv-selection-estimated-shipping-date').text = 'Estimated shipping date: ' + thisSize.dataset.estimatedShippingDate;
+                    } else {
+                        qvComponent.querySelector('.qv-form').insertAdjacentHTML('afterend',"<div class='qv-selection-estimated-shipping-date'>Estimated shipping date: "+thisSize.dataset.estimatedShippingDate+"</div>");
+                    }
+                } else {
+                    qvComponent.dataset.preorder = "false";
+                    qvComponent.dataset.estimatedShippingDate = "";
+                    if (qvComponent.querySelector('.qv-selection-estimated-shipping-date')) {
+                        qvComponent.querySelector('.qv-selection-estimated-shipping-date').remove();
+                    }
+                }
+                if(lowInStockNote) {
+                    if (thisSize.dataset.isLowInStock == "true") {
+                        lowInStockNote.style.display = "block";
+                    } else {
+                        lowInStockNote.style.display = "none";
+                    }
+                }
+                
+                if(qvComponent.dataset.variantId != "") {
+                    qvComponent.dataset.variantId = "";
+                }                
+                qvComponent.dataset.variantId = thisSize.dataset.variantId;
+                if(qvComponent.querySelector('.qv-atc')) {
+                    qvBuildATC(qvComponent);
+                }
+            }
+        }
+
+        if(e.target && e.target.classList.contains('qv-variant-color')){
+            e.preventDefault();
+            var thisColor = e.target;
+            if(!thisColor.classList.contains('selected')) {
+                var qvComponent = thisColor.closest('.qv-component');
+                var lowInStockNote = qvComponent.querySelector('.low-in-stock-note');
+
+                if (lowInStockNote) {
+                    lowInStockNote.style.display = "none";
+                }
+
+                if(thisColor.dataset.available == "true") {
+                    qvComponent.dataset.soldOut = 'false';
+                } else {
+                    qvComponent.dataset.soldOut = 'true';
+                }
+
+                qvComponent.querySelector('.qv-label-color span').innerText = thisColor.dataset.color;
+
+                qvComponent.querySelector('.qv-image-container.active').classList.remove('active');
+                qvComponent.querySelector('.qv-image-container[data-product-id="'+thisColor.dataset.productId+'"]').classList.add('active');
+                document.documentElement.dispatchEvent(new CustomEvent('overlay:updated', { bubbles: true }));
+
+                if (qvComponent.querySelector('.qv-selection-estimated-shipping-date')) {
+                    qvComponent.querySelector('.qv-selection-estimated-shipping-date').remove();
+                }
+                
+                //remove variant selection
+                if(qvComponent.dataset.variantId != "") {
+                    qvComponent.dataset.variantId = "";
+                }
+                //remove other color selected
+                if(qvComponent.querySelector('.qv-variant-color.selected')) {
+                    qvComponent.querySelector('.qv-variant-color.selected').classList.remove('selected');
+                }
+                //remove size
+                if(qvComponent.querySelector('.qv-variant-size.selected')) {
+                    qvComponent.querySelector('.qv-variant-size.selected').classList.remove('selected');
+                }
+                //show new size selector
+                qvComponent.querySelectorAll('.qv-sizes').forEach(qvSizes => {
+                    if(qvSizes.dataset.color != thisColor.dataset.color) {
+                        qvSizes.classList.add('hidden');
+                    } else {
+                        if(qvSizes.classList.contains('hidden')) qvSizes.classList.remove('hidden');
+                        if(qvSizes.dataset.preorder) {
+                            if(qvComponent.querySelector('.qv-component-selection .qv-component-title .preorder-badge')) {
+                                if(qvComponent.querySelector('.qv-component-selection .qv-component-title .preorder-badge').classList.contains('hidden')) {
+                                    qvComponent.querySelector('.qv-component-selection .qv-component-title .preorder-badge').classList.remove('hidden');
+                                }
+                            } else {
+                                qvComponent.querySelector('.qv-component-selection .qv-component-title').insertAdjacentHTML('beforeend', '<span class="preorder-badge">PRE-ORDER</span>');
+                            }
+                        } else {
+                            if(qvComponent.querySelector('.qv-component-selection .qv-component-title .preorder-badge')) {
+                                qvComponent.querySelector('.qv-component-selection .qv-component-title .preorder-badge').classList.add('hidden');
+                            }
+                        }
+                    }
+                });
+                thisColor.classList.add('selected');
+                //qvComponent.querySelector('.qv-component-image img').src = thisColor.dataset.colorImage;
+                if(qvComponent.querySelector('.qv-atc')) {
+                    qvBuildATC(qvComponent);
+                }
+            }
+        }
+    });
+
+    
+
+    window.qvColorSwatches = [];
+    var isPreorderIcon = `{% render 'icon-preorder' %}`;
+
+    // Pinch to zoom functionality
+    class PinchZoom {
+        constructor(element) {
+            this.element = element;
+					  // Allow vertical scrolling and native pinch‑zoom when not intercepted
+						this.element.style.touchAction = 'pan-y pinch-zoom';
+            this.imageContainer = element.querySelector('.qv-images');
+            this.scale = 1;
+            this.initialScale = 1;
+            this.maxScale = 4;
+            this.minScale = 1;
+            this.lastDistance = 0;
+            this.startTouches = [];
+            this.isDragging = false;
+            this.lastPan = { x: 0, y: 0 };
+            this.pan = { x: 0, y: 0 };
+            
+            // Double tap functionality
+            this.lastTapTime = 0;
+            this.doubleTapDelay = 300; 
+            this.touchStartPos = null;
+            this.maxTapMovement = 10; 
+
+            this.initialTouchPos = null;
+            
+            this.init();
+        }
+
+        init() {
+            this.element.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: false });
+            this.element.addEventListener('touchmove', this.handleTouchMove.bind(this), { passive: false });
+            this.element.addEventListener('touchend', this.handleTouchEnd.bind(this), { passive: false });
+        }
+
+        getDistance(touches) {
+            const dx = touches[0].clientX - touches[1].clientX;
+            const dy = touches[0].clientY - touches[1].clientY;
+            return Math.sqrt(dx * dx + dy * dy);
+        }
+
+        getCenter(touches) {
+            return {
+                x: (touches[0].clientX + touches[1].clientX) / 2,
+                y: (touches[0].clientY + touches[1].clientY) / 2
+            };
+        }
+
+        handleTouchStart(e) {
+            if (e.touches.length === 1) {
+                // Single touch - always track for double-tap detection
+                this.startTouches = [{ x: e.touches[0].clientX, y: e.touches[0].clientY }];
+                this.touchStartPos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+                
+                // Only prepare for panning if already zoomed
+                if (this.scale > 1) {
+                    // Prevent any default behavior when zoomed to stop navigation
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.isDragging = true;
+                    this.imageContainer.classList.add('zooming');
+                }
+            } else if (e.touches.length === 2) {
+                // Two touches - prepare for pinch zoom
+                e.preventDefault();
+                e.stopPropagation();
+                this.startTouches = Array.from(e.touches);
+                this.lastDistance = this.getDistance(e.touches);
+                this.initialScale = this.scale;
+                this.imageContainer.classList.add('zooming');
+            }
+        }
+
+        handleTouchMove(e) {
+            if (e.touches.length === 1 && this.scale > 1) {
+                // Prevent any scrolling/navigation when zoomed
+                e.preventDefault();
+                e.stopPropagation();
+                
+                if (this.isDragging) {
+                    // Handle panning when zoomed
+                    const deltaX = e.touches[0].clientX - this.startTouches[0].x;
+                    const deltaY = e.touches[0].clientY - this.startTouches[0].y;
+                    
+                    this.pan.x = this.lastPan.x + deltaX;
+                    this.pan.y = this.lastPan.y + deltaY;
+                    
+                    // Limit panning to image bounds
+                    const maxPanX = (this.scale - 1) * this.element.offsetWidth / 2;
+                    const maxPanY = (this.scale - 1) * this.element.offsetHeight / 2;
+                    
+                    this.pan.x = Math.max(-maxPanX, Math.min(maxPanX, this.pan.x));
+                    this.pan.y = Math.max(-maxPanY, Math.min(maxPanY, this.pan.y));
+                    
+                    this.updateTransform();
+                }
+            } else if (e.touches.length === 2) {
+                // Handle pinch zoom
+                e.preventDefault();
+                e.stopPropagation();
+                const distance = this.getDistance(e.touches);
+                const scaleChange = distance / this.lastDistance;
+                
+                this.scale = Math.max(this.minScale, Math.min(this.maxScale, this.initialScale * scaleChange));
+                
+                // Reset pan if scale is back to 1
+                if (this.scale <= 1) {
+                    this.pan = { x: 0, y: 0 };
+                }
+                
+                this.updateTransform();
+            }
+        }
+
+        handleTouchEnd(e) {
+            if (e.touches.length === 0) {
+                // All touches ended
+                this.isDragging = false;
+                this.lastPan = { ...this.pan };
+                this.imageContainer.classList.remove('zooming');
+                
+                // Check for double tap (only if we had a single touch and weren't dragging)
+                if (this.startTouches.length === 1 && !this.isDragging && this.touchStartPos) {
+                    // Check if finger moved too much (not a tap)
+                    const touchEndX = e.changedTouches[0]?.clientX || this.touchStartPos.x;
+                    const touchEndY = e.changedTouches[0]?.clientY || this.touchStartPos.y;
+                    const distance = Math.sqrt(
+                        Math.pow(touchEndX - this.touchStartPos.x, 2) + 
+                        Math.pow(touchEndY - this.touchStartPos.y, 2)
+                    );
+                    
+                    if (distance <= this.maxTapMovement) {
+                        const currentTime = new Date().getTime();
+                        const timeDiff = currentTime - this.lastTapTime;
+                        
+                        if (timeDiff < this.doubleTapDelay && timeDiff > 0) {
+                            // Double tap detected - toggle zoom
+                            e.preventDefault();
+                            e.stopPropagation();
+                            this.handleDoubleTap();
+                            this.lastTapTime = 0; // Reset to prevent triple tap
+                        } else {
+                            // Single tap - record time
+                            this.lastTapTime = currentTime;
+                        }
+                    }
+                    
+                    this.touchStartPos = null; // Reset touch position
+                }
+                
+                // Snap back if scale is too small
+                if (this.scale < this.minScale) {
+                    this.scale = this.minScale;
+                    this.pan = { x: 0, y: 0 };
+                    this.lastPan = { x: 0, y: 0 };
+                    this.updateTransform();
+                }
+            } else if (e.touches.length === 1) {
+                // Two fingers to one finger
+                this.isDragging = this.scale > 1;
+                if (this.isDragging) {
+                    this.startTouches = [{ x: e.touches[0].clientX, y: e.touches[0].clientY }];
+                }
+            }
+        }
+
+
+        updateTransform() {
+            if (this.imageContainer) {
+                this.imageContainer.style.transform = `translate(${this.pan.x}px, ${this.pan.y}px) scale(${this.scale})`;
+                
+                // Disable/enable Slick slider based on zoom level
+                this.toggleSliderTouchMove();
+            }
+        }
+
+        handleDoubleTap() {
+            if (this.scale <= 1) {
+                // Smart‑zoom towards the point that was double‑tapped
+								if (this.touchStartPos) {
+									this.zoomToMax(this.touchStartPos.x, this.touchStartPos.y);
+							} else {
+									this.zoomToMax();
+							}
+            } else {
+                this.reset();
+            }
+        }
+
+				zoomToMax(tapX = null, tapY = null) {
+            this.scale = 3;
+            
+            if (tapX !== null && tapY !== null) {
+							const rect = this.element.getBoundingClientRect();
+							const cx = tapX - rect.left;
+							const cy = tapY - rect.top;
+
+							// Calculate the pan so the tapped point remains roughly under the finger
+							const offsetX = (this.element.offsetWidth / 2 - cx) * (this.scale - 1);
+							const offsetY = (this.element.offsetHeight / 2 - cy) * (this.scale - 1);
+
+							// Constrain pan to image bounds
+							const maxPanX = (this.scale - 1) * this.element.offsetWidth / 2;
+							const maxPanY = (this.scale - 1) * this.element.offsetHeight / 2;
+
+							this.pan = {
+									x: Math.max(-maxPanX, Math.min(maxPanX, offsetX)),
+									y: Math.max(-maxPanY, Math.min(maxPanY, offsetY))
+							};
+					} else {
+							// Fallback: zoom to centre
+							this.pan = { x: 0, y: 0 };
+					}
+
+					this.lastPan = { ...this.pan };
+
+            
+            if (this.imageContainer) {
+                // Enable smooth transition for zoom animation
+                this.imageContainer.classList.remove('zooming');
+                this.updateTransform();
+            }
+        }
+
+        toggleSliderTouchMove() {
+            // Disable touch events on the overlay when zoomed to prevent navigation
+            const qvOverlay = document.querySelector('.qv-overlay');
+            const qvContent = document.querySelector('.qv-content');
+            
+            if (this.scale > 1) {
+                // Add class to disable navigation when zoomed
+                if (qvOverlay) qvOverlay.classList.add('zoom-mode');
+                if (qvContent) qvContent.classList.add('zoom-mode');
+                
+                // Disable any other touch handlers
+                this.element.style.touchAction = 'none';
+            } else {
+                // Remove class to re-enable navigation when at normal scale
+                if (qvOverlay) qvOverlay.classList.remove('zoom-mode');
+                if (qvContent) qvContent.classList.remove('zoom-mode');
+                
+                // Re-enable touch handlers
+								this.element.style.touchAction = 'pan-y pinch-zoom';
+            }
+        }
+
+        reset(animated = true) {
+            this.scale = 1;
+            this.pan = { x: 0, y: 0 };
+            this.lastPan = { x: 0, y: 0 };
+            this.isDragging = false;
+            
+            if (this.imageContainer) {
+                if (animated) {
+                    // Enable transition for smooth reset animation
+                    this.imageContainer.classList.remove('zooming');
+                    this.updateTransform();
+                } else {
+                    // Instant reset without animation
+                    this.imageContainer.classList.remove('zooming');
+                    this.imageContainer.style.transform = '';
+                    // Still need to re-enable slider when reset instantly
+                    this.toggleSliderTouchMove();
+                }
+            }
+        }
+
+        destroy() {
+            this.element.removeEventListener('touchstart', this.handleTouchStart.bind(this));
+            this.element.removeEventListener('touchmove', this.handleTouchMove.bind(this));
+            this.element.removeEventListener('touchend', this.handleTouchEnd.bind(this));
+        }
+    }
+
+    // Initialize pinch-to-zoom for modal images
+    let currentPinchZoom = null;
+
+    function initializePinchZoom() {
+        const imageContainer = document.querySelector('.qv-overlay .qv-image-container.active');
+        if (imageContainer && !currentPinchZoom) {
+            currentPinchZoom = new PinchZoom(imageContainer);
+            
+            // Set first thumbnail as active
+            const firstThumbnail = imageContainer.querySelector('.qv-go-to-image');
+            if (firstThumbnail) {
+                firstThumbnail.classList.add('active');
+            }
+        }
+    }
+
+    function destroyPinchZoom() {
+        if (currentPinchZoom) {
+            currentPinchZoom.destroy();
+            currentPinchZoom = null;
+        }
+    }
+
+    function qvQuantity(quantity) {
+        if(quantity.classList.contains('increase')) {
+            quantity.parentElement.querySelector('input').value = Number(quantity.parentElement.querySelector('input').value) + 1
+        } else {
+            if(Number(quantity.parentElement.querySelector('input').value) > 1) {
+                quantity.parentElement.querySelector('input').value = Number(quantity.parentElement.querySelector('input').value) - 1
+            }
+            
+        }
+    }
+
+    function qvATC(button) {
+        if(!button.getAttribute('disabled')) {
+            var formData = {
+                'items': []
+            };
+            button.innerText = 'ADDING...';
+            var itemToPush = {
+                'id': button.closest('.qv-overlay').dataset.variantId,
+                'quantity': parseInt(button.closest('.qv-overlay').querySelector('input[name="qv-quantity"]').value)
+            }
+            {% if template contains 'product' %}
+                if(!itemToPush.hasOwnProperty('properties')) {
+                    itemToPush['properties'] = {};
+                }
+                itemToPush['properties']['_complete_the_look'] = true;
+                itemToPush['properties']['_complete_the_look_trigger'] = {{ product.url | json }};
+            {% elsif template contains 'product' %}
+                if(!itemToPush.hasOwnProperty('properties')) {
+                    itemToPush['properties'] = {};
+                }
+                itemToPush['properties']['_quick_view'] = true;
+                itemToPush['properties']['_quick_view_trigger'] = button.dataset.url;
+            {% endif %}
+            if(button.closest('.qv-component').dataset.preorder && button.closest('.qv-component').dataset.preorder == "true") {
+                if(!itemToPush.hasOwnProperty('properties')) {
+                    itemToPush['properties'] = {};
+                }
+                itemToPush['properties']['_preorder'] = true;
+                itemToPush['properties']['Estimated shipping date'] = button.closest('.qv-component').dataset.estimatedShippingDate ? button.closest('.qv-component').dataset.estimatedShippingDate : '';
+            }
+            formData.items.push(itemToPush);
+
+            fetch(window.Shopify.routes.root + 'cart/add.js', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+
+            return response.json();
+            })
+            .then(data => {
+
+                //return;
+                if(data.status == 422) {
+
+                    document.querySelector("body > .qv-overlay .formErrors").innerText = data.description
+
+                    setTimeout(function() {                    
+                        button.innerText = 'ADD TO BAG';
+                        document.querySelector("body > .qv-overlay .formErrors").innerText = ''
+                    }, 2500);
+
+                } else {
+                    document.documentElement.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+                    // open cart drawer
+
+                    // Dispatch event to update saved items
+                    const gwCustomerAccounts = document.querySelector('gw-customer-accounts');
+                    if (gwCustomerAccounts) {
+                        const variantId = button.closest('.qv-overlay').dataset.variantId;
+                        const productId = button.closest('.qv-overlay').dataset.productId;
+                        if (!productId) return;
+
+                        const event = new CustomEvent('gw:saved-items-from-cart', {
+                            detail: { 
+                                productId: productId,
+                                variantId: variantId,
+                                target: button
+                            }
+                        });
+
+                        gwCustomerAccounts.dispatchEvent(event);
+                    }
+
+
+                    var dataLayer = window.dataLayer = window.dataLayer || [];
+                    dataLayer.push({'event': 'add_to_cart', 
+                                    'ecommerce': {
+                                    'items': {
+                                        'item_name': button.dataset.title, 
+                                        'item_category': button.dataset.category,
+                                        'item_id': button.dataset.sku,
+                                        'item_variant': button.dataset.variantId,
+                                        'price': button.dataset.price / 100
+                                        }
+                                    }
+                                });
+
+                    if(typeof item === 'undefined') {
+                            var itemData = data.items[0];
+                            var item = {
+                                "Name": itemData.title,
+                                "ProductID": itemData.product_id,
+                                "ImageURL": itemData.image,
+                                "URL": "https://carbon38.com"+itemData.url,
+                                "Brand": itemData.vendor,
+                                "Price": Shopify.formatMoney(itemData.price, window.theme.moneyWithCurrencyFormat),
+                                "Value": itemData.price / 100,
+                                "CompareAtPrice": "$0.00"
+                            }
+                            if(itemData.compare_at_price) {
+                                item["CompareAtPrice"] = Shopify.formatMoney(itemData.compare_at_price, window.theme.moneyWithCurrencyFormat);
+                            }
+                        }
+                        document.documentElement.dispatchEvent(
+                        new CustomEvent('product:added', {
+                            bubbles: true,
+                            detail: {
+                            variant: button.dataset.variantId,
+                            quantity: 1,
+                            item: item
+                            },
+                        })
+                        );
+
+                    button.innerText = 'ADDED';
+
+                    document.querySelector("body > .qv-overlay .formErrors").innerText = ''
+    
+                    document.querySelector("body > .qv-overlay").remove();
+    
+                    setTimeout(function() {                    
+                        button.innerText = 'ADD TO BAG';
+                    }, 2000);
+                }
+
+
+            })
+            .catch((error) => {
+            console.error('Error:', error);
+            });         
+        }
+    }
+
+    function qvBuildATC(overlay) {
+        var atcButton = overlay.querySelector('.qv-atc');
+        if(overlay.dataset.soldOut == "true") {
+            atcButton.setAttribute('disabled','disabled');
+            atcButton.innerText = "SOLD OUT";
+        } else {
+            if(overlay.dataset.variantId == '' || !overlay.dataset.variantId) {
+                atcButton.setAttribute('disabled','disabled');
+                atcButton.innerText = "SELECT SIZE";
+            } else {
+                atcButton.removeAttribute('disabled');
+                atcButton.innerText = "ADD TO BAG";
+            }
+        }
+    }
+
+    function qvGetSwatchesImage(array) {
+        if(array.length) {
+            var color = array[0];
+            var colorName = color.title.split(' - ');
+            colorName = colorName[colorName.length-1];
+            var colorNameLowercase = colorName.toLowerCase();
+            if(window.swatchColorObject[colorNameLowercase]) {
+                var colorSwatchUrl = window.swatchColorObject[colorNameLowercase];
+            } else {
+                var colorSwatchUrl = 'background-image: url(' + window.swatchColorObject.shopifyFilesFolder + window.shopifyHandleize(colorNameLowercase) + '_72x72.png)';
+            }
+
+            var qvComponent = document.querySelector('.qv-component[data-product-title="'+color.title.replace(" - " + colorName, "")+'"]');
+            var newColor = `<span class="qv-variant-color" data-product-id="`+ color.id.replace('gid://shopify/Product/','') +`" data-available="`+color.availableForSale+`" data-color-image="`+color.images.edges[0].node.url+`" data-tooltip="`+colorName+`" data-color="`+colorName+`"  data-color-name-lowercase="`+colorNameLowercase+`"></span>`;
+            qvComponent.querySelector('.qv-colors').insertAdjacentHTML('beforeend',newColor);
+            array.shift();
+            qvGetSwatchesImage(array);
+        } else {
+            if(document.querySelector('.complete-the-look')) document.querySelector('.complete-the-look').classList.add('loaded');
+            window.loadqv = false;
+        }
+    }
+
+    function qvGetColorSwatches(array, swatchesImage = []) {
+        if(array.length) {
+            var currentComponent = array[0];
+            var currentComponentColor = currentComponent.querySelector('.qv-sizes').dataset.color;
+            var componentTitleClean = currentComponent.dataset.productTitle.replace(/\'/g,"").replace(/\"/g,"");
+            fetch('/api/2022-07/graphql.json', {
+                method: 'POST',
+                headers: {
+                    'X-Shopify-Storefront-Access-Token': 'e09aedd0f593820ed2af9f6854af7e2b',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    query: `
+                    {
+                        products(query:"title:'`+componentTitleClean+` - '*" first:40) {
+                            edges {
+                                node {
+                                    title
+                                    id
+                                    availableForSale
+                                    tags
+                                    totalInventory
+                                    handle
+                                    images(first:6) {
+                                        edges {
+                                            node {
+                                                url
+                                                id
+                                            }
+                                        }
+                                    }
+                                    variants(first: 10) {
+                                        edges {
+                                            node {
+                                                id
+                                                availableForSale
+                                                title
+                                                quantityAvailable
+                                                price {
+                                                    amount
+                                                }
+                                                metafield_preorder_availability:metafield(namespace: "preorder", key: "availability") {
+                                                    value
+                                                }
+                                                metafield_preorder_estimated_shipping_date:metafield(namespace: "preorder", key: "estimated_shipping_date") {
+                                                    value
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        } 
+                    }
+                    `
+                }),
+                })
+                .then((res) => res.json())
+                .then(data => {
+                if(data.data.products.edges.length > 0) {
+                    data.data.products.edges.forEach((color, i) => {
+                        var colorName = color.node.title.split(' - ');
+                        colorName = colorName[colorName.length-1];
+                        var colorNodeClean = color.node.title.replace(/\'/g,"").replace(/\"/g,"");
+                        if(currentComponentColor != colorName && color.node.availableForSale && colorNodeClean.startsWith(componentTitleClean+' - ') && !currentComponent.querySelector('.qv-variants .qv-sizes[data-color="'+colorName+'"]')) {                            
+                            var colorSwatchesHTML = `<div class="qv-sizes hidden" data-color="`+colorName+`" `+(color.node.tags.includes('preorder') ? 'data-preorder="true"': '')+`>`;
+                            color.node.variants.edges.forEach((size,i) => {
+                                var sizeName = size.node.title.split(' / ');
+                                sizeName = sizeName[sizeName.length-1];
+                                colorSwatchesHTML += `<span class="qv-variant-size `+(size.node.availableForSale ? '' : 'unavailable')+`" `+((size.node.metafield_preorder_availability && size.node.metafield_preorder_availability.value == "true") ? 'data-preorder="true" data-estimated-shipping-date="'+(size.node.metafield_preorder_estimated_shipping_date ? size.node.metafield_preorder_estimated_shipping_date.value : '')+'"' : '')+` data-size="`+sizeName+`" data-variant-id="`+size.node.id.replace("gid://shopify/ProductVariant/","")+`" data-qv-component-price="`+size.node.price.amount*100+`" data-is-low-in-stock="`+(size.node.availableForSale && size.node.quantityAvailable <= 2)+`"">`;
+                                if(size.node.metafield_preorder_availability && size.node.metafield_preorder_availability.value == "true") {
+                                    colorSwatchesHTML += isPreorderIcon;
+                                }
+                                if(!size.node.availableForSale) colorSwatchesHTML += `<svg class="SizeSwatch__Strikethrough"><line x1="0" y1="100%" x2="100%" y2="0" stroke="currentColor"></line></svg>`;
+                                colorSwatchesHTML += sizeName;
+                                colorSwatchesHTML += `</span>`;
+                            });
+                            colorSwatchesHTML += `</div>`;
+
+                            colorImages = `<div class="qv-image-container" data-product-id="`+ color.node.id.replace('gid://shopify/Product/','') +`">`;
+                                colorImages += `<div class="qv-images">`; 
+                                color.node.images.edges.forEach((image, i) => {
+                                colorImages += `<div class="qv-image-wrapper"><img src="`+image.node.url+`&width=500" loading="lazy" alt="" width="500" height="667"></div>`; 
+                                });
+                                colorImages += `</div> 
+                                <div class="qv-thumbs">`;
+                                color.node.images.edges.forEach((image, i) => {
+                                    colorImages += `<img src="`+image.node.url+`&width=40" TEST loading="lazy" class="qv-go-to-image" alt="" width="40" height="53"  data-position="`+i+`">`; 
+                                });
+                                colorImages += `</div>`;
+                            colorImages += `</div>`;
+
+                            currentComponent.querySelector('.qv-variants').insertAdjacentHTML('beforeend',colorSwatchesHTML);
+                            currentComponent.querySelector('.qv-left').insertAdjacentHTML('beforeend',colorImages);
+                            swatchesImage.push(color.node);
+                        }
+                    });
+                }
+                array.shift();
+                qvGetColorSwatches(array, swatchesImage);    
+            });
+        } else {
+            qvGetSwatchesImage(swatchesImage);
+        }
+    }
+
+    document.querySelectorAll('.qv-overlay[data-color-swatch]').forEach(swatch => {
+        window.qvColorSwatches.push(swatch);    
+    });
+
+    qvGetColorSwatches(window.qvColorSwatches, []);
+</script>

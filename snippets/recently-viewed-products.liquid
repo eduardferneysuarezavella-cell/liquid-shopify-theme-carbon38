@@ -1,0 +1,222 @@
+<div class="rv-products" data-source="{{ settings.cart_rvp_source }}" data-collection="{{ settings.cart_rvp_fallback_collection }}" data-products-to-show="{{ settings.cart_rvp_products_to_show }}" data-id="cart-recommended-products">
+  <div class="rv-products__header">
+    <h4 class="rv-products__title">{{ settings.cart_rvp_title }}</h4>
+    <div class="swiper-navigation-buttons">
+      <div class="swiper-button-prev">{% render 'icon-swipper-arrow' %}</div>
+      <div class="swiper-button-next">{% render 'icon-swipper-arrow' %}</div>
+    </div>
+  </div>
+
+  <div class="rv-products__carousel swiper">
+    <div class="rv-products__list swiper-wrapper{% if cart.item_count > 0 %} cart-has-products{% endif %}">
+      {% if settings.cart_rvp_source == 'collection' and collections[settings.cart_rvp_collection].products.size > 0 %}
+        {%- assign defaultCollection = collections[settings.cart_rvp_collection].products -%}
+      {% else %}
+        {%- assign defaultCollection = collections[settings.cart_rvp_fallback_collection].products -%}
+      {% endif %}
+      <script>
+        const defaultCollection = {{ defaultCollection | json }};
+        localStorage.setItem('defaultCollection', JSON.stringify(defaultCollection.slice(0, 12)));
+      </script>
+      {% for product in defaultCollection limit: 12 %}
+        <div class="rv-products__item swiper-slide" data-product-handle="{{product.handle}}">
+          <div class="rv-products__item-wrapper">
+            <a href="/products/{{ product.handle }}">
+              <div class="rv-products__item-img">
+                  {{ product.featured_image | image_url: width: 200 | image_tag: alt: product.title }}
+                <a
+                  href="{% if item.tags contains 'bundle' %}{{ product.url }}{% else %}#{% endif %}"
+                  class="rv-products__item-quickview {% unless item.tags contains 'bundle' %} quickshop_trigger{% endunless %}"
+                  data-product-handle="{{ product.handle }}"
+                >
+                  <div class="rv-products__item-quickview-icon">{% render 'icon-quickview' %}</div>
+                </a>
+              </div>
+              <div class="rv-products__content">
+                <div class="rv-products__item-title">{{ product.title }}</div>
+                <div class="rv-products__item-price">{{ product.price | money }}</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .rv-products {
+    width: 100%;
+    background-color: #fff;
+    z-index: 999;
+    overflow-y: visible;
+    padding: 13px;
+    border-top: 1px solid #edf4f1;
+
+    .swiper-button-prev::after, 
+    .swiper-button-next::after, 
+    .swiper-rtl .swiper-button-prev::after,
+    .swiper-rtl .swiper-button-next::after {
+        display: none;
+    }
+    
+  }
+
+  .rv-products__header {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+  }
+
+  .rv-products__title {
+    font-family: 'Euclid';
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    line-height: normal;
+    margin-bottom: 13px;
+  }
+
+  .rv-products__carousel {
+    height: 100%;
+    width: 100%;
+  }
+
+  .rv-products__item {
+    width: 100px;
+    flex-shrink: 0;
+    height: calc((100% - 30px) / 2) !important;
+    background: #fff;
+    margin-right: 0;
+    position: relative;
+  }
+  .rv-products__item-wrapper {
+    border: 1px solid #edf4f1;
+    width: 100%;
+    position: relative;
+  }
+
+  .rv-products__item:hover .rv-products__item-quickview {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .rv-products__item-img {
+    width: 100%;
+    height: 165px;
+    position: relative;
+  }
+
+  .cart-has-products .rv-products__item-img {
+    height: 165px;
+  }
+
+  .drawer__inner:has(.recommended_product-wrapper)  .cart-has-products .rv-products__item-img {
+    height: 105px;
+  }
+
+  .rv-products__item-img img {
+    width: auto;
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .rv-products__content {
+    padding: 5px;
+  }
+
+  .rv-products__item-title {
+    color: #717171;
+    font-family: 'Euclid', sans-serif;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 13px;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+    text-align: left;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .rv-products__item-price {
+    color: #2e2e2e;
+    font-family: 'Euclid', sans-serif;
+    text-align: left;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 15.04px;
+    letter-spacing: 1.2px;
+    text-transform: capitalize;
+    margin-top: 5px;
+  }
+
+  .rv-products__item-quickview {
+    width: calc(100% - 2px);
+    position: absolute;
+    bottom: 2px;
+    left: 1px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1px;
+    font-size: 9px;
+    line-height: normal;
+    opacity: 1;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    background: transparent
+  }
+
+  .rv-products__item-quickview-text,
+  .rv-products__item-quickview-icon {
+    pointer-events: none;
+  }
+
+  .rv-products__item-quickview-icon svg {
+    vertical-align: middle;
+  }
+
+  .rv-products__item-quickview:hover svg path {
+    fill: #fff;
+  }
+
+  .swiper-navigation-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    all: unset;
+    position: static;
+    background-image: none;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+  }
+
+  .swiper-button-prev svg,
+  .swiper-button-next svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .swiper-button-prev svg {
+    transform: rotate(180deg);
+  }
+
+  .swiper-button-next {
+    margin-bottom: 1px;
+  }
+</style>

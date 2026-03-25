@@ -1,0 +1,258 @@
+{
+  "sections": {
+    "164642827997c4a5d6": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_BtHGpM": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/Page-Banner_WellnessDay.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/Page-Banner-mobile_WellnessDay.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "bottom-left",
+            "content_position_mobile": "bottom-left",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_BtHGpM"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "1646428335ed7163b4": {
+      "type": "collection-list",
+      "blocks": {
+        "1646428335e3600549-0": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify:\/\/shop_images\/Shogun-1_WellnessDay.jpg",
+            "image_alignment": "center center",
+            "content_position": "bottomLeft",
+            "subheading": "",
+            "title": "",
+            "link_text": "RSVP NOW",
+            "link_url": "https:\/\/www.eventbrite.com\/e\/yoga-and-meditation-w-marie-grujicic-delage-renee-noa-harris-tickets-277195648647",
+            "apply_overlay": false
+          }
+        },
+        "1646428335e3600549-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify:\/\/shop_images\/Shogun-2_WellnessDay.jpg",
+            "image_alignment": "center center",
+            "content_position": "bottomLeft",
+            "subheading": "",
+            "title": "",
+            "link_text": "RSVP now",
+            "link_url": "https:\/\/www.eventbrite.com\/e\/cardio-sculpt-w-alexis-fischer-tickets-288944509807",
+            "apply_overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "1646428335e3600549-0",
+        "1646428335e3600549-1"
+      ],
+      "settings": {
+        "title": "",
+        "image_size": "normal",
+        "add_spacing": true,
+        "expand_collection": true,
+        "stack_on_mobile": true,
+        "text_color": "#ffffff",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "16464292278b35f188": {
+      "type": "collection-list",
+      "blocks": {
+        "164642922631c82d4a-0": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify:\/\/shop_images\/Shogun-3_WellnessDay.jpg",
+            "image_alignment": "center center",
+            "content_position": "bottomLeft",
+            "subheading": "",
+            "title": "",
+            "link_text": "rsvp now",
+            "link_url": "https:\/\/www.eventbrite.com\/e\/pilates-grounded-balanced-w-lisa-hubbard-tickets-288940578047",
+            "apply_overlay": false
+          }
+        },
+        "164642922631c82d4a-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify:\/\/shop_images\/Shogun-4_WellnessDay.jpg",
+            "image_alignment": "center center",
+            "content_position": "bottomLeft",
+            "subheading": "",
+            "title": "",
+            "link_text": "rsvp now",
+            "link_url": "https:\/\/palisadesvillageca.com\/visit\/",
+            "apply_overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "164642922631c82d4a-0",
+        "164642922631c82d4a-1"
+      ],
+      "settings": {
+        "title": "",
+        "image_size": "normal",
+        "add_spacing": true,
+        "expand_collection": true,
+        "stack_on_mobile": true,
+        "text_color": "#ffffff",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "1646429256ccae8581": {
+      "type": "collection-list",
+      "blocks": {
+        "1646429256fdf9d88d-0": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify:\/\/shop_images\/Shogun-5_WellnessDay.jpg",
+            "image_alignment": "center center",
+            "content_position": "bottomLeft",
+            "subheading": "",
+            "title": "",
+            "link_text": "rsvp now",
+            "link_url": "https:\/\/www.eventbrite.com\/e\/group-reiki-session-w-pam-christian-tickets-288947378387",
+            "apply_overlay": false
+          }
+        },
+        "1646429256fdf9d88d-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify:\/\/shop_images\/Shogun-6_WellnessDay.jpg",
+            "image_alignment": "center center",
+            "content_position": "bottomLeft",
+            "subheading": "",
+            "title": "",
+            "link_text": "view the directory",
+            "link_url": "https:\/\/palisadesvillageca.com\/visit\/",
+            "apply_overlay": true
+          }
+        }
+      },
+      "block_order": [
+        "1646429256fdf9d88d-0",
+        "1646429256fdf9d88d-1"
+      ],
+      "settings": {
+        "title": "",
+        "image_size": "normal",
+        "add_spacing": true,
+        "expand_collection": true,
+        "stack_on_mobile": true,
+        "text_color": "#ffffff",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "16464285173a341432": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_BtHGpM": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/Shogun-7_WellnessDay.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/Shogun-7-mobile_WellnessDay.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "bottom-left",
+            "content_position_mobile": "bottom-left",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_BtHGpM"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "16464285490896f482": {
+      "type": "text-with-image",
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "image_position": "right",
+        "content": "<p><strong>15273 PALISADES VILLAGE LANE<br\/>PACIFIC PALISADES, CA 90272<br\/>310.300.3806<\/strong><\/p>",
+        "link_text": "",
+        "link_url": ""
+      }
+    }
+  },
+  "order": [
+    "164642827997c4a5d6",
+    "1646428335ed7163b4",
+    "16464292278b35f188",
+    "1646429256ccae8581",
+    "16464285173a341432",
+    "16464285490896f482"
+  ]
+}

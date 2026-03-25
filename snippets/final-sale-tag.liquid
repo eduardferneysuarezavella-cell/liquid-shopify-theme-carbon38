@@ -1,0 +1,17 @@
+{%- assign compare_at_price = product.selected_or_first_available_variant.compare_at_price | times: 1.00 -%}
+{%- assign price = product.selected_or_first_available_variant.price | times: 1.00 -%}
+{%- assign discount_ratio = price | divided_by: compare_at_price -%}
+{%- assign discount_percentage = 1.00 | minus: discount_ratio | times: 100.00 -%}
+{%- assign tags = product.tags | join: "###" -%}
+{%- if tags contains "final-sale" or product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price and discount_percentage >= settings.final_sale_threshold_percentage -%}
+  <input class="visually-hidden" id="final-sale-attribute" type="hidden" name="properties[Sale]" value="{{settings.final_sale_label}}" aria-hidden="true" tabindex="-1" />
+  <input class="visually-hidden" id="final-sale-attribute" type="hidden" name="properties[is_final_sale]" value="true" aria-hidden="true" tabindex="-1" />
+  <input class="visually-hidden" id="final-sale-attribute" type="hidden" name="properties[_LPROP]" value="true" aria-hidden="true" tabindex="-1" />
+  {{ settings.final_sale_label }}
+{%- else -%}
+  {% if line_item.properties["Sale"] %}
+  {{line_item.properties["Sale"]}}
+  {% else %}
+  sale
+  {% endif %}
+{%- endif -%}

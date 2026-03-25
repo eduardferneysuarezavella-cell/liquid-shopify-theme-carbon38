@@ -1,0 +1,58 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "show_large": false
+      }
+    },
+    "1646710390b0f8b477": {
+      "type": "text-with-image",
+      "settings": {
+        "subheading": "Visit us",
+        "title": "IN REAL LIFE",
+        "image_position": "right",
+        "content": "<p>Come see us in-store for a personal shopping experience<\/p>",
+        "link_text": "",
+        "link_url": ""
+      }
+    },
+    "164671042629d4b7cc": {
+      "type": "text-with-image",
+      "settings": {
+        "subheading": "",
+        "title": "Bridgehampton, NY",
+        "image": "shopify:\/\/shop_images\/Store_Page_Desktop_-_Update_0607_720x_0f2962b3-78cd-466a-96d3-24f0be921053.jpg",
+        "image_position": "left",
+        "content": "<p>2424 Montauk Highway<br\/>Bridgehampton, NY 11932<\/p><p><strong>Hours<\/strong>: Monday - Saturday, 10am - 5pm<br\/>Closed on Sunday<\/p><p><strong>Phone<\/strong>: 631.919.5444<br\/><strong>Email<\/strong>: bridgehampton@carbon38.com<\/p><p><em>Please note: face coverings are required while shopping in-store.<\/em><\/p>",
+        "link_text": "",
+        "link_url": ""
+      }
+    },
+    "16467104706e72bcef": {
+      "type": "text-with-image",
+      "settings": {
+        "subheading": "",
+        "title": "Pacific Palisades, CA",
+        "image": "shopify:\/\/shop_images\/Store_Page_Desktop_-_Update_0607_2_720x_d59ad160-c96a-4ace-a991-11710ae113d7.jpg",
+        "image_position": "left",
+        "content": "<p>15272 Palisades Village Lane<br\/>Pacific Palisades, CA 90272<\/p><p><strong>Hours<\/strong>: Monday - Saturday, 11am - 7pm<br\/>Sunday, 11am - 6pm<\/p><p><strong>Phone<\/strong>: 310.300.3806<br\/><strong>Email<\/strong>: palisades@carbon38.com<\/p><p><em>Please note: face coverings are required while shopping in-store.<\/em> <\/p>",
+        "link_text": "See upcoming events",
+        "link_url": "shopify:\/\/pages\/palisades-events"
+      }
+    },
+    "1646858079c38f4703": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1646710390b0f8b477",
+    "164671042629d4b7cc",
+    "16467104706e72bcef",
+    "1646858079c38f4703"
+  ]
+}

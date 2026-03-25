@@ -1,0 +1,60 @@
+.announcement-bar {
+    display: flex;
+    padding: 9px 0px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    max-width: 100%;
+    overflow: hidden;
+    width: 100%;
+
+    .announcement-bar__inner {
+        width: 100%;
+    }
+
+    .announcement-bar__announcements {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        align-items: center;
+    }
+
+    .swiper-button-prev svg,
+    .swiper-button-next svg {
+        color: #2E2E2E;
+        max-height: 21px;
+        width: auto;
+    }
+
+    .swiper-button-prev::after, .swiper-rtl .swiper-button-next::after,
+    .swiper-button-next::after, .swiper-rtl .swiper-button-prev::after {
+        display: none;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .announcement-block__message {
+        color: inherit;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: 2.24px;
+        text-transform: uppercase;
+        font-family: var(--font-body-family);
+
+        p {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        @media (max-width: 749px) {
+            font-size: 11px;
+            font-weight: 500;
+        }
+    }
+}

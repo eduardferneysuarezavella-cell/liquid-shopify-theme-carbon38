@@ -1,0 +1,119 @@
+{{ 'timeline.css' | asset_url | stylesheet_tag }}
+<style>
+  @media (max-width: 649px) {
+    #section-{{ section.id }} .timeline__list {
+      color: {{ section.settings.text_color }};
+    }
+  }
+</style>
+
+<div class="timeline page-width" id="section-{{ section.id }}">
+  <div class="timeline__list">
+    <ul class="swiper-wrapper">
+      {% for block in section.blocks %}
+        <li class="timeline__item swiper-slide">
+          <div class="timeline__media">
+            <div class="timeline__image-wrapper">
+              {{ block.settings.image | image_url: width: 1000 | image_tag: class: 'timeline__image' }}
+            </div>
+          </div>
+          <div class="timeline__content">
+            <h6 class="timeline__subtitle">{{ block.settings.subtitle }}</h6>
+            <h2 class="timeline__title">{{ block.settings.title }}</h2>
+            <div class="timeline__richtext">{{ block.settings.description }}</div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="timeline__pagination">
+    {% for block in section.blocks %}
+      <button class="timeline__pagination-item">
+        {{ block.settings.year }}
+      </button>
+    {% endfor %}
+  </div>
+</div>
+
+{% javascript %}
+  document.addEventListener('DOMContentLoaded', () => {
+    deferSwiper(function() {
+      const timelineSwiper = new Swiper('.timeline__list', {
+        slidesPerView: 1,
+      });
+
+      const timelinePaginationItems = document.querySelectorAll('.timeline__pagination-item');
+      timelinePaginationItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+          timelineSwiper.slideTo(index);
+        });
+      });
+
+      timelinePaginationItems[0].classList.add('active');
+
+      timelineSwiper.on('slideChange', () => {
+        timelinePaginationItems.forEach((item, index) => {
+          if (index === timelineSwiper.activeIndex) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+      });
+    });
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Timeline",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Mobile text color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "year",
+      "name": "Year",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "year",
+          "label": "Year"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Timeline"
+    }
+  ]
+}
+{% endschema %}

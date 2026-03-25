@@ -1,0 +1,385 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_tphRgA": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/081225_Matcha_Melt_Hero_desktop_copy_12_1.jpg",
+            "mobile_image": "shopify://shop_images/081225_Matcha_Melt_widebanner_mobile_copy_12_1.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/new-arrivals",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_tphRgA"
+      ],
+      "name": "HERO",
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": true,
+        "change_slides_every": 3,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collection": {
+      "type": "product-feed",
+      "name": "Copy + Carousel",
+      "settings": {
+        "show_section_on_oos": false,
+        "pretitle": "Discover the weekly drop",
+        "title": "New Arrivals",
+        "heading_size": "h1",
+        "subtitle": "",
+        "source": "collection",
+        "collection": "new-arrivals",
+        "fallback_collection": "",
+        "view_all_label": "Shop Now",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 32,
+        "margin_bottom": 16,
+        "margin_top_mobile": 16,
+        "margin_bottom_mobile": 8,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 22,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_product_info": true,
+        "show_color_swatch": false
+      }
+    },
+    "full_width_banner_6bnrMj": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_gzA7hb": {
+          "type": "slide",
+          "settings": {
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "Summer Sale",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "Up to 50% off",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "BUY NOW",
+            "button_1_link": "",
+            "button_2_text": "SHOP NOW",
+            "button_2_link": ""
+          }
+        },
+        "slide_L6CfRz": {
+          "type": "slide",
+          "settings": {
+            "mobile_image": "shopify://shop_images/040325__Biker_Shorts_Walking_Banner_Hero_mobile_copy_2_6cdd6682-ae30-4913-a331-86c360a6b79f.jpg",
+            "overlay": false,
+            "overlay_opacity": 0,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/carbon38",
+            "button_1_text": "",
+            "button_1_link": "shopify://collections/carbon38",
+            "button_2_text": "",
+            "button_2_link": "shopify://collections/walking"
+          }
+        }
+      },
+      "block_order": [
+        "slide_gzA7hb",
+        "slide_L6CfRz"
+      ],
+      "disabled": true,
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "image_collection_list_mkyWjc": {
+      "type": "image-collection-list",
+      "blocks": {
+        "collection_WHL3ay": {
+          "type": "collection",
+          "settings": {
+            "collection": "carbon38",
+            "image": "shopify://shop_images/081225_Romper_2UP_Hero_desktop_copy.jpg",
+            "image_alignment": "top center",
+            "content_position": "bottom-left",
+            "sub_heading": "",
+            "heading": "Carbon38 Staples",
+            "link_text": "",
+            "link_url": "shopify://collections/carbon38",
+            "overlay": false
+          }
+        },
+        "collection_LiqVGw": {
+          "type": "collection",
+          "settings": {
+            "collection": "ribbed-melt",
+            "image": "shopify://shop_images/081225_Steel_Grey_2UP_Hero_desktop_copy.jpg",
+            "image_alignment": "top center",
+            "content_position": "bottom-right",
+            "sub_heading": "",
+            "heading": "Ribbed Melt",
+            "link_text": "",
+            "link_url": "shopify://collections/ribbed-melt",
+            "overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "collection_WHL3ay",
+        "collection_LiqVGw"
+      ],
+      "settings": {
+        "title": "",
+        "image_size": "75%",
+        "add_spacing": true,
+        "expand_collections": true,
+        "stack_on_mobile": true,
+        "text_color": "#ffffff"
+      }
+    },
+    "featured_collection_BXxwp4": {
+      "type": "featured-collection",
+      "settings": {
+        "subtitle": "Create your look",
+        "title": "Summer Lounge",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "carbon38",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "view_all_label": "Shop Now",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_product_info": true,
+        "show_color_swatch": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "shop_by_category_f9MjCe": {
+      "type": "shop-by-category",
+      "blocks": {
+        "collection_QgVTzU": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Category_Banners071525_Activities_Tennis.jpg",
+            "title": "Tennis",
+            "url": "shopify://collections/tennis"
+          }
+        },
+        "collection_77EbA7": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Category_Banners071525_Activities_Pilates.jpg",
+            "title": "Pilates",
+            "url": "shopify://collections/pilates"
+          }
+        },
+        "collection_Wz4A8y": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/031425_Landing_Page_Golf.jpg",
+            "title": "Golf",
+            "url": "shopify://collections/tennis"
+          }
+        },
+        "collection_VJVTAA": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Category_Banners071525_Activities_Yoga.jpg",
+            "title": "Yoga",
+            "url": "shopify://collections/pilates"
+          }
+        },
+        "collection_YPJKNR": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Category_Banners071525_Activities_Running.jpg",
+            "title": "Running",
+            "url": "shopify://collections/walking"
+          }
+        },
+        "collection_NGLK9e": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Category_Banners071525_Activities_Lounge.jpg",
+            "title": "Lounge",
+            "url": "shopify://collections/stillness"
+          }
+        }
+      },
+      "block_order": [
+        "collection_QgVTzU",
+        "collection_77EbA7",
+        "collection_Wz4A8y",
+        "collection_VJVTAA",
+        "collection_YPJKNR",
+        "collection_NGLK9e"
+      ],
+      "settings": {
+        "title": "Shop by Activity",
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
+    "featured_collection_tLfi9J": {
+      "type": "product-feed",
+      "name": "Bestsellers Carousel",
+      "settings": {
+        "show_section_on_oos": false,
+        "pretitle": "Never Gets Old",
+        "title": "Bestsellers",
+        "heading_size": "h1",
+        "subtitle": "",
+        "source": "collection",
+        "collection": "best-sellers",
+        "fallback_collection": "",
+        "view_all_label": "View all",
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "margin_top": 36,
+        "margin_bottom": 36,
+        "margin_top_mobile": 18,
+        "margin_bottom_mobile": 18,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 12,
+        "columns_desktop": 6,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_product_info": true,
+        "show_color_swatch": false
+      }
+    },
+    "featured_collection_YLPV89": {
+      "type": "product-feed",
+      "disabled": true,
+      "settings": {
+        "show_section_on_oos": false,
+        "pretitle": "",
+        "title": "Club Sports",
+        "heading_size": "h1",
+        "subtitle": "",
+        "source": "collection",
+        "collection": "tennis",
+        "fallback_collection": "",
+        "view_all_label": "View all",
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "margin_top": 36,
+        "margin_bottom": 36,
+        "margin_top_mobile": 18,
+        "margin_bottom_mobile": 18,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_product_info": true,
+        "show_color_swatch": false
+      }
+    },
+    "yotpo-ugc": {
+      "type": "yotpo-ugc",
+      "settings": {}
+    }
+  },
+  "order": [
+    "image_banner",
+    "featured_collection",
+    "full_width_banner_6bnrMj",
+    "image_collection_list_mkyWjc",
+    "featured_collection_BXxwp4",
+    "shop_by_category_f9MjCe",
+    "featured_collection_tLfi9J",
+    "featured_collection_YLPV89",
+    "yotpo-ugc"
+  ]
+}

@@ -1,0 +1,38 @@
+<script>
+    /* Wait for the DOM to completely loads */
+      function DOMready(callback) {
+          if (document.readyState != 'loading') callback();
+          else document.addEventListener('DOMContentLoaded', callback);
+      }
+    /* Check if the GLBE_PARAMS object exists, then check if country is on the operated countries array */
+    /* if on operated country, get the body element and add an attribute to it called "ge-active" with the value true otherwise false */
+      DOMready(function() {
+          if (GLBE_PARAMS) {
+              var OperatedCountryArray = GLBE_PARAMS.operatedCountries;
+              var MyCountry = GLBE_PARAMS.countryCode;
+              var geActive = false;
+              var b = document.querySelector("body");
+              for (var i = 0; i <= OperatedCountryArray.length; i++) {
+                  if (MyCountry == OperatedCountryArray[i]) {
+                      geActive = true;
+                  }
+              }
+              if (geActive == true) {
+                  b.setAttribute("ge-active", true);
+              }
+          }
+      });
+  </script>
+  
+  <style>
+      body[ge-active='true'] .ge-hide {
+          display: none !important;
+      }
+      .ge-show {
+          display: none !important;
+      }
+      body[ge-active='true'] .ge-show {
+          display: block !important;
+      }
+  </style>
+  

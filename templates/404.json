@@ -1,0 +1,122 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "full_width_banner_WxtgWQ": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_Uxpdir": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Artboard_1_2200x_3f6ce334-1cd3-4fa7-a5c0-b0d6819c694c.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "sub_heading": "",
+            "heading": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_Uxpdir"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0
+      }
+    },
+    "rich_text_FrTqqR": {
+      "type": "rich-text",
+      "blocks": {
+        "caption_p8dfpL": {
+          "type": "caption",
+          "settings": {
+            "caption": "404",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "text_HGMVi9": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The page you are looking for cannot be found.</p>"
+          }
+        },
+        "button_DtzFcM": {
+          "type": "button",
+          "settings": {
+            "button_label": "back to homepage",
+            "button_link": "/",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "caption_p8dfpL",
+        "text_HGMVi9",
+        "button_DtzFcM"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "featured_collection_VbBQdi": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "Recommended Collection",
+        "title": "Best Sellers",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "best-sellers",
+        "fallback_collection": "",
+        "view_all_label": "go to best sellers",
+        "show_view_all": true,
+        "view_all_style": "outlined",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": true
+      }
+    }
+  },
+  "order": [
+    "full_width_banner_WxtgWQ",
+    "rich_text_FrTqqR",
+    "featured_collection_VbBQdi"
+  ]
+}

@@ -1,0 +1,8 @@
+{%- layout none -%}
+{%- assign color_swatch_config = settings.color_swatch_config | newline_to_br | split: '<br />' -%}
+{%- if product.title contains ' - ' -%}
+    {%- assign splitTitle = product.title | split: ' - ' -%}    
+    {%- assign indexColor = splitTitle.size | minus: 1 -%}
+    {%- assign currentColor = splitTitle[indexColor] -%}
+{%- endif -%}
+{%- render 'color-swatch-style', color_swatch_config: color_swatch_config, value: currentColor -%}

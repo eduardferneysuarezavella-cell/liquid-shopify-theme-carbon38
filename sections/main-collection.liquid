@@ -1,0 +1,760 @@
+<script src="{{ 'support-libraries.min.js' | asset_url }}" defer></script>
+<script src="{{ 'flickity.min.js' | asset_url }}" defer></script>
+
+<script src="{{ 'theme.js' | asset_url }}" defer></script>
+
+<link rel="preload" href="{{ 'new-collection.css' | asset_url }}" as="style">
+{{ 'new-collection.css' | asset_url | stylesheet_tag }}
+
+{%- if section.settings.show_layout_switch -%}
+    {%- assign desktop_items_per_row = cart.attributes.collection_desktop_items_per_row | default: section.settings.grid_desktop_items_per_row | times: 1 -%}
+    {%- assign mobile_items_per_row  = cart.attributes.collection_mobile_items_per_row | default: section.settings.grid_mobile_items_per_row | times: 1 -%}
+  
+    {%- if desktop_items_per_row >= 3 and desktop_items_per_row != section.settings.grid_desktop_items_per_row -%}
+      {%- assign desktop_items_per_row = section.settings.grid_desktop_items_per_row -%}
+    {%- endif -%}
+  {%- else -%}
+    {%- assign desktop_items_per_row = section.settings.grid_desktop_items_per_row | times: 1 -%}
+    {%- assign mobile_items_per_row  = section.settings.grid_mobile_items_per_row | times: 1 -%}
+  {%- endif -%}
+  
+  {%- if desktop_items_per_row == 4 -%}
+    {%- assign tablet_items_per_row = 3 -%}
+  {%- else -%}
+    {%- assign tablet_items_per_row = 2 -%}
+  {%- endif -%}
+
+  {%- liquid
+    assign has_ad_blocks = false
+    assign countItems = 0
+    if collection.metafields.custom.ad_blocks.value
+      assign has_ad_blocks = true
+    endif
+  -%}
+  
+  <style>
+    .ProductList.has-ad-blocks {
+      display: grid;
+      grid-template-columns: repeat({{ desktop_items_per_row }}, 1fr);
+
+      @media (max-width: 1139px) {
+        grid-template-columns: repeat({{ tablet_items_per_row }}, 1fr);
+      }
+      @media (max-width: 649px) {
+        grid-template-columns: repeat({{ mobile_items_per_row }}, 1fr);
+      }
+
+      .Grid__Cell {
+        width: 100%;
+      }
+    }
+
+    {% if has_ad_blocks %}
+      {% for ad_block in collection.metafields.custom.ad_blocks.value %}
+        #ad-block-{{ ad_block.start_position_in_the_grid }} {
+          grid-column: span {{ ad_block.column_span_desktop | default: 1 }};
+          grid-row: span {{ ad_block.row_span_desktop | default: 1 }};
+
+          @media (max-width: 1139px) {
+            grid-column: span {{ ad_block.column_span_tablet | default: 1 }};
+            grid-row: span {{ ad_block.row_span_tablet | default: 1 }};
+          }
+          
+          @media (max-width: 649px) {
+            grid-column: span {{ ad_block.column_span_mobile | default: 1 }};
+            grid-row: span {{ ad_block.row_span_mobile | default: 1 }};
+          }
+        }
+      {% endfor %}
+    {% endif %}
+  </style>
+  
+  {%- capture collection_inner -%}
+    {%- comment -%}This is the common part to both template{%- endcomment -%}
+     {%- liquid
+       assign countItems = 0
+     -%}
+    {%- if collection.products_count > 0 -%}
+      {%- paginate collection.products by section.settings.grid_items_per_page -%}
+        <div class="ProductListWrapper">
+          <div class="ProductList ProductList--grid {% if has_ad_blocks %} has-ad-blocks{% endif %} {% if paginate.pages > 1 %}ProductList--removeMargin{% endif %} Grid" data-mobile-count="{{ mobile_items_per_row }}" data-desktop-count="{{ desktop_items_per_row }}">
+            {%- for product in collection.products -%}
+              {%- unless product.tags contains 'waitlist' %}{%- unless product.available -%}{% continue %}{%- endunless -%}{%- endunless -%}
+              
+              {%- if product.tags contains 'redirect_to_home' or product.metafields.seo.hidden == 1 -%}{% continue %}{%- endif -%}
+              {%- assign countItems = countItems | plus: 1 -%}
+                {%- if has_ad_blocks -%}
+                  {%- assign display_ad_block = false -%}
+                  {% for ad_block in collection.metafields.custom.ad_blocks.value %}
+                    {% if ad_block.start_position_in_the_grid == countItems %}
+                      {%- assign display_ad_block = ad_block -%}
+                      {%- break -%}
+                    {% endif %}
+                  {% endfor %}
+                  {% if display_ad_block %}
+
+                    <div id="ad-block-{{ display_ad_block.start_position_in_the_grid }}" class="
+                      {%- if desktop_items_per_row == display_ad_block.column_span_desktop %} desktop-full-width {% endif -%}
+                      {% if tablet_items_per_row == display_ad_block.column_span_tablet %} tablet-full-width {% endif -%}
+                      {% if mobile_items_per_row == display_ad_block.column_span_mobile %} mobile-full-width {% endif -%} Grid__Cell 1/{{ mobile_items_per_row }}--phone 1/{{ tablet_items_per_row }}--tablet-and-up 1/{{ desktop_items_per_row }}--{% if section.settings.filter_position == 'drawer' %}lap-and-up{% else %}desk{% endif %}">
+                      {% if display_ad_block.url != blank %}<a href="{{ display_ad_block.url.value }}" {% if display_ad_block.open_in_new_tab %} target="_blank" {% endif %} title="{{ display_ad_block.title }}" aria-label="{{ display_ad_block.title }}" class="link-overlay"></a>{% endif %}
+                      <div class="collection-promo collection-promo-image">
+                        {%- liquid
+                          if display_ad_block.desktop_image
+                            if display_ad_block.desktop_image.value.media_type == 'image'
+                              echo display_ad_block.desktop_image | image_url: width: 1000 | image_tag: width: 500, class: 'desktop-image', alt: display_ad_block.title
+                            elsif display_ad_block.desktop_image.value.media_type == 'video'
+                              echo display_ad_block.desktop_image | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: 'desktop-image', aria-label: display_ad_block.title
+                            endif
+                          endif
+
+                          if display_ad_block.tablet_image
+                            if display_ad_block.tablet_image.value.media_type == 'image'
+                              echo display_ad_block.tablet_image | image_url: width: 1000 | image_tag: width: 500, class: 'tablet-image', alt: display_ad_block.title
+                            elsif display_ad_block.tablet_image.value.media_type == 'video'
+                              echo display_ad_block.tablet_image.value | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: 'tablet-image', aria_label: display_ad_block.title
+                            endif
+                          endif
+
+                          if display_ad_block.mobile_image
+                            if display_ad_block.mobile_image.value.media_type == 'image'
+                              echo display_ad_block.mobile_image | image_url: width: 1000 | image_tag: width: 500, class: 'mobile-image', alt: display_ad_block.title
+                            elsif display_ad_block.mobile_image.value.media_type == 'video'
+                              echo display_ad_block.mobile_image | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: 'mobile-image', aria-label: display_ad_block.title
+                            endif
+                          endif
+                        -%}
+                      </div>
+                    </div>
+                  {% else %}
+                    <div class="Grid__Cell 1/{{ mobile_items_per_row }}--phone 1/{{ tablet_items_per_row }}--tablet-and-up 1/{{ desktop_items_per_row }}--{% if section.settings.filter_position == 'drawer' %}lap-and-up{% else %}desk{% endif %}">
+                      {%- render 'product-item', product: product, show_product_info: true, show_vendor: section.settings.show_vendor, show_color_swatch: section.settings.show_color_swatch, show_labels: true -%}
+                    </div>
+                  {% endif %}
+                {%- else -%}
+                  <div class="Grid__Cell 1/{{ mobile_items_per_row }}--phone 1/{{ tablet_items_per_row }}--tablet-and-up 1/{{ desktop_items_per_row }}--{% if section.settings.filter_position == 'drawer' %}lap-and-up{% else %}desk{% endif %}">
+                    {%- render 'product-item', product: product, show_product_info: true, show_vendor: section.settings.show_vendor, show_color_swatch: section.settings.show_color_swatch, show_labels: true -%}
+                  </div>
+                {%- endif -%}
+                {%- if collection.metafields.custom.collection_promo and collection.metafields.custom.collection_promo_position == countItems -%}
+                <div class="Grid__Cell 1/{{ mobile_items_per_row }}--phone 1/{{ tablet_items_per_row }}--tablet-and-up 1/{{ desktop_items_per_row }}--{% if section.settings.filter_position == 'drawer' %}lap-and-up{% else %}desk{% endif %}">
+                  {% assign promoBlock = collection.metafields.custom.collection_promo.value  %}
+                  {% if promoBlock.link != blank %}<a href="{{ promoBlock.link.value.url }}" class="link-overlay"></a>{% endif %}
+                  {% if promoBlock.image != blank %}
+                    <div class="collection-promo collection-promo-image">
+                      {{ promoBlock.image | image_url: width: 1000  | image_tag: width: 500 }}
+                    </div>
+                  {% else %}
+                    <div style="background-color: {{ promoBlock.background_color }};" class="collection-promo">
+                      <div class="collection-promo-stars">
+                          {% for i in (1..5) %}
+                              {% if i <= promoBlock.stars %}
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                      <path d="M9.09149 11.1271L6.22592 9.67566L5.99999 9.56122L5.77406 9.67566L2.90848 11.1271L3.34071 7.77532L3.37029 7.54599L3.21471 7.37494L0.97052 4.90754L4.14364 4.30252L4.38377 4.25674L4.49511 4.03911L5.99999 1.09775L7.50487 4.03911L7.61621 4.25674L7.85634 4.30252L11.0295 4.90754L8.78527 7.37494L8.62969 7.54599L8.65927 7.77532L9.09149 11.1271Z" fill="#2E2E2E"/>
+                                      <path d="M6 2.19552L4.71756 4.7021L1.94106 5.2315L3.89576 7.38062L3.5252 10.2543L6 9.00073L8.4748 10.2543L8.10424 7.38062L10.0589 5.2315L7.28244 4.7021L6 2.19552ZM6 0L7.95 3.81137L12 4.58359L9.15517 7.71137L9.7082 12L6 10.1217L2.2918 12L2.84483 7.71137L0 4.58359L4.05 3.81137L6 0Z" fill="#2E2E2E"/>
+                                  </svg>
+                              {% else %}
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                      <path d="M6 2.19552L4.71756 4.7021L1.94106 5.2315L3.89576 7.38062L3.5252 10.2543L6 9.00073L8.4748 10.2543L8.10424 7.38062L10.0589 5.2315L7.28244 4.7021L6 2.19552ZM6 0L7.95 3.81137L12 4.58359L9.15517 7.71137L9.7082 12L6 10.1217L2.2918 12L2.84483 7.71137L0 4.58359L4.05 3.81137L6 0Z" fill="#717171"/>
+                                  </svg>
+                              {% endif %}
+                          {% endfor %}
+                      </div>
+                      <div class="collection-promo-description">{{ promoBlock.description }}</div>
+                      <div class="collection-promo-author">{{ promoBlock.author }}</div>
+                    </div>
+
+                  {% endif %}
+
+                  
+                </div>
+                {%- else -%}
+                
+                {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+  
+        {%- render 'pagination', paginate: paginate -%}
+      {%- endpaginate -%}
+    {%- else -%}
+      <div class="EmptyState">
+        <div class="Container">
+          <h1 class="EmptyState__Title Heading u-h5">{{ 'collection.general.no_products' | t }}</h1>
+          <button class="EmptyState__Action Button Button--primary" data-action="clear-filters" data-url="{{ collection.url }}?sort_by={{ sort_by }}&filter.p.m.custom.available_or_waitlist=1&filter.v.availability=1">{{ 'collection.general.reset' | t }}</button>
+        </div>
+      </div>
+    {%- endif -%}
+  {%- endcapture -%}
+  
+  {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+  {%- assign active_filters_count = 0 -%}
+  
+  {%- for filter in collection.filters -%}
+    {%- if filter.type == 'list' -%}
+      {%- assign active_filters_count = active_filters_count | plus: filter.active_values.size -%}
+    {%- elsif filter.type == 'price_range' and filter.min_value.value or filter.max_value.value -%}
+      {%- assign active_filters_count = active_filters_count | plus: 1 -%}
+    {%- endif -%}
+  {%- endfor -%}
+  
+  {%- capture section_settings -%}
+  {
+    "sectionId": {{ section.id | json }},
+    "filterPosition": {{ section.settings.filter_position | json }}
+  }
+  {%- endcapture -%}
+  
+  {% if section.settings.overwrite_desktop_image != blank %}
+    <div class="collection-banner">
+      {% if section.settings.overwrite_mobile_image %}
+          {{ section.settings.overwrite_desktop_image | image_url: width: 2560 | image_tag: class: 'mobile-hide' }}
+          {{ section.settings.overwrite_mobile_image | image_url: width: 1500 | image_tag: width: 750, class: 'desktop-hide' }}
+      {% else %}
+          {{ section.settings.overwrite_desktop_image | image_url: width: 2560 | image_tag }}
+      {% endif %}
+      </div>
+  {% else %}
+    {% if section.settings.show_metafield_collection_image and collection.metafields.custom.banner_image_desktop %}
+      <div class="collection-banner">
+      {% if collection.metafields.custom.banner_image_mobile %}
+          {{ collection.metafields.custom.banner_image_desktop | image_url: width: 2560 | image_tag: class: 'mobile-hide' }}
+          {{ collection.metafields.custom.banner_image_mobile | image_url: width: 1500 | image_tag: width: 750, class: 'desktop-hide' }}
+      {% else %}
+          {{ collection.metafields.custom.banner_image_desktop | image_url: width: 2560 | image_tag }}
+      {% endif %}
+      </div>
+    {% endif %}
+  {% endif %}
+
+
+  {% if collection.metafields.custom.collection_navigation.value %}
+    <div class="collection-navigation">
+    {% for nav_item in collection.metafields.custom.collection_navigation.value %}
+        <a href="{{ nav_item.url }}" {% if nav_item.handle == collection.handle %}class="active"{% endif %}>{{ nav_item.title | escape }}</a>
+    {% endfor %}
+    </div>
+  {% endif %}
+  
+  <section data-section-id="{{ section.id }}" data-section-type="collection" data-section-settings='{{ section_settings }}'>
+    {%- comment -%}
+    --------------------------------------------------------------------------------------------------------------------
+    COLLECTION INFO
+    --------------------------------------------------------------------------------------------------------------------
+    {%- endcomment -%}
+  <div class="native-collection-wrapper">
+    {%- if collection.all_products_count > 0 -%}
+      {% unless collection.metafields.custom.hide_title %}
+      <header class="PageHeader">
+        <h1>{{ collection.title }}</h1>
+        {%- if collection.description != blank -%}
+          <div class="SectionHeader__Description Rte page-width">
+            {{- collection.description -}}
+          </div>
+        {%- endif -%}
+      </header>
+      {% endunless %}
+    {%- endif -%}
+  
+    {%- comment -%}
+    --------------------------------------------------------------------------------------------------------------------
+    COLLECTION TOOLBAR
+    --------------------------------------------------------------------------------------------------------------------
+    {%- endcomment -%}
+  
+    {%- if collection.all_products_count > 0 -%}
+      {%- assign show_filters = false -%}
+      {%- assign quick_links = linklists[section.settings.filter_menu] -%}
+  
+      {%- if quick_links != blank or collection.filters != empty and section.settings.show_filters -%}
+        {%- assign show_filters = true -%}
+      {%- endif -%}
+  
+      {%- capture collection_toolbar -%}
+        {%- if show_filters or section.settings.show_sort_by or section.settings.show_layout_switch -%}
+          <div class="CollectionToolbar CollectionToolbar--{{ section.settings.toolbar_position }} {% unless section.settings.show_layout_switch and show_filters == false and section.settings.show_sort_by == false %}CollectionToolbar--reverse{% endunless %}">
+            {%- if show_filters or section.settings.show_sort_by -%}
+              <div class="CollectionToolbar__Group">
+                {%- if show_filters -%}
+                  <button class="CollectionToolbar__Item CollectionToolbar__Item--filter Heading {% if active_filters_count == 0 %}Text--subdued{% endif %} u-h6 {% if section.settings.filter_position != 'drawer' %}hidden-lap-and-up{% endif %}"
+                          data-action="open-drawer"
+                          data-drawer-id="collection-filter-drawer"
+                          aria-label="{{ 'collection.filter.show_filter' | t }}">
+                    {{ 'collection.filter.title' | t }} {% if active_filters_count > 0 %}<span class="Text--subdued">({{ active_filters_count }})</span>{% endif %}
+                  </button>
+                {%- endif -%}
+  
+                {%- if section.settings.show_sort_by -%}
+                  {% assign collection_sort_by = collection.sort_by | default: collection.default_sort_by %}
+                  {% if collection_sort_by == 'manual' %} {% assign collection_sort = "Best Match" %}
+                    {% elsif collection_sort_by == 'best-selling' %}  {% assign collection_sort = "Best Match" %} 
+                    {% elsif collection_sort_by == 'price-ascending' %}  {% assign collection_sort = "Low to high" %} 
+                    {% elsif collection_sort_by == 'price-descending' %}  {% assign collection_sort = "High to low" %} 
+                    {% elsif collection_sort_by == 'created-descending' %}  {% assign collection_sort = "New arrivals" %}
+                  {% endif %}
+                  <button class="CollectionToolbar__Item CollectionToolbar__Item--sort Heading Text--subdued u-h6"
+                          aria-label="{{ 'collection.sorting.show_sort' | t }}"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                          aria-controls="collection-sort-popover">
+                      <span>{{ 'collection.sorting.title' | t }}</span> {{ collection_sort }} 
+                      <b class="caret"></b>
+                  </button>
+
+                  <div id="collection-sort-popover" class="Popover" aria-hidden="true">
+                    <header class="Popover__Header">
+                      <button class="Popover__Close Icon-Wrapper--clickable" data-action="close-popover" aria-label="{{ 'general.popup.close' | t }}">{% render 'icon' with 'close' %}</button>
+                      <span class="Popover__Title Heading u-h4">{{ 'collection.sorting.title' | t }} {{ collection_sort }}</span>
+                    </header>
+            
+                    <div class="Popover__Content">
+                      <div class="Popover__ValueList" data-scrollable>
+                        {%- for option in collection.sort_options -%}
+                          {% if option.value == "best-selling" or option.value == "title-ascending" or option.value == "title-descending" or option.value == "created-ascending" %}{% continue %}{% endif %}
+                          <button class="Popover__Value {% if option.value == collection_sort_by %}is-selected{% endif %} Heading Link Link--primary u-h6" data-value="{{ option.value }}" data-action="select-value">
+                            {% if option.value == 'manual' %} Best match
+                            {% elsif option.value == 'price-ascending' %} Low to high 
+                            {% elsif option.value == 'price-descending' %} High to low 
+                            {% elsif option.value == 'created-descending' %} New arrivals
+                            {% endif %}
+                          </button>
+                        {%- endfor -%}
+                      </div>
+                    </div>
+                  </div>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+  
+            {%- if section.settings.show_layout_switch -%}
+              <div class="CollectionToolbar__Item CollectionToolbar__Item--layout">
+                <div class="CollectionToolbar__LayoutSwitch hidden-tablet-and-up">
+                  <button aria-label="{{ 'collection.layout.show_one_per_row' | t }}" class="CollectionToolbar__LayoutType {% if mobile_items_per_row == 1 %}is-active{% endif %}" data-action="change-layout-mode" data-grid-type="mobile" data-count="1">{% render 'icon' with 'wall-1' %}</button>
+                  <button aria-label="{{ 'collection.layout.show_two_per_row' | t }}" class="CollectionToolbar__LayoutType {% if mobile_items_per_row == 2 %}is-active{% endif %}" data-action="change-layout-mode" data-grid-type="mobile" data-count="2">{% render 'icon' with 'wall-2' %}</button>
+                </div>
+  
+                <div class="CollectionToolbar__LayoutSwitch hidden-phone">
+                  <button aria-label="{{ 'collection.layout.show_two_per_row' | t }}" class="CollectionToolbar__LayoutType {% if desktop_items_per_row == 2 %}is-active{% endif %}" data-action="change-layout-mode" data-grid-type="desktop" data-count="2">{% render 'icon' with 'wall-2' %}</button>
+                  <button aria-label="{{ 'collection.layout.show_four_per_row' | t }}" class="CollectionToolbar__LayoutType {% if desktop_items_per_row >= 3 %}is-active{% endif %}" data-action="change-layout-mode" data-grid-type="desktop" data-count="{{ section.settings.grid_desktop_items_per_row }}">{% render 'icon' with 'wall-4' %}</button>
+                </div>
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endcapture -%}
+  
+      {%- comment -%}
+      --------------------------------------------------------------------------------------------------------------------
+      FILTERS AND SORT BY POPOVER
+      --------------------------------------------------------------------------------------------------------------------
+      {%- endcomment -%}
+  
+      {%- if show_filters -%}
+        {%- comment -%}
+        Implementation note: the filters can be displayed in two different ways: in a sidebar menu, always visible, or in a drawer. Due to that, we are
+        setting the general code here, and then we will output it twice.
+        {%- endcomment -%}
+  
+        {%- assign quick_links = linklists[section.settings.filter_menu] -%}
+  
+        {%- capture filters_content -%}
+          {%- if quick_links != empty -%}
+            <div class="Collapsible Collapsible--padded {% if section.settings.expand_filters %}Collapsible--autoExpand{% endif %}" data-filter-index="{% increment filter_index %}">
+              <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                {{- quick_links.title | escape -}}
+                <span class="clear-filter">Clear</span>
+              </button>
+  
+              <div class="Collapsible__Inner">
+                <div class="Collapsible__Content">
+                  <ul class="Linklist">
+                    {%- for link in quick_links.links -%}
+                      <li class="Linklist__Item {% if link.active %}is-selected{% endif %}">
+                        <a href="{{ link.url }}" class="Link Link--primary Text--subdued {% if link.active %}is-active{% endif %}">{{ link.title | escape }}</a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+  
+          {%- if section.settings.show_filters and collection.filters != empty -%}
+            {%- assign color_label = 'color,colour,couleur,colore,colors,farbe,색,色,färg,farve' | split: ',' -%}
+            {%- assign hide_filters = collection.metafields.custom.hide_filters.value | join: ',' -%}
+  
+            {%- for filter in collection.filters -%}
+              {%- assign downcase_filter_label = filter.label | downcase -%}
+              {%- assign active_filters = false -%}
+              {%- for filter_value in filter.values -%}
+                {% if filter_value.active %}{%- assign active_filters = true -%}{%- break -%}{%- endif -%}
+              {%- endfor -%}
+              {%- if hide_filters contains downcase_filter_label -%}{%- continue -%}{%- endif -%}
+  
+              <div class="{% if downcase_filter_label == 'availability' or downcase_filter_label == 'available or waitlist' %}display-none{% endif %} Collapsible Collapsible--padded Collapsible--autoExpand{% unless section.settings.expand_filters %} collapse{% endunless %}" data-filter-index="{% increment filter_index %}">
+                <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                  {{- filter.label -}}
+                  <span class="clear-filter {% if active_filters %}show{% endif %}">Clear</span>
+                </button>
+  
+                {% liquid 
+                  assign showMoreLessClass = ''
+                  if filter.values.size > 18 and downcase_filter_label == 'color'
+                    assign showMoreLessClass = 'show-more-less'
+                  elsif filter.values.size > 5 and downcase_filter_label == 'size'
+                    assign showMoreLessClass = 'show-more-less'
+                  elsif filter.values.size > 18
+                    assign showMoreLessClass = 'show-more-less'
+                  endif 
+                %}
+  
+                <div class="Collapsible__Inner">
+                  <div class="Collapsible__Content">
+                    <ul data-filter-label="{{downcase_filter_label}}" data-filter-values="{{ filter.values.size }}" class="{{showMoreLessClass}} {% if section.settings.show_filter_color_swatch and color_label contains downcase_filter_label %}ColorSwatchList HorizontalList HorizontalList--spacingTight{% else %}Linklist{% endif %}">
+                      {%- if section.settings.show_filter_color_swatch and color_label contains downcase_filter_label -%}
+  
+                        {%- for filter_value in filter.values -%}
+                          {% if filter_value.count == 0 %}{% continue %}{% endif %}
+                          <li class="HorizontalList__Item">
+                            {%- capture filter_value_id -%}@@@@-{{ filter_value.param_name | append: filter_value.value | handle }}{%- endcapture -%}
+                            <input id="{{ filter_value_id | escape }}" class="ColorSwatch__Radio" type="checkbox" name="{{ filter_value.param_name }}" value="{{ filter_value.value }}" {% if filter_value.active %}checked="checked"{% endif %}>
+  
+                            <label for="{{ filter_value_id | escape }}" class="ColorSwatch" data-tooltip="{{ filter_value.label | escape }}" data-color-name-lowercase="{{ filter_value.label | downcase }}">
+                              <span class="u-visually-hidden">{{ filter_value.label }}</span>
+                            </label>
+                            {%- if section.settings.show_filter_color_swatch and color_label contains downcase_filter_label -%}
+                                <span class="color-name">{{ filter_value.label }}</span>
+                            {%- endif -%}
+                          </li>
+                        {%- endfor -%}
+                        
+                        {% if filter.values.size > 18 %}
+                        <li class="HorizontalList__Item toggle-more-less"><div><span>+</span><span class="hide">-</span> Show <span>more</span><span class="hide">less</span></div></li>
+                        {% endif %}
+                      {%- else -%}
+                        {%- if filter.type == 'list' or filter.type == 'boolean' -%}
+                          {%- for filter_value in filter.values -%}
+                            {% if filter_value.count == 0 %}{% continue %}{% endif %}
+                            {%- capture filter_value_id -%}@@@@-{{ filter_value.param_name | append: filter_value.value | handle }}{%- endcapture -%}
+  
+                            <li class="Linklist__Item">
+                              <input class="Linklist__Checkbox u-visually-hidden" id="{{ filter_value_id | escape }}" type="checkbox" name="{{ filter_value.param_name }}" value="{{ filter_value.value }}" {% if filter_value.active %}checked{% endif %}>
+                              <label for="{{ filter_value_id | escape }}" class="Text--subdued Link Link--primary">
+                                {{- filter_value.label }}
+                              </label>
+                            </li>
+                          {%- endfor -%}
+                          {% if filter.values.size > 18 or filter.values.size > 5 and downcase_filter_label == 'size'  %}
+                            <li class="Linklist__Item toggle-more-less"><div><span>+</span><span class="hide">-</span> Show <span>more</span><span class="hide">less</span></div></li>
+                          {% endif %}
+                        {%- elsif filter.type == 'price_range' -%}
+                          <price-range class="price-range">
+                            {%- assign min_value = filter.min_value.value | default: 0.0 | divided_by: 100.0 -%}
+                            {%- assign max_value = filter.max_value.value | default: filter.range_max | divided_by: 100.0 -%}
+                            {%- assign range_max = filter.range_max | divided_by: 100.0 | ceil -%}
+  
+                            {% assign lower_bound_progress = min_value | divided_by: range_max | times: 100.0 %}
+                            {% assign higher_bound_progress = max_value | divided_by: range_max | times: 100.0 %}
+  
+                            <div class="price-range__range-group range-group" style="--range-min: {{ lower_bound_progress }}%; --range-max: {{ higher_bound_progress }}%">
+                              <input type="range" aria-label="{{ 'collection.filter.price_filter_from' | t }}" class="range" min="0" max="{{ range_max | ceil }}" value="{{ min_value | ceil }}">
+                              <input type="range" aria-label="{{ 'collection.filter.price_filter_to' | t }}" class="range" min="0" max="{{ range_max | ceil }}" value="{{ max_value | ceil }}">
+                            </div>
+  
+                            <div class="price-range__input-group">
+                              <div class="price-range__input input-prefix text--xsmall">
+                                <span class="input-prefix__value text--subdued">{{ cart.currency.symbol }}</span>
+                                <input aria-label="{{ 'collection.filter.price_filter_from' | t }}" class="input-prefix__field" type="number" inputmode="numeric" {% if filter.min_value.value %}value="{{ min_value | ceil }}"{% endif %} name="{{ filter.min_value.param_name }}" id="{{ filter.min_value.param_name | handle }}" min="0" max="{{ max_value | ceil }}" placeholder="0">
+                              </div>
+  
+                              <span class="price-range__delimiter text--small">-</span>
+  
+                              <div class="price-range__input input-prefix text--xsmall">
+                                <span class="input-prefix__value text--subdued">{{ cart.currency.symbol }}</span>
+                                <input aria-label="{{ 'collection.filter.price_filter_to' | t }}" class="input-prefix__field" type="number" inputmode="numeric" {% if filter.max_value.value %}value="{{ max_value | ceil }}"{% endif %} name="{{ filter.max_value.param_name }}" id="{{ filter.max_value.param_name | handle }}" min="{{ min_value | ceil }}" max="{{ range_max | ceil }}" placeholder="{{ range_max | ceil }}">
+                              </div>
+                            </div>
+                          </price-range>
+                        {%- endif -%}
+                      {%- endif -%}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- endif -%}
+  
+          <input type="hidden" name="sort_by" value="{{ sort_by }}">
+  
+          {%- if collection.current_type != blank or collection.current_vendor != blank -%}
+            <input type="hidden" name="q" value="{{ collection.current_vendor | default: collection.current_type | escape }}">
+          {%- endif -%}
+        {%- endcapture -%}
+          {% comment %}
+        <div id="collection-filter-drawer" class="CollectionFilters Drawer Drawer--secondary Drawer--fromRight" aria-hidden="true">
+          <header class="Drawer__Header Drawer__Header--bordered Drawer__Header--center Drawer__Container">
+            <span class="Drawer__Title Heading u-h4">{{ 'collection.filter.all' | t }}</span>
+  
+            <button class="Drawer__Close Icon-Wrapper--clickable" data-action="close-drawer" data-drawer-id="collection-filter-drawer" aria-label="{{ 'header.navigation.close_sidebar' | t }}">
+              {%- render 'icon' with 'close' -%}
+            </button>
+          </header>
+  
+          <div class="Drawer__Content">
+            <div class="Drawer__Main" data-scrollable>
+              <form id="collection-filters-drawer-form" class="collection-filters-form">
+                {{ filters_content | replace: '@@@@', 'drawer' }}
+              </form>
+            </div>
+  
+            <div class="Drawer__Footer Drawer__Footer--padded" data-drawer-animated-bottom>
+              <div class="ButtonGroup">
+                <button type="button" class="ButtonGroup__Item ButtonGroup__Item--expand Button Button--primary" data-action="close-drawer" data-drawer-id="collection-filter-drawer">{{ 'collection.filter.apply' | t }}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endcomment %}
+      {%- endif -%}
+  
+      
+  
+      {%- comment -%}
+      --------------------------------------------------------------------------------------------------------------------
+      COLLECTION PRODUCTS
+      --------------------------------------------------------------------------------------------------------------------
+      {%- endcomment -%}
+  
+      <div class="CollectionMain">
+        {%- if section.settings.toolbar_position == 'top' -%}
+          {{- collection_toolbar -}}
+        {%- endif -%}
+  
+        <div class="CollectionInner{% if section.settings.show_filters == false %} CollectionInner--HideFilters{% endif %}">
+          {%- if show_filters and section.settings.filter_position == 'sidebar' -%}
+            <div class="CollectionInner__Sidebar {% if collection_toolbar != blank and section.settings.toolbar_position == 'top' %}CollectionInner__Sidebar--withTopToolbar{% endif %}">
+              <div id="CollectionFilters__Header">
+                <span>Filter</span>
+                <a id="hideFilters"></a>
+              </div>
+              <div class="CollectionFilters">
+                <form id="collection-filters-sidebar-form" class="collection-filters-form">
+                  {{ filters_content | replace: '@@@@', 'sidebar' }}
+  
+                  {%- if active_filters_count > 0 -%}
+                    <button type="button" class="CollectionFilters__ClearButton Button Button--secondary" data-action="clear-filters" data-url="{{ collection.url }}?sort_by={{ sort_by }}&filter.p.m.custom.available_or_waitlist=1&filter.v.availability=1">{{ 'collection.filter.reset' | t }}</button>
+                  {%- endif -%}
+                </form>
+              </div>
+            </div>
+          {%- endif -%}
+  
+          <div class="CollectionInner__Products">
+            <a id="showFilters">Filter</a>
+            {{ collection_inner }}
+          </div>
+        </div>
+  
+        {%- if section.settings.toolbar_position == 'bottom' -%}
+          {{- collection_toolbar -}}
+        {%- endif -%}
+      </div>
+    {%- else -%}
+      <div class="EmptyState">
+        <div class="Container">
+          <h3 class="EmptyState__Title Heading u-h5">{{ 'collection.general.empty' | t: collection_title: collection.title }}</h3>
+          <a href="{{ routes.root_url }}" class="EmptyState__Action Button Button--primary">{{ 'collection.general.empty_button' | t }}</a>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+  </section>
+  
+  {% schema %}
+  {
+    "name": "Collection page",
+    "class": "shopify-section--bordered",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_collection_info",
+        "label": "Show collection info",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_metafield_collection_image",
+        "label": "Show collection image",
+        "default": true,
+        "info": "Set via metafield"
+      },
+
+      {
+        "type": "image_picker",
+        "id": "overwrite_desktop_image",
+        "label": "Overwrite image desktop",
+        "info": "SHOULD NOT BE USED ON THE DEFAULT TEMPLATE!"
+      },
+      {
+        "type": "image_picker",
+        "id": "overwrite_mobile_image",
+        "label": "Overwrite image mobile",
+        "info": "This will work only if the overwrite desktop is used."
+      },
+      {
+        "type": "checkbox",
+        "id": "apply_overlay",
+        "label": "Apply overlay on image",
+        "info": "This can improve text visibility.",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_color_swatch",
+        "label": "Show color swatch",
+        "info": "Some colors appear white? [Learn more](http://support.maestrooo.com/article/80-product-uploading-custom-color-for-color-swatch).",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show vendor",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "collection_image_size",
+        "label": "Collection image size",
+        "options": [
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "normal",
+            "label": "Normal"
+          },
+          {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "default": "normal"
+      },
+      {
+        "type": "header",
+        "content": "Toolbar"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_sort_by",
+        "label": "Show sort by",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_layout_switch",
+        "label": "Show layout switch"
+      },
+      {
+        "type": "select",
+        "id": "toolbar_position",
+        "label": "Position",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ],
+        "default": "top"
+      },
+      {
+        "type": "header",
+        "content": "Filters"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_filters",
+        "label": "Show filters",
+        "info": "[Customize filters](/admin/menus)",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_filter_color_swatch",
+        "label": "Show filter color swatch",
+        "info": "Transform color filters to swatches.",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "expand_filters",
+        "label": "Expand filters on desktop",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "filter_position",
+        "label": "Desktop position",
+        "options": [
+          {
+            "value": "sidebar",
+            "label": "Sidebar"
+          },
+          {
+            "value": "drawer",
+            "label": "Drawer"
+          }
+        ],
+        "default": "sidebar"
+      },
+      {
+        "type": "link_list",
+        "id": "filter_menu",
+        "label": "Quick links",
+        "info": "This menu won't show dropdown items."
+      },
+      {
+        "type": "header",
+        "content": "Grid"
+      },
+      {
+        "type": "range",
+        "id": "grid_items_per_page",
+        "label": "Products per page",
+        "min": 4,
+        "max": 100,
+        "step": 4,
+        "default": 96
+      },
+      {
+        "type": "select",
+        "id": "grid_mobile_items_per_row",
+        "label": "Products per row (mobile)",
+        "options": [
+          {
+            "value": "1",
+            "label": "1"
+          },
+          {
+            "value": "2",
+            "label": "2"
+          }
+        ],
+        "default": "2"
+      },
+      {
+        "type": "range",
+        "min": 2,
+        "max": 4,
+        "id": "grid_desktop_items_per_row",
+        "label": "Products per row (desktop)",
+        "default": 4
+      }
+    ]
+  }
+  {% endschema %}

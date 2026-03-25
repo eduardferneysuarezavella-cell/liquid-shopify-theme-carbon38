@@ -1,0 +1,122 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "show_collection_info": true,
+        "apply_overlay": true,
+        "show_color_swatch": false,
+        "show_vendor": false,
+        "collection_image_size": "normal",
+        "show_sort_by": true,
+        "show_layout_switch": false,
+        "toolbar_position": "top",
+        "show_filters": false,
+        "show_filter_color_swatch": false,
+        "expand_filters": false,
+        "filter_position": "sidebar",
+        "filter_menu": "",
+        "grid_items_per_page": 96,
+        "grid_mobile_items_per_row": "2",
+        "grid_desktop_items_per_row": 2
+      }
+    },
+    "collection_list_hwRUpg": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_aAEmkN": {
+          "type": "collection",
+          "settings": {
+            "collection": "gifts-under-100",
+            "image_alignment": "center center",
+            "content_position": "middleCenter",
+            "subheading": "",
+            "title": "",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": false
+          }
+        },
+        "collection_yy9LFg": {
+          "type": "collection",
+          "settings": {
+            "collection": "for-the-athlete",
+            "image_alignment": "center center",
+            "content_position": "middleCenter",
+            "subheading": "",
+            "title": "",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "collection_aAEmkN",
+        "collection_yy9LFg"
+      ],
+      "settings": {
+        "title": "",
+        "image_size": "small",
+        "add_spacing": true,
+        "expand_collection": true,
+        "stack_on_mobile": true,
+        "text_color": "#ffffff",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_pLdWPG": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/D-Link.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/M-Link.jpg",
+            "overlay": false,
+            "overlay_opacity": 1,
+            "content_position": "bottom-left",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify:\/\/pages\/fall-catalog-2024",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_pLdWPG"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": true,
+        "change_slides_every": 6,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 36,
+        "margin_bottom": 0,
+        "mobile_margin_top": 24,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "collection_list_hwRUpg",
+    "image_banner"
+  ]
+}

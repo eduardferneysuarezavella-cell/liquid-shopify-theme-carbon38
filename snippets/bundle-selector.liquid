@@ -1,0 +1,537 @@
+{% liquid 
+    assign bundle_metafield = product.metafields.bundle.components | split: ','
+    assign bundle_metafield_count = bundle_metafield.size
+    assign bundle_sold_out = false
+    assign bundle_components_count = 0
+    for component in product.metafields.bundle.components.value
+        unless component.available
+            assign bundle_sold_out = true
+        else 
+            assign bundle_components_count = bundle_components_count | plus: 1
+        endunless
+    endfor
+    if bundle_metafield_count != bundle_components_count 
+    assign bundle_sold_out = true
+    endif
+%}
+
+<div class="bundle-selector">
+    {% unless bundle_sold_out %}
+        <div class="ProductForm__Label">SELECT SIZE AND COLORS</div>
+        <div class="bundle-components-list">
+        {% for component in product.metafields.bundle.components.value %}
+            {%- if component.title contains ' - ' -%}
+                {% assign splitTitle = component.title | split: ' - ' %}
+                {% assign productTitleWithoutColor = "" %}
+                {% assign indexColor = splitTitle.size | minus: 1 %}
+                {% assign currentColor = splitTitle[indexColor] %}
+                {% if splitTitle.size == 2%}
+                    {% assign productTitleWithoutColor = splitTitle[0] %}
+                {% else %}
+                    {% for titleSection in splitTitle  %}
+                    {% unless forloop.last == true %}
+                        {% unless forloop.first == true %}
+                        {% assign productTitleWithoutColor = productTitleWithoutColor | append: " - " %}
+                        {% endunless %}
+                
+                        {% assign productTitleWithoutColor = productTitleWithoutColor | prepend: titleSection %}
+                    {% endunless %}
+                    {% endfor %}
+                {% endif %}
+                {% assign productTitle = productTitleWithoutColor %}
+            {%- else -%}          
+                {% assign productTitle = component.title %}
+            {%- endif -%}
+
+            {% assign queryByTag = false %}
+            {% for tag in component.tags %}
+                {% assign firstCharacter = tag | slice: 0 %}
+                {% assign lastCharacter = tag | slice: -1,1 %}
+                {% if firstCharacter == "*" and lastCharacter == "*" %}
+                  {% assign queryByTag = tag %}
+                  {% break %}
+                {% else %}
+                  {% continue %}
+                {% endif %}
+            {% endfor %}
+
+            <div class="bundle-component" {% if splitTitle %}data-color-swatch="true"{% endif %} {% if queryByTag %}data-query-by-tag="{{ queryByTag }}"{% endif %} data-product-title="{{productTitle}}" data-variant-id="">
+                <div class="bundle-component-image">
+                    <a href="#" class="quickview_trigger" data-product-handle="{{ component.handle }}" >{{ component.featured_image | image_url: height: 157 | image_tag: alt: productTitle }}</a>
+                </div>
+                <div class="bundle-component-selection">
+                    <h4 class="bundle-component-title"><a href="#" class="quickview_trigger" data-product-handle="{{ component.handle }}" >{{productTitle}}</a>{% if component.tags contains 'preorder' %}<span class="preorder-badge">PRE-ORDER</span>{% endif %}</h4>
+                    <div class="bundle-vendor">{{component.vendor}}</div>
+                    <div class="bundle-variants">
+                        {% if currentColor %}
+                            <label class="bundle-variants-label bundle-label-color">COLOR:</label>
+                            <div class="bundle-colors">                                
+                                <span class="bundle-variant-color selected" data-handle="{{ component.handle }}" data-color-image="{{ component.featured_image | image_url: height: 157 }}" data-tooltip="{{currentColor}}" data-color="{{currentColor}}" data-color-name-lowercase="{{ currentColor | downcase }}"></span>
+                            </div>
+                        {% endif %}
+
+                        <label class="bundle-variants-label bundle-label-size">SIZE:</label>
+                        <div class="bundle-sizes" {% if currentColor %}data-color="{{currentColor}}"{% endif %} {% if component.tags contains 'preorder' %}data-preorder="true"{% endif %}>
+                            {% for variant in component.variants %}
+                            <span class="bundle-variant-size {% unless variant.available%}unavailable{%endunless%}" {% if component.tags contains 'preorder' and variant.metafields.preorder.availability %}data-preorder="true" data-estimated-shipping-date="{{variant.metafields.preorder.estimated_shipping_date}}"{% endif %} data-size="{{variant.option2}}" data-variant-id="{{variant.id}}" data-bundle-component-variant-index="{{forloop.index0}}" data-bundle-component-price="{{variant.price}}" data-bundle-component-handle="{{component.handle}}">
+                                {% if component.tags contains 'preorder' and variant.metafields.preorder.availability %}{% render 'icon-preorder' %}{% endif %}
+                                {%- unless variant.available%}<svg class="SizeSwatch__Strikethrough"><line x1="0" y1="100%" x2="100%" y2="0" stroke="currentColor"></line></svg>{% endunless -%}
+                                {{variant.option2}}
+                            </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+
+        <div class="bundle-atc">
+            <a href="#" disabled>SELECT ALL COMPONENTS</a>
+        </div>
+    {% else %}
+
+    {% endunless %}
+</div>
+
+<script>
+    window.bundleComponents = {{ bundle_components_count }};
+    window.bundleComponentsSelected = [];
+    window.bundleCost = {{product.price}};
+    window.colorSwatches = [];
+    var isPreorderIcon = `{% render 'icon-preorder' %}`;
+    /* If bundle is set */
+    var queryString = window.location.search;
+    var urlParams = new URLSearchParams(queryString);
+    window.loadBundle = false;
+    if(urlParams.get('bundle-id')) {
+        window.loadBundle = true;
+    }
+    window.removeKeys = [];
+    window.currentBundleComponents = 4;
+
+    document.addEventListener('click',function(e){
+        if(e.target && e.target.classList.contains('bundle-variant-size') && !e.target.classList.contains('unavailable')){
+            e.preventDefault();
+            var thisSize = e.target;
+            if(!thisSize.classList.contains('selected')) {
+                var bundleComponent = thisSize.closest('.bundle-component');
+                if(bundleComponent.querySelector('.bundle-variant-size.selected')) bundleComponent.querySelector('.bundle-variant-size.selected').classList.remove('selected');                
+                thisSize.classList.add('selected');
+                if(thisSize.dataset.preorder == "true") {
+                    bundleComponent.dataset.preorder = "true";
+                    bundleComponent.dataset.estimatedShippingDate = thisSize.dataset.estimatedShippingDate;
+                    if (bundleComponent.querySelector('.bundle-component-selection .bundle-selection-estimated-shipping-date')) {
+                        bundleComponent.querySelector('.bundle-component-selection .bundle-selection-estimated-shipping-date').text = 'Estimated shipping: ' + thisSize.dataset.estimatedShippingDate;
+                    } else {
+                        bundleComponent.querySelector('.bundle-component-selection').insertAdjacentHTML('beforeend',"<div class='bundle-selection-estimated-shipping-date'>Estimated shipping: "+thisSize.dataset.estimatedShippingDate+"</div>");
+                    }
+                } else {
+                    bundleComponent.dataset.preorder = "false";
+                    bundleComponent.dataset.estimatedShippingDate = "";
+                    if (bundleComponent.querySelector('.bundle-component-selection .bundle-selection-estimated-shipping-date')) {
+                        bundleComponent.querySelector('.bundle-component-selection .bundle-selection-estimated-shipping-date').remove();
+                    }
+                }
+                if(bundleComponent.dataset.variantId != "") {
+                    var indexOfVariantInBundle = window.bundleComponentsSelected.lastIndexOf(parseInt(bundleComponent.dataset.variantId));
+                    window.bundleComponentsSelected.splice(indexOfVariantInBundle,1);
+                    bundleComponent.dataset.variantId = "";
+                }                
+                bundleComponent.dataset.variantId = thisSize.dataset.variantId;
+                window.bundleComponentsSelected.push(parseInt(thisSize.dataset.variantId));
+                bundleBuildSelection(window.bundleComponentsSelected, window.bundleComponents);
+            }
+        }
+
+        if(e.target && e.target.classList.contains('bundle-variant-color')){
+            e.preventDefault();
+            var thisColor = e.target;
+            if(!thisColor.classList.contains('selected')) {
+                var bundleComponent = thisColor.closest('.bundle-component');
+
+                if (bundleComponent.querySelector('.bundle-component-selection .bundle-selection-estimated-shipping-date')) {
+                    bundleComponent.querySelector('.bundle-component-selection .bundle-selection-estimated-shipping-date').remove();
+                }
+                
+                //remove variant selection
+                if(bundleComponent.dataset.variantId != "") {
+                    var indexOfVariantInBundle = window.bundleComponentsSelected.lastIndexOf(parseInt(bundleComponent.dataset.variantId));
+                    window.bundleComponentsSelected.splice(indexOfVariantInBundle,1);
+                    bundleComponent.dataset.variantId = "";
+                }
+                //remove other color selected
+                if(bundleComponent.querySelector('.bundle-variant-color.selected')) {
+                    bundleComponent.querySelector('.bundle-variant-color.selected').classList.remove('selected');
+                }
+                //remove size
+                if(bundleComponent.querySelector('.bundle-variant-size.selected')) {
+                    bundleComponent.querySelector('.bundle-variant-size.selected').classList.remove('selected');
+                }
+                //show new size selector
+                bundleComponent.querySelectorAll('.bundle-sizes').forEach(bundleSizes => {
+                    if(bundleSizes.dataset.color != thisColor.dataset.color) {
+                        bundleSizes.classList.add('hidden');
+                    } else {
+                        if(bundleSizes.classList.contains('hidden')) bundleSizes.classList.remove('hidden');
+                        if(bundleSizes.dataset.preorder) {
+                            if(bundleComponent.querySelector('.bundle-component-selection .bundle-component-title .preorder-badge')) {
+                                if(bundleComponent.querySelector('.bundle-component-selection .bundle-component-title .preorder-badge').classList.contains('hide')) {
+                                    bundleComponent.querySelector('.bundle-component-selection .bundle-component-title .preorder-badge').classList.remove('hide');
+                                }
+                            } else {
+                                bundleComponent.querySelector('.bundle-component-selection .bundle-component-title').insertAdjacentHTML('beforeend', '<span class="preorder-badge">PRE-ORDER</span>');
+                            }
+                        } else {
+                            if(bundleComponent.querySelector('.bundle-component-selection .bundle-component-title .preorder-badge')) {
+                                bundleComponent.querySelector('.bundle-component-selection .bundle-component-title .preorder-badge').classList.add('hide');
+                            }
+                        }
+                    }
+                });
+                thisColor.classList.add('selected');
+                bundleComponent.querySelector('.bundle-component-image img').src = thisColor.dataset.colorImage;
+                bundleComponent.querySelector('.bundle-component-image img').srcset = thisColor.dataset.colorImage;
+                bundleComponent.querySelector('.bundle-component-image .quickview_trigger').dataset.productHandle = thisColor.dataset.handle;
+                bundleComponent.querySelector('.bundle-component-title .quickview_trigger').dataset.productHandle = thisColor.dataset.handle;
+                bundleBuildSelection(window.bundleComponentsSelected, window.bundleComponents);
+            }
+        }
+    });
+
+    document.querySelectorAll('.bundle-component[data-color-swatch]').forEach(swatch => {
+        window.colorSwatches.push(swatch);    
+    });
+
+    bundleGetColorSwatches(window.colorSwatches, []);
+
+    function bundleGetColorSwatches(array, swatchesImage = []) {
+        if(array.length) {
+            var currentComponent = array[0];
+            var currentComponentColor = currentComponent.querySelector('.bundle-sizes').dataset.color;
+            var componentTitleClean = currentComponent.dataset.productTitle.replace(/\'/g,"").replace(/\"/g,"");
+            var queryByTag = false;
+            if(currentComponent.dataset.queryByTag) {
+                queryByTag = currentComponent.dataset.queryByTag;
+            }
+
+            fetch('/api/2022-07/graphql.json', {
+                method: 'POST',
+                headers: {
+                  'X-Shopify-Storefront-Access-Token': 'e09aedd0f593820ed2af9f6854af7e2b',
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  query: `
+                    { 
+                        products(query:"title:'`+componentTitleClean+` - '*" first:40) {
+                            edges {
+                                node {
+                                    title
+                                    id
+                                    availableForSale
+                                    tags
+                                    totalInventory
+                                    compareAtPriceRange {
+                                      maxVariantPrice {
+                                        amount
+                                      }
+                                      minVariantPrice {
+                                        amount
+                                      }
+                                    }
+                                    priceRange {
+                                      maxVariantPrice {
+                                        amount
+                                      }
+                                      minVariantPrice {
+                                        amount
+                                      }
+                                    }
+                                    handle
+                                    images(first:1) {
+                                        edges {
+                                            node {
+                                                url
+                                                id
+                                            }
+                                        }
+                                    }
+                                    variants(first: 10) {
+                                        edges {
+                                            node {
+                                                id
+                                                availableForSale
+                                                title
+                                                price {
+                                                    amount
+                                                }
+                                                metafield_preorder_availability:metafield(namespace: "preorder", key: "availability") {
+                                                    value
+                                                }
+                                                metafield_preorder_estimated_shipping_date:metafield(namespace: "preorder", key: "estimated_shipping_date") {
+                                                    value
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        } 
+                    }
+                    `
+                }),
+              })
+              .then((res) => res.json())
+              .then(data => {
+                if(data.data.products.edges.length > 0) {
+                    data.data.products.edges.forEach((color, i) => {
+                        var swatchHasSale = false;
+                        if(parseFloat(color.node.priceRange.minVariantPrice.amount) < parseFloat(color.node.compareAtPriceRange.minVariantPrice.amount) || parseFloat(color.node.priceRange.maxVariantPrice.amount) < parseFloat(color.node.compareAtPriceRange.maxVariantPrice.amount) )  {
+                            swatchHasSale = true;
+                        }
+                        if(!swatchHasSale) {
+                            var colorName = color.node.title.split(' - ');
+                            colorName = colorName[colorName.length-1];
+                            var colorNodeClean = color.node.title.replace(/\'/g,"").replace(/\"/g,"");
+                            if(currentComponentColor != colorName && color.node.availableForSale && colorNodeClean.startsWith(componentTitleClean+' - ')) {                            
+                                var colorSwatchesHTML = `<div class="bundle-sizes hidden" data-color="`+colorName+`" `+(color.node.tags.includes('preorder') ? 'data-preorder="true"': '')+`>`;
+                                color.node.variants.edges.forEach((size,i) => {
+                                    var sizeName = size.node.title.split(' / ');
+                                    sizeName = sizeName[sizeName.length-1];
+                                    colorSwatchesHTML += `<span class="bundle-variant-size `+(size.node.availableForSale ? '' : 'unavailable')+`" `+((size.node.metafield_preorder_availability && size.node.metafield_preorder_availability.value == "true") ? 'data-preorder="true" data-estimated-shipping-date="'+(size.node.metafield_preorder_estimated_shipping_date ? size.node.metafield_preorder_estimated_shipping_date.value : '')+'"' : '')+` data-size="`+sizeName+`" data-variant-id="`+size.node.id.replace("gid://shopify/ProductVariant/","")+`" data-bundle-component-price="`+size.node.price.amount*100+`"">`;
+                                    if(size.node.metafield_preorder_availability && size.node.metafield_preorder_availability.value == "true") {
+                                        colorSwatchesHTML += isPreorderIcon;
+                                    }
+                                    if(!size.node.availableForSale) colorSwatchesHTML += `<svg class="SizeSwatch__Strikethrough"><line x1="0" y1="100%" x2="100%" y2="0" stroke="currentColor"></line></svg>`;
+                                    colorSwatchesHTML += sizeName;
+                                    colorSwatchesHTML += `</span>`;
+                                });
+                                colorSwatchesHTML += `</div>`;
+                                currentComponent.querySelector('.bundle-variants').insertAdjacentHTML('beforeend',colorSwatchesHTML);
+                                swatchesImage.push(color.node);
+                            }
+                        }
+                    });
+                }
+                array.shift();
+                bundleGetColorSwatches(array, swatchesImage);    
+            });
+        } else {
+            bundleGetSwatchesImage(swatchesImage);
+        }
+    }
+
+    
+    
+
+    //!!!! ADD TO CART !!!!
+    document.querySelectorAll('.bundle-atc a').forEach(atc => {
+        atc.addEventListener('click', function(e) {
+          e.preventDefault();
+          if(!atc.getAttribute('disabled')) {
+            var _bundle_id = new Date().getTime();
+            var formData = {
+              'items': []
+            };
+
+            var discount_off = {{ product.metafields.bundle.discount | plus: 0 }};
+  
+            window.bundleComponentsSelected.forEach((component, index) => {
+              var bundleComponentPrice = parseInt(document.querySelector('.bundle-variant-size[data-variant-id="'+component+'"]').dataset.bundleComponentPrice);
+              var itemData = {
+                'id': parseInt(component),
+                'quantity': 1,
+                'properties' : {
+                  _bundle_id: _bundle_id,
+                  _bundle_currency: Shopify.currency.active,
+                  _bundle_components: window.bundleComponentsSelected.length,
+                  _bundle_component_position: index,
+                  _bundle_component_variant_index: parseInt(document.querySelector('.bundle-variant-size[data-variant-id="'+component+'"]').dataset.bundleComponentVariantIndex),
+                  _bundle_component_handle: document.querySelector('.bundle-variant-size[data-variant-id="'+component+'"]').dataset.bundleComponentHandle,
+                  _bundle_component_original_price: parseInt(bundleComponentPrice),
+                  _bundle_discount: discount_off,
+                  _bundle_compare_at_price: {{ product.selected_or_first_available_variant.compare_at_price | json }},
+                  _bundle_url: {{product.url | json }},
+                  _bundle_cost: {{product.price | json }},
+                  _bundle_name: {{product.title | json }}
+                }
+              }
+              
+              if(document.querySelector('.bundle-variant-size[data-variant-id="'+component+'"]').dataset.preorder == "true") {
+                itemData.properties._preorder = "true";
+                itemData.properties['Estimated shipping date'] = document.querySelector('.bundle-variant-size[data-variant-id="'+component+'"]').dataset.estimatedShippingDate;
+              }
+              if(urlParams.get('bundle-id') && window.removeKeys.length) {
+                itemData.properties._remove_bundle_id = parseInt(urlParams.get('bundle-id'));
+                window.removeKeys = [];
+              }
+  
+              formData.items.push(itemData);    
+            });
+
+            fetch(window.Shopify.routes.root + 'cart/add.js', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(formData)
+            })
+            .then(response => {
+              return response.json();
+            })
+            .then(data => {
+                document.documentElement.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+                // open cart drawer
+
+                data.items.forEach(itemData => {
+                    var item = {
+                        "Name": itemData.title,
+                        "ProductID": itemData.product_id,
+                        "ImageURL": itemData.image,
+                        "URL": "https://carbon38.com"+itemData.url,
+                        "Brand": itemData.vendor,
+                        "Price": Shopify.formatMoney(itemData.price, window.theme.moneyWithCurrencyFormat),
+                        "Value": itemData.price / 100,
+                        "CompareAtPrice": "$0.00"
+                    }
+                    if(itemData.compare_at_price) {
+                        item["CompareAtPrice"] = Shopify.formatMoney(itemData.compare_at_price, window.theme.moneyWithCurrencyFormat);
+                    }
+
+                    document.documentElement.dispatchEvent(
+                        new CustomEvent('product:added', {
+                            bubbles: true,
+                            detail: {
+                                variant: {{ product.selected_or_first_available_variant.id }},
+                                quantity: 1,
+                                item: item
+                            },
+                        })
+                    );
+                });   
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });         
+          }
+        });
+      });
+
+    function bundleGetSwatchesImage(array) {
+        if(array.length) {
+            var color = array[0];
+            var colorName = color.title.split(' - ');
+            colorName = colorName[colorName.length-1];
+            var colorNameLowercase = colorName.toLowerCase();
+            if(window.swatchColorObject[colorNameLowercase]) {
+              var colorSwatchUrl = window.swatchColorObject[colorNameLowercase];
+            } else {
+              var colorSwatchUrl = 'background-image: url(' + window.swatchColorObject.shopifyFilesFolder + window.shopifyHandleize(colorNameLowercase) + '_72x72.png)';
+            }
+
+            var bundleComponent = document.querySelector('.bundle-component[data-product-title="'+color.title.replace(" - " + colorName, "")+'"]');
+            var newColor = `<span class="bundle-variant-color" data-handle="`+color.handle+`" data-color-image="`+color.images.edges[0].node.url+`" data-tooltip="`+colorName+`" data-color="`+colorName+`"  data-color-name-lowercase="`+colorNameLowercase+`"></span>`;
+            bundleComponent.querySelector('.bundle-colors').insertAdjacentHTML('beforeend',newColor);
+            array.shift();
+            bundleGetSwatchesImage(array);
+        } else {
+            if(window.loadBundle) {
+                var currentBundleId = urlParams.get('bundle-id');
+                fetch(window.Shopify.routes.root + 'cart.js', {
+                    method: 'GET',
+                    headers: {
+                    'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => {
+                    return response.json();
+                })
+                .then(data => {
+                    data.items.forEach(cartItem => {
+                        if(cartItem.properties._bundle_id && cartItem.properties._bundle_id == currentBundleId) {
+                            removeKeys.push(cartItem.key);
+                            window.currentBundleComponents = cartItem.properties._bundle_components;
+                            var bundleComponent = document.querySelector('.bundle-variant-size[data-variant-id="'+cartItem.id+'"]');
+                            var bundleSizes = bundleComponent.parentElement;
+                            var bundleComponentContainer = bundleComponent.closest('.bundle-component');
+                            var bundleColor = bundleSizes.dataset.color;
+                            var bundleColors = bundleComponentContainer.querySelector('.bundle-colors');
+
+                            bundleComponent.classList.add('selected');
+                            bundleComponentContainer.dataset.variantId = cartItem.id;
+                            
+                            if(bundleComponent.dataset.preorder == "true") {
+                                bundleComponentContainer.dataset.preorder = "true";
+                                bundleComponentContainer.dataset.estimatedShippingDate = cartItem.properties['Estimated shipping date'];
+                                if(bundleComponentContainer.querySelector('.bundle-component-selection .bundle-component-title .preorder-badge')) {
+                                    if(bundleComponentContainer.querySelector('.bundle-component-selection .bundle-component-title .preorder-badge').classList.contains('hide')) {
+                                        bundleComponentContainer.querySelector('.bundle-component-selection .bundle-component-title .preorder-badge').classList.remove('hide');
+                                    }
+                                } else {
+                                    bundleComponentContainer.querySelector('.bundle-component-selection .bundle-component-title').insertAdjacentHTML('beforeend', '<span class="preorder-badge">PRE-ORDER</span>');
+                                }
+                                if (bundleComponentContainer.querySelector('.bundle-component-selection .bundle-selection-estimated-shipping-date')) {
+                                    bundleComponentContainer.querySelector('.bundle-component-selection .bundle-selection-estimated-shipping-date').text = 'Estimated shipping: ' + bundleComponent.dataset.estimatedShippingDate;
+                                } else {
+                                    bundleComponentContainer.querySelector('.bundle-component-selection').insertAdjacentHTML('beforeend',"<div class='bundle-selection-estimated-shipping-date'>Estimated shipping: "+bundleComponent.dataset.estimatedShippingDate+"</div>");
+                                }
+                            } else {
+                                bundleComponentContainer.dataset.preorder = "false";
+                                bundleComponentContainer.dataset.estimatedShippingDate = "";
+                                if(bundleComponentContainer.querySelector('.bundle-component-selection .bundle-component-title .preorder-badge')) {
+                                    bundleComponentContainer.querySelector('.bundle-component-selection .bundle-component-title .preorder-badge').classList.add('hide');
+                                }
+                                if (bundleComponentContainer.querySelector('.bundle-component-selection .bundle-selection-estimated-shipping-date')) {
+                                    bundleComponentContainer.querySelector('.bundle-component-selection .bundle-selection-estimated-shipping-date').remove();
+                                }
+                            }
+
+                            if(bundleSizes.classList.contains('hidden')) {
+                                bundleComponentContainer.querySelectorAll('.bundle-sizes').forEach(sizesContainer => {
+                                    sizesContainer.classList.add('hidden');
+                                });
+                                bundleSizes.classList.remove('hidden');
+                            }
+
+                            if(!bundleColors.querySelector('.bundle-variant-color[data-color="'+bundleColor+'"]').classList.contains('selected')) {
+                                bundleColors.querySelectorAll('.bundle-variant-color').forEach(colorContainer => {
+                                    colorContainer.classList.remove('selected');
+                                });
+                                bundleColors.querySelector('.bundle-variant-color[data-color="'+bundleColor+'"]').classList.add('selected');
+                                bundleComponentContainer.querySelector('.bundle-component-image img').src = bundleColors.querySelector('.bundle-variant-color[data-color="'+bundleColor+'"]').dataset.colorImage;
+                            }
+                           
+                            window.bundleComponentsSelected.push(parseInt(cartItem.id));
+                        }
+                    });
+
+                    window.bundleComponents = window.currentBundleComponents;                        
+                    bundleBuildSelection(window.bundleComponentsSelected, window.bundleComponents);
+                    document.querySelector('.bundle-selector').classList.add('loaded');
+                    window.loadBundle = false;
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    document.querySelector('.bundle-selector').classList.add('loaded');
+                    window.loadBundle = false;
+                });      
+            } else {
+                document.querySelector('.bundle-selector').classList.add('loaded');
+                window.loadBundle = false;
+            }
+        }
+    }
+
+    function bundleBuildSelection(array, total) {
+        var atcButton = document.querySelector('.bundle-atc a');
+        if(array.length == total) {
+            atcButton.removeAttribute('disabled');
+            atcButton.text = "ADD ALL TO BAG";
+        } else {
+            atcButton.setAttribute('disabled', true);
+            atcButton.text = "SELECT ALL COMPONENTS";
+        }
+    }
+
+</script>

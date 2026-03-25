@@ -1,0 +1,43 @@
+{
+  "sections": {
+    "full_width_banner_jiHFXt": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_YEpmCb": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/nike-dunk-sign-up.webp",
+            "mobile_image": "shopify:\/\/shop_images\/nike-dunk-sign-up-mobile.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "sub_heading": "",
+            "heading": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_YEpmCb"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "full_width_banner_jiHFXt"
+  ]
+}

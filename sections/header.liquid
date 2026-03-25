@@ -1,0 +1,1621 @@
+{%- assign use_transparent_header = false -%}
+
+{%- if template == 'index' and section.settings.enable_transparent_header -%}
+  {%- assign use_transparent_header = true -%}
+{%- endif -%}
+
+{%- if template.name == 'collection' and section.settings.enable_transparent_header_collection and collection.image and collection.all_products_count > 0 and collection.template_suffix != 'no-image' -%}
+  {%- assign use_transparent_header = true -%}
+{%- endif -%}
+
+<link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-menu-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}" media="print" onload="this.media='all'">
+
+{%- if settings.predictive_search_enabled -%}
+  <link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- endif -%}
+
+{%- if section.settings.menu_type_desktop == 'mega' -%}
+  <link rel="stylesheet" href="{{ 'component-mega-menu.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- endif -%}
+
+
+<style>
+  header-drawer {
+    justify-self: start;
+    margin-left: 0;
+
+    .header__icon--menu {
+      position: relative;
+      top: -11px;
+    }
+  }
+
+  {%- if section.settings.sticky_header_type == 'reduce-logo-size' -%}
+    .scrolled-past-header .header__heading-logo-wrapper {
+      width: 75%;
+    }
+  {%- endif -%}
+
+  {%- if section.settings.menu_type_desktop != "drawer" -%}
+    @media screen and (min-width: 1140px) {
+      header-drawer {
+        display: none;
+      }
+    }
+  {%- endif -%}
+
+  .menu-drawer-container {
+    display: flex;
+  }
+
+  /* Prevent body scroll when menu drawer is open */
+  body.menu-drawer-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    touch-action: none; /* Prevent touch scrolling */
+  }
+
+  /* Fallback for older browsers */
+  @supports not (overscroll-behavior: contain) {
+    body.menu-drawer-open {
+      overflow: hidden;
+      -webkit-overflow-scrolling: auto;
+    }
+  }
+
+  /* Ensure menu drawer content is scrollable */
+  .menu-drawer {
+    overflow-y: auto;
+    max-height: 100vh;
+    max-height: 100dvh; /* Dynamic viewport height for modern browsers */
+    -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
+    overscroll-behavior: contain; /* Prevent scroll chaining */
+  }
+
+  .menu-drawer__inner-container {
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for modern browsers */
+    display: flex;
+    flex-direction: column;
+    /* Let parent .menu-drawer handle scrolling */
+  }
+
+  /* Improve mobile touch scrolling */
+  @media (max-width: 749px) {
+    .menu-drawer {
+      -webkit-overflow-scrolling: touch;
+      overflow-y: scroll;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE/Edge */
+    }
+    
+    .menu-drawer::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
+    
+    .menu-drawer__inner-container {
+      /* Remove overflow from inner container - let parent handle it */
+      overflow-y: visible;
+      min-height: auto;
+    }
+    
+    .menu-drawer__navigation-container {
+      /* Remove individual scrolling - let parent menu-drawer handle it */
+      overflow-y: visible;
+    }
+  }
+
+  .list-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .list-menu--inline {
+    display: inline-flex;
+  }
+
+  .list-menu__item {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 1.2px;
+    font-weight: 400;
+  }
+
+  .list-menu__item--link {
+    text-decoration: none;
+  }
+
+  .menu-drawer__mobile-image {
+    margin-right: 15px;
+  }
+
+  /* CSS-based logo and currency selector visibility control */
+  /* When menu drawer is open, hide logo and show mobile currency selector */
+  body:has(.menu-drawer-container[open]) .header__heading-logo-wrapper {
+    display: none !important;
+  }
+  
+  body:has(.menu-drawer-container[open]) .mobile-menu-currency-selector {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* When menu drawer is closed, show logo and hide mobile currency selector */
+  body:not(:has(.menu-drawer-container[open])) .mobile-menu-currency-selector {
+    display: none !important;
+  }
+
+  /* Plus/Minus icon toggle using CSS */
+  /* Default state: show plus, hide minus */
+  .menu-drawer details summary .icon-plus {
+    display: inline-block !important;
+  }
+  
+  .menu-drawer details summary .icon-minus {
+    display: none !important;
+  }
+  
+  /* When details is open: hide plus, show minus */
+  .menu-drawer details[open] summary .icon-plus {
+    display: none !important;
+  }
+  
+  .menu-drawer details[open] summary .icon-minus {
+    display: inline-block !important;
+  }
+
+  /* Sticky-subnav hiding when currency selector is open */
+  /* Hide sticky-subnav when mobile currency dropdown is open */
+  body:has(.mobile-menu-currency-selector .disclosure__list-wrapper:not([hidden])) .section-sticky-subnav {
+    position: relative !important;
+    top: -2px !important;
+  }
+  
+  body:has(.mobile-menu-currency-selector .disclosure__list-wrapper:not([hidden])) sticky-subnav {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* Side by Side Images Styles */
+  .side-by-side-images {
+    width: 100%;
+    padding: 0;
+    flex-shrink: 0; /* Prevent shrinking in flex container */
+  }
+
+  .side-by-side-images__container {
+    display: flex;
+    gap: 6px;
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .side-by-side-images__item {
+    flex: 1;
+    position: relative;
+    margin-bottom: 40px;
+  }
+
+  .menu-drawer__menu.has-submenu.list-menu.parent-menu > li:nth-child(1) {
+    position: relative;
+  }
+  
+  .menu-drawer__menu.has-submenu.list-menu.parent-menu > li:nth-child(1)::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10px;
+    right: 10px;
+    height: 1px;
+    background-color: #DEDEDE;
+  }
+
+  .side-by-side-images__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 40px;
+  }
+
+  .side-by-side-images__image-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+
+  .side-by-side-images__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border-radius: 5px;
+    min-height: 171px;
+  }
+
+  .side-by-side-images__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+
+  }
+
+  .side-by-side-images__text {
+    font-size: 13px;
+    letter-spacing: 8%;
+    color: #FFFFFF;
+    line-height: 100%;
+    font-weight: 700;
+    font-family: "Euclid";
+    width: 121px;
+  }
+
+  .menu-drawer__menu-item.parent-links {
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  .currency-symbol {
+    width: 21px;
+    height: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #000000;
+  }
+
+  .mobile-only {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    font-size: 11.5px;
+    font-family: 'Euclid';
+    font-weight: 400;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  .icon-plus, .icon-minus {
+    position: absolute;
+    right: 15px;
+  }
+
+  /* Wishlist icon styling */
+  .header__icon--wishlist {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header__icon--wishlist .icon-heart {
+    width: 20px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+  }
+
+  /* Ensure wishlist icons are visible on correct breakpoints */
+  .header__icon--wishlist.large-up-hide {
+    display: flex !important; /* Mobile wishlist icon */
+  }
+
+  .header__icon--wishlist.small-hide.medium-hide {
+    display: flex !important; /* Desktop wishlist icon */
+  }
+
+  @media (min-width: 1140px) {
+    .header__icon--wishlist.large-up-hide {
+      display: none !important; /* Hide mobile wishlist on desktop */
+    }
+    
+    .header__icon--wishlist.small-hide.medium-hide {
+      display: flex !important; /* Show desktop wishlist */
+    }
+  }
+
+  @media (max-width: 1139px) {
+    .header__icon--wishlist.small-hide.medium-hide {
+      display: none !important; /* Hide desktop wishlist on mobile */
+    }
+    
+    .header__icon--wishlist.large-up-hide {
+      display: flex !important; /* Show mobile wishlist */
+    }
+  }
+
+  @media (min-width: 1140px) {
+    .side-by-side-images__text {
+      font-size: 20px;
+    }
+    .mobile-only {
+      display: none;
+    }
+
+    .desktop-only {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 749px) {
+    .header__heading-logo-wrapper img {
+      max-width: {{ settings.mobile_logo_max_width }}px;
+    }
+    
+    /* Minimal mobile browser toolbar fix */
+    .side-by-side-images {
+      /* Minimal bottom padding to account for browser toolbars */
+      padding-bottom: max(env(safe-area-inset-bottom, 20px), 33px);
+      margin-bottom: 13px;
+      /* Ensure proper positioning within viewport */
+      min-height: auto;
+      /* Use dynamic viewport units that account for browser UI */
+      max-height: calc(100dvh - 83px);
+    }
+    
+    .side-by-side-images__container {
+      /* Minimal bottom margin for toolbar clearance */
+      margin-bottom: 18px;
+      /* Minimal padding */
+      padding-bottom: 13px;
+    }
+    
+    .side-by-side-images__link {
+      /* Reduce bottom margin */
+      margin-bottom: 28px;
+    }
+    
+    /* Specific fixes for different browser toolbar positions */
+    
+    /* When browser toolbar is at bottom */
+    @supports (height: 100dvh) {
+      .side-by-side-images {
+        /* Use dynamic viewport height that responds to browser UI */
+        max-height: calc(100dvh - 63px);
+        /* Minimal padding for bottom toolbar */
+        padding-bottom: max(env(safe-area-inset-bottom, 20px), 43px);
+      }
+    }
+    
+    /* Additional spacing for very small screens */
+    @media (max-height: 700px) {
+      .side-by-side-images {
+        padding-bottom: max(env(safe-area-inset-bottom, 20px), 48px);
+        margin-bottom: 18px;
+      }
+    }
+    
+    /* Ensure menu drawer also accounts for browser toolbars */
+    .menu-drawer {
+      /* Use dynamic viewport that accounts for browser UI */
+      max-height: 100dvh;
+      min-height: 100dvh;
+      /* Minimal bottom padding to prevent content cut-off */
+      padding-bottom: max(env(safe-area-inset-bottom, 20px), 28px);
+    }
+    
+    .menu-drawer__inner-container {
+      /* Ensure inner container has proper spacing */
+      min-height: calc(100dvh - 28px);
+      /* Minimal bottom padding for toolbar clearance */
+      padding-bottom: max(env(safe-area-inset-bottom, 20px), 18px);
+    }
+  }
+
+  .menu-drawer__mobile-image-wrapper img {
+    border-radius: 3px;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+  }
+
+  .menu-drawer__mobile-image {
+    margin-right: 15px;
+  }
+</style>
+
+{%- style -%}
+  .header {
+    padding: 25px 17px;
+  }
+
+  .section-header {
+    position: sticky; /* This is for fixing a Safari z-index issue. PR #2147 */
+  }
+
+  /* .header__heading-logo-wrapper {
+    display: none;
+  } */
+
+  @media screen and (min-width: 1140px) {
+    .header {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    /* .header__heading-logo-wrapper {
+      display: inline-block;
+    } */
+  }
+{%- endstyle -%}
+
+<script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
+
+<svg xmlns="http://www.w3.org/2000/svg" class="hidden">
+  <symbol id="icon-search" width="21" height="22" viewBox="0 0 21 22" fill="none">
+    <path d="M9.93101 1.611C8.32017 1.61163 6.74567 2.08983 5.40656 2.98516C4.06745 3.88048 3.02385 5.15273 2.40769 6.64107C1.79152 8.12941 1.63046 9.76702 1.94485 11.3469C2.25925 12.9268 3.03499 14.3779 4.17401 15.517C4.92357 16.3027 5.82264 16.9305 6.81837 17.3637C7.8141 17.7969 8.88638 18.0266 9.97217 18.0393C11.058 18.0521 12.1353 17.8477 13.141 17.438C14.1466 17.0284 15.0602 16.4218 15.828 15.654C16.5958 14.8862 17.2024 13.9726 17.612 12.967C18.0217 11.9613 18.2261 10.8839 18.2134 9.79815C18.2006 8.71236 17.9709 7.64008 17.5377 6.64436C17.1045 5.64863 16.4767 4.74956 15.691 4C14.9364 3.24121 14.0387 2.63963 13.05 2.23007C12.0613 1.82052 11.0012 1.61112 9.93101 1.614M9.93101 0.5C11.7619 0.5 13.5516 1.04291 15.0739 2.06009C16.5962 3.07726 17.7827 4.523 18.4834 6.2145C19.184 7.906 19.3673 9.76727 19.0101 11.563C18.653 13.3586 17.7713 15.0081 16.4767 16.3027C15.1821 17.5973 13.5326 18.4789 11.737 18.8361C9.94128 19.1933 8.08001 19.01 6.38851 18.3094C4.69701 17.6087 3.25127 16.4222 2.2341 14.8999C1.21692 13.3776 0.674011 11.5879 0.674011 9.757C0.674011 7.30189 1.6493 4.94734 3.38532 3.21131C5.12135 1.47529 7.4759 0.5 9.93101 0.5Z" fill="#2E2E2E"/>
+    <path d="M20.4439 21.9149C20.3709 21.915 20.2985 21.9006 20.231 21.8726C20.1636 21.8446 20.1024 21.8036 20.0508 21.7519L15.3599 17.0599C15.3084 17.0083 15.2677 16.9471 15.2398 16.8798C15.2119 16.8125 15.1973 16.7403 15.1973 16.6674C15.1973 16.5202 15.2558 16.379 15.3599 16.2749C15.464 16.1708 15.6053 16.1123 15.7525 16.1123C15.8997 16.1123 16.041 16.1708 16.1451 16.2749L20.837 20.9669C20.9148 21.0445 20.9678 21.1435 20.9893 21.2513C21.0108 21.3591 20.9997 21.4709 20.9576 21.5724C20.9155 21.674 20.8445 21.7607 20.753 21.8217C20.6615 21.8827 20.5538 21.9151 20.4439 21.9149Z" fill="#2E2E2E"/>
+  </symbol>
+
+  <symbol id="icon-reset" class="icon icon-close"  fill="none" viewBox="0 0 18 18" stroke="currentColor">
+    <circle r="8.5" cy="9" cx="9" stroke-opacity="0.2"/>
+    <path d="M6.82972 6.82915L1.17193 1.17097" stroke-linecap="round" stroke-linejoin="round" transform="translate(5 5)"/>
+    <path d="M1.22896 6.88502L6.77288 1.11523" stroke-linecap="round" stroke-linejoin="round" transform="translate(5 5)"/>
+  </symbol>
+
+  <symbol id="icon-close" class="icon icon-close" fill="none" viewBox="0 0 18 17">
+    <path d="M.865 15.978a.5.5 0 00.707.707l7.433-7.431 7.579 7.282a.501.501 0 00.846-.37.5.5 0 00-.153-.351L9.712 8.546l7.417-7.416a.5.5 0 10-.707-.708L8.991 7.853 1.413.573a.5.5 0 10-.693.72l7.563 7.268-7.418 7.417z" fill="currentColor">
+  </symbol>
+</svg>
+{%- liquid
+  for block in section.blocks
+    if block.type == '@app'
+      assign has_app_block = true
+    endif
+  endfor
+-%}
+
+{%- if section.settings.sticky_header_type != 'none' -%}
+<sticky-header data-sticky-type="{{ section.settings.sticky_header_type }}" class="{% if use_transparent_header %}Header--transparent{% endif %} header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}">
+{%- else -%}
+<div class="{% if use_transparent_header %}Header--transparent{% endif %} header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}">
+{%- endif -%}
+  {%- liquid
+    assign social_links = false
+    assign localization_forms = false
+
+    if settings.social_twitter_link != blank or settings.social_facebook_link != blank or settings.social_pinterest_link != blank or settings.social_instagram_link != blank or settings.social_youtube_link != blank or settings.social_vimeo_link != blank or settings.social_tiktok_link != blank or settings.social_tumblr_link != blank or settings.social_snapchat_link != blank
+      assign social_links = true
+    endif
+
+    if localization.available_countries.size > 1 and section.settings.enable_country_selector or section.settings.enable_language_selector and localization.available_languages.size > 1
+      assign localization_forms = true
+    endif
+  -%}
+  <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}">
+    {%- liquid
+      if section.settings.menu != blank
+        render 'header-drawer'
+      endif
+
+      render 'header-search', input_id: 'Search-In-Modal-1'
+    -%}
+
+    {%- if section.settings.logo_position != 'middle-center' -%}
+      {%- if request.page_type == 'index' -%}
+        <h1 class="header__heading">
+      {%- endif -%}
+          <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+            {%- if settings.logo != blank -%}
+              <div class="header__heading-logo-wrapper">
+                {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+                {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+                {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
+                {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+                {{ settings.logo | image_url: width: 600 | image_tag:
+                  class: 'header__heading-logo motion-reduce',
+                  widths: widths,
+                  height: logo_height,
+                  width: settings.logo_width,
+                  alt: logo_alt,
+               
+                  sizes: sizes,
+                  preload: true
+                }}
+              </div>
+            {%- else -%}
+              <span class="h2">{{ shop.name }}</span>
+            {%- endif -%}
+          </a>
+      {%- if request.page_type == 'index' -%}
+        </h1>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- liquid
+      if section.settings.menu != blank
+        if section.settings.menu_type_desktop == 'dropdown'
+          render 'header-dropdown-menu'
+        elsif section.settings.menu_type_desktop != 'drawer'
+          render 'header-mega-menu'
+        endif
+      endif
+    %}
+
+    {%- if section.settings.logo_position == 'middle-center' -%}
+      {%- if request.page_type == 'index' -%}
+        <h1 class="header__heading">
+      {%- endif -%}
+          <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+            {%- if settings.logo != blank -%}
+              <div class="header__heading-logo-wrapper">
+                {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+                {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+                {% capture sizes %}(min-width: 750px) {{ settings.logo_width }}px, 50vw{% endcapture %}
+                {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+                {{ settings.logo | image_url: width: 600 | image_tag:
+                  class: 'header__heading-logo',
+                  widths: widths,
+                  height: logo_height,
+                  width: settings.logo_width,
+                  alt: logo_alt,
+                  sizes: sizes,
+                  preload: true
+                }}
+              </div>
+            {%- else -%}
+              <span class="h2">{{ shop.name }}</span>
+            {%- endif -%}
+          </a>
+      {%- if request.page_type == 'index' -%}
+        </h1>
+      {%- endif -%}
+    {%- endif -%}
+
+    <div class="header__icons{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header__icons--localization header-localization{% endif %}">
+      <div class="desktop-localization-wrapper">
+        {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+          <localization-form class="small-hide medium-hide" data-prevent-hide>
+            {%- form 'localization', id: 'HeaderCountryForm', class: 'localization-form' -%}
+              <div>
+                <h2 class="visually-hidden" id="HeaderCountryLabel">{{ 'localization.country_label' | t }}</h2>
+                {%- render 'country-localization', localPosition: 'HeaderCountry' -%}
+              </div>
+            {%- endform -%}
+          </localization-form>
+        {% endif %}
+
+        {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
+          <localization-form class="small-hide medium-hide" data-prevent-hide>
+            {%- form 'localization', id: 'HeaderLanguageForm', class: 'localization-form' -%}
+              <div>
+                <h2 class="visually-hidden" id="HeaderLanguageLabel">{{ 'localization.language_label' | t }}</h2>
+                {%- render 'language-localization', localPosition: 'HeaderLanguage' -%}
+              </div>
+            {%- endform -%}
+          </localization-form>
+        {%- endif -%}
+      </div>
+      <div class="small-hide medium-hide header-search-desktop-container">
+      {% render 'header-search', input_id: 'Search-In-Modal' %}
+      </div>
+
+      {%- comment -%} Mobile wishlist icon (before account) {%- endcomment -%}
+      <a href="#my-favorites" class="header__icon header__icon--wishlist large-up-hide link focus-inset icon-link" aria-label="Wishlist" data-initialized="true">
+        {% render 'icon-heart' %}
+        <span class="visually-hidden">{{ 'gw_customer_accounts.wishlist.add_to_wishlist' | t }}</span>
+      </a>
+
+      {%- if shop.customer_accounts_enabled -%}
+        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="header__icon header__icon--account link focus-inset">
+          {%- if section.settings.enable_customer_avatar -%}
+            <account-icon>
+              {%- if customer and customer.has_avatar? -%}
+                {{ customer | avatar }}
+              {%- else -%}
+                {% render 'icon-account' %}
+              {%- endif -%}
+            </account-icon>
+          {%- else -%}
+            {% render 'icon-account' %}
+          {%- endif -%}
+          <span class="visually-hidden">
+            {%- liquid
+              if customer
+                echo 'customer.account_fallback' | t
+              else
+                echo 'customer.log_in' | t
+              endif
+            -%}
+          </span>
+        </a>
+      {%- endif -%}
+
+      {%- comment -%} Desktop wishlist icon (after account) {%- endcomment -%}
+      <a href="#my-favorites" class="header__icon header__icon--wishlist small-hide medium-hide link focus-inset icon-link" aria-label="Wishlist" data-initialized="true">
+        {% render 'icon-heart' %}
+        <span class="visually-hidden">{{ 'gw_customer_accounts.wishlist.add_to_wishlist' | t }}</span>
+      </a>
+
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when '@app' -%}
+            {% render block %}
+        {%- endcase -%}
+      {%- endfor -%}
+
+      <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
+        {%- liquid
+          if cart == empty
+            render 'icon-cart-empty'
+          else
+            render 'icon-cart'
+          endif
+        -%}
+        <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+        {%- if cart != empty -%}
+          <div class="cart-count-bubble">
+            {%- if cart.item_count < 100 -%}
+              <span aria-hidden="true">{{ cart.item_count }}</span>
+            {%- endif -%}
+            <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+          </div>
+        {%- endif -%}
+      </a>
+    </div>
+  </header>
+{%- if section.settings.sticky_header_type != 'none' -%}
+</sticky-header>
+{%- else -%}
+</div>
+{%- endif -%}
+
+{%- if settings.cart_type == "notification" -%}
+  {%- render 'cart-notification', color_scheme: section.settings.color_scheme, desktop_menu_type: section.settings.menu_type_desktop -%}
+{%- endif -%}
+
+{% javascript %}
+  class StickyHeader extends HTMLElement {
+    constructor() {
+      super();
+    }
+
+    connectedCallback() {
+      this.header = document.querySelector('.section-header');
+      this.headerIsAlwaysSticky = this.getAttribute('data-sticky-type') === 'always' || this.getAttribute('data-sticky-type') === 'reduce-logo-size';
+      this.headerBounds = {};
+
+      this.setHeaderHeight();
+
+      window.matchMedia('(max-width: 1140px)').addEventListener('change', this.setHeaderHeight.bind(this));
+
+      if (this.headerIsAlwaysSticky) {
+        this.header.classList.add('shopify-section-header-sticky');
+      };
+
+      this.currentScrollTop = 0;
+      this.preventReveal = false;
+      this.predictiveSearch = this.querySelector('predictive-search');
+
+      this.onScrollHandler = this.onScroll.bind(this);
+      this.hideHeaderOnScrollUp = () => this.preventReveal = true;
+
+      this.addEventListener('preventHeaderReveal', this.hideHeaderOnScrollUp);
+      window.addEventListener('scroll', this.onScrollHandler, false);
+
+      this.createObserver();
+    }
+
+    setHeaderHeight() {
+      document.documentElement.style.setProperty('--header-height', this.header.offsetHeight + "px");
+    }
+
+    disconnectedCallback() {
+      this.removeEventListener('preventHeaderReveal', this.hideHeaderOnScrollUp);
+      window.removeEventListener('scroll', this.onScrollHandler);
+    }
+
+    createObserver() {
+      let observer = new IntersectionObserver((entries, observer) => {
+        this.headerBounds = entries[0].intersectionRect;
+        observer.disconnect();
+      });
+
+      observer.observe(this.header);
+    }
+
+    onScroll() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (this.predictiveSearch && this.predictiveSearch.isOpen) return;
+
+      if (scrollTop > this.currentScrollTop && scrollTop > this.headerBounds.bottom) {
+        this.header.classList.add('scrolled-past-header');
+        if (this.preventHide) return;
+        requestAnimationFrame(this.hide.bind(this));
+      } else if (scrollTop < this.currentScrollTop && scrollTop > this.headerBounds.bottom) {
+        this.header.classList.add('scrolled-past-header');
+        if (!this.preventReveal) {
+          requestAnimationFrame(this.reveal.bind(this));
+        } else {
+          window.clearTimeout(this.isScrolling);
+
+          this.isScrolling = setTimeout(() => {
+            this.preventReveal = false;
+          }, 66);
+
+          requestAnimationFrame(this.hide.bind(this));
+        }
+      } else if (scrollTop <= this.headerBounds.top) {
+        this.header.classList.remove('scrolled-past-header');
+        requestAnimationFrame(this.reset.bind(this));
+      }
+
+      this.currentScrollTop = scrollTop;
+    }
+
+    hide() {
+      if (this.headerIsAlwaysSticky) return;
+      this.header.classList.add('shopify-section-header-hidden', 'shopify-section-header-sticky');
+      this.closeMenuDisclosure();
+      this.closeSearchModal();
+    }
+
+    reveal() {
+      if (this.headerIsAlwaysSticky) return;
+      this.header.classList.add('shopify-section-header-sticky', 'animate');
+      this.header.classList.remove('shopify-section-header-hidden');
+    }
+
+    reset() {
+      if (this.headerIsAlwaysSticky) return;
+      this.header.classList.remove('shopify-section-header-hidden', 'shopify-section-header-sticky', 'animate');
+    }
+
+    closeMenuDisclosure() {
+      this.disclosures = this.disclosures || this.header.querySelectorAll('header-menu');
+      this.disclosures.forEach(disclosure => disclosure.close());
+    }
+
+    closeSearchModal() {
+      this.searchModal = this.searchModal || this.header.querySelector('details-modal');
+      this.searchModal.close(false);
+    }
+  }
+
+  customElements.define('sticky-header', StickyHeader);
+
+  // Prevent body scroll when menu drawer is open - Fixed version
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuDrawerDetails = document.querySelector('#Details-menu-drawer-container');
+    const body = document.body;
+    let scrollPosition = 0;
+    
+    if (menuDrawerDetails) {
+      // Function to prevent body scroll without affecting drawer positioning
+      function preventBodyScroll() {
+        // Store current scroll position
+        scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Add class to prevent scrolling
+        body.classList.add('menu-drawer-open');
+        
+  //       // Set body position to prevent scroll (iOS Safari fix)
+  //       body.style.top = `-${scrollPosition}px`;
+  //       body.style.left = '0';
+  //       body.style.right = '0';
+        
+        // Prevent touch scrolling on mobile
+        body.style.touchAction = 'none';
+      }
+      
+      // Function to restore body scroll
+      function restoreBodyScroll() {
+        // Remove class and styles
+        body.classList.remove('menu-drawer-open');
+        body.style.overflow = '';
+        body.style.paddingRight = '';
+        body.style.touchAction = '';
+      }
+      
+      // Get scrollbar width to prevent layout shift
+      function getScrollbarWidth() {
+        const outer = document.createElement('div');
+        outer.style.visibility = 'hidden';
+        outer.style.overflow = 'scroll';
+        outer.style.msOverflowStyle = 'scrollbar';
+        document.body.appendChild(outer);
+        
+        const inner = document.createElement('div');
+        outer.appendChild(inner);
+        
+        const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
+        document.body.removeChild(outer);
+        
+        return scrollbarWidth;
+      }
+      
+      // Monitor menu drawer state changes
+      const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'open') {
+            const isMenuOpen = menuDrawerDetails.hasAttribute('open');
+            
+            if (isMenuOpen) {
+              preventBodyScroll();
+            } else {
+              restoreBodyScroll();
+            }
+          }
+        });
+      });
+      
+      // Start observing menu drawer for open attribute changes
+      observer.observe(menuDrawerDetails, {
+        attributes: true,
+        attributeFilter: ['open']
+      });
+      
+      // Handle ESC key to close drawer
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menuDrawerDetails.hasAttribute('open')) {
+          menuDrawerDetails.removeAttribute('open');
+        }
+      });
+    }
+  });
+
+  // Mobile currency selector setup - simplified version without JS visibility control
+  document.addEventListener('DOMContentLoaded', function() {
+    const currencySelector = document.querySelector('.desktop-localization-wrapper localization-form');
+    
+    if (currencySelector) {
+      // Create a mobile-specific currency selector
+      const mobileCurrencyWrapper = currencySelector.cloneNode(true);
+      mobileCurrencyWrapper.classList.remove('small-hide', 'medium-hide');
+      mobileCurrencyWrapper.classList.add('large-up-hide', 'mobile-menu-currency-selector');
+      
+      // Insert before wishlist icon
+      const wishlistIcon = document.querySelector('.header__icon--wishlist.large-up-hide');
+      if (wishlistIcon) {
+        wishlistIcon.parentNode.insertBefore(mobileCurrencyWrapper, wishlistIcon);
+      }
+      
+      // Re-initialize the cloned form functionality
+      setTimeout(() => {
+        const clonedForm = mobileCurrencyWrapper.querySelector('localization-form');
+        if (clonedForm && typeof window.customElements !== 'undefined') {
+          clonedForm.outerHTML = clonedForm.outerHTML;
+        }
+
+        // Initialize mobile dropdown functionality
+        setTimeout(() => {
+          const disclosureButton = mobileCurrencyWrapper.querySelector('.disclosure__button');
+          const disclosureWrapper = mobileCurrencyWrapper.querySelector('.disclosure__list-wrapper');
+
+          if (disclosureButton && disclosureWrapper) {
+            const newButton = disclosureButton.cloneNode(true);
+            disclosureButton.parentNode.replaceChild(newButton, disclosureButton);
+            
+            newButton.addEventListener('click', function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              
+              const wrapper = mobileCurrencyWrapper.querySelector('.disclosure__list-wrapper');
+              const isHidden = wrapper.hasAttribute('hidden');
+              
+              if (isHidden) {
+                wrapper.removeAttribute('hidden');
+                newButton.setAttribute('aria-expanded', 'true');
+              } else {
+                wrapper.setAttribute('hidden', '');
+                newButton.setAttribute('aria-expanded', 'false');
+              }
+            });
+
+            // Close mobile dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+              if (!mobileCurrencyWrapper.contains(e.target)) {
+                const wrapper = mobileCurrencyWrapper.querySelector('.disclosure__list-wrapper');
+                if (wrapper && !wrapper.hasAttribute('hidden')) {
+                  wrapper.setAttribute('hidden', '');
+                  const button = mobileCurrencyWrapper.querySelector('.disclosure__button');
+                  if (button) {
+                    button.setAttribute('aria-expanded', 'false');
+                  }
+                }
+              }
+            });
+            
+            disclosureWrapper.setAttribute('hidden', '');
+            newButton.setAttribute('aria-expanded', 'false');
+          }
+        }, 100);
+      }, 100);
+    }
+  });
+
+  // Ensure wishlist icons work with GW Customer Accounts system
+  document.addEventListener('DOMContentLoaded', function() {
+    const wishlistIcons = document.querySelectorAll('.header__icon--wishlist');
+    
+    // Enhanced initialization function
+    function initializeWishlistFunctionality() {
+      const gwCustomerAccounts = document.querySelector('gw-customer-accounts');
+      
+      if (gwCustomerAccounts) {
+        console.log('GW Customer Accounts found, initializing wishlist...');
+        
+        wishlistIcons.forEach(function(icon) {
+          if (!icon.classList.contains('gw-initialized')) {
+            icon.classList.add('gw-initialized');
+            icon.setAttribute('data-initialized', 'true');
+            
+            // Remove any existing event listeners by cloning the element
+            const newIcon = icon.cloneNode(true);
+            icon.parentNode.replaceChild(newIcon, icon);
+            
+            // Add the click event listener
+            newIcon.addEventListener('click', function(e) {
+              e.preventDefault();
+              console.log('Wishlist icon clicked, navigating to #my-favorites');
+              
+              // Force navigation to wishlist
+              window.location.hash = 'my-favorites';
+              
+              // Also try to trigger the GW Customer Accounts navigation
+              if (gwCustomerAccounts && gwCustomerAccounts.navigateToTab) {
+                try {
+                  gwCustomerAccounts.navigateToTab('dashboard', 'favorites');
+                } catch (error) {
+                  console.log('Direct navigation failed, using hash navigation');
+                }
+              }
+            });
+          }
+        });
+        
+        return true; // Successfully initialized
+      }
+      
+      return false; // Not initialized
+    }
+    
+    // Try immediate initialization
+    if (!initializeWishlistFunctionality()) {
+      console.log('GW Customer Accounts not ready, waiting...');
+      
+      // Retry initialization with multiple strategies
+      let retryCount = 0;
+      const maxRetries = 50; // 5 seconds max wait
+      
+      const retryInit = setInterval(() => {
+        retryCount++;
+        
+        if (initializeWishlistFunctionality()) {
+          clearInterval(retryInit);
+          console.log('Wishlist initialized successfully after retries');
+        } else if (retryCount >= maxRetries) {
+          clearInterval(retryInit);
+          console.warn('Failed to initialize wishlist after maximum retries');
+          
+          // Fallback: Add simple hash navigation
+          wishlistIcons.forEach(function(icon) {
+            icon.addEventListener('click', function(e) {
+              e.preventDefault();
+              window.location.hash = 'my-favorites';
+            });
+          });
+        }
+      }, 100);
+    }
+    
+    // Also watch for the GW Customer Accounts component to be added dynamically
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.addedNodes.length) {
+          const addedGWCA = Array.from(mutation.addedNodes).find(node => 
+            node.tagName === 'GW-CUSTOMER-ACCOUNTS' || 
+            (node.querySelector && node.querySelector('gw-customer-accounts'))
+          );
+          if (addedGWCA) {
+            console.log('GW Customer Accounts added to DOM, reinitializing...');
+            setTimeout(() => initializeWishlistFunctionality(), 500);
+          }
+        }
+      });
+    });
+    
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+    
+    // Additional event listeners for different loading scenarios
+    window.addEventListener('load', function() {
+      setTimeout(() => initializeWishlistFunctionality(), 1000);
+    });
+    
+    // Listen for Shopify theme events
+    document.addEventListener('shopify:section:load', function() {
+      setTimeout(() => initializeWishlistFunctionality(), 500);
+    });
+    
+    // Listen for custom GW events
+    document.addEventListener('gw:ready', function() {
+      console.log('GW ready event fired');
+      initializeWishlistFunctionality();
+    });
+  });
+
+  // Prevent sl-drawer from opening when clicking wishlist/account icons
+  document.addEventListener('DOMContentLoaded', function() {
+    const wishlistIcons = document.querySelectorAll('.header__icon--wishlist');
+    const accountIcons = document.querySelectorAll('.header__icon--account');
+    
+    // Function to prevent sl-drawer opening
+    function preventSlDrawer() {
+      // Close any open sl-drawer immediately
+      const slDrawers = document.querySelectorAll('sl-drawer');
+      slDrawers.forEach(drawer => {
+        if (drawer.hasAttribute('open')) {
+          drawer.removeAttribute('open');
+          drawer.hide();
+        }
+      });
+    }
+    
+    // Add click handlers to wishlist icons
+    wishlistIcons.forEach(function(icon) {
+      icon.addEventListener('click', function(e) {
+        // Prevent sl-drawer from opening
+        preventSlDrawer();
+        
+        // Also prevent it after a short delay in case it opens later
+        setTimeout(preventSlDrawer, 10);
+        setTimeout(preventSlDrawer, 50);
+        setTimeout(preventSlDrawer, 100);
+      });
+    });
+    
+    // Add click handlers to account icons  
+    accountIcons.forEach(function(icon) {
+      icon.addEventListener('click', function(e) {
+        // Prevent sl-drawer from opening
+        preventSlDrawer();
+        
+        // Also prevent it after a short delay in case it opens later
+        setTimeout(preventSlDrawer, 10);
+        setTimeout(preventSlDrawer, 50);
+        setTimeout(preventSlDrawer, 100);
+      });
+    });
+    
+    // Global observer to catch any sl-drawer that tries to open
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'open') {
+          const target = mutation.target;
+          if (target.tagName === 'SL-DRAWER') {
+            // If an sl-drawer just opened, close it immediately
+            target.removeAttribute('open');
+            target.hide();
+          }
+        }
+      });
+    });
+    
+    // Start observing for sl-drawer openings
+    document.querySelectorAll('sl-drawer').forEach(drawer => {
+      observer.observe(drawer, {
+        attributes: true,
+        attributeFilter: ['open']
+      });
+    });
+  });
+
+  // Menu drawer positioning script
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuDrawerDetails = document.querySelector('#Details-menu-drawer-container');
+    
+    if (menuDrawerDetails) {
+      // Function to handle when menu drawer is open
+      function handleMenuDrawerOpen() {
+        // When drawer is open - apply relative positioning
+        const stickySubnav = document.querySelector(".section-sticky-subnav");
+        if (stickySubnav) {
+          stickySubnav.style.position = "relative";
+          stickySubnav.style.top = "-2px";
+        }
+      }
+      
+      // Function to handle when menu drawer is closed  
+      function handleMenuDrawerClosed() {
+        // When drawer is closed - restore sticky positioning
+        const stickySubnav = document.querySelector(".section-sticky-subnav");
+        const headerWrapper = document.querySelector(".header-wrapper--border-bottom");
+        
+        if (stickySubnav) {
+          stickySubnav.style.position = "sticky";
+          stickySubnav.style.top = "calc(var(--header-height) - 2px)";
+        }
+        
+        if (headerWrapper) {
+          headerWrapper.style.position = "relative";
+          headerWrapper.style.top = "-1px";
+        }
+      }
+      
+      // Monitor menu drawer state changes
+      const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'open') {
+            const isMenuOpen = menuDrawerDetails.hasAttribute('open');
+            
+            if (isMenuOpen) {
+              // Menu drawer is open - execute first part of code
+              handleMenuDrawerOpen();
+            } else {
+              // Menu drawer is closed - execute second part of code
+              handleMenuDrawerClosed();
+            }
+          }
+        });
+      });
+      
+      // Start observing menu drawer for open attribute changes
+      observer.observe(menuDrawerDetails, {
+        attributes: true,
+        attributeFilter: ['open']
+      });
+      
+      // Initial check - apply appropriate state on page load
+      const isInitiallyOpen = menuDrawerDetails.hasAttribute('open');
+      if (isInitiallyOpen) {
+        handleMenuDrawerOpen();
+      } else {
+        handleMenuDrawerClosed();
+      }
+    }
+  });
+{% endjavascript %}
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    {% if settings.logo %}
+      "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
+    {% endif %}
+    "sameAs": [
+      {{ settings.social_twitter_link | json }},
+      {{ settings.social_facebook_link | json }},
+      {{ settings.social_pinterest_link | json }},
+      {{ settings.social_instagram_link | json }},
+      {{ settings.social_tiktok_link | json }},
+      {{ settings.social_tumblr_link | json }},
+      {{ settings.social_snapchat_link | json }},
+      {{ settings.social_youtube_link | json }},
+      {{ settings.social_vimeo_link | json }}
+    ],
+    "url": {{ request.origin | append: page.url | json }}
+  }
+</script>
+
+{%- if request.page_type == 'index' -%}
+  {% assign potential_action_target = request.origin | append: routes.search_url | append: "?q={search_term_string}" %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {{ potential_action_target | json }},
+        "query-input": "required name=search_term_string"
+      },
+      "url": {{ request.origin | append: page.url | json }}
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.header.name",
+  "class": "section-header",
+  "settings": [
+    {
+      "type": "select",
+      "id": "logo_position",
+      "options": [
+        {
+          "value": "top-left",
+          "label": "t:sections.header.settings.logo_position.options__2.label"
+        },
+        {
+          "value": "top-center",
+          "label": "t:sections.header.settings.logo_position.options__3.label"
+        },
+        {
+          "value": "middle-left",
+          "label": "t:sections.header.settings.logo_position.options__1.label"
+        },
+        {
+          "value": "middle-center",
+          "label": "t:sections.header.settings.logo_position.options__4.label"
+        }
+      ],
+      "default": "middle-left",
+      "label": "t:sections.header.settings.logo_position.label",
+      "info": "t:sections.header.settings.logo_help.content"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "select",
+      "id": "menu_type_desktop",
+      "options": [
+        {
+          "value": "dropdown",
+          "label": "t:sections.header.settings.menu_type_desktop.options__1.label"
+        },
+        {
+          "value": "mega",
+          "label": "t:sections.header.settings.menu_type_desktop.options__2.label"
+        },
+        {
+          "value": "drawer",
+          "label": "t:sections.header.settings.menu_type_desktop.options__3.label"
+        }
+      ],
+      "default": "dropdown",
+      "label": "t:sections.header.settings.menu_type_desktop.label",
+      "info": "t:sections.header.settings.menu_type_desktop.info"
+    },
+    {
+      "type": "select",
+      "id": "sticky_header_type",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.header.settings.sticky_header_type.options__1.label"
+        },
+        {
+          "value": "on-scroll-up",
+          "label": "t:sections.header.settings.sticky_header_type.options__2.label"
+        },
+        {
+          "value": "always",
+          "label": "t:sections.header.settings.sticky_header_type.options__3.label"
+        },
+        {
+          "value": "reduce-logo-size",
+          "label": "t:sections.header.settings.sticky_header_type.options__4.label"
+        }
+      ],
+      "default": "on-scroll-up",
+      "label": "t:sections.header.settings.sticky_header_type.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_line_separator",
+      "default": true,
+      "label": "t:sections.header.settings.show_line_separator.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.header.settings.header__1.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color_scheme",
+      "id": "menu_color_scheme",
+      "label": "t:sections.header.settings.menu_color_scheme.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.header.settings.header__3.content",
+      "info": "t:sections.header.settings.header__4.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "default": false,
+      "label": "t:sections.header.settings.enable_country_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.header.settings.header__5.content",
+      "info": "t:sections.header.settings.header__6.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_language_selector",
+      "default": false,
+      "label": "t:sections.header.settings.enable_language_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.header.settings.header__7.content",
+      "info": "t:sections.header.settings.header__7.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_customer_avatar",
+      "default": true,
+      "label": "t:sections.header.settings.enable_customer_avatar.label",
+      "info": "t:sections.header.settings.enable_customer_avatar.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.header.settings.mobile_layout.content"
+    },
+    {
+      "type": "select",
+      "id": "mobile_logo_position",
+      "options": [
+        {
+          "value": "center",
+          "label": "t:sections.header.settings.mobile_logo_position.options__1.label"
+        },
+        {
+          "value": "left",
+          "label": "t:sections.header.settings.mobile_logo_position.options__2.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.header.settings.mobile_logo_position.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.header.settings.margin_bottom.label",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icons",
+      "label": "Show icons",
+      "info": "Text for account, search and cart are replaced by icons on desktop.",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Transparent header"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_transparent_header",
+      "label": "Enable on homepage",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_transparent_header_collection",
+      "label": "Enable on collection pages",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_transparent_header_border",
+      "label": "Show separation border",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "transparent_text_color",
+      "label": "Text/icon color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "image_picker",
+      "id": "transparent_logo",
+      "label": "Logo image",
+      "info": "200 x 60px .png recommended"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Side by Side Images"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_side_by_side_images",
+      "label": "Show side-by-side images",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Left image",
+      "info": "740 x 460 px .jpg recommended"
+    },
+    {
+      "type": "url",
+      "id": "left_link",
+      "label": "Left link"
+    },
+    {
+      "type": "text",
+      "id": "left_text",
+      "label": "Left text"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "Right image",
+      "info": "740 x 460 px .jpg recommended"
+    },
+    {
+      "type": "url",
+      "id": "right_link",
+      "label": "Right link"
+    },
+    {
+      "type": "text",
+      "id": "right_text",
+      "label": "Right text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "mega_menu",
+      "name": "Mega menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "navigation_mega_menu",
+          "label": "Menu item",
+          "info": "Enter menu item to apply a mega menu dropdown."
+        },
+        {
+          "type": "header",
+          "content": "Image push 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "push_1_image",
+          "label": "Image",
+          "info": "740 x 460 px .jpg recommended"
+        },
+        {
+          "type": "text",
+          "id": "push_1_heading",
+          "label": "Heading",
+          "default": "Example heading"
+        },
+        {
+          "type": "text",
+          "id": "push_1_subheading",
+          "label": "Sub-heading",
+          "default": "Example sub-heading"
+        },
+        {
+          "type": "url",
+          "id": "push_1_url",
+          "label": "Link"
+        },
+        {
+          "type": "header",
+          "content": "Image push 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "push_2_image",
+          "label": "Image",
+          "info": "740 x 460 px .jpg recommended"
+        },
+        {
+          "type": "text",
+          "id": "push_2_heading",
+          "label": "Heading",
+          "default": "Example heading"
+        },
+        {
+          "type": "text",
+          "id": "push_2_subheading",
+          "label": "Sub-heading",
+          "default": "Example sub-heading"
+        },
+        {
+          "type": "url",
+          "id": "push_2_url",
+          "label": "Link"
+        },
+        {
+          "type": "header",
+          "content": "Mobile mega menu settings"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_mega_menu_image",
+          "label": "Image",
+          "info": "150 x 150 px .jpg recommended"
+        },
+        {
+          "type": "header",
+          "content": "Colored nav link"
+        },
+        {
+          "type": "text",
+          "id": "colored_nav_name",
+          "label": "Link name"
+        },
+        {
+          "type": "color",
+          "id": "colored_nav_color",
+          "default": "#aa0313",
+          "label": "Color"
+        }
+      ]
+    },
+    {
+      "type": "color_swatch",
+      "name": "Color swatch",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Link name"
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "default": "#aa0313",
+          "label": "Color"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

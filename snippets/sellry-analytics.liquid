@@ -1,0 +1,47 @@
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M8NH4RJ');</script>
+    <!-- End Google Tag Manager -->
+    
+    {% if template.name == 'collection' %}
+      <script>
+            var itemsArray = [{%- for product in collection.products -%}{
+              'item_name'            : {{ product.title | json }},
+              'item_id'             : {{ product.selected_or_first_available_variant.sku | json }},
+              'item_variant'       : {{ product.selected_or_first_available_variant.id | json }},
+              'item_category'     : {{ product.type | json }},
+              'price'           : {{ product.price |  money_without_currency | remove: ',' }},
+            }{%- unless forloop.last -%},{%- endunless -%}{% endfor %}];
+            var dataLayer = window.dataLayer = window.dataLayer || [];
+            dataLayer.push({
+              'event': 'view_item_list',
+              'items': itemsArray,
+              'item_list_name': {{ collection.title | json }}
+            })
+      </script>
+    {% endif %}
+    
+    {% if template == "product" %}
+      {% assign current_variant = product.selected_or_first_available_variant %}
+      <script>                           
+        var dataLayer = window.dataLayer = window.dataLayer || [];
+        dataLayer.push({
+          'event': 'view_item',
+          'ecommerce': {
+            'items': [{
+              'item_id': {{ current_variant.sku | json }},
+              'item_name': {{ product.title | json }},
+              'item_variant': {{ product.selected_or_first_available_variant.id | json }},
+              'price': {{ product.price | money_without_currency | remove: ',' }},
+              'item_brand': {{ product.vendor | json}},
+              'item_category': {{ product.type | json }},
+              'quantity': '1'
+            }]
+          }
+        });
+      </script>
+    {% endif %}
+    

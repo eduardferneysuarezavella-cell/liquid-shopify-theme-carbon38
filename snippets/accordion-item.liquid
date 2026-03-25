@@ -1,0 +1,19 @@
+{%- comment -%}
+@param {string} id - a unique identifier
+@param {string} title - displays as the {%- endcomment -%}
+{% assign is_expanded = is_expanded | default: 'false' %}
+{% assign reveal_answer = 'aria-hidden="true" style="height:auto;"' %}
+{% assign hide_answer = 'aria-hidden="false" style="height:0;"' %}
+
+<div class="Faq__Item {%- if last_of_section -%}Faq__Item--lastOfSection{% endif %}" aria-expanded="{{- is_expanded -}}" {{ block.shopify_attributes }}>
+  <div class="Faq__ItemWrapper">
+    <button class="Faq__Question u-h5" type="button">{{ title | escape }}</button>
+
+    <div class="Faq__AnswerWrapper" {%- if is_expanded == 'true' -%}{{ reveal_answer }}{%- else -%}{{ hide_answer }}{%- endif -%}>
+      <div class="Faq__Answer Rte">
+        {{ content }}
+      </div>
+    </div>
+  </div>
+  <span class="Faq__Icon">{%- render 'accordion-plus' -%}{%- render 'accordion-minus' -%}</span>
+</div>

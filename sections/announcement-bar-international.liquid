@@ -1,0 +1,138 @@
+{{ 'component-announcement.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }} .announcement-bar-international {
+    background: {{ section.settings.background }};
+    color: {{ section.settings.text_color }};
+  }
+
+  {% if section.settings.hide_ge_banner %}
+    #FreeShippingBanner {
+      display: none !important;
+    }
+  {% endif %}
+{% endstyle %}
+
+<div class="announcement-bar announcement-bar-international">
+  <div class="announcement-bar__inner swiper-announcement-international" data-auto-rotate-swiper-international="true" data-auto-rotate-delay-swiper-international="{{ section.settings.autoplay_speed }}">
+    <div class="announcement-bar__announcements swiper-wrapper">
+      {%- for block in section.blocks -%}
+        <div
+          class="announcement-bar__announcement announcement-block swiper-slide"
+          role="region"
+          aria-label="{{ 'general.announcement_bar.name_intl' | t }}"
+          {{ block.shopify_attributes }}
+        >
+          {%- if block.settings.text != blank -%}
+            {%- if block.settings.link != blank -%}
+              <a
+                href="{{ block.settings.link }}"
+                class="announcement-block__link"
+              >
+            {%- endif -%}
+            <div class="announcement-block__message h5">
+              {{ block.settings.text | newline_to_br }}
+            </div>
+            {%- if block.settings.link != blank -%}
+              </a>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% if section.blocks.size > 1 %}
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const swiperAnnouncementInternational = document.querySelector('#shopify-section-{{ section.id }} .swiper-announcement-international');
+        const { autoRotateSwiperInternational, autoRotateDelaySwiperInternational } = swiperAnnouncementInternational.dataset;
+
+        deferSwiper(function() {
+          const swiperSliderAnnouncementInternational = new Swiper(swiperAnnouncementInternational, {
+            slidesPerView: 1,
+            loop: true,
+            autoplay: autoRotateSwiperInternational === 'true' ? { delay: autoRotateDelaySwiperInternational * 1000 } : false
+          });
+        });
+    });
+  </script>
+{% endif %}
+
+<script>
+  const announcementBarInternational = document.querySelector('.section--announcement-bar-international');
+  if (announcementBarInternational && announcementBarInternational.checkVisibility()) {
+    document.documentElement.style.setProperty('--announcement-bar-height', announcementBarInternational.offsetHeight + 'px');
+  }
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.announcement-bar.name-intl",
+  "max_blocks": 12,
+  "class": "section--announcement-bar-international",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "background",
+      "label": "t:sections.announcement-bar.settings.background.label",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:sections.announcement-bar.settings.text_color.label",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "sec",
+      "default": 8,
+      "label": "t:sections.announcement-bar.settings.autoplay_speed.label",
+      "info": "t:sections.announcement-bar.settings.autoplay_speed.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_ge_banner",
+      "default": false,
+      "label": "t:sections.announcement-bar.settings.hide_ge_banner.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "t:sections.announcement-bar.blocks.announcement.name",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.link.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.announcement-bar.name-intl",
+      "blocks": [
+        {
+          "type": "announcement"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

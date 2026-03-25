@@ -1,0 +1,113 @@
+{% capture star_rating %}
+    <div class="yotpo-widget-instance" data-yotpo-instance-id="450013" data-yotpo-product-id="{{product.id}}" data-yotpo-cart-product-id="{{item.product.id}}" data-yotpo-section-id="{{template.name}}"></div>
+    <style> 
+    .yotpo.bottomLine .text-m { padding-left: 4px; } 
+	
+    #yotpo-pdp-stars {
+        margin: 0 !important;
+    }
+    .yotpo.bottomLine .text-m {
+        margin-left: 10px !important;
+    }
+
+    </style>
+{% endcapture %}
+
+<!-- snippets > yotpo-reviews.liquid -->
+	{% if yotpo_widget == 'yotpo-js' %}
+			<script type="text/javascript">
+				(function e(){ 
+					var e=document.createElement("script");
+					e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/77OFfab03RDNwJXqpx5Bl5qmZJcAjybjX3EnuxBh/widget.js";
+					var t=document.getElementsByTagName("script")[0];
+					t.parentNode.insertBefore(e,t)
+				})();
+			</script>
+		{% comment %}
+		<script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/77OFfab03RDNwJXqpx5Bl5qmZJcAjybjX3EnuxBh" async></script>
+		{% endcomment %}
+{% elsif yotpo_widget == 'reviews' %}
+		<div class="yotpo yotpo-main-widget"
+			 data-product-id="{{ product.id }}"
+			 data-name="{{ product.title | escape }}"
+			 data-url="{{ shop.url }}{{ product.url }}"
+			 data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+			 data-price="{{ variant.price | money_without_currency }}"
+			 data-currency="{{ shop.currency }}"
+			 data-description="{{ product.description | escape }}">
+		</div>
+    {% elsif yotpo_widget == 'pdp_star_rating' %}
+		<div id= "yotpo-pdp-stars" style="margin: 0 0 24px 0">
+			{{ star_rating }}
+		</div> 
+		{% comment %} 
+			<style>
+				@media only screen and (max-width: 750px) {
+					#yotpo-pdp-stars {
+						text-align: center !important;
+						/* display: block !important; */
+					}
+					#yotpo-pdp-stars .yotpo.bottomLine, #yotpo-pdp-stars .yotpo-small {
+						display: inline-block !important;
+					}
+					#yotpo-pdp-stars .pull-left {
+						float: none !important;
+						text-align: center !important;
+					}
+					#yotpo-pdp-stars .text-m {
+						display: none !important;
+					}
+				}
+			</style>
+		{% endcomment %}
+    {% elsif yotpo_widget == 'category_star_rating' %}
+    	{% comment %} <a href="{{ product.url }}"> {% endcomment %}
+          <div id="yotpo-category-stars">
+              {{ star_rating }}
+          </div>
+    	{% comment %} </a> {% endcomment %}
+    {% elsif yotpo_widget == 'sample_star_rating' %}
+		<!-- sample star rating -->
+        <div id="yotpo-category-stars">
+    		<div class="yotpo dummy-bottomLine yotpo-small" data-product-id="0000000000000" data-yotpo-element-id="0">
+    			<div class="yotpo-display-wrapper" style="visibility: hidden;">
+    				<div class="standalone-bottomline" data-source="default" tabindex="-1">
+    					<div class="yotpo-bottomline pull-left star-clickable" tabindex="0">
+    						<span class="yotpo-stars">
+    							<span class="yotpo-icon yotpo-icon-star dummy-rating-star pull-left"></span>
+    							<span class="yotpo-icon yotpo-icon-star dummy-rating-star pull-left"></span>
+    							<span class="yotpo-icon yotpo-icon-half-star dummy-rating-star pull-left"></span>
+    							<span class="yotpo-icon yotpo-icon-empty-star dummy-rating-star pull-left"></span>
+    							<span class="yotpo-icon yotpo-icon-empty-star dummy-rating-star pull-left"></span>
+    							<span class="sr-only">2.5 star rating</span>
+    						</span>
+    						<a href="{{ product.url }}"><span class="text-m" aria-label="0 reviews" tabindex="1">0 Reviews</span></a>
+    						<div class="yotpo-clr"></div>
+    					</div>
+    					<div class="yotpo-clr"></div>
+    				</div>
+    				<div class="yotpo-clr"></div>
+    			</div>
+    		</div>
+        </div>
+		<!-- end | sample star rating -->
+    {% elsif yotpo_widget == 'center_category_star_rating' %}
+        <style>
+        	#yotpo-category-stars {
+        		text-align: center !important;
+        		/* display: block !important; */
+        	}
+        	#yotpo-category-stars .bottomLine, #yotpo-category-stars .yotpo-small {
+        		display: inline-block !important;
+        	}
+        	#yotpo-category-stars .pull-left {
+        		float: none !important;
+        		text-align: center !important;
+        	}  
+        	#yotpo-category-stars .text-m {
+        		display: none !important;
+        	}
+        </style>
+    {% else %}
+  {% endif %}
+<!-- end | snippets > yotpo-reviews.liquid -->

@@ -1,0 +1,128 @@
+{% style %}
+  .section-sticky-subnav {
+    position: sticky;
+    z-index: 999 !important;
+    top: calc(var(--header-height) - 2px);
+    left: 0;
+    transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
+    background-color: #ffffff;
+  }
+
+  sticky-subnav {
+    width: 100%;
+    display: block;
+  }
+
+  sticky-subnav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 10px 10px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    display: flex;
+    gap: 26px;
+    align-items: center;
+  }
+
+  sticky-subnav ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  sticky-subnav ul li {
+    flex-shrink: 0;
+  }
+
+  sticky-subnav ul li a {
+    color: #2e2e2e;
+    text-decoration: none;
+    font-size: 13px;
+  }
+
+  @media (min-width: 1140px) {
+    .section-sticky-subnav {
+      display: none;
+    }
+    .section-sticky-subnav::after {
+      display: none;
+    }
+  }
+{% endstyle %}
+
+<sticky-subnav>
+  <ul>
+    {% for link in section.settings.sticky_nav_list.links %}
+      <li>
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      </li>  
+    {% endfor %}
+  </ul>
+</sticky-subnav>
+
+<script>
+  class StickySubNav extends HTMLElement {
+    constructor() {
+      super();
+    }
+
+    connectedCallback() {
+      this.header = document.querySelector('.section-header');
+      this.headerTransparent = this.header.classList.contains('Header--transparent');
+      this.stickySubnavSection = document.querySelector('.section-sticky-subnav');
+
+      if (this.headerTransparent) {
+        document.documentElement.style.setProperty(
+          '--sticky-subnav-height',
+          `${this.stickySubnavSection.offsetHeight}px`
+        );
+
+        window.addEventListener('resize', () => {
+          document.documentElement.style.setProperty(
+            '--sticky-subnav-height',
+            `${this.stickySubnavSection.offsetHeight}px`
+          );
+
+          this.changeHeaderStyle();
+        });
+        
+        this.changeHeaderStyle();
+      }
+    }
+
+    changeHeaderStyle() {
+      if (window.innerWidth <= 989) {
+        console.log("changeHeaderStyle");
+        this.header.classList.remove('Header--transparent');
+      } else {
+        this.header.classList.add('Header--transparent');
+      }
+    }
+  }
+
+  customElements.define('sticky-subnav', StickySubNav);
+</script>
+
+{% schema %}
+  {
+    "name": "Sticky Subnav",
+    "class": "section-sticky-subnav",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Navigation Link List"
+      },
+      {
+        "type": "link_list",
+        "id": "sticky_nav_list",
+        "label": "Sticky Nav list"
+      }
+    ],
+    "presets": [
+      {
+        "category": "Navigation",
+        "name": "Sticky subnav"
+      }
+    ]
+  }
+{% endschema %}

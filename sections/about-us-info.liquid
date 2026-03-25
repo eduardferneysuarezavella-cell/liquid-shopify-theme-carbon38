@@ -1,0 +1,67 @@
+{{ "about-us-info.css" | asset_url | stylesheet_tag }}
+
+<div class="about-us-info">
+  <div class="about-us-info__content">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'subtitle' %}
+          <h3 class="about-us-info__subtitle">{{ block.settings.subtitle }}</h3>
+        {% when 'title' %}
+          <h2 class="about-us-info__title">{{ block.settings.title }}</h2>
+        {% when 'richtext' %}
+          <div class="about-us-info__text">
+            {{ block.settings.richtext }}
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "About Us Info",
+  "tag": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "subtitle",
+      "name": "Subtitle",
+      "settings": [
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle"
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "name": "Title",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        }
+      ]
+    },
+    {
+      "type": "richtext",
+      "name": "Rich Text",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "richtext",
+          "label": "Rich Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "About us",
+      "name": "About Us Info"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,554 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "full_width_banner_EDEgTW": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_fgBe9w": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-LANDING_08a643b9-3b9c-4f0f-b46b-ef8739de8331.jpg",
+            "mobile_image": "shopify://shop_images/M-Landing_ca2f395c-8c4e-4509-aa9c-9691fe6ebff5.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_fgBe9w"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 80,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 50,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_large": false,
+        "padding_top": 28,
+        "padding_bottom": 80
+      }
+    },
+    "full_width_banner_dirVb9": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_ywikMT": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-holiday_24.jpg",
+            "mobile_image": "shopify://shop_images/M-holiday_24.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/holiday-24-collection",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_ywikMT"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collection_F4Qqhh": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "be enchanted",
+        "title": "Holiday '24 Collection",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "holiday-24-collection",
+        "fallback_collection": "",
+        "view_all_label": "shop now",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "full_width_banner_C3a4Qn": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_7y3tV9": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-Luxe_Layers.jpg",
+            "mobile_image": "shopify://shop_images/M-Luxe_Layers.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/luxe-layers",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_7y3tV9"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collection_ARTfg3": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "Unparalleled Comfort",
+        "title": "Luxe Layers",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "luxe-layers",
+        "fallback_collection": "",
+        "view_all_label": "shop now",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "full_width_banner_BpeiHY": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_CnzhxB": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-Winter_Dest.jpg",
+            "mobile_image": "shopify://shop_images/M-winter_dest.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/ski",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_CnzhxB"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collection_786wz7": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "reaaching new heights",
+        "title": "The Winter Destination Shop",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "ski",
+        "fallback_collection": "",
+        "view_all_label": "shop now",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "full_width_banner_XK4QL6": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_amDiFT": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-holiday_dress.jpg",
+            "mobile_image": "shopify://shop_images/M-holiday_dress.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/holiday-dressing-1",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_amDiFT"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collection_XBxihr": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "precise tailoring with ultimate comfort",
+        "title": "Holiday Dressing",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "holiday-dressing-1",
+        "fallback_collection": "",
+        "view_all_label": "shop now",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "full_width_banner_Jtt63K": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_aQViXF": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-festive_active.jpg",
+            "mobile_image": "shopify://shop_images/M-festive_active.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/festive-active",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_aQViXF"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collection_CmrCNx": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "star light, star bright",
+        "title": "Festive Active",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "festive-active",
+        "fallback_collection": "",
+        "view_all_label": "Shop Now",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 36,
+        "margin_bottom": 36,
+        "margin_top_mobile": 18,
+        "margin_bottom_mobile": 18,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "full_width_banner_jBnLjN": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_JRnEna": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-fall_bundles_41a0fe52-f444-477f-9b3f-9b769593102b.jpg",
+            "mobile_image": "shopify://shop_images/M-fall_bundles_45b1c78f-9856-452d-b3ef-cff756023a64.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/bundles",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_JRnEna"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collection_bpg7FB": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "save 15% on the entire look",
+        "title": "Exclusive Holiday Bundles",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "bundles",
+        "fallback_collection": "",
+        "view_all_label": "Shop all bundles",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "text_with_image_GU7q6c": {
+      "type": "text-with-image",
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "image": "shopify://shop_images/rich_text_51e90371-2e45-4b30-8329-287e18511a0a.jpg",
+        "image_position": "right",
+        "content": "<p>The holiday season is pure enchantment—a time when winter’s spirit emerges, wrapped in nostalgia. It’s made for whispered secrets in cozy corners, warm smiles by the crackling fire, and rosy cheeks in the year’s first snow. This season calls for intimate party dressing.</p><p>Our Winter 2024 collection brings an understated elegance, ready to take you from slopes to chalet, fireside to the Upper West Side. Each piece—whether a soft, luxurious cashmere sweater or a sleek, flattering lycra legging—is tailored to perfection, crafted with care and reverence.</p>",
+        "link_text": "",
+        "link_url": ""
+      }
+    }
+  },
+  "order": [
+    "full_width_banner_EDEgTW",
+    "main",
+    "full_width_banner_dirVb9",
+    "featured_collection_F4Qqhh",
+    "full_width_banner_C3a4Qn",
+    "featured_collection_ARTfg3",
+    "full_width_banner_BpeiHY",
+    "featured_collection_786wz7",
+    "full_width_banner_XK4QL6",
+    "featured_collection_XBxihr",
+    "full_width_banner_Jtt63K",
+    "featured_collection_CmrCNx",
+    "full_width_banner_jBnLjN",
+    "featured_collection_bpg7FB",
+    "text_with_image_GU7q6c"
+  ]
+}

@@ -1,0 +1,229 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow_6YrgxF": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_pLdWPG": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-Takara_ed006770-4a9e-419c-ab5e-83f0fd3d9cd1.jpg",
+            "mobile_image": "shopify://shop_images/M-Takara_0dc154d9-aec5-4156-9ddb-0f5705299588.jpg",
+            "overlay": false,
+            "overlay_opacity": 1,
+            "content_position": "bottom-left",
+            "content_position_mobile": "bottom-left",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "shopify://pages/holiday-2024",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_pLdWPG"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": true,
+        "change_slides_every": 6,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 36,
+        "margin_bottom": 0,
+        "mobile_margin_top": 24,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "custom_html_M6YFdV": {
+      "type": "custom-html",
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "html": "Meet our #1 legging that put us on the map, with over 500,000 pairs sold + counting. <br><br>Fun fact: this legging is considered the “Birkin Bag of Leggings” by our fans in Stockholm. The luxe fabric is lightweight, sweat-wicking, provides smooth coverage and offers a tell-tale liquid finish. The secret weapon to these leggings is its ultra-compressive waistband that flatters any shape. Pack a punch in any of our fashion colors or rock and roll in classic black.\n\n\n<br><br>\nPERFECT FOR:",
+        "text_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "slideshow_iTe7eh": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_pLdWPG": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-Takara_copy.jpg",
+            "mobile_image": "shopify://shop_images/M-Takara_2.gif",
+            "overlay": false,
+            "overlay_opacity": 1,
+            "content_position": "bottom-left",
+            "content_position_mobile": "bottom-left",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "shopify://pages/holiday-2024",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_pLdWPG"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": true,
+        "change_slides_every": 6,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 36,
+        "margin_bottom": 0,
+        "mobile_margin_top": 24,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collections_fEEUjd": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "GO AHEAD, TRY THEM ON",
+        "title": "Discover Takara Shine",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "takara-shine",
+        "fallback_collection": "",
+        "view_all_label": "SHOP ALL TAKARA SHINE",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 40,
+        "margin_bottom": 40,
+        "margin_top_mobile": 20,
+        "margin_bottom_mobile": 20,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "grid",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "custom_html_f3RiBU": {
+      "type": "custom-html",
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "html": "<p></p><h5><center>SEE OUR FAVORITES IN THE WILD</center></h5><p></p><script src=\"https://cdn.dashhudson.com/web/js/board-carousel-embed.js\" type=\"text/javascript\" data-name=\"dhboard-carousel\" data-gallery-id=\"99609\" data-row-size=\"4\" data-gap-size=\"4\" data-mobile-row-size=\"4\" data-autoplay=\"true\" data-mobile-gap-size=\"2\"></script>",
+        "text_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "collection_list_7VjmFU": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_Df8zAt": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/info-ribbed.jpg",
+            "image_alignment": "top center",
+            "content_position": "middleCenter",
+            "subheading": "",
+            "title": "Ribbed",
+            "link_text": "LEARN MORE",
+            "link_url": "shopify://pages/info-ribbed",
+            "apply_overlay": false
+          }
+        },
+        "collection_EjaHhC": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/melt-info.jpg",
+            "image_alignment": "top center",
+            "content_position": "middleCenter",
+            "subheading": "",
+            "title": "Melt",
+            "link_text": "Learn MOre",
+            "link_url": "shopify://pages/info-melt",
+            "apply_overlay": false
+          }
+        },
+        "collection_6r7Bjm": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/info-diamond.jpg",
+            "image_alignment": "top center",
+            "content_position": "middleCenter",
+            "subheading": "",
+            "title": "Diamond Compression",
+            "link_text": "Learn more",
+            "link_url": "shopify://pages/info-diamond-compression",
+            "apply_overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "collection_Df8zAt",
+        "collection_EjaHhC",
+        "collection_6r7Bjm"
+      ],
+      "settings": {
+        "title": "<h6><center>Learn more about our other signature fabrics</center></h6>",
+        "image_size": "small",
+        "add_spacing": true,
+        "expand_collection": true,
+        "stack_on_mobile": true,
+        "text_color": "#ffffff",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "slideshow_6YrgxF",
+    "custom_html_M6YFdV",
+    "slideshow_iTe7eh",
+    "featured_collections_fEEUjd",
+    "custom_html_f3RiBU",
+    "collection_list_7VjmFU"
+  ]
+}

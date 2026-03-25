@@ -1,0 +1,84 @@
+{
+  "sections": {
+    "full_width_banner_BNUJb9": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_heXhX4": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/BEACH_RIOT_BANNER_2200x_2143ccbe-1082-4a15-9f12-5dec1df672df.webp",
+            "mobile_image": "shopify:\/\/shop_images\/M-Beach_Riot_x800_bd2cc21d-b003-4939-8b15-4779340c7532.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "sub_heading": "",
+            "heading": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_heXhX4"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0
+      }
+    },
+    "image_with_text_rtFXTe": {
+      "type": "text-with-image",
+      "disabled": true,
+      "settings": {
+        "subheading": "",
+        "title": "Bridgehampton, NY",
+        "image": "shopify:\/\/shop_images\/Store_Page_Desktop_-_Update_0607_720x_1000x_3673e42d-bda3-409a-a7d7-9c8f1edd1599.webp",
+        "image_position": "left",
+        "content": "<p>2424 Montauk Highway<br\/>Bridgehampton, NY 11932<\/p><p><strong>Hours<\/strong>: Monday - Saturday, 10am - 5pm<br\/>Closed on Sunday<\/p><p><strong>Phone<\/strong>: 631.919.5444<br\/><strong>Email<\/strong>: bridgehampton@carbon38.com<\/p><p><em>Please note: face coverings are required while shopping in-store.<\/em><\/p>",
+        "link_text": "",
+        "link_url": ""
+      }
+    },
+    "image_with_text_aVz6nm": {
+      "type": "text-with-image",
+      "disabled": true,
+      "settings": {
+        "subheading": "",
+        "title": "Pacific Palisades, CA",
+        "image": "shopify:\/\/shop_images\/Store_Page_Desktop_-_Update_0607_2_720x_1000x_a182e179-90f3-457c-8c1e-b369b7144220.webp",
+        "image_position": "left",
+        "content": "<p>15272 Palisades Village Lane<br\/>Pacific Palisades, CA 90272<\/p><p><strong>Hours<\/strong>: Monday - Saturday, 11am - 7pm<br\/>Sunday, 11am - 6pm<\/p><p><strong>Phone<\/strong>: 310.300.3806<br\/><strong>Email<\/strong>: palisades@carbon38.com<\/p><p><em>Please note: face coverings are required while shopping in-store<br\/><br\/><\/em><span style=\"text-decoration:underline\">See upcoming events<\/span><\/p>",
+        "link_text": "",
+        "link_url": ""
+      }
+    },
+    "image_with_text_TJR6pN": {
+      "type": "text-with-image",
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "image": "shopify:\/\/shop_images\/Artboard_2_1000x_77a3e24f-44aa-4798-afb4-6d72bc43cad8.webp",
+        "image_position": "left",
+        "content": "<p>Beach Riot was designed to stand out in a crowd. Nicole Hanriot-Tinkess drew inspiration from her California lifestyle to infuse the label with a playful versatility—each piece moves from studio to beach in a lively, wearable pairing of bold colors and eye-catching prints. <\/p>",
+        "link_text": "",
+        "link_url": ""
+      }
+    }
+  },
+  "order": [
+    "full_width_banner_BNUJb9",
+    "image_with_text_rtFXTe",
+    "image_with_text_aVz6nm",
+    "image_with_text_TJR6pN"
+  ]
+}

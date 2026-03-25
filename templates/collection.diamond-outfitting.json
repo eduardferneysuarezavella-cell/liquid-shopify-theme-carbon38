@@ -1,0 +1,125 @@
+{
+  "sections": {
+    "166421413404dd06b5": {
+      "type": "text-with-image",
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "image": "shopify:\/\/shop_images\/D-Diamond2.jpg",
+        "image_position": "left",
+        "content": "<p>SLEEK IS THE KEY WORD.<\/p><p>This <em>sleek<\/em> fabric is your go-to for HIIT-level compression. Made with SPF protection and from recycled water bottles, they are smooth, lightweight, and feel like your second skin.  The waistband sculpts to keep you secure and the t-back bra ensures posture and alignment as well as keeping everything in place. 4 core silhouettes are meant to be mixed and matched so you will be supported in all your fashionable pursuits.<\/p><p>We’ve put together some suggested outfit combinations in each row but feel free to mix and match.<\/p><p>Happy Browsing!<\/p>",
+        "link_text": "",
+        "link_url": ""
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "show_collection_info": true,
+        "apply_overlay": true,
+        "show_color_swatch": true,
+        "show_vendor": false,
+        "collection_image_size": "normal",
+        "show_sort_by": true,
+        "show_layout_switch": false,
+        "toolbar_position": "top",
+        "show_filters": true,
+        "show_filter_color_swatch": true,
+        "expand_filters": false,
+        "filter_position": "sidebar",
+        "filter_menu": "",
+        "grid_items_per_page": 96,
+        "grid_mobile_items_per_row": "2",
+        "grid_desktop_items_per_row": 4
+      }
+    },
+    "0d7064b5-3cd3-4e07-99ad-a48e0df9a64d": {
+      "type": "custom-liquid",
+      "settings": {
+        "subheading": "",
+        "heading": "",
+        "custom_liquid": "<h6><center>Don’t forget to enter your code at checkout for up to $500 of product.  The code also automatically upgrades you to expedited shipping.<\/h6>",
+        "color_scheme": "",
+        "text_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "16464158219739ce3f": {
+      "type": "apps",
+      "settings": {
+        "include_margins": false
+      }
+    },
+    "16642142165412af33": {
+      "type": "collection-list",
+      "blocks": {
+        "16642142165b7b1e32-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "melt-outfitting",
+            "image": "shopify:\/\/shop_images\/Melt_cae998d4-6a2b-458d-ac7f-6b0f0dd3cd01.jpg",
+            "image_alignment": "center center",
+            "content_position": "bottomLeft",
+            "subheading": "How to Style",
+            "title": "Melt",
+            "link_text": "Learn More",
+            "link_url": "",
+            "apply_overlay": false
+          }
+        },
+        "16642142165b7b1e32-0": {
+          "type": "collection",
+          "settings": {
+            "collection": "takara-outfitting",
+            "image": "shopify:\/\/shop_images\/Takara_82fb7739-3fe7-4585-92ae-5aa3cff91d52.jpg",
+            "image_alignment": "center center",
+            "content_position": "bottomLeft",
+            "subheading": "How to Style",
+            "title": "Takara Shine",
+            "link_text": "learn more",
+            "link_url": "",
+            "apply_overlay": false
+          }
+        },
+        "16642142165b7b1e32-2": {
+          "type": "collection",
+          "settings": {
+            "collection": "ribbed-outfitting",
+            "image": "shopify:\/\/shop_images\/Ribbed_c26a7ba4-60d7-4d08-be5e-2965b8a5b774.jpg",
+            "image_alignment": "center center",
+            "content_position": "bottomLeft",
+            "subheading": "How to Style",
+            "title": "Ribbed",
+            "link_text": "learn more",
+            "link_url": "",
+            "apply_overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "16642142165b7b1e32-1",
+        "16642142165b7b1e32-0",
+        "16642142165b7b1e32-2"
+      ],
+      "custom_css": [],
+      "settings": {
+        "title": "LEARN MORE ABOUT OUR EXCLUSIVE CARBON38 FABRICATION STYLING",
+        "image_size": "normal",
+        "add_spacing": true,
+        "expand_collection": false,
+        "stack_on_mobile": true,
+        "text_color": "#ffffff",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "166421413404dd06b5",
+    "main",
+    "0d7064b5-3cd3-4e07-99ad-a48e0df9a64d",
+    "16464158219739ce3f",
+    "16642142165412af33"
+  ]
+}

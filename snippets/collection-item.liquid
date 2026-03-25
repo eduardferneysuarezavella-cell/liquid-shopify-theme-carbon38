@@ -1,0 +1,47 @@
+{%- assign collection_image = block.settings.image | default: collection.image | default: collection.products.first.featured_image -%}
+
+<a href="{{ block.settings.link_url | default: collection.url }}" {{ block.shopify_attributes }} class="CollectionItem {% if section.settings.expand_collection %}CollectionItem--expand{% endif %} Carousel__Cell {% if forloop.first %}is-selected{% endif %}" data-slide-index="{{ forloop.index0 }}">
+  {%- assign image_crop = block.settings.image_alignment | split: ' ' | last -%}
+
+  <div class="CollectionItem__Wrapper CollectionItem__Wrapper--{{ section.settings.image_size }}">
+    <div class="CollectionItem__ImageWrapper">
+      <div class="CollectionItem__Image {% if apply_overlay %}Image--contrast{% endif %} hide-no-js"
+           data-optimumx="1.4"
+           data-expand="-150"
+           >
+            {% if collection_image %}
+              {{ collection_image | image_url: width: 750, height: 960, crop: image_crop | image_tag }}
+            {%- else -%}
+            <div class="PlaceholderBackground PlaceholderSvg--dark">
+              {%- capture image_name -%}lifestyle-{% cycle 'anchor': '1', '2' %}{%- endcapture -%}
+              {{ image_name | placeholder_svg_tag: 'PlaceholderBackground__Svg' }}
+            </div>
+          {%- endif -%}
+      </div>
+
+      {%- if collection_image -%}
+        <noscript>
+          <div class="CollectionItem__Image {% if apply_overlay %}Image--contrast{% endif %}" style="background-position: {{ block.settings.image_alignment }}; background-image: url({{ collection_image | img_url: '1000x' }})"></div>
+        </noscript>
+      {%- endif -%}
+    </div>
+
+    <div class="CollectionItem__Content CollectionItem__Content--{{ block.settings.content_position | default: 'bottomLeft' }}">
+      <header class="SectionHeader">
+        {%- if block.settings.subheading != blank -%}
+          <h3 class="SectionHeader__SubHeading Heading u-h3">{{ block.settings.subheading | escape }}</h3>
+        {%- endif -%}
+
+        <h2 class="SectionHeader__Heading Heading u-h3">{{ block.settings.title | default: collection.title | escape }}</h2>
+
+        <div class="SectionHeader__ButtonWrapper">
+          {%- if block.settings.link_text != blank -%}
+            <span class="CollectionItem__Link Link--underlineNative">{{ block.settings.link_text | escape | upcase }}</span>
+          {%- else -%}
+            <span class="CollectionItem__Link Link--underlineNative">{{ 'collection.general.view_products' | t | upcase }}</span>
+          {%- endif -%}
+        </div>
+      </header>
+    </div>
+  </div>
+</a>

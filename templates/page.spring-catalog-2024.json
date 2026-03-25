@@ -1,0 +1,461 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "full_width_banner_iRRHXP": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_FaxTYC": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/spring-catalog-2024-1.webp",
+            "mobile_image": "shopify://shop_images/spring-catalog-2024-1-mobile.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_FaxTYC"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 80,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 50,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "full_width_banner_ezMBmn": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_6ha8mb": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/spring-catalog-2024-2.webp",
+            "mobile_image": "shopify://shop_images/spring-catalog-2024-2-mobile.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/blown-away",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_6ha8mb"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 80,
+        "margin_bottom": 0,
+        "mobile_margin_top": 50,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collection_cHDmH3": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "A fresh breeze on your wardrobe",
+        "title": "Blown Away",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "blown-away",
+        "fallback_collection": "",
+        "view_all_label": "shop now",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "full_width_banner_Ky4TgQ": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_6Bxiwn": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/spring-catalog-2024-3.webp",
+            "mobile_image": "shopify://shop_images/spring-catalog-2024-3-mobile.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/basics-with-a-twist",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_6Bxiwn"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collection_RmDzAq": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "create your wardrobe capsule",
+        "title": "Basics with a Twist",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "basics-with-a-twist",
+        "fallback_collection": "",
+        "view_all_label": "shop now",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 84,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 42,
+        "background_color": "",
+        "text_color": "#232323",
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "full_width_banner_fkW3Mk": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_ha9kxY": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/spring-catalog-2024-4.webp",
+            "mobile_image": "shopify://shop_images/spring-catalog-2024-4-mobile_f1eb4591-f1f9-4f56-9fa6-f8a9ee9b4897.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/black-tie-active",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_ha9kxY"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collection_D7cEF7": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "bring function to the formal",
+        "title": "Cocktail Hour",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "10th-anniversary",
+        "fallback_collection": "",
+        "view_all_label": "shop now",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "full_width_banner_aYXXiy": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_TLwK8q": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/spring-catalog-2024-5.webp",
+            "mobile_image": "shopify://shop_images/spring-catalog-2024-5-mobile.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/spring-hues",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_TLwK8q"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collection_wgxHdK": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "like a field of flowers",
+        "title": "Spring Hues",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "spring-hues",
+        "fallback_collection": "",
+        "view_all_label": "shop the edit",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "full_width_banner_8wQm8D": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_cg4VYK": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/spring-catalog-2024-6.webp",
+            "mobile_image": "shopify://shop_images/spring-catalog-2024-6-mobile.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "shopify://collections/bundles",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_cg4VYK"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#000000",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collection_Qaingq": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "take color-matching to new heights",
+        "title": "Monochrome Bundles",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "bundles",
+        "fallback_collection": "",
+        "view_all_label": "shop bundles",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "image_with_text_xE6mEP": {
+      "type": "text-with-image",
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "image": "shopify://shop_images/spring-catalog-2024-avatar.webp",
+        "image_position": "left",
+        "content": "<p>The Spring season is often considered a wipe-the-slate clean period marked by a new chapter and the opportunity to set new rules. With the Vernal Equinox not only comes a fresh perspective, but a world of possibilities.<br/><br/>Our wardrobe is powered by the dreams left unfulfilled in the past year, the ones that need the extra confidence push to lift off and get rolling.<br/><br/>It’s true what they say, “dress for the job you want”. And when the job is to excel at life, let us give you the tools you need to put a Spring in your step.</p>",
+        "link_text": "",
+        "link_url": ""
+      }
+    }
+  },
+  "order": [
+    "full_width_banner_iRRHXP",
+    "full_width_banner_ezMBmn",
+    "featured_collection_cHDmH3",
+    "full_width_banner_Ky4TgQ",
+    "featured_collection_RmDzAq",
+    "full_width_banner_fkW3Mk",
+    "featured_collection_D7cEF7",
+    "full_width_banner_aYXXiy",
+    "featured_collection_wgxHdK",
+    "full_width_banner_8wQm8D",
+    "featured_collection_Qaingq",
+    "image_with_text_xE6mEP"
+  ]
+}

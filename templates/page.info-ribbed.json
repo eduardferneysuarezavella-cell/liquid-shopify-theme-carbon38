@@ -1,0 +1,239 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "full_width_banner_qrR4nV": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_NArXpV": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-Ribbed_1_e0f6fd2d-aa2b-4ccd-a9f4-ff98e27bca6a.jpg",
+            "mobile_image": "shopify://shop_images/M-Ribbed_1_d766b636-bc45-41c4-b4cb-85c18cef4530.jpg",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_NArXpV"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "custom_html_M6YFdV": {
+      "type": "custom-html",
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "html": "Texture is the name of the game.<br><br>The vertical rib adds length and flatters as it directs the eye up and down the body whether you choose the flare or legging. Saturated colors erase any flaws. What makes this collection so special are the matching sets–flattering scoop neck of the bra with a high-waist band to match. Buttery-soft with all the qualities of the Melt fabric you love, the ribbed sets will take you through your day.",
+        "text_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "custom_html_aebmBH": {
+      "type": "custom-html",
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "html": "PERFECT FOR:",
+        "text_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "image_banner2": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_pLdWPG": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/D-Ribbed_2.jpg",
+            "mobile_image": "shopify://shop_images/ribbed-2_13.gif",
+            "overlay": false,
+            "overlay_opacity": 1,
+            "content_position": "bottom-left",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_pLdWPG"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": true,
+        "change_slides_every": 6,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 36,
+        "margin_bottom": 0,
+        "mobile_margin_top": 24,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_collections_fEEUjd": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "Go AHEAD, TRY THEM ON",
+        "title": "Discover Ribbed",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "ribbed-melt",
+        "fallback_collection": "",
+        "view_all_label": "Discover Ribbed",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "background_color": "",
+        "text_color": "#232323",
+        "layout_mode": "carousel",
+        "products_to_show": 25,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "custom_html_f3RiBU": {
+      "type": "custom-html",
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "html": "<p></p><h5><center>SEE OUR FAVORITES IN THE WILD</center></h5><p></p><script src=\"https://cdn.dashhudson.com/web/js/board-carousel-embed.js\" type=\"text/javascript\" data-name=\"dhboard-carousel\" data-gallery-id=\"100147\" data-row-size=\"4\" data-gap-size=\"4\" data-mobile-row-size=\"4\" data-autoplay=\"true\" data-mobile-gap-size=\"2\"></script>",
+        "text_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "collection_list_7VjmFU": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_Df8zAt": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/info-takara.jpg",
+            "image_alignment": "top center",
+            "content_position": "middleCenter",
+            "subheading": "",
+            "title": "Takara Shine",
+            "link_text": "LEARN MORE",
+            "link_url": "shopify://pages/info-takara-shine",
+            "apply_overlay": false
+          }
+        },
+        "collection_EjaHhC": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/melt-info.jpg",
+            "image_alignment": "center left",
+            "content_position": "middleCenter",
+            "subheading": "",
+            "title": "Melt",
+            "link_text": "Learn MOre",
+            "link_url": "shopify://pages/info-melt",
+            "apply_overlay": false
+          }
+        },
+        "collection_6r7Bjm": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/info-diamond.jpg",
+            "image_alignment": "bottom left",
+            "content_position": "middleCenter",
+            "subheading": "",
+            "title": "Diamond Compression",
+            "link_text": "Learn more",
+            "link_url": "shopify://pages/info-diamond-compression",
+            "apply_overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "collection_Df8zAt",
+        "collection_EjaHhC",
+        "collection_6r7Bjm"
+      ],
+      "settings": {
+        "title": "<center><h6>Learn more about our other signature fabrics</h6></center>",
+        "image_size": "small",
+        "add_spacing": true,
+        "expand_collection": true,
+        "stack_on_mobile": true,
+        "text_color": "#ffffff",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "full_width_banner_qrR4nV",
+    "custom_html_M6YFdV",
+    "custom_html_aebmBH",
+    "image_banner2",
+    "featured_collections_fEEUjd",
+    "custom_html_f3RiBU",
+    "collection_list_7VjmFU"
+  ]
+}

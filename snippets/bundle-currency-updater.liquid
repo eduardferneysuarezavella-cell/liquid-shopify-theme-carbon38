@@ -1,0 +1,64 @@
+<script>
+    function updateBundleItems(array) {
+       var firstItem = array[0];
+ 
+       var formData = {
+          id: firstItem.key,
+          quantity: firstItem.quantity,
+          properties: firstItem.properties
+       };
+ 
+       fetch(window.Shopify.routes.root + 'cart/change.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        })
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          array.shift();
+          if(array.length) {
+             updateBundleItems(array);
+          } else {
+             document.documentElement.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+          }           
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });  
+    }
+ 
+    var currentCurrency = "{{ localization.country.currency.iso_code }}";
+    var updateBundleItemsArray = [];
+    {% for item in cart.items %}
+      {% if item.properties['_bundle_id'] and item.properties['_bundle_currency'] != localization.country.currency.iso_code %}      
+        {% assign component = all_products[item.properties['_bundle_component_handle']] %}
+        {% assign itemProperties = item.properties | json %}
+        {% assign itemProperties = itemProperties | replace: "[[", "{" %}
+        {% assign itemProperties = itemProperties | replace: "]]", "}" %}
+        {% assign itemProperties = itemProperties | replace: '",', '":' %}
+        {% assign itemProperties = itemProperties | replace: '],[', ',' %}
+        var itemProperties = {{ itemProperties }};
+        itemProperties["_bundle_component_original_price"] = "{{component.variants[0].price}}";
+        itemProperties["_bundle_currency"] = currentCurrency;
+        itemProperties["_bundle_compare_at_price"] = {{ component.selected_or_first_available_variant.compare_at_price | json }};
+        itemProperties["_bundle_cost"] = {{ component.price | json }};
+        updateBundleItemsArray.push({
+          key: {{item.key | json }},
+          quantity: {{ item.quantity }},
+          properties: itemProperties 
+       });
+      {% else %}
+        {% continue %}
+      {% endif  %}
+    {% endfor %}
+  
+    if(updateBundleItemsArray.length) {
+      updateBundleItems(updateBundleItemsArray)
+    }
+  
+    
+ </script>

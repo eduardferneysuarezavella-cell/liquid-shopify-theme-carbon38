@@ -1,0 +1,245 @@
+{{ 'image-collection-list.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign image_size = section.settings.image_size
+  assign text_color = section.settings.text_color
+%}
+
+<div class="image-collection-list-wrapper{% unless section.settings.expand_collections %} page-width-desktop{% endunless %}">
+  {% if section.settings.title != blank %}
+    <h2 class="image-collection-list-wrapper__title">{{ section.settings.title }}</h2>
+  {% endif %}
+
+  <ul class="image-collection-list image-collection-list--length-{{ section.blocks.size }}{% if section.settings.add_spacing %} image-collection-list-flex-gap{% endif %}{% if section.settings.stack_on_mobile %} image-collection-list--stack-on-mobile{% endif %}"
+  >
+    {% for block in section.blocks %}
+      {% liquid
+        assign image = block.settings.collection.image
+        assign link = block.settings.collection.url
+        assign title = block.settings.collection.title
+
+        if block.settings.image != blank
+          assign image = block.settings.image
+        endif
+
+        if block.settings.link_url != blank
+          assign link = block.settings.link_url
+        endif
+
+        if block.settings.heading != blank
+          assign title = block.settings.heading
+        endif
+      %}
+      <li class="image-collection-list__item">
+        <a class="image-collection-list__item-link-wrapper" href="{{ link }}">
+        <div
+          class="image-collection-list__image-wrapper {% if block.settings.overlay %}overlay{% endif %}"
+          style="padding-bottom: {{ image_size }}"
+        >
+          {%- assign image_crop = block.settings.image_alignment | split: ' ' | last -%}
+          {%- assign image_style = "object-position: " | append: block.settings.image_alignment -%}
+          {% if image %}
+          {{ image | image_url: width: 1350, crop: image_crop | image_tag: class: "image-collection-list__image", style: image_style }}
+          {% endif %}
+        </div>
+        <div
+          class="image-collection-list__content {{ block.settings.content_position }}"
+          style="color: {{ text_color }};"
+        >
+          {% if block.settings.sub_heading != blank %}
+          <h4 class="image-collection-list__subheading">
+            {{ block.settings.sub_heading }}
+          </h4>
+          {% endif %}
+          <h3 class="image-collection-list__title">
+            {{ title }}
+          </h3>
+          <span class="image-collection-list__link">
+            {{ block.settings.link_text }}
+          </span>
+        </div>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "2 Cols Collection List",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Image Collection List"
+    },
+    {
+      "type": "select",
+      "id": "image_size",
+      "label": "Image Size",
+      "options": [
+        {
+          "value": "55%",
+          "label": "Small"
+        },
+        {
+          "value": "65%",
+          "label": "Normal"
+        },
+        {
+          "value": "75%",
+          "label": "Large"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "add_spacing",
+      "label": "Add Spacing"
+    },
+    {
+      "type": "checkbox",
+      "id": "expand_collections",
+      "label": "Expand collections to fill row"
+    },
+    {
+      "type": "checkbox",
+      "id": "stack_on_mobile",
+      "label": "Stack on mobile"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "select",
+          "id": "image_alignment",
+          "label": "Image alignment",
+          "options": [
+            {
+              "value": "top left",
+              "label": "Top left"
+            },
+            {
+              "value": "top center",
+              "label": "Top center"
+            },
+            {
+              "value": "top right",
+              "label": "Top right"
+            },
+            {
+              "value": "center left",
+              "label": "Middle left"
+            },
+            {
+              "value": "center center",
+              "label": "Middle center"
+            },
+            {
+              "value": "center right",
+              "label": "Middle right"
+            },
+            {
+              "value": "bottom left",
+              "label": "Bottom left"
+            },
+            {
+              "value": "bottom center",
+              "label": "Bottom center"
+            },
+            {
+              "value": "bottom right",
+              "label": "Bottom right"
+            }
+          ],
+          "default": "center center"
+        },
+        {
+          "type": "select",
+          "id": "content_position",
+          "label": "Content Position",
+          "options": [
+            {
+              "value": "middle-left",
+              "label": "Middle left"
+            },
+            {
+              "value": "middle-right",
+              "label": "Middle right"
+            },
+            {
+              "value": "middle-center",
+              "label": "Middle center"
+            },
+            {
+              "value": "bottom-left",
+              "label": "bottom left"
+            },
+            {
+              "value": "bottom-right",
+              "label": "bottom right"
+            },
+            {
+              "value": "bottom-center",
+              "label": "bottom center"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "sub_heading",
+          "label": "Sub-heading"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link Text"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "overlay",
+          "label": "Overlay"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "2 Cols Collection List",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}

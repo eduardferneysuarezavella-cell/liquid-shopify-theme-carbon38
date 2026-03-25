@@ -1,0 +1,52 @@
+{% if theme.role == 'unpublished' %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const KEY = 'phide';
+      const DELAY = 2000
+      const FADE_OUT_DURATION = 380;
+      const url = new URL(window.location);
+      const hide = url.searchParams.get(KEY) || window.localStorage.getItem(KEY);
+      if(hide === null) {
+        return;
+      }
+      console.log('%cGW Preview bar mode: %s (%s)', 'color:lime;font-weight:bold', hide, {{ theme.name | json }});
+      if(hide === '0') {
+        // Don't hide, back to default behavior
+        window.localStorage.removeItem(KEY);
+      } else if(hide === '1') {
+        // Fade out animation
+        localStorage.setItem(KEY, '1');
+        const html = `
+          <style>
+            #PBarNextFrameWrapper {
+              opacity: 1;
+              transition: opacity ${FADE_OUT_DURATION}ms ease-in-out;
+            }
+            #PBarNextFrameWrapper.hiding {
+              opacity: 0;
+            }
+          </style>`;
+        document.body.insertAdjacentHTML('beforeend', html);
+        window.setTimeout(function() {
+          var previewBar = document.querySelector('#PBarNextFrameWrapper');
+          if(previewBar) {
+            previewBar.classList.add('hiding');
+            window.setTimeout(function() {
+              previewBar.style.display = 'none';
+            }, FADE_OUT_DURATION);
+          }
+        }, DELAY)
+      } else if(hide === '2') {
+        // No animation, just hide
+        localStorage.setItem(KEY, '2');
+        const html = `
+          <style>
+            #PBarNextFrameWrapper {
+              display: none;
+            }
+          </style>`;
+        document.body.insertAdjacentHTML('beforeend', html);
+      }
+    });
+  </script>
+{% endif %}

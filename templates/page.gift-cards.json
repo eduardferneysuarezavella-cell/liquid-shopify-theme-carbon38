@@ -1,0 +1,216 @@
+{
+  "sections": {
+    "full_width_banner_TLPqq8": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_8zdaU7": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/d-gift_card_copy.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/2-up-gift_guide_cc63917f-d41d-4a03-9704-6b0920948c9c.jpg",
+            "overlay": true,
+            "overlay_opacity": 0.2,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "There’s nothing quite as timeless or effortless as the gift of choice. Choose between a Digital or Physical gift card for the gift of endless options.",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_8zdaU7"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "featured_product_7EGAHB": {
+      "type": "featured-product",
+      "blocks": {
+        "title_zz3Gzq": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price_x3wUWE": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_VmtcJx": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "dropdown",
+            "swatch_shape": "none"
+          }
+        },
+        "buy_buttons_nq4WDp": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true
+          }
+        }
+      },
+      "block_order": [
+        "title_zz3Gzq",
+        "price_x3wUWE",
+        "variant_picker_VmtcJx",
+        "buy_buttons_nq4WDp"
+      ],
+      "settings": {
+        "product": "digital-gift-card-1",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "featured_product_e9HYtn": {
+      "type": "featured-product",
+      "disabled": true,
+      "blocks": {
+        "text_mrTVNt": {
+          "type": "text",
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_mrArjY": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price_W83P9w": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_mbYTXe": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector_y8JVTw": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_ykQ8rQ": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        }
+      },
+      "block_order": [
+        "text_mrTVNt",
+        "title_mrArjY",
+        "price_W83P9w",
+        "variant_picker_mbYTXe",
+        "quantity_selector_y8JVTw",
+        "buy_buttons_ykQ8rQ"
+      ],
+      "settings": {
+        "product": "physical-gift-card",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "full_width_banner_V4iTPk": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_3KqLra": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/D-b_2200x_2c8c06f7-be26-40e4-90ed-15e952afde24.webp",
+            "mobile_image": "shopify:\/\/shop_images\/m-banner1_03_x800_30610174-c7ce-45e5-90ff-157c28c8f7c3.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "https:\/\/carbon38.com\/pages\/gift-guide-2023",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_3KqLra"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "full_width_banner_TLPqq8",
+    "featured_product_7EGAHB",
+    "featured_product_e9HYtn",
+    "full_width_banner_V4iTPk"
+  ]
+}

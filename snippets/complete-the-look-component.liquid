@@ -1,0 +1,97 @@
+{% liquid
+    assign product = all_products[product]
+
+    if product.title contains ' - ' 
+        assign splitTitle = product.title | split: ' - '
+        assign productTitleWithoutColor = ""
+        assign indexColor = splitTitle.size | minus: 1
+        assign currentColor = splitTitle[indexColor]
+        if splitTitle.size == 2
+            assign productTitleWithoutColor = splitTitle[0]
+        else
+            for titleSection in splitTitle 
+            unless forloop.last == true
+                unless forloop.first == true
+                assign productTitleWithoutColor = productTitleWithoutColor | append: " - "
+                endunless
+        
+                assign productTitleWithoutColor = productTitleWithoutColor | prepend: titleSection
+            endunless
+            endfor
+        endif
+        assign productTitle = productTitleWithoutColor
+    else           
+        assign productTitle = product.title
+    endif 
+%}
+
+<div class="ctl-product" onclick="this.querySelector('.ctl-open-qv').click()">
+    <div class="ctl-image">
+        {{ product.featured_image | image_url: height: 225 | image_tag: alt: productTitle }}
+        <a href="#" class="ctl-open-qv quickshop_trigger">Quick Shop</a>
+    </div>
+    <div class="ctl-vendor">{{ product.vendor }}</div>
+    <h4>{{ productTitle }}</h4>    
+    <div class="ctl-price">{{ product.price | money_with_currency }}</div>
+
+    <template class="ctl-quickview-template">
+        <div class="qv-overlay qv-component" {% if splitTitle %}data-color-swatch="true"{% endif %} data-product-id="{{ product.id }}" data-product-title="{{ productTitle }}" {% unless product.available %}data-sold-out="true"{% endunless %}>
+            <div class="qv-content">
+                <div class="qv-left">
+                    <div class="qv-image-container active" data-product-id="{{ product.id }}">
+                        <div class="qv-images">
+                            {% for image in product.images %}
+                                <div class="qv-image-wrapper">{{ image | image_url: width: 500 | image_tag }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="qv-thumbs">
+                            {% for image in product.images %}
+                                {{ image | image_url: width: 40 | image_tag: class: "qv-go-to-image", data-position: forloop.index0 }}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="qv-right">
+                <a href="#" class="qv-close-qv"></a>
+                <div class="qv-vendor">{{ product.vendor }}</div>
+                <div class="qv-title">{{ productTitle }}{% if component.tags contains 'preorder' %}<span class="preorder-badge">PRE-ORDER</span>{% endif %}</div>
+                <div class="qv-payment-terms">{%- form 'product', product, class: 'ProductForm' -%}{{- form | payment_terms -}}{%- endform -%}</div>
+                <div class="qv-price">{{ product.price | money_with_currency }}</div>
+                <div class="qv-component-selection">
+                    <div class="qv-variants">
+                        {% if currentColor %}
+                            <label class="qv-variants-label qv-label-color">COLOR: <span>{{currentColor}}</span></label>
+                            <div class="qv-colors">                                
+                                <span class="qv-variant-color selected" data-product-id="{{ product.id }}" data-available="{{ product.available }}" data-color-image="{{ product.featured_image | image_url: height: 157 }}" data-tooltip="{{currentColor}}" data-color="{{currentColor}}" data-color-name-lowercase="{{ currentColor | downcase }}"></span>
+                            </div>
+                        {% endif %}
+
+                        <label class="qv-variants-label qv-label-size">SIZE:</label>
+                        <div class="qv-sizes" {% if currentColor %}data-color="{{currentColor}}"{% endif %} {% if product.tags contains 'preorder' %}data-preorder="true"{% endif %}>
+                            {% for variant in product.variants %}
+                            <span class="qv-variant-size {% unless variant.available%}unavailable{%endunless%}" {% if product.tags contains 'preorder' and variant.metafields.preorder.availability %}data-preorder="true" data-estimated-shipping-date="{{variant.metafields.preorder.estimated_shipping_date}}"{% endif %} data-size="{{variant.option2}}" data-variant-id="{{variant.id}}" data-bundle-component-price="{{variant.price}}">
+                                {% if product.tags contains 'preorder' and variant.metafields.preorder.availability %}{% render 'icon-preorder' %}{% endif %}
+                                {%- unless variant.available%}<svg class="SizeSwatch__Strikethrough"><line x1="0" y1="100%" x2="100%" y2="0" stroke="currentColor"></line></svg>{% endunless -%}
+                                {{variant.option2}}
+                            </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div data-product-id="{{ product.id }}" class="qv-form" data-selected-variant-id="{{ product.current_variant.id }}">
+                    <label for="quantity">Quantity</label>
+                    <div class="qv-qty">
+                    <span class="qv-qty-button decrease" onclick="qvQuantity(this)">-</span>
+                    <input type="number" name="qv-quantity" class="qv-qty-number" value="1" min="1" autocomplete="off">
+                    <span class="qv-qty-button increase" onclick="qvQuantity(this)">+</span>
+                    </div>
+                    <button class="qv-atc" disabled="disabled" onclick="qvATC(this)" data-title="{{ product.title | escape }}" data-category="{{product.type | escape }}" data-sku="{{product.selected_or_first_available_variant.sku | escape }}" data-variant-id="{{product.selected_or_first_available_variant.id | escape }}" data-price="{{product.selected_or_first_available_variant.price}}" data-url="{{ product.url | escape}}" >{% unless product.available %}SOLD OUT{% else %}SELECT SIZE{% endunless %}</button>
+                </div>
+                <div class="ProductForm__Error Alert Alert--error formErrors"></div>
+                <div class="qv-description">{{ product.description }}</div>
+                <a href="{{ product.url }}" class="qv-link">More details</a> 
+                </div>
+            </div>
+        </div>
+    </template>
+</div>

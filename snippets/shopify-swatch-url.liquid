@@ -1,0 +1,165 @@
+<script>
+    window.shopifyHandleize = function(str) {
+      str = str.normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
+        .replace(/([^\w]+|\s+)/g, '-') // Replace space and other characters by hyphen
+        .replace(/\-\-+/g, '-')	// Replaces multiple hyphens by one hyphen
+        .replace(/(^-+|-+$)/g, '') // Remove extra hyphens from beginning or end of the string
+        .toLowerCase(); // To lowercase      
+      return str
+    };
+
+    var folderURL = "//"+ Shopify.cdnHost + "/shop/files/";
+    window.swatchColorObject = {
+        "shopifyFilesFolder": folderURL
+    }    
+
+    function addSwatchesToColorObject(nodes) {
+        if (!window.swatchColorObject) window.swatchColorObject = {};
+        nodes.forEach(node => {
+            // Convert fields array to an object for easier access
+            const fields = {};
+            node.fields.forEach(f => fields[f.key] = f);
+
+            // Get color_title as key
+            const colorTitle = (fields.color_title && fields.color_title.value || '').toLowerCase().trim();
+            if (!colorTitle) return;
+
+            // 1. Use reference image if available
+            if (
+            fields.color_file &&
+            fields.color_file.reference &&
+            fields.color_file.reference.image &&
+            fields.color_file.reference.image.url
+            ) {
+            window.swatchColorObject[colorTitle] = "background-image: url(" + fields.color_file.reference.image.url + ")";
+            return;
+            }
+
+            // 2. Use color_file_name if available
+            if (fields.color_file_name && fields.color_file_name.value) {
+            // Insert _72x72 before file extension
+            let fileName = fields.color_file_name.value;
+            const dotIndex = fileName.lastIndexOf(".");
+            if (dotIndex !== -1) {
+                fileName = fileName.slice(0, dotIndex) + "_72x72" + fileName.slice(dotIndex);
+            }
+            window.swatchColorObject[colorTitle] = "background-image: url(" + folderURL + fileName + "?v=1649107346)";
+            return;
+            }
+
+            // 3. Use color_code if available
+            if (fields.color_code && fields.color_code.value) {
+            window.swatchColorObject[colorTitle] = "color: " + fields.color_code.value;
+            return;
+            }
+
+            // If none of the above, do not add entry
+        });
+    }
+
+    
+
+    // DOM observer for swatch color assignment
+    const assignSwatchStyle = (el) => {
+      const colorName = el.getAttribute('data-color-name-lowercase');
+      if (!colorName) return;
+      const styleValue = window.swatchColorObject[colorName];
+      if (styleValue) {
+        el.setAttribute('style', styleValue);
+        el.setAttribute('data-color-swatch-inserted', 'true');
+      } else {
+        el.setAttribute('style', 'background-image: url(' + window.swatchColorObject.shopifyFilesFolder + window.shopifyHandleize(colorName) + '_72x72.png)');
+        el.setAttribute('data-color-swatch-generated', 'true');
+        el.setAttribute('data-color-swatch-inserted', 'true');
+      }
+    };
+
+    const swatchObserver = new MutationObserver((mutations) => {
+      mutations.forEach(mutation => {
+        mutation.addedNodes.forEach(node => {
+          if (node.nodeType === 1) {
+            // Check if the node itself matches
+            if (
+              node.hasAttribute &&
+              node.hasAttribute('data-color-name-lowercase') &&
+              (!node.hasAttribute('style') || !node.getAttribute('style')) &&
+              !node.hasAttribute('data-color-swatch-not-found')
+            ) {
+              assignSwatchStyle(node);
+            }
+            // Check descendants
+            node.querySelectorAll &&
+              node.querySelectorAll('[data-color-name-lowercase]:not([style]):not([data-color-swatch-not-found])')
+                .forEach(assignSwatchStyle);
+          }
+        });
+      });
+    });
+
+    // Place this in your script where appropriate
+    async function fetchAllColorSwatches() {
+        let hasNextPage = true;
+        let after = null;
+        let allEdges = [];
+
+        while (hasNextPage) {
+            const query = `
+            {
+                metaobjects(type: "color_swatches", first: 250${after ? `, after: "${after}"` : ''}) {
+                pageInfo {
+                    hasNextPage
+                }
+                edges {
+                    cursor
+                    node {
+                    handle
+                    id
+                    fields {
+                        key
+                        value
+                        reference {
+                        ... on MediaImage {
+                            id
+                            image {
+                            url
+                            }
+                        }
+                        }
+                    }
+                    }
+                }
+                }
+            }
+            `;
+
+            const response = await fetch('/api/2025-04/graphql.json', {
+            method: 'POST',
+            headers: {
+                'X-Shopify-Storefront-Access-Token': 'e09aedd0f593820ed2af9f6854af7e2b',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ query }),
+            });
+
+            const data = await response.json();
+            const metaobjects = data.data.metaobjects;
+            allEdges = allEdges.concat(metaobjects.edges);
+
+            hasNextPage = metaobjects.pageInfo.hasNextPage;
+            if (hasNextPage) {
+            after = metaobjects.edges[metaobjects.edges.length - 1].cursor;
+            }
+        }
+
+        addSwatchesToColorObject(allEdges.map(edge => edge.node));
+
+    // Start observer and initial assignment here
+        swatchObserver.observe(document.body, { childList: true, subtree: true });
+        document.querySelectorAll('[data-color-name-lowercase]:not([style]):not([data-color-swatch-inserted])')
+            .forEach(assignSwatchStyle);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchAllColorSwatches();
+    });
+</script>

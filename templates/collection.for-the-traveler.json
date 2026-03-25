@@ -1,0 +1,167 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "show_collection_info": true,
+        "apply_overlay": true,
+        "show_color_swatch": true,
+        "show_vendor": false,
+        "collection_image_size": "normal",
+        "show_sort_by": true,
+        "show_layout_switch": false,
+        "toolbar_position": "top",
+        "show_filters": true,
+        "show_filter_color_swatch": true,
+        "expand_filters": false,
+        "filter_position": "sidebar",
+        "filter_menu": "",
+        "grid_items_per_page": 96,
+        "grid_mobile_items_per_row": "2",
+        "grid_desktop_items_per_row": 4
+      }
+    },
+    "collection_list_fXUCaU": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_yNDzhY": {
+          "type": "collection",
+          "settings": {
+            "collection": "gifts-under-100",
+            "image_alignment": "center center",
+            "content_position": "bottomLeft",
+            "subheading": "",
+            "title": "Gifts Under $150",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": false
+          }
+        },
+        "collection_CfPmVb": {
+          "type": "collection",
+          "settings": {
+            "collection": "bundles",
+            "image": "shopify:\/\/shop_images\/C-Bundles_fdf2b98e-c573-40b0-b68b-b5cfced1fc29.jpg",
+            "image_alignment": "center center",
+            "content_position": "bottomLeft",
+            "subheading": "",
+            "title": "Giftable Bundles",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "collection_yNDzhY",
+        "collection_CfPmVb"
+      ],
+      "settings": {
+        "title": "<h6><center>SHOP BY CATEGORY<\/center><\/h6>",
+        "image_size": "normal",
+        "add_spacing": true,
+        "expand_collection": true,
+        "stack_on_mobile": true,
+        "text_color": "#ffffff"
+      }
+    },
+    "collection_list_rTwhdQ": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_Axe9rW": {
+          "type": "collection",
+          "settings": {
+            "collection": "the-finer-things",
+            "image_alignment": "center center",
+            "content_position": "bottomLeft",
+            "subheading": "",
+            "title": "",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": false
+          }
+        },
+        "collection_pDpPad": {
+          "type": "collection",
+          "settings": {
+            "collection": "for-the-athlete",
+            "image_alignment": "top center",
+            "content_position": "bottomLeft",
+            "subheading": "",
+            "title": "",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "collection_Axe9rW",
+        "collection_pDpPad"
+      ],
+      "settings": {
+        "title": "",
+        "image_size": "normal",
+        "add_spacing": true,
+        "expand_collection": true,
+        "stack_on_mobile": true,
+        "text_color": "#ffffff"
+      }
+    },
+    "featured_product_aqghgF": {
+      "type": "featured-product",
+      "blocks": {
+        "title_mrArjY": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price_W83P9w": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_mbYTXe": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "dropdown",
+            "swatch_shape": "circle"
+          }
+        },
+        "buy_buttons_ykQ8rQ": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true
+          }
+        }
+      },
+      "block_order": [
+        "title_mrArjY",
+        "price_W83P9w",
+        "variant_picker_mbYTXe",
+        "buy_buttons_ykQ8rQ"
+      ],
+      "settings": {
+        "product": "digital-gift-card-1",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 80,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "collection_list_fXUCaU",
+    "collection_list_rTwhdQ",
+    "featured_product_aqghgF"
+  ]
+}

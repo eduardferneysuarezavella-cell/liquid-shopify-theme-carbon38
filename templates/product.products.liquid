@@ -1,0 +1,96 @@
+{% layout none %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script defer>
+    jQuery.ajax({
+        type : 'POST',
+        url : '/api/2022-07/graphql.json',
+        headers: {
+            'X-Shopify-Storefront-Access-Token': 'e09aedd0f593820ed2af9f6854af7e2b',
+            'Content-Type': 'application/graphql'
+        },
+        data: `{
+          products(first: 250, after: "eyJsYXN0X2lkIjo3MzEwMzE2MzA2NjIxLCJsYXN0X3ZhbHVlIjo3MzEwMzE2MzA2NjIxfQ==") {
+            edges {
+              cursor
+              node {
+                id
+                title
+                description
+                handle
+                availableForSale
+                tags
+                totalInventory
+                options {
+                    name
+                    values
+                }
+                images(first: 50) {
+                    edges {
+                        node {
+                        url
+                        }
+                    }                    
+                }
+              }
+            }
+          } 
+        }
+        `,
+        success: function(res) {
+            var inLoop = res.data.products.edges.length; 
+            //console.log(res, inLoop)
+            $.each(res.data.products.edges, function(i, edge) {
+                //if(i+1 == inLoop) {
+                    //console.log(edge.cursor);
+                //}
+                var product = edge.node;
+                $.each(product.options, function(j, option) {
+                    if(option.name.toLowerCase() == "color") {
+                        //console.log(product.handle, " -- ", i, " -- option.values.length -- ",option.values.length);
+                        if(option.values.length == 1) { // If it has only one color                            
+                            $.each(product.images.edges, function(k, imageEdge) {
+                                var newtr = `<tr>`;
+                                newtr += `<td>`+product.handle+`</td>`;
+                                newtr += `<td>`+product.handle+`</td>`;
+                                newtr += `<td>`+option.values[0]+`</td>`;
+                                newtr += `<td>`+imageEdge.node.url+`</td>`;
+                                $('.products').append(newtr);
+                            });                            
+                        } else {
+                            $.each(option.values, function(x, value) {
+                                $.each(product.images.edges, function(k, imageEdge) {
+                                    if(imageEdge.node.url.toLowerCase().includes("color-"+handleize(value))) {
+                                        var newtr = `<tr>`;
+                                        newtr += `<td>`+product.handle+`</td>`;
+                                        newtr += `<td>`+product.handle+`-`+handleize(value)+`</td>`;
+                                        newtr += `<td>`+value+`</td>`;
+                                        newtr += `<td>`+imageEdge.node.url+`</td>`;
+                                        $('.products').append(newtr);
+                                    }
+                                }); 
+                            });                            
+                        }
+                    }
+                });
+                
+            })
+        },
+        error: function(status) {
+          console.log(status)
+        }
+      }); 
+
+    function handleize(string) {
+        return string.replace(/ /g, '-').toLowerCase();
+    }
+    
+    </script>
+
+<table class="products">
+    <tr>
+        <td>Handle</td>
+        <td>Proposed handle</td>
+        <td>Color</td>
+        <td>Image URL</td>
+    </tr>
+</table>

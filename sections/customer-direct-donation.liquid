@@ -1,0 +1,484 @@
+{% if section.settings.select_product != blank and section.settings.is_enable_product == true %}
+    {%- assign product = all_products[section.settings.select_product] -%}
+    <section class="Section">
+      <div class="section-container">
+        <div class="donation-background-image">
+          <picture>
+            <source 
+              srcset="{{ 'Donation_Background.png' | file_img_url: '800x' }} 800w,
+                      {{ 'Donation_Background.png' | file_img_url: '1200x' }} 1200w,
+                      {{ 'Donation_Background.png' | file_img_url: '1600x' }} 1600w,
+                      {{ 'Donation_Background.png' | file_img_url: '2000x' }} 2000w,
+                      {{ 'Donation_Background.png' | file_img_url: '2400x' }} 2400w"
+              media="(min-width: 640px)"
+            />
+            <source 
+              srcset="{{ 'Donation_Background_Mobile.png' | file_img_url: '640x' }} 640w,
+                      {{ 'Donation_Background_Mobile.png' | file_img_url: '500x' }} 500w,
+                      {{ 'Donation_Background_Mobile.png' | file_img_url: 'master' }} 428w"
+              media="(max-width: 640px)"
+            />
+            {{ 'Donation_Background.png' | file_img_url: 'master' | image_tag: alt: "Girls Inc. Donation" }}
+          </picture>
+        </div>
+        <div id="addon-section">
+          <div class="custom-product-section page-width">
+            <input type="hidden" value="{{ product.handle }}" id="product__handle">
+            <div class="gridd">
+              <div class="image__wrapper">
+                <div class="cover-div">
+                  <div class="content__wrapper">
+                    {% if section.settings.custom_product_title != blank %}
+                    <div class="title-heading">
+                      <p class="custom-product-title">{{ section.settings.custom_product_title }}</p>
+                    </div>
+                    {% endif %}
+                    {% if product.featured_image != blank and section.settings.is_hide_product_logo == false %}
+                    <div class="product__image">
+                        {{ product.featured_image | image_url | image_tag }}
+                    </div>
+                    {% endif %}
+                    {% if product.title != blank and section.settings.hide_product_title != true %}
+                    <div class="title">
+                      <h4>{{ product.title }}</h4>
+                    </div>
+                    {% endif %}
+  
+                    <div class="product_variant">
+                      {%- for option in product.options_with_values -%}
+                        {% if forloop.first == true %}
+                          <div class="radio-wrapper" id="ProductSelect-option-{{ forloop.index0 }}" name="{{ option.name | handleize }}">
+                            {% for variant in product.variants %}
+                              <div class="variant-option-btn">
+                                <input type="radio" {% if option.selected_value==value %} checked="checked" {% endif %}  value="{{variant.id}}" data-product-id="{{product.id}}" data-index="option{{ forloop.index }}" name="{{ addon_product.title}}" id="{{ variant.id}}" class="radio-btn">
+                                <label for="{{ variant.id }}">
+                                    {{ variant.title }}
+                                </label>
+                              </div>
+                            {%- endfor -%}
+                          </div>
+                        {% endif %}
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="thank-you-text">
+            <span class="custom-section-heading">{{ section.settings.custom_section_heading }}</span>
+            <div id="pdp-donation-widget">
+              <script src="https://cdn.shoppinggives.com/cc-utilities/compact-product.js?sid=29567c40-fc2f-4698-bc7d-1d9fa64d70bf&subitem-id=41555173048509&price=1"></script>
+            </div>
+            {% comment %}<div class="sg-powered-by-logo">
+              <img loading="lazy"
+                   src="https://cdn-shoppinggives-prod.s3.amazonaws.com/image-assets/powered-by-sg-logo-white.png"
+                   alt="Powered By ShoppingGives" aria-label="Powered By ShoppingGives" />
+            </div>{% endcomment %}
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <style>
+      .section-container {
+        position: relative;
+      }
+      
+      .donation-background-image img {
+        width: 100% !important;
+        z-index: 0;
+      }
+      
+      #addon-section {
+        position: absolute;
+        width: 100%;
+        left: 50%;
+        top: 65%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      
+      .custom-product-section {
+        margin-bottom: 0px;
+      }
+  
+      .custom-product-section.page-width {
+        padding: 0px !important;
+      }
+  
+      .custom-product-section .title-heading {
+        text-align: center;
+        margin-bottom: 24px;
+        flex: 1 0 100%;
+      }
+      
+      .custom-product-section .title-heading .custom-product-title {
+        font-family: Euclid;
+        font-size: 17px;
+        color: #fff;
+      }
+  
+      .image__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 auto;
+        background-color: {{ section.settings.section_background_color }};
+        padding: 15px;
+      }
+      
+      #pdp-donation-widget .shoppinggives-tag #sg-main-text {
+        font-family: Euclid !important;
+        text-align: center !important;
+      }
+      
+      #pdp-donation-widget .shoppinggives-tag .preamountText,
+      #pdp-donation-widget .shoppinggives-tag .givebackAmount,
+      #pdp-donation-widget .shoppinggives-tag .preview-container {
+        display: none !important;
+      }
+      
+      #pdp-donation-widget .shoppinggives-tag .postamountText:before {
+        content: 'Every penny makes a difference. Add a donation below ';
+        font-family: Euclid !important;
+      }
+      
+      .shoppinggives-tag .view-causes-modal .bold-blue { display: none !important; }
+  
+      .image__wrapper .product__image {
+        max-width: 50px;
+        width: 100%;
+      }
+  
+      .image__wrapper .product__image img {
+        display: block;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+  
+      .cover-div {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+      }
+  
+      .cover-div .content__wrapper {
+        width: 100%;
+      }
+  
+      .cover-div .add_to__cart {
+        min-width: 50px;
+        text-align: right;
+        white-space: nowrap;
+      }
+  
+      .cover-div .title {
+        flex: 0 1 25%;
+      }
+  
+      .cover-div .title h4 {
+        margin: 0;
+        padding-right: 10px;
+      }
+  
+      .cover-div .product_variant select {
+        max-width: 200px;
+        padding: 10px 30px 10px 10px;
+      }
+  
+      .sg-custom-donation-cart-label {
+        display: inline-block;
+        margin: 0px 0px;
+      }
+  
+      .custom_add_to_cart {
+        cursor: pointer;
+      }
+  
+      input[type="radio"] {
+        display: none;
+      }
+  
+      .product_variant label {
+        display: block;
+        padding: 12px 35px;
+        background: {{ section.settings.label_color }};
+        border-radius: {{ section.settings.label_borderradius }}px;
+        color: {{ section.settings.label_txtcolor }};
+        border: solid {{ section.settings.label_bordercolor }} {{ section.settings.label_borderwidth }}px;
+        width: {{ section.settings.label_width }}px;
+        text-align: center;
+        cursor: pointer;
+        font-size: 33px;
+        font-weight: 500;
+      }
+      
+      .product_variant label:hover {
+        color: #fff;
+        background-color: #EC194C;
+      }
+  
+      .radio-wrapper {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+  
+      .product_variant {
+        text-align: center;
+      }
+      
+      #addon-section .thank-you-text {
+        font-family: Euclid !important;
+        color: #fff;
+        width: 35%;
+        margin: 24px auto 0 auto;
+      }
+      
+      #addon-section .thank-you-text .custom-section-heading {
+        font-size: 16px;
+      }
+      
+      @media only screen and (max-width: 1200px) {
+        .product_variant label {
+          width: 180px;
+          font-size: 28px;
+        }
+      }
+      
+      @media only screen and (max-width: 1024px) {
+        #addon-section .thank-you-text {
+          width: 50%;
+        }
+        
+        .product_variant label {
+          width: 150px;
+          font-size: 24px;
+        }
+      }
+      
+      @media only screen and (max-width: 900px) {
+        .product_variant label {
+          width: 130px;
+          font-size: 20px;
+        }
+        
+        .custom-product-section .title-heading {
+            margin-bottom: 16px;
+        }
+        
+        .custom-product-section .title-heading .custom-product-title {
+            font-size: 15px;
+        }
+        
+        #addon-section .thank-you-text {
+            margin: 10px auto 0 auto;
+        }
+        
+        #addon-section .thank-you-text .custom-section-heading {
+          font-size: 14px;
+        }
+      }
+      
+      @media only screen and (max-width: 800px) {
+        .product_variant label {
+          width: 110px;
+          font-size: 16px;
+        }
+        
+        .custom-product-section .title-heading {
+            margin-bottom: 16px;
+        }
+        
+        .custom-product-section .title-heading .custom-product-title {
+            font-size: 15px;
+        }
+        
+        #addon-section .thank-you-text .custom-section-heading {
+          font-size: 12px;
+        }
+      }
+      
+      @media only screen and (max-width: 640px) {
+        .product_variant label {
+          width: 220px;
+          font-size: 33px;
+        }
+        
+        .custom-product-section .title-heading {
+            margin-bottom: 24px;
+        }
+        
+        .custom-product-section .title-heading .custom-product-title {
+            font-size: 17px;
+        }
+        
+        #addon-section .thank-you-text {
+            margin: 24px auto 0 auto;
+          width: 75%;
+        }
+        
+        #addon-section .thank-you-text .custom-section-heading {
+          font-size: 16px;
+        }
+      }
+      
+      @media only screen and (max-width: 485px) {
+        .product_variant label {
+          width: 200px;
+          font-size: 28px;
+        }
+        
+        #addon-section .thank-you-text {
+          width: 100%;
+        }
+      }
+      
+      @media only screen and (max-width: 450px) {
+        .product_variant label {
+          width: 180px;
+          font-size: 22px;
+        }
+      }
+    </style>
+  
+    {{ '//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js' | script_tag }}
+    {{ 'api.jquery.js' | shopify_asset_url | script_tag }}
+    <script>
+      $(document).ready(function() {
+        $(".custom_add_to_cart, .radio-btn").click(function() {
+          $("input.radio-btn").removeAttr("checked");
+          $(this).attr('checked', true);
+  
+          var variant_id = $(this).val();
+          var product_id = $(this).data("product-id");
+          
+          if (typeof variant_id != "undefined" && variant_id.length > 0) {
+            var data = {
+              "quantity": 1,
+              "id": variant_id,
+              "product_id": product_id,
+            }
+  
+            jQuery.ajax({
+              type: 'POST',
+              url: '/cart/add.js',
+              async: false,
+              data: data,
+              dataType: 'json',
+              success: function() {
+                document.documentElement.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+                // open cart drawer
+                document.documentElement.dispatchEvent(new CustomEvent('product:added', {
+                    bubbles: true,
+                  detail: {
+                    variant: variant_id,
+                    quantity: 1
+                  }
+                }));
+              }
+            });
+          }
+        });
+      });
+    </script>
+  {% endif %}
+  
+  
+  {% schema %}
+  {
+    "name": "Customer Donation",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "is_enable_product",
+        "label": "Is Enable Product",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "custom_product_title",
+        "label": "Title"
+      },
+      {
+        "type": "product",
+        "id": "select_product",
+        "label": "Select Product"
+      },
+      {
+        "type": "checkbox",
+        "id": "hide_product_title",
+        "label": "Hide Product Title",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "is_hide_product_logo",
+        "label": "Hide Product Logo",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "section_background_color",
+        "label": "Widget Background Color",
+        "default": "#eee"
+      },
+      {
+        "type": "color",
+        "id": "label_color",
+        "label": "Radio Buttons Background Color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "label_txtcolor",
+        "label": "Radio Buttons Text Color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "label_bordercolor",
+        "label": "Radio Buttons Border Color",
+        "default": "#000"
+      },
+      {
+        "type": "range",
+        "id": "label_borderwidth",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "label": "Label Border Width",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "label_borderradius",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "Label Border Radius",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "label_width",
+        "min": 50,
+        "max": 300,
+        "step": 5,
+        "unit": "px",
+        "label": "Label Width",
+        "default": 100
+      },
+      {
+        "type": "text",
+        "id": "custom_section_heading",
+        "label": "Custom Heading"
+      }
+    ]
+  }
+  {% endschema %}

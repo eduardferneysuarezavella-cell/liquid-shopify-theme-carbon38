@@ -1,0 +1,129 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_liquid_Lw9WCH": {
+      "type": "custom-liquid",
+      "settings": {
+        "subheading": "",
+        "heading": "",
+        "custom_liquid": "<h6>NOW TRENDING: OUR TOP DESIGNERS</h6>Prepare to turn heads with impactful pieces from our top-selling designers.",
+        "color_scheme": "",
+        "text_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "accordion_WemLBb": {
+      "type": "accordion",
+      "blocks": {
+        "item_faFVcL": {
+          "type": "item",
+          "settings": {
+            "title": "#",
+            "content": "<p><a href=\"https://carbon38.com/collections/525?filter.p.m.custom.available_or_waitlist=1\" title=\"https://carbon38.com/collections/525?filter.p.m.custom.available_or_waitlist=1\">525</a></p>"
+          }
+        },
+        "item_LGDfP8": {
+          "type": "item",
+          "settings": {
+            "title": "A - B",
+            "content": "<p><a href=\"/collections/adidas-by-stella-mccartney\" target=\"_blank\" title=\"adidas by Stella McCartney\">ADIDAS BY STELLA MCCARTNEY</a></p><p><a href=\"/collections/alohas\" title=\"ALOHAS\">ALOHAS</a></p><p><a href=\"https://carbon38.com/collections/balmain?filter.p.m.custom.available_or_waitlist=1\" title=\"https://carbon38.com/collections/balmain?filter.p.m.custom.available_or_waitlist=1\">BALMAIN</a></p><p><a href=\"/collections/birkenstock\" title=\"Birkenstock\">BIRKENSTOCK</a></p><p><a href=\"/collections/brand-black\" target=\"_blank\" title=\"BrandBlack\">BRANDBLACK</a></p>"
+          }
+        },
+        "item_KDagEr": {
+          "type": "item",
+          "settings": {
+            "title": "C - F",
+            "content": "<p><a href=\"/collections/carbon38\" target=\"_blank\" title=\"Carbon38\">CARBON38</a></p><p><a href=\"https://carbon38.com/collections/cariuma?filter.p.m.custom.available_or_waitlist=1\" title=\"https://carbon38.com/collections/cariuma?filter.p.m.custom.available_or_waitlist=1\">CARIUMA</a></p><p><a href=\"https://carbon38.com/collections/cordova?filter.v.availability=1\" title=\"https://carbon38.com/collections/cordova?filter.v.availability=1\">CORDOVA</a></p><p><a href=\"https://carbon38.com/collections/dear-frances?filter.p.m.custom.available_or_waitlist=1\" title=\"https://carbon38.com/collections/dear-frances?filter.p.m.custom.available_or_waitlist=1\">DEAR FRANCES</a></p><p><a href=\"/collections/eugenia-kim\" title=\"Eugenia Kim\">EUGENIA KIM<br/><br/></a><a href=\"https://carbon38.com/collections/fenix-sportier\" title=\"https://carbon38.com/collections/fenix-sportier\">FENIX SPORTIER</a></p><p><a href=\"https://carbon38.com/collections/filling-pieces?filter.p.m.custom.available_or_waitlist=1\" title=\"https://carbon38.com/collections/filling-pieces?filter.p.m.custom.available_or_waitlist=1\">FILLING PIECES</a></p><p><a href=\"https://carbon38.com/collections/freda-salvador?filter.p.m.custom.available_or_waitlist=1\" title=\"https://carbon38.com/collections/freda-salvador?filter.p.m.custom.available_or_waitlist=1\">FREDA SALVADOR</a></p>"
+          }
+        },
+        "item_hHLyj8": {
+          "type": "item",
+          "settings": {
+            "title": "G - L",
+            "content": "<p><a href=\"https://carbon38.com/collections/goldbergh-1?filter.v.availability=1\" title=\"https://carbon38.com/collections/goldbergh-1?filter.v.availability=1\">GOLDBERGH</a><a href=\"https://carbon38.com/collections/goldie-byrd?filter.p.m.custom.available_or_waitlist=1\" title=\"https://carbon38.com/collections/goldie-byrd?filter.p.m.custom.available_or_waitlist=1\"><br/></a><br/><a href=\"https://carbon38.com/collections/greyson?filter.p.m.custom.available_or_waitlist=1\" title=\"https://carbon38.com/collections/greyson?filter.p.m.custom.available_or_waitlist=1\">GREYSON<br/><br/></a><a href=\"https://carbon38.com/collections/herskind?filter.p.m.custom.available_or_waitlist=1\" title=\"https://carbon38.com/collections/herskind?filter.p.m.custom.available_or_waitlist=1\">HERSKIND</a></p><p><a href=\"https://carbon38.com/collections/hoka?filter.p.m.custom.available_or_waitlist=1\" title=\"https://carbon38.com/collections/hoka?filter.p.m.custom.available_or_waitlist=1\">HOKA</a></p><p><a href=\"https://carbon38.com/collections/hvisk?filter.p.m.custom.available_or_waitlist=1\" title=\"https://carbon38.com/collections/hvisk?filter.p.m.custom.available_or_waitlist=1\">HVISK</a></p><p><a href=\"https://carbon38.com/collections/jetset?filter.v.availability=1\" title=\"https://carbon38.com/collections/jetset?filter.v.availability=1\">JETSET</a></p><p><a href=\"https://carbon38.com/collections/jocelyn?filter.v.availability=1\" title=\"https://carbon38.com/collections/jocelyn?filter.v.availability=1\">JOCELYN</a></p><p><a href=\"https://carbon38.com/collections/kassl?filter.p.m.custom.available_or_waitlist=1\" title=\"https://carbon38.com/collections/kassl?filter.p.m.custom.available_or_waitlist=1\">KASSL</a></p><p><a href=\"https://carbon38.com/collections/kerri-rosenthal?filter.p.m.custom.available_or_waitlist=1\" title=\"https://carbon38.com/collections/kerri-rosenthal?filter.p.m.custom.available_or_waitlist=1\">KERRI ROSENTHAL</a></p><p><a href=\"/collections/letoile-sport\" title=\"L'Etoile Sport\">L'Etoile Sport</a></p><p><a href=\"https://carbon38.com/collections/lune?filter.p.m.custom.available_or_waitlist=1\" title=\"https://carbon38.com/collections/lune?filter.p.m.custom.available_or_waitlist=1\">LUNE</a></p>"
+          }
+        },
+        "item_zKGxEj": {
+          "type": "item",
+          "settings": {
+            "title": "M - O",
+            "content": "<p><a href=\"/collections/mackage\" title=\"MACKAGE\">MACKAGE </a></p><p><a href=\"https://carbon38.com/collections/madeline-thompson?filter.v.availability=1\" title=\"https://carbon38.com/collections/madeline-thompson?filter.v.availability=1\">MADELEINE THOMPSON</a></p><p><a href=\"/collections/michi\" target=\"_blank\" title=\"Michi\">MICHI</a></p><p><a href=\"/collections/missoni\" target=\"_blank\" title=\"Missoni\">MISSONI</a></p><p><a href=\"https://carbon38.com/collections/montelliana?filter.v.availability=1\" title=\"https://carbon38.com/collections/montelliana?filter.v.availability=1\">MONTELLIANA</a></p><p><a href=\"/collections/nike\" target=\"_blank\" title=\"Nike\">NIKE</a></p><p><a href=\"/collections/norma-kamali\" title=\"NORMA KAMALI\">NORMA KAMALI</a></p><p><a href=\"/collections/on\" target=\"_blank\" title=\"On\">ON</a></p>"
+          }
+        },
+        "item_gxC7E8": {
+          "type": "item",
+          "settings": {
+            "title": "P - S",
+            "content": "<p><a href=\"https://carbon38.com/collections/perfect-moment?filter.v.availability=1\" title=\"https://carbon38.com/collections/perfect-moment?filter.v.availability=1\">PERFECT MOMENT</a></p><p><a href=\"/collections/port-de-bras\" target=\"_blank\" title=\"Port de Bras\">PORT DE BRAS</a></p><p><a href=\"https://carbon38.com/collections/sam?filter.p.m.custom.available_or_waitlist=1\" title=\"https://carbon38.com/collections/sam?filter.p.m.custom.available_or_waitlist=1\">SAM</a></p><p><a href=\"/collections/see-by-chloe\" target=\"_blank\" title=\"See by Chloe\">SEE BY CHLOE</a></p><p><a href=\"/collections/ser-o-ya\" title=\"Ser.O.Ya\">SER.O.YA</a></p><p><a href=\"https://carbon38.com/collections/shoreditch-ski-club?filter.v.availability=1\" title=\"https://carbon38.com/collections/shoreditch-ski-club?filter.v.availability=1\">SHOREDITCH SKI CLUB<br/><br/></a><a href=\"https://carbon38.com/collections/shortylove?filter.p.m.custom.available_or_waitlist=1\" title=\"https://carbon38.com/collections/shortylove?filter.p.m.custom.available_or_waitlist=1\">SHORTYLOVE</a></p><p><a href=\"/collections/sorel-1\" title=\"SOREL\">SOREL</a></p>"
+          }
+        },
+        "item_xErPzr": {
+          "type": "item",
+          "settings": {
+            "title": "T - Z",
+            "content": "<p><a href=\"https://carbon38.com/collections/the-upside?filter.p.m.custom.available_or_waitlist=1\" title=\"https://carbon38.com/collections/the-upside?filter.p.m.custom.available_or_waitlist=1\">THE UPSIDE</a></p><p><a href=\"https://carbon38.com/collections/the-volee\" title=\"https://carbon38.com/collections/the-volee\">THE VOLEE</a></p><p><a href=\"https://carbon38.com/collections/theo\" title=\"https://carbon38.com/collections/theo\">THEO THE LABEL</a></p><p><a href=\"/collections/think-royln\" title=\"THINK ROYLN\">THINK ROYLN</a></p><p><a href=\"/collections/varley\" title=\"Varley\">VARLEY</a></p><p><a href=\"/collections/veja\" target=\"_blank\" title=\"Veja\">VEJA</a></p><p><a href=\"https://carbon38.com/collections/vooray?filter.p.m.custom.available_or_waitlist=1\" title=\"https://carbon38.com/collections/vooray?filter.p.m.custom.available_or_waitlist=1\">VOORAY</a></p><p><a href=\"https://carbon38.com/collections/watskin?filter.p.m.custom.available_or_waitlist=1\" title=\"https://carbon38.com/collections/watskin?filter.p.m.custom.available_or_waitlist=1\">WATSKIN</a></p><p><a href=\"/collections/wolford\" target=\"_blank\" title=\"Wolford\">WOLFORD</a></p><p><a href=\"https://carbon38.com/collections/y-3?filter.p.m.custom.available_or_waitlist=1\" title=\"https://carbon38.com/collections/y-3?filter.p.m.custom.available_or_waitlist=1\">Y-3</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_faFVcL",
+        "item_LGDfP8",
+        "item_KDagEr",
+        "item_hHLyj8",
+        "item_zKGxEj",
+        "item_gxC7E8",
+        "item_xErPzr"
+      ],
+      "settings": {
+        "title": "",
+        "title_color": "#ffffff"
+      }
+    },
+    "featured_collection_zM8XA8": {
+      "type": "product-feed",
+      "settings": {
+        "show_section_on_oos": false,
+        "pretitle": "DISCOVER THE LATEST",
+        "title": "New Arrivals",
+        "heading_size": "h1",
+        "subtitle": "",
+        "source": "collection",
+        "collection": "new-arrivals",
+        "fallback_collection": "",
+        "view_all_label": "SEE WHAT'S NEW",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 36,
+        "margin_bottom": 36,
+        "margin_top_mobile": 18,
+        "margin_bottom_mobile": 18,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_product_info": true,
+        "show_color_swatch": false
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_Lw9WCH",
+    "accordion_WemLBb",
+    "featured_collection_zM8XA8"
+  ]
+}

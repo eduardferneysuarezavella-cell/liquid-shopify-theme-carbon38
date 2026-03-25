@@ -1,0 +1,360 @@
+{
+  "sections": {
+    "full_width_banner_EddpYg": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_QqhpEf": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/Artboard_1_2200x_424e9fd5-3ae1-4cfe-9b54-3f20f7c5334e.webp",
+            "mobile_image": "shopify:\/\/shop_images\/Artboard_2_x800_38ab65ce-2805-499e-b95c-0f2fc79bb6d3.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_QqhpEf"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "multicolumn_dXawKR": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_id3HP6": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/DD_Story_3_Feb_24.webp",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_VaCbHx": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/DD_Story_1_Feb_24.webp",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_hHKEML": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/DD_story_2_Feb_24.webp",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_id3HP6",
+        "column_VaCbHx",
+        "column_hHKEML"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "full_width_banner_mRDTeF": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_Kxi7Bn": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/Artboard_3_2200x_1db964f9-0712-4c2b-b0b5-3a0c76c7ec88.webp",
+            "mobile_image": "shopify:\/\/shop_images\/Artboard_4_x800_04f36820-9217-4ee1-884b-0713b55b479c.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_Kxi7Bn"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "full_width_banner_H8BEFj": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_qXEBP9": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/Artboard_3_2200x_1.webp",
+            "mobile_image": "shopify:\/\/shop_images\/Artboard_4_x800_1.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "center-center",
+            "content_position_mobile": "center-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_qXEBP9"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "custom_liquid_FGMwUw": {
+      "type": "custom-liquid",
+      "settings": {
+        "subheading": "YOU'RE MAKING A DIFFERENCE",
+        "heading": "Make a donation",
+        "custom_liquid": "<center>You have the power to help a girl grow up strong, smart, and bold. She is a leader and ready to succeed. Your investment will help equip her to create positive change in her life and in the world around her.<\/center>",
+        "color_scheme": "",
+        "text_alignment": "center",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "shoppinggives_addon_widget": {
+      "type": "customer-direct-donation",
+      "settings": {
+        "is_enable_product": true,
+        "custom_product_title": "",
+        "select_product": "girls-inc-page-addon-donation",
+        "hide_product_title": true,
+        "is_hide_product_logo": true,
+        "section_background_color": "#ffffff",
+        "label_color": "#000000",
+        "label_txtcolor": "#ffffff",
+        "label_bordercolor": "#000000",
+        "label_borderwidth": 0,
+        "label_borderradius": 0,
+        "label_width": 200
+      }
+    },
+    "about_us_years_wnzTcQ": {
+      "type": "about-us-years",
+      "blocks": {
+        "year_XktV6d": {
+          "type": "year",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screen_Shot_Mar_7_from_carbon38.webp",
+            "subtitle": "2022: fundraising events",
+            "title": "sweat in support",
+            "year": "2022",
+            "description": "<p>This year, we’re hosting a series of virtual and in-person workouts to raise funds for Girls Inc. of Greater Los Angeles. Each event will showcase the strength and unification of women across the country, encouraging participants of all ages to stand with the next generation. We’ve also deployed donation portals across our site, so you can show your support whenever you shop. <\/p>"
+          }
+        },
+        "year_yyeCD9": {
+          "type": "year",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/FPO_Feb_24_2022_from_Carbon38.webp",
+            "subtitle": "2021: awareness campaign",
+            "title": "strength in numbers",
+            "year": "2021",
+            "description": "<p>During Women’s History Month, we partnered with female-led brands in support of Girls Inc. of Greater Los Angeles. Through our <em>Strength in Numbers <\/em>campaign, we started a discussion around gender equality and rallied our community to stand behind the next wave of women leaders and entrepreneurs.<\/p>"
+          }
+        },
+        "year_GBwxEW": {
+          "type": "year",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Social_Vertical_2_022422_from_Carbon38.webp",
+            "subtitle": "2020: pandemic support",
+            "title": "core mask kits",
+            "year": "2020",
+            "description": "<p>For every Core Mask Kit we sold in 2020, we donated 15% of profits to Girls Inc. of Greater Los Angeles. The campaign raised funds for virtual learning opportunities while providing essential protective equipment to our community.<\/p>"
+          }
+        },
+        "year_7jFpQi": {
+          "type": "year",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Social_Vertical_2_022422.webp",
+            "subtitle": "2019: summer camps",
+            "title": "girls inc. x carbon38",
+            "year": "2019",
+            "description": "<p>In 2019, we funded a series of camps for Girls Inc. of Greater Los Angeles. We invited our staff to participate in the organization’s Inauguration Day at Barrett Elementary School, kicking off the start of our Girls Inc. X Carbon38 Summer Camp with a personal touch.<\/p>"
+          }
+        },
+        "year_EMnnVU": {
+          "type": "year",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Social_Vertical_2_Feb_24_from_Carbon38.webp",
+            "subtitle": "2018: international women's day",
+            "title": "the beginning",
+            "year": "2018",
+            "description": "<p>On International Women’s Day in 2018, we secured our partnership with Girls Inc. through a donation of $100,000. 100% of the profits from our limited-edition Takara Shine capsule went towards funding the organization’s summer camps. The initiative provided a safe and empowering environment for girls to learn, grow, and enjoy themselves.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "year_XktV6d",
+        "year_yyeCD9",
+        "year_GBwxEW",
+        "year_7jFpQi",
+        "year_EMnnVU"
+      ],
+      "settings": {
+        "text_color": "#ffffff"
+      }
+    },
+    "full_width_banner_Ld4DHK": {
+      "type": "full-width-banner",
+      "blocks": {
+        "slide_dLbWE4": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/Stats_022422_HP_2200x_57bb60a3-e033-4e7c-95ab-6c7cdf22540a.webp",
+            "mobile_image": "shopify:\/\/shop_images\/Artboard_5_x800_5a08328e-9689-4ba9-a85e-40e441a135ce.webp",
+            "overlay": false,
+            "overlay_opacity": 0.5,
+            "content_position": "bottom-center",
+            "content_position_mobile": "bottom-center",
+            "sub_heading": "",
+            "subheading_font_size": 15,
+            "subheading_font_family": "Euclid",
+            "heading": "",
+            "heading_font_size": 30,
+            "heading_font_family": "Orelo Condensed",
+            "overlay_link": "",
+            "button_1_text": "LEARN MORE ABOUT GIRL'S INC",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_dLbWE4"
+      ],
+      "settings": {
+        "show_full_screen_image": false,
+        "show_bottom_arrow": false,
+        "auto_rotate_between_slides": false,
+        "change_slides_every": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "full_width_banner_EddpYg",
+    "multicolumn_dXawKR",
+    "main",
+    "full_width_banner_mRDTeF",
+    "full_width_banner_H8BEFj",
+    "custom_liquid_FGMwUw",
+    "shoppinggives_addon_widget",
+    "about_us_years_wnzTcQ",
+    "full_width_banner_Ld4DHK"
+  ]
+}

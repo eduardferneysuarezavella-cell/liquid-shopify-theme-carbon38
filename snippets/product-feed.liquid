@@ -1,0 +1,157 @@
+<script src="{{ 'product-feed.js' | asset_url }}" defer></script>
+
+{% comment %}
+  Accepts
+  - source: string
+  - pretitle: string
+  - title: string
+  - subtitle: string
+  - fallback_title: string
+  - fallback_subtitle: string
+  - products: array of products
+  - fallback_products: array of products
+  - items_per_slide_desktop: number
+{% endcomment %}
+
+<product-feed
+  source="{{ source }}"
+  data-ymal-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&limit={{ products_to_show }}&product_id={{ product.id }}"
+  title="{{ title }}"
+  subtitle="{{ subtitle }}"
+  {% if source == 'top-sellers' and product.type != blank %}
+    product-type="{{ product.type }}"
+  {% endif %}
+  data-products-to-show="{{ section.settings.products_to_show }}"
+>
+  <div id="collection-{{ section.id }}" class="carousel block collection-slider">
+    <div class="collection__title title-wrapper title-wrapper--no-top-margin">
+      {% if section.settings.pretitle != blank %}
+        <p class="subtitle--small light uppercase center">{{ section.settings.pretitle }}</p>
+      {% endif %}
+      {%- if title != blank -%}
+        <h2 class="title inline-richtext center {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+          {{ title }}
+        </h2>
+      {%- endif -%}
+      {% if subtitle != blank %}
+        <p class="subtitle--small light uppercase center">{{ subtitle }}</p>
+      {% endif %}
+    </div>
+
+    <div class="featured-collection-list__swiper-wrapper {% if section.settings.full_width %}go-full-width{% endif %} layout-{{ section.settings.layout_mode }}">
+      <div class="swiper featured-collection-list__swiper">
+        <ul
+          data-id="{{ section.id }}"
+          class="{% if section.settings.layout_mode == "grid" %}grid-layout {% endif %} featured-collection-list swiper-wrapper contains-card contains-card--product{% if settings.card_style == 'standard' %} contains-card--standard{% endif %}"
+          role="list"
+          data-columns-on-desktop="{{ section.settings.columns_desktop }}"
+          product-feed-container
+        >
+          
+          {% if is_recommendations or products and products.size > 0 %}
+            {%- for product in products -%}
+              <li
+                class="featured-collection-list__item swiper-slide{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                {% endif %}
+              >
+                {% render 'product-item', product: product, show_mobile_quick_buy: true, show_product_info: section.settings.show_product_info, show_vendor: section.settings.show_vendor, show_color_swatch: section.settings.show_color_swatch, show_labels: true %}
+              </li>
+            {%- endfor -%}
+          {%- else -%}
+            {% for i in (1..section.settings.products_to_show) %}
+              <li
+                class="slider__item skeleton-item featured-collection-list__item swiper-slide{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                {% endif %}
+              >
+              </li>
+            {% endfor %}
+          {%- endif -%}
+        </ul>
+      </div>
+      {% if section.settings.layout_mode == "carousel" %}
+      <div class="swiper-navigation">
+        <button class="swiper-prev-btn swiper-prev-btn-{{ section.index }}">{% render 'icon-swiper-arrow' %}</button>
+        <button class="swiper-next-btn swiper-next-btn-{{ section.index }}">{% render 'icon-swiper-arrow' %}</button>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="collection-listing slider slider--no-scrollbar">
+      {% if fallback_products.size > 0 %}
+        <template name="fallback-products">
+          {%- for product in fallback_products limit: section.settings.products_to_show -%}
+            <li class="slider__item featured-collection-list__item swiper-slide{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+              {% render 'product-item', product: product, show_mobile_quick_buy: true, show_product_info: section.settings.show_product_info, show_vendor: section.settings.show_vendor, show_color_swatch: section.settings.show_color_swatch, show_labels: true %}
+            </li>
+          {%- endfor -%}
+        </template>
+      {% endif %}
+    </div>
+
+    {%- if section.settings.show_view_all -%}
+      <div class="center collection__view-all{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        <a
+          href="{{ section.settings.collection.url }}"
+          class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
+          aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: section.settings.collection.title | escape }}"
+        >
+          {{ section.settings.view_all_label }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</product-feed>
+
+{% if section.settings.layout_mode == "carousel" %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    function initSwiper() {
+      let swiperFeaturedCollection{{ section.index }} = new Swiper('#collection-{{ section.id }} .featured-collection-list__swiper', {
+        loop: false,
+        infinite: false,
+        freeMode: true,
+        observer: true,
+        navigation: {
+          nextEl: '.swiper-next-btn-{{ section.index }}',
+          prevEl: '.swiper-prev-btn-{{ section.index }}'
+        },
+        breakpoints: {
+          320: {
+            slidesPerView: 1.8,
+            slidesPerGroup: 1,
+            spaceBetween: 0,
+          },
+          768: {
+            slidesPerView: 3,
+            slidesPerGroup: 3,
+            spaceBetween: 0,
+          },
+          1024: {
+            slidesPerView: {{ section.settings.columns_desktop }},
+            slidesPerGroup:  {{ section.settings.columns_desktop }},
+            spaceBetween: 0
+          },
+        },
+      });
+    }
+    deferSwiper(function() {
+      initSwiper();
+    });
+    document.addEventListener('product-feed:updated', function(event) {
+      initSwiper();
+    });
+    document.addEventListener('product-feed:new-product-added', function(event) {
+      initSwiper();
+    });
+    document.addEventListener('product-feed:skeleton-product-removed', function(event) {
+      initSwiper();
+    });
+  });
+</script>
+{% endif %}

@@ -1,0 +1,900 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "rich_text_JMUGEH": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_7YPtzm": {
+          "type": "heading",
+          "settings": {
+            "heading": "Spring Collection 2025",
+            "heading_size": "h1"
+          }
+        },
+        "text_Q6jBN3": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_7YPtzm",
+        "text_Q6jBN3"
+      ],
+      "disabled": true,
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "featured_collection_nniGEG": {
+      "type": "product-feed",
+      "disabled": true,
+      "settings": {
+        "pretitle": "",
+        "title": "",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "missoni",
+        "fallback_collection": "",
+        "view_all_label": "View all",
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "margin_top": 36,
+        "margin_bottom": 36,
+        "margin_top_mobile": 18,
+        "margin_bottom_mobile": 18,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": true,
+        "layout_mode": "carousel",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "featured_collection_xbXabB": {
+      "type": "product-feed",
+      "disabled": true,
+      "settings": {
+        "pretitle": "",
+        "title": "",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "missoni",
+        "fallback_collection": "",
+        "view_all_label": "View all",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "margin_top": 36,
+        "margin_bottom": 36,
+        "margin_top_mobile": 18,
+        "margin_bottom_mobile": 18,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": true,
+        "layout_mode": "carousel",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "collage_6iFECf": {
+      "type": "collage",
+      "blocks": {
+        "image_yKiDmM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_1_B.jpg"
+          }
+        },
+        "image_YKGMdY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_1_C.jpg"
+          }
+        },
+        "image_whxVqb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_1_A.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_yKiDmM",
+        "image_YKGMdY",
+        "image_whxVqb"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "desktop_layout": "right",
+        "mobile_layout": "column",
+        "card_styles": "product-card-wrapper",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_ykx7jg": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "",
+        "title": "",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "spring-suiting",
+        "fallback_collection": "",
+        "view_all_label": "",
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "margin_top": 36,
+        "margin_bottom": 36,
+        "margin_top_mobile": 18,
+        "margin_bottom_mobile": 18,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "collage_TXj6ph": {
+      "type": "collage",
+      "blocks": {
+        "image_Fg7YqB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_2_A.jpg"
+          }
+        },
+        "image_FtYKKU": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_2_B.jpg"
+          }
+        },
+        "image_BfHBgL": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_2_C.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_Fg7YqB",
+        "image_FtYKKU",
+        "image_BfHBgL"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "desktop_layout": "left",
+        "mobile_layout": "column",
+        "card_styles": "product-card-wrapper",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_Ktfyjm": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "",
+        "title": "",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "navy-for-spring",
+        "fallback_collection": "",
+        "view_all_label": "View all",
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "margin_top": 36,
+        "margin_bottom": 36,
+        "margin_top_mobile": 18,
+        "margin_bottom_mobile": 18,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "collage_G8y8an": {
+      "type": "collage",
+      "blocks": {
+        "image_kQXaY8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_9_B.jpg"
+          }
+        },
+        "image_bwjAJt": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_9_C.jpg"
+          }
+        },
+        "image_HkppFE": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_9_A.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_kQXaY8",
+        "image_bwjAJt",
+        "image_HkppFE"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "desktop_layout": "right",
+        "mobile_layout": "column",
+        "card_styles": "product-card-wrapper",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_fPQTkA": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "",
+        "title": "",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "spring-toile-2",
+        "fallback_collection": "",
+        "view_all_label": "View all",
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "margin_top": 36,
+        "margin_bottom": 36,
+        "margin_top_mobile": 18,
+        "margin_bottom_mobile": 18,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "collage_zaLBEg": {
+      "type": "collage",
+      "blocks": {
+        "image_33HQ8x": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_10_A.jpg"
+          }
+        },
+        "image_Cti3mH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_10_B.jpg"
+          }
+        },
+        "image_GihtqU": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_10_C.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_33HQ8x",
+        "image_Cti3mH",
+        "image_GihtqU"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "desktop_layout": "left",
+        "mobile_layout": "column",
+        "card_styles": "product-card-wrapper",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_VnjLaP": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "",
+        "title": "",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "spring-toile-2",
+        "fallback_collection": "",
+        "view_all_label": "View all",
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "margin_top": 36,
+        "margin_bottom": 36,
+        "margin_top_mobile": 18,
+        "margin_bottom_mobile": 18,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "collage_NUmwni": {
+      "type": "collage",
+      "blocks": {
+        "product_3kGxdM": {
+          "type": "product",
+          "settings": {
+            "product": "asymmetrical-strappy-bra-in-diamond-compression-cloud-dancer",
+            "second_image": false
+          }
+        },
+        "product_C9Xgzx": {
+          "type": "product",
+          "settings": {
+            "product": "high-rise-sport-pocket-legging-in-diamond-compression-cloud-dancer",
+            "second_image": false
+          }
+        },
+        "image_9CDrCr": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_5_A.gif"
+          }
+        }
+      },
+      "block_order": [
+        "product_3kGxdM",
+        "product_C9Xgzx",
+        "image_9CDrCr"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "desktop_layout": "right",
+        "mobile_layout": "column",
+        "card_styles": "product-card-wrapper",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collage_jQwhEj": {
+      "type": "collage",
+      "blocks": {
+        "image_A7dU9b": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_6_A.jpg"
+          }
+        },
+        "image_rN4Gfm": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_6_B.jpg"
+          }
+        },
+        "image_cmTxDz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_6_C.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_A7dU9b",
+        "image_rN4Gfm",
+        "image_cmTxDz"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "desktop_layout": "left",
+        "mobile_layout": "column",
+        "card_styles": "product-card-wrapper",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_pR8x8e": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "",
+        "title": "",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "spring-whites-1",
+        "fallback_collection": "",
+        "view_all_label": "View all",
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "margin_top": 36,
+        "margin_bottom": 36,
+        "margin_top_mobile": 18,
+        "margin_bottom_mobile": 18,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "collage_bbQD9Q": {
+      "type": "collage",
+      "blocks": {
+        "product_htp4tL": {
+          "type": "product",
+          "settings": {
+            "product": "bell-sleeve-off-shoulder-sweater-navy",
+            "second_image": false
+          }
+        },
+        "product_VB4VfM": {
+          "type": "product",
+          "settings": {
+            "product": "wide-leg-track-pan-in-scuba-navy",
+            "second_image": false
+          }
+        },
+        "image_rJUJfk": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_7_A.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "product_htp4tL",
+        "product_VB4VfM",
+        "image_rJUJfk"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "desktop_layout": "right",
+        "mobile_layout": "column",
+        "card_styles": "product-card-wrapper",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_8yNQCQ": {
+      "type": "product-feed",
+      "disabled": true,
+      "settings": {
+        "pretitle": "",
+        "title": "",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "navy-for-spring-2",
+        "fallback_collection": "",
+        "view_all_label": "View all",
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "margin_top": 36,
+        "margin_bottom": 36,
+        "margin_top_mobile": 18,
+        "margin_bottom_mobile": 18,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "collage_kJ3c66": {
+      "type": "collage",
+      "blocks": {
+        "image_RDiyX7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_8_A.jpg"
+          }
+        },
+        "product_k8tz8j": {
+          "type": "product",
+          "settings": {
+            "product": "tennis-pearl-sweater-white",
+            "second_image": false
+          }
+        },
+        "product_iLGeX9": {
+          "type": "product",
+          "settings": {
+            "product": "scuba-golf-short-body-tbd-navy",
+            "second_image": false
+          }
+        }
+      },
+      "block_order": [
+        "image_RDiyX7",
+        "product_k8tz8j",
+        "product_iLGeX9"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "desktop_layout": "left",
+        "mobile_layout": "column",
+        "card_styles": "product-card-wrapper",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_hPaKq6": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "",
+        "title": "",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "spring-toile-1",
+        "fallback_collection": "",
+        "view_all_label": "View all",
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "margin_top": 36,
+        "margin_bottom": 36,
+        "margin_top_mobile": 18,
+        "margin_bottom_mobile": 18,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "collage_tQnXkg": {
+      "type": "collage",
+      "blocks": {
+        "product_kjajAK": {
+          "type": "product",
+          "settings": {
+            "product": "one-shoulder-tank-in-ribbed-jersey-white",
+            "second_image": false
+          }
+        },
+        "product_cwfjRA": {
+          "type": "product",
+          "settings": {
+            "product": "mesh-pleated-skirt-ivory",
+            "second_image": false
+          }
+        },
+        "image_k6d3bq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_12_A.gif"
+          }
+        }
+      },
+      "block_order": [
+        "product_kjajAK",
+        "product_cwfjRA",
+        "image_k6d3bq"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "desktop_layout": "right",
+        "mobile_layout": "column",
+        "card_styles": "product-card-wrapper",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collage_kMwnH7": {
+      "type": "collage",
+      "blocks": {
+        "image_xVUAXT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_13_A.gif"
+          }
+        },
+        "product_rCPX9T": {
+          "type": "product",
+          "settings": {
+            "product": "double-breasted-blazer-in-scuba-white",
+            "second_image": false
+          }
+        },
+        "product_wVnfcq": {
+          "type": "product",
+          "settings": {
+            "product": "kick-flare-pant-in-scuba-white",
+            "second_image": false
+          }
+        }
+      },
+      "block_order": [
+        "image_xVUAXT",
+        "product_rCPX9T",
+        "product_wVnfcq"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "desktop_layout": "left",
+        "mobile_layout": "column",
+        "card_styles": "product-card-wrapper",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collage_DYbJd7": {
+      "type": "collage",
+      "blocks": {
+        "image_nAUi3M": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_14_B.jpg"
+          }
+        },
+        "image_G36Keq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_14_C.jpg"
+          }
+        },
+        "image_rE7XEb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_14_A.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_nAUi3M",
+        "image_G36Keq",
+        "image_rE7XEb"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "desktop_layout": "right",
+        "mobile_layout": "column",
+        "card_styles": "product-card-wrapper",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_LwWpHF": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "",
+        "title": "",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "spring-whites-2",
+        "fallback_collection": "",
+        "view_all_label": "View all",
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "margin_top": 36,
+        "margin_bottom": 36,
+        "margin_top_mobile": 18,
+        "margin_bottom_mobile": 18,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "collage_BaGcCj": {
+      "type": "collage",
+      "blocks": {
+        "image_NXHy4T": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_3_B.jpg"
+          }
+        },
+        "image_DRWaxc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_3_C.jpg"
+          }
+        },
+        "image_6NDGmi": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_3_A.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_NXHy4T",
+        "image_DRWaxc",
+        "image_6NDGmi"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "desktop_layout": "right",
+        "mobile_layout": "column",
+        "card_styles": "product-card-wrapper",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_fQG878": {
+      "type": "product-feed",
+      "settings": {
+        "pretitle": "",
+        "title": "",
+        "heading_size": "h1",
+        "source": "collection",
+        "collection": "tennis-whites",
+        "fallback_collection": "",
+        "view_all_label": "View all",
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "margin_top": 36,
+        "margin_bottom": 36,
+        "margin_top_mobile": 18,
+        "margin_bottom_mobile": 18,
+        "background_color": "",
+        "text_color": "#232323",
+        "full_width": false,
+        "layout_mode": "carousel",
+        "products_to_show": 7,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_color_swatch": false
+      }
+    },
+    "collage_HkFqzC": {
+      "type": "collage",
+      "blocks": {
+        "image_jLpbBL": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SPRING25CAPSULE_ASSETS_4_A.gif"
+          }
+        },
+        "product_PwQLMd": {
+          "type": "product",
+          "settings": {
+            "product": "ss-ruched-front-tee-white",
+            "second_image": false
+          }
+        },
+        "product_GwAgFi": {
+          "type": "product",
+          "settings": {
+            "product": "bike-short-in-melt-navy-blazer",
+            "second_image": false
+          }
+        }
+      },
+      "block_order": [
+        "image_jLpbBL",
+        "product_PwQLMd",
+        "product_GwAgFi"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "desktop_layout": "left",
+        "mobile_layout": "column",
+        "card_styles": "product-card-wrapper",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "rich_text_JMUGEH",
+    "featured_collection_nniGEG",
+    "featured_collection_xbXabB",
+    "collage_6iFECf",
+    "featured_collection_ykx7jg",
+    "collage_TXj6ph",
+    "featured_collection_Ktfyjm",
+    "collage_G8y8an",
+    "featured_collection_fPQTkA",
+    "collage_zaLBEg",
+    "featured_collection_VnjLaP",
+    "collage_NUmwni",
+    "collage_jQwhEj",
+    "featured_collection_pR8x8e",
+    "collage_bbQD9Q",
+    "featured_collection_8yNQCQ",
+    "collage_kJ3c66",
+    "featured_collection_hPaKq6",
+    "collage_tQnXkg",
+    "collage_kMwnH7",
+    "collage_DYbJd7",
+    "featured_collection_LwWpHF",
+    "collage_BaGcCj",
+    "featured_collection_fQG878",
+    "collage_HkFqzC"
+  ]
+}

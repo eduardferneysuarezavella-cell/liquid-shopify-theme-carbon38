@@ -1,0 +1,301 @@
+{% comment %}
+  Renders the order detail drawer.
+
+  Accepts the following variables:
+  - order: The order object to render.
+  - drawer_id: The ID of the drawer.
+{% endcomment %}
+
+<sl-drawer contained style="--size: 100%;" id="{{ drawer_id }}">
+  <button class="gw-secondary-drawer__header" slot="label" data-inner-drawer-close>
+    {% render 'gw-customer-accounts-icons' with 'arrow_go_back' %}
+    <span class="gw-header">
+      {{ 'gw_customer_accounts.order.title' | t: order_name: order.order_name }}
+    </span>
+  </button>
+
+  <button slot="header-actions" class="gw-empty-button" data-main-drawer-close aria-label="Close order detail drawer">
+    {% render 'gw-customer-accounts-icons' with 'close' %}
+  </button>
+
+  <div class="gw-order-detail gw-main-content-container">
+    {% if order.cancelled %}
+      <div class="gw-order-detail__status">
+        {% render 'gw-customer-accounts-icons' with 'cancelled' %}
+        <span class="gw-body--strong">
+          {% assign cancelled_on_date = order.cancelled_at | date: '%B %d, %Y' %}
+          {{ 'gw_customer_accounts.order.cancelled_on' | t: date: cancelled_on_date }}
+        </span>
+      </div>
+    {% endif %}
+
+    <div class="gw-order-detail__line-items">
+      {% for line_item in order.line_items %}
+        <div class="gw-order-detail__line-item">
+          <div class="gw-order-detail__line-item-image-container">
+            <a href="{{ line_item.product.url }}" class="gw-unstyled-link">
+              {{
+                line_item.image
+                | image_url: width: 240
+                | image_tag: alt: line_item.name, class: 'gw-order-detail__line-item-image'
+              }}
+            </a>
+
+            <div class="gw-order-detail__line-item-quantity">
+              {{ line_item.quantity }}
+            </div>
+          </div>
+
+          <div class="gw-order-detail__line-item-info">
+            <h2 class="gw-body--strong">
+              <a href="{{ line_item.product.url }}" class="gw-unstyled-link">
+                {{ line_item.product.title }}
+              </a>
+            </h2>
+            <p class="gw-body">{{ line_item.variant.title }}</p>
+          </div>
+
+          <div class="gw-order-detail__line-item-price">
+            <span class="gw-body--strong">{{ line_item.price | money }}</span>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="gw-order-detail__integrations">
+      {% # Order has shipment tracking url %}
+      {% comment %}
+        {% assign order_fulfillment = order.fulfillments %}
+        {% if order.tracking_url %}
+          <a href="{{ order.tracking_url }}" class="gw-button gw-button--solid">
+            {{ 'gw_customer_accounts.order.track_shipment' | t }}
+          </a>
+        {% endif %}
+      {% endcomment %}
+
+      {% # Malomo integration %}
+      {% if settings.gw_customer_accounts_malomo_enabled %}
+        <script src="https://cdn.jsdelivr.net/npm/gw-customer-accounts@latest/dist/malomo-button.js" defer></script>
+
+        <gw-malomo-button order-id="{{ order.id }}">
+          <a href="{{ malomo_page }}" class="gw-button gw-button--solid gw-malomo-track-button">
+            {{ 'gw_customer_accounts.integrations.malomo.button_label' | t }}
+          </a>
+        </gw-malomo-button>
+      {% endif %}
+
+      {% # Narvar returns integration %}
+      {% if settings.gw_customer_accounts_narvar_enabled %}
+        {% liquid
+          assign narvar_page = settings.gw_customer_accounts_narvar_url
+          assign order_number = order.name
+          assign customer_email = customer.email
+          assign return_url = narvar_page | append: '?order=#' | append: order_number | append: '&email=' | append: customer_email | replace: '@', '%40' | replace: '#', '%23'
+        %}
+        <a href="{{ return_url }}" class="gw-button gw-button--stroke gw-narvar-returns-button">
+          {{ 'gw_customer_accounts.integrations.narvar_returns.button_label' | t }}
+        </a>
+      {% endif %}
+
+      {% # Loop returns integration %}
+      {% if settings.gw_customer_accounts_loop_returns_enabled %}
+        {% liquid
+          assign loop_returns_base_url = settings.gw_customer_accounts_loop_returns_url
+          assign order_number = order.name
+          assign customer_zip = order.shipping_address.zip
+          assign return_url = loop_returns_base_url | append: '/#/?order=' | append: order_number | append: '&zip=' | append: customer_zip
+        %}
+        <a href="{{ return_url }}" class="gw-button gw-button--stroke gw-loop-returns-button">
+          {{ 'gw_customer_accounts.integrations.loop_returns.button_label' | t }}
+        </a>
+      {% endif %}
+
+      {% # Global-e returns integration %}
+      {% if settings.gw_customer_accounts_global_e_returns_enabled %}
+        {% liquid
+          assign global_e_returns_base_url = settings.gw_customer_accounts_global_e_returns_url
+          assign order_number = order.name
+          assign customer_email = customer.email
+          assign return_url = global_e_returns_base_url | append: '?OrderId=' | append: order_number | append: '&email=' | append: customer_email
+        %}
+        <a href="{{ return_url }}" class="gw-button gw-button--stroke gw-global-e-returns-button">
+          {{ 'gw_customer_accounts.integrations.global_e_returns.button_label' | t }}
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="gw-order-detail__price-breakdown">
+      <div class="gw-order-detail__price-breakdown-item">
+        <p class="gw-body">
+          {{ 'gw_customer_accounts.order.subtotal' | t }}
+        </p>
+
+        <p class="gw-body--strong">
+          {{ order.subtotal_price | money }}
+        </p>
+      </div>
+
+      {% if order.discount_applications.size > 0 %}
+        {% for discount in order.discount_applications %}
+          <div class="gw-order-detail__price-breakdown-item">
+            <p class="gw-body">
+              <span
+                {% if forloop.index > 1 %}
+                  style="visibility: hidden;"
+                  aria-hidden="true"
+                {% endif %}
+              >
+                {{ 'gw_customer_accounts.order.discount' | t }}
+              </span>
+
+              <span class="gw-body--small gw-order-detail__discount-title">
+                {{ discount.title }}
+                {% render 'gw-customer-accounts-icons' with 'discount' %}
+              </span>
+            </p>
+            <p class="gw-body--strong">-{{ discount.total_allocated_amount | money }}</p>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      <div class="gw-order-detail__price-breakdown-item">
+        <p class="gw-body">
+          {{ 'gw_customer_accounts.order.shipping' | t }}
+        </p>
+        <p class="gw-body--strong">{{ order.shipping_price | money }}</p>
+      </div>
+
+      <div class="gw-order-detail__price-breakdown-item">
+        <p class="gw-body">
+          {{ 'gw_customer_accounts.order.tax_and_fees' | t }}
+        </p>
+        <p class="gw-body--strong">{{ order.tax_price | money }}</p>
+      </div>
+
+      {% if order.total_refunded_amount > 0 %}
+        <div class="gw-order-detail__price-breakdown-item">
+          <p class="gw-body">
+            {{ 'gw_customer_accounts.order.refunded' | t }}
+          </p>
+          <p class="gw-body--strong">
+            {{ order.total_refunded_amount | money }}
+          </p>
+        </div>
+      {% endif %}
+
+      <div class="gw-order-detail__price-breakdown-item gw-order-detail__price-breakdown-item--total">
+        <p class="gw-header">
+          {{ 'gw_customer_accounts.order.total' | t }}
+        </p>
+        <p class="gw-header">{{ order.total_price | money }}</p>
+      </div>
+    </div>
+
+    <div class="gw-order-detail__payment">
+      <h2 class="gw-header">
+        {{ 'gw_customer_accounts.order.payment' | t }}
+      </h2>
+
+      {% liquid
+        assign first_transaction = order.transactions | first
+        assign card_last_four_digits = first_transaction.payment_details.credit_card_last_four_digits
+        assign card_company_name = first_transaction.payment_details.credit_card_company
+
+        assign card_label = 'Card'
+        if card_company_name
+          assign card_label = card_company_name
+        endif
+
+        assign transaction_gateway = first_transaction.gateway
+      %}
+
+      {% if transaction_gateway == 'gift_card' %}
+        <div class="gw-order-detail__payment-info">
+          <p class="gw-body--strong">
+            {{ 'gw_customer_accounts.order.card_used' | t }}
+          </p>
+          <p class="gw-body">
+            {{ 'gw_customer_accounts.order.paid_with_gift_card' | t }}
+          </p>
+        </div>
+      {% endif %}
+
+      {% if card_last_four_digits %}
+        <div class="gw-order-detail__payment-info">
+          <p class="gw-body--strong">
+            {{ 'gw_customer_accounts.order.card_used' | t }}
+          </p>
+          <p class="gw-body">
+            {{
+              'gw_customer_accounts.order.card_ending_with'
+              | t: card_label: card_label, last_four: card_last_four_digits
+            }}
+          </p>
+        </div>
+      {% endif %}
+
+      <div class="gw-order-detail__payment-info">
+        <p class="gw-body--strong">
+          {{ 'gw_customer_accounts.order.billing_address' | t }}
+        </p>
+        <p class="gw-body">
+          {{ order.billing_address.first_name }}
+          {{ order.billing_address.last_name }}
+          <br>
+          {{ order.billing_address.address1 }}
+          <br>
+          {{ order.billing_address.city }}
+          {{ order.billing_address.province_code }}
+          {{ order.billing_address.zip }}
+          <br>
+          {{ order.billing_address.country }}
+        </p>
+      </div>
+    </div>
+
+    <hr class="gw-divider">
+
+    <div class="gw-order-detail__delivery">
+      <h2 class="gw-header">
+        {{ 'gw_customer_accounts.order.delivery' | t }}
+      </h2>
+
+      <div class="gw-order-detail__delivery-info">
+        <p class="gw-body--strong">
+          {{ 'gw_customer_accounts.order.shipping_address' | t }}
+        </p>
+        <p class="gw-body">
+          {{ order.shipping_address.first_name }}
+          {{ order.shipping_address.last_name }}
+          <br>
+          {{ order.shipping_address.address1 }}
+          <br>
+          {{ order.shipping_address.city }}
+          {{ order.shipping_address.province_code }}
+          {{ order.shipping_address.zip }}
+          <br>
+          {{ order.shipping_address.country }}
+        </p>
+        <p class="gw-body">
+          {{ order.shipping_address.phone }}
+        </p>
+      </div>
+
+      {%- for shipping_method in order.shipping_methods -%}
+        <div class="gw-order-detail__delivery-info">
+          <p class="gw-body--strong">
+            {{ 'gw_customer_accounts.order.shipping_method' | t }}
+          </p>
+          <p class="gw-body">{{ shipping_method.title }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <hr class="gw-divider">
+
+    <div class="gw-order-detail__additional-info">
+      <p class="gw-body">{{ order.order_name }}</p>
+      <p class="gw-body">{{ order.created_at | date: '%B %d, %Y' }}</p>
+    </div>
+  </div>
+</sl-drawer>

@@ -1,0 +1,116 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "show_collection_info": true,
+        "show_metafield_collection_image": true,
+        "overwrite_desktop_image": "shopify://shop_images/051325_Melt_PLP_Hero_desktop_copy.jpg",
+        "overwrite_mobile_image": "shopify://shop_images/051325_Melt_PLP_Hero_mobile_copy.jpg",
+        "apply_overlay": true,
+        "show_color_swatch": true,
+        "show_vendor": true,
+        "collection_image_size": "normal",
+        "show_sort_by": true,
+        "show_layout_switch": false,
+        "toolbar_position": "top",
+        "show_filters": true,
+        "show_filter_color_swatch": true,
+        "expand_filters": false,
+        "filter_position": "sidebar",
+        "filter_menu": "",
+        "grid_items_per_page": 96,
+        "grid_mobile_items_per_row": "2",
+        "grid_desktop_items_per_row": 4
+      }
+    },
+    "collection_list_dJEeKF": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_gWmFqK": {
+          "type": "collection",
+          "settings": {
+            "collection": "diamond-compression",
+            "image": "shopify://shop_images/2-Up-Diamond.jpg",
+            "image_alignment": "center center",
+            "content_position": "bottomLeft",
+            "subheading": "",
+            "title": "",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": false
+          }
+        },
+        "collection_ErBEnp": {
+          "type": "collection",
+          "settings": {
+            "collection": "takara-shine",
+            "image": "shopify://shop_images/C-Takara_dc396430-14d7-47ac-9e2a-7f9d6e2d1b78.jpg",
+            "image_alignment": "center center",
+            "content_position": "bottomLeft",
+            "subheading": "",
+            "title": "",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": true
+          }
+        },
+        "collection_tDkybH": {
+          "type": "collection",
+          "settings": {
+            "collection": "ribbed-melt",
+            "image_alignment": "center center",
+            "content_position": "bottomLeft",
+            "subheading": "",
+            "title": "",
+            "link_text": "Shop now",
+            "link_url": "",
+            "apply_overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "collection_gWmFqK",
+        "collection_ErBEnp",
+        "collection_tDkybH"
+      ],
+      "settings": {
+        "title": "discover our exclusive Fabrics",
+        "image_size": "normal",
+        "add_spacing": true,
+        "expand_collection": true,
+        "stack_on_mobile": true,
+        "text_color": "#ffffff",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "custom_liquid_zEf7ti": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "subheading": "",
+        "heading": "",
+        "custom_liquid": "",
+        "color_scheme": "",
+        "text_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "collection_list_dJEeKF",
+    "custom_liquid_zEf7ti"
+  ]
+}

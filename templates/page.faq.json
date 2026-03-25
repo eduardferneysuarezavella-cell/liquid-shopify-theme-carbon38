@@ -1,0 +1,301 @@
+{
+  "sections": {
+    "faq-menu": {
+      "type": "faq-menu",
+      "blocks": {
+        "faq_title_HeXkeJ": {
+          "type": "faq-menu-item",
+          "settings": {
+            "question_title": "Order & Shipping"
+          }
+        },
+        "faq_title_i9cTG3": {
+          "type": "faq-menu-item",
+          "settings": {
+            "question_title": "Returns"
+          }
+        },
+        "faq_menu_item_Xx3Nck": {
+          "type": "faq-menu-item",
+          "settings": {
+            "question_title": "Sales & Promos"
+          }
+        },
+        "faq_menu_item_kXTH9E": {
+          "type": "faq-menu-item",
+          "settings": {
+            "question_title": "Contact us"
+          }
+        },
+        "faq_menu_item_ryRC7i": {
+          "type": "faq-menu-item",
+          "settings": {
+            "question_title": "Odds & Ends"
+          }
+        },
+        "faq_menu_item_NVKGnn": {
+          "type": "faq-menu-item",
+          "settings": {
+            "question_title": "International"
+          }
+        },
+        "faq_menu_item_Nqwbci": {
+          "type": "faq-menu-item",
+          "settings": {
+            "question_title": "Carbon38 Rewards"
+          }
+        }
+      },
+      "block_order": [
+        "faq_title_HeXkeJ",
+        "faq_title_i9cTG3",
+        "faq_menu_item_Xx3Nck",
+        "faq_menu_item_kXTH9E",
+        "faq_menu_item_ryRC7i",
+        "faq_menu_item_NVKGnn",
+        "faq_menu_item_Nqwbci"
+      ],
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "faq_FrgYfg": {
+          "type": "faq",
+          "settings": {
+            "question": "Order changes \/ cancellations",
+            "answer": "<p><span style=\"text-decoration:underline\"><strong>I just placed my order. Can I still make changes to my cart?<\/strong><\/span><\/p><p>Unfortunately, once an order has been placed, we are unable to add or remove items.<\/p><p><span style=\"text-decoration:underline\"><strong>Can I cancel my order?<\/strong><\/span><\/p><p>Please contact our Customer Care at 888-505-0897, from Monday to Friday from 9:00am to 6:00pm PST and we can attempt to make a cancellation.<\/p><p>We are unable to halt a shipment once an order is out. You can, however, always return your items to us for credit or a full refund within 30 days of your order date.<\/p>"
+          }
+        },
+        "faq_pnrRbx": {
+          "type": "faq",
+          "settings": {
+            "question": "Shipping",
+            "answer": "<p><span style=\"text-decoration:underline\"><strong>Can I update my shipping address?<\/strong><\/span><\/p><p>Once an order has been placed, we cannot edit or change the order. Our warehouse starts moving fast to get your order to you right away! As a result, there are some cases where we also may not be able to cancel the order. Please contact customer service at 888-505-0897 if you need to cancel your order and we will do our best to accommodate your request based on the warehouse\/shipping status.<\/p><p><span style=\"text-decoration:underline\"><strong>Why haven't I received my entire order?<\/strong><\/span><\/p><p>We do our best to ship your order in full. However, in the rare case that an item is unavailable, we will notify you via email and refund you for any missing items.<\/p><p><span style=\"text-decoration:underline\"><strong>How much does shipping cost?<\/strong><\/span><\/p><p>Economy (6-10 business days) is $6.99, or free if order value is over $199.<br\/>Economy Select (3-4 business days) is $12.<br\/>Expedited (2 business days) is $25.<br\/>Overnight (next business day) is $50.<\/p><p><span style=\"text-decoration:underline\"><strong>When will my order be shipped?<\/strong><\/span><\/p><p><\/p><p>Orders placed with Economy or Economy Select shipping will ship within 1-2 business days. Please note that orders placed after 11:00AM PST on Friday or over the weekend will ship on the following Monday (excluding major holidays).<br\/><br\/>Expedited and Overnight orders placed by 1:00PM PST Monday-Friday will be shipped the same day. Please note that Expedited and Overnight orders placed after 1:00PM PST on a Friday, Saturday or Sunday will ship on the following Monday (excluding major holidays). On occasion, orders are held to be reviewed by our team; these orders may be subject to shipment delays.<\/p><p><span style=\"text-decoration:underline\"><strong>How can I track my order?<\/strong><\/span><\/p><p>Once your order has shipped, we will send a confirmation email that includes tracking information. You can also find your tracking number by logging into your Carbon38 account. Please allow up to 24 hours from when you receive your tracking number for activity to update.<br\/><br\/><em>From your desktop:<br\/><\/em>Select “Order History” from the drop-down menu at the top right corner of the screen. Select “View Order” next to the order number you wish to track to find tracking information.<br\/><br\/><em>From your mobile browser:<\/em> Select “My Account” from the drop-down menu at the top left corner of the screen. Select “Order History” and “View Order” to track your order by order number.<\/p><p><\/p><p><span style=\"text-decoration:underline\"><strong>How long will it take for my order to arrive?<\/strong><\/span><\/p><p>For Economy shipments within the US, you can expect your order to arrive in 6-10 business days once it has shipped from our distribution center. Domestic shipping guidelines apply to shipping within the contiguous United States only. Orders shipped to Alaska, Hawaii, APO, FPO, and US Territories including Puerto Rico, Guam, US Virgin Islands, American Samoa, Northern Mariana Islands, and Micronesia are considered non-domestic and are subject to longer ship times. On occasion, orders are held to be reviewed by our team; these orders may be subject to shipment delays. Carbon38 is not responsible for delays in shipping or delivery that result from factors outside our control such as inclement weather, acts of God, or any other shipping-related issue(s). Under no circumstance shall Carbon38 be responsible for any incidental or consequential damages.<\/p><p><span style=\"text-decoration:underline\"><strong>What are the cutoff dates for holiday delivery?*<\/strong><\/span><\/p><p>Economy—Wednesday 12\/8 12pm PST<br\/>Economy Select—Tuesday 12\/14 12pm PST<br\/>2 DAY—Tuesday 12\/21 12pm PST<br\/>NEXT DAY—Wednesday 12\/22 12pm PST<\/p><p>*All shipping guidelines are not guaranteed as we cannot be responsible for carrier delays. Please use the above as general guidelines.<\/p><p><span style=\"text-decoration:underline\"><strong>Do you ship to military addresses (APO\/FPO)?<\/strong><\/span><\/p><p>Yes, we do!<\/p><p><span style=\"text-decoration:underline\"><strong>Do you ship internationally?<\/strong><\/span><\/p><p>We are only offering Domestic Shipping at this time.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_FrgYfg",
+        "faq_pnrRbx"
+      ],
+      "settings": {
+        "title": "Order & Shipping"
+      }
+    },
+    "faq_38CzPf": {
+      "type": "faq",
+      "blocks": {
+        "faq_NzKdAP": {
+          "type": "faq",
+          "settings": {
+            "question": "Return\/Exchange policy",
+            "answer": "<p><span style=\"text-decoration:underline\"><strong>What is your return policy?<\/strong><\/span><\/p><p>You have <strong>30 days<\/strong> from your order date to request a return. All items must be unworn with the original tags attached. All items are returnable, except for the following:<br\/><br\/>Items marked final sale, gloves and arm warmers, socks and leg warmers, headbands, water bottles, lingerie, hair ties.<\/p><p>Swimwear should be tried on over underwear for sanitary reasons and must have a protective hygiene strip intact.<\/p><p>We reserve the right to return any item that does not comply with our return policy.<\/p><p>* HOLIDAY RETURNS * Anything purchased between 11\/15\/2023 - 12\/25\/2024 can be returned through 1\/31\/2024<\/p><p><\/p><p><span style=\"text-decoration:underline\"><strong>Do you offer exchanges?<\/strong><\/span><\/p><p>We’re so sorry, but we are not able to process exchanges. If you need a different size, color, or item, simply follow our returns process for the item\/items you no longer want and place a new order for the item\/items you do want.<\/p><p><\/p><p><span style=\"text-decoration:underline\"><strong>How do I get a refund if I use a gift card AND credit card?<\/strong><\/span><\/p><p>All refunds made on purchases paid with both gift card and credit card will be refunded as such in the same amount that was paid on each payment type.<\/p>"
+          }
+        },
+        "faq_ki4q8M": {
+          "type": "faq",
+          "settings": {
+            "question": "Make a return",
+            "answer": "<p><span style=\"text-decoration:underline\"><strong>How do I return an item?<\/strong><\/span><\/p><p>You have two convenient ways to make returns!<\/p><p>You can return in-person at a Happy Returns bar, or mail in your return. Regardless of which method you decide to use, you can start your return<strong> <\/strong><a href=\"https:\/\/c38.happyreturns.com\/\"><strong>HERE<\/strong><\/a> by entering your order number and your zip code. (Order number can be found in the order confirmation email we sent you, or by logging into your Carbon38 account and visiting the My Account page).<br\/><br\/>Then, follow the instructions below:<\/p><p>- Select the item(s)* you wish to return. <em>*Note: If an item is final sale, or non-returnable – no option to return will be provided.<\/em><\/p><p>- Select the payment method for your refund and the reason for the return. Once you are done adding items, click “Continue”.<\/p><p>- Choose how you want to return your item(s):<br\/>Return in-person with Happy Returns<br\/>Refund\/Exchange initiated immediately upon drop-off thousands of <a href=\"https:\/\/locations.happyreturns.com\/\">locations<\/a> nationwide (no need to box your items)<br\/>Receive a QR code for a contact-free drop-off<br\/>Return via mail: Start your return or exchange online to receive a mailing label to box and ship your items. You will receive an email when your return is received and your refund has been processed.<\/p><p>Please allow 5-10 business days for your return to be processed, plus 3-5 additional business days to see the refund reflected on your bank statement.<\/p><p><\/p><p>Please note, starting 1\/4\/2023 Happy Returns Bars will no longer accept returns with 10 or more items.<\/p><p>Need to make an international return?<\/p><p>We offer international returns within 30 days of purchase for a flat rate of $15.00. Please note that original shipping fees, duty paid or any other associated costs are non-refundable, and return postage\/costs will be deducted from your refund.<\/p><p>International returns can be started <a href=\"https:\/\/web.global-e.com\/Returns\/Portal\/mZho\" title=\"https:\/\/web.global-e.com\/Returns\/Portal\/mZho\">here<\/a><\/p><p><\/p><p><span style=\"text-decoration:underline\"><strong>How long does it take to process a return?<\/strong><\/span><\/p><p>Once your return has been shipped back to us, please allow up to 5-10 business days for the return to be processed at our distribution center.<\/p><p>If you choose to return for a gift card, your credit will be available in your Carbon38 account for immediate use as soon as the return is processed.<\/p><p>If you choose to return for a full refund, you can expect the refund to be received by your bank or credit card account within 3-5 business days. Processing times vary and are subject to your bank.<\/p><p>If you paid with any other payment method, your refund will be issued to the original form of payment. We will notify you via email once your return has been processed.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_NzKdAP",
+        "faq_ki4q8M"
+      ],
+      "settings": {
+        "title": "Returns"
+      }
+    },
+    "faq_JqBpdJ": {
+      "type": "faq",
+      "blocks": {
+        "faq_Ydyj4n": {
+          "type": "faq",
+          "settings": {
+            "question": "Promotions",
+            "answer": "<p><span style=\"text-decoration:underline\"><strong>General Promotional Rules<\/strong><\/span><\/p><p>Online offers, such as promo codes, only apply to online purchases, excluding gift cards and international orders. Brand and certain style exclusions may apply. Promo codes are non-transferable, non-retroactive, and cannot be combined with any other offers or promotions, including discounts based on Customer Group. Free Shipping may not apply to a discount; please reference individual discount terms. Terms and conditions are subject to change without notice.<\/p><p><span style=\"text-decoration:underline\"><strong>I forgot to use my promo code—what do I do?<\/strong><\/span><\/p><p>Please contact <a href=\"mailto:customercare@carbon38.com\">customercare@carbon38.com<\/a>. As long as your purchase is eligible for the promo code, we will refund the difference to the card we have on file or issue a gift card for the balance. Promo codes are not applicable to items that are purchased on sale.<\/p><p><span style=\"text-decoration:underline\"><strong>My purchase went on sale right after I ordered it. Can you honor the sale price?<\/strong><\/span><\/p><p>Please contact <a href=\"mailto:customercare@carbon38.com\">customercare@carbon38.com<\/a>. If the item went on sale within 24 hours after you purchased it, we can honor the sale price. We will refund the difference to the card we have on file or issue a gift card for the balance. Please allow up to 3 business days for the refund to hit your bank\/credit card (sometimes longer depending on your bank).<\/p><p><span style=\"text-decoration:underline\"><strong>Why doesn't my promo code work?<\/strong><\/span><\/p><p>Promo codes can only be applied to full price items, unless otherwise stated. Once a promo code is used, it cannot be used again for another order. Promo codes are non-transferable.<\/p><p><span style=\"text-decoration:underline\"><strong>Do you offer any first-time customer discounts?<\/strong><\/span><\/p><p>On occasion, we may offer discounts for new users. Sign up for our email list for exclusive access to discounts and offers.<\/p><p><span style=\"text-decoration:underline\"><strong>What brands are not eligible for promo codes?<\/strong><\/span><\/p><p>Brand exclusions may be subject to change with each promo code. If you have any questions, please reach out to our customer care team by emailing <a href=\"mailto:customercare@carbon38.com\">customercare@carbon38.com<\/a>.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_Ydyj4n"
+      ],
+      "settings": {
+        "title": "Sales & Promos"
+      }
+    },
+    "faq_DXEXEr": {
+      "type": "faq",
+      "blocks": {
+        "faq_rzyLJt": {
+          "type": "faq",
+          "settings": {
+            "question": "Customer Support",
+            "answer": "<p>Based in our Los Angeles headquarters, our Customer Care Team is here to help. You can reach us by email at<a href=\"mailto:customercare@carbon38.com\">customercare@carbon38.com<\/a>or by phone at 888-505-0897 from 9am–6pm PST, Monday through Friday.<br\/><br\/>We’re here to answer any and all questions so you can look and feel your best. Our service team knows our brand inside and out and is equipped to advise on sizing, fit and feel, shipping, orders, product information, etc.<\/p>"
+          }
+        },
+        "faq_LamXVW": {
+          "type": "faq",
+          "settings": {
+            "question": "Press",
+            "answer": "<p>Media inquiries only: <a href=\"mailto:pr@carbom.com\" title=\"mailto:pr@carbon38.com\">pr@carbon38.com<\/a><\/p><p>For press inquiries:  <a href=\"mailto:Carbon38@accentprojects.co\" target=\"_blank\">Carbon38@accentprojects.co<\/a><\/p><p>For all other questions, please email us at <a href=\"mailto:customercare@carbon38.com\">customercare@carbon38.com<\/a><strong>.<\/strong><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_rzyLJt",
+        "faq_LamXVW"
+      ],
+      "settings": {
+        "title": "Contact us"
+      }
+    },
+    "faq_VYep4y": {
+      "type": "faq",
+      "blocks": {
+        "faq_3dqwQE": {
+          "type": "faq",
+          "settings": {
+            "question": "Sold out items",
+            "answer": "<p><span style=\"text-decoration:underline\"><strong>Will you reorder sold out items?<\/strong><\/span><\/p><p>While many of our items are limited in availability, we do reorder popular styles. Please check back to see if your favorite items have been restocked.<\/p><p><span style=\"text-decoration:underline\"><strong>Can you alert me if the sold out item I want comes back in stock?<\/strong><\/span><\/p><p>Yes! Click on your item and click on the size you want. A pop up will ask if you want to be notified by email if the item comes back in your size.<\/p>"
+          }
+        },
+        "faq_fibten": {
+          "type": "faq",
+          "settings": {
+            "question": "Unsubscribe",
+            "answer": "<p><span style=\"text-decoration:underline\"><strong>How do I unsubscribe from your emails?<\/strong><\/span><\/p><p>Simply click the “Unsubscribe” link at the bottom of one of our emails, or send a request via email to <a href=\"mailto:customercare@carbon38.com\">customercare@carbon38.com<\/a> to unsubscribe.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_3dqwQE",
+        "faq_fibten"
+      ],
+      "settings": {
+        "title": "Odds & Ends"
+      }
+    },
+    "faq_tNh4qJ": {
+      "type": "faq",
+      "blocks": {
+        "faq_pcffDF": {
+          "type": "faq",
+          "settings": {
+            "question": "International Shipping",
+            "answer": "<p>To ship internationally, we partner with Global-e. Global-e is a trusted global ecommerce vendor whose<br\/>solution allows Carbon38 to provide the best possible user experience to our international customers. Please select the drop down in the top left corner to see which countries we ship to and select accordingly. Thiswill change the currency on the website. Once you are in checkout, you will see local payment methods andcalculations for any appropriate shipping, duties, taxes and other customs fees.<\/p><p>Track your package <a href=\"https:\/\/web.global-e.com\/Order\/Track\/mZho\" title=\"https:\/\/web.global-e.com\/Order\/Track\/mZho\">here<\/a><\/p><p>Have another question? Check out our <a href=\"https:\/\/service.global-e.com\/?id=1c7ae875-97bc-4982-b7e1-dc975e46cddb\" title=\"https:\/\/service.global-e.com\/?id=1c7ae875-97bc-4982-b7e1-dc975e46cddb\">help center<\/a><\/p>"
+          }
+        },
+        "faq_dHV4b6": {
+          "type": "faq",
+          "settings": {
+            "question": "International Returns",
+            "answer": "<p>We offer international returns within 30 days of purchase for a flat rate of $15. Please note that original shipping fees, duty paid or any other associated costs are non-refundable, and return postage\/costs will be deducted from your refund.<\/p><p>International returns can be started <a href=\"https:\/\/web.global-e.com\/Returns\/Portal\/mZho\" title=\"https:\/\/web.global-e.com\/Returns\/Portal\/mZho\">here<\/a><\/p>"
+          }
+        },
+        "faq_JQ4j9L": {
+          "type": "faq",
+          "settings": {
+            "question": "What currencies are supported",
+            "answer": "<p>All available currencies are listed in the drop-down menu under the flag icon in the upper left hand corner of the homepage.<\/p>"
+          }
+        },
+        "faq_z6mFVH": {
+          "type": "faq",
+          "settings": {
+            "question": "Duties and Taxes",
+            "answer": "<p>Duties and taxes are calculated based on the items ordered, where they were made, your shipment destination and the value of your purchase, and will appear as a separate line item at checkout if not already included in product prices. Some countries require duties and taxes to be paid upon delivery and they will be the customer’s responsibility.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_pcffDF",
+        "faq_dHV4b6",
+        "faq_JQ4j9L",
+        "faq_z6mFVH"
+      ],
+      "settings": {
+        "title": "International"
+      }
+    },
+    "faq_4g99TX": {
+      "type": "faq",
+      "blocks": {
+        "faq_VqycmJ": {
+          "type": "faq",
+          "settings": {
+            "question": "What is Carbon38 Rewards",
+            "answer": "<p>It’s our free rewards program that gives you the opportunity to earn points on all product purchases, reviews, your birthday & more! You can then redeem these points for a discount towards your order.<\/p>"
+          }
+        },
+        "faq_wn9ccV": {
+          "type": "faq",
+          "settings": {
+            "question": "Earning & Using points",
+            "answer": "<p>There are many ways you can earn your Carbon38 rewards points. Check out the rewards<a href=\"https:\/\/carbon38.com\/en-uz\/pages\/rewards\" title=\"rewards\">page<\/a>for more details how. Please keep in mind you will not earn points or be able to redeem points for gift card purchases. To use your points please make sure you are logged into your account then you can proceed through the checkout process as you normally would. Once you reach the shipping page of checkout you will be given the option to use your earned points, please remember you must be logged in, in order for your points to show. There is no minimum spend to apply your points. Your points will expire 1 year after the date in which they were earned. Please check you point expiration dates on your account page.<\/p>"
+          }
+        },
+        "faq_TG6AMH": {
+          "type": "faq",
+          "settings": {
+            "question": "Birthday Reward",
+            "answer": "<p>Birthday reward points will be added to your account on your birthday. In order to earn your birthday points on time it is best to submit your birthday at least 30 days in advance, otherwise you may experience a delay in receiving your points.<\/p>"
+          }
+        },
+        "faq_eDc3k8": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I check my point balance",
+            "answer": "<p>You can check your points on either your account or rewards page which can be found in the upper right hand corner. Your points will expire after one year from the date they were earned. Be sure to log in to see your points and their expiration date!<\/p>"
+          }
+        },
+        "faq_Vmnfrk": {
+          "type": "faq",
+          "settings": {
+            "question": "Where are my points",
+            "answer": "<p>Note that it may take up to 24 hours for points to appear in your account. Balance still incorrect? Please contact us at customercare@carbon38.com and we’ll sort it out!<\/p>"
+          }
+        },
+        "faq_eYji9e": {
+          "type": "faq",
+          "settings": {
+            "question": "What's my status",
+            "answer": "<p>There are 3 status levels within the rewards program each with its own benefits. You are able to see your status when you are logged in on your account page and or the rewards page. You are automatically enrolled in the Carbon tier upon making your first purchase or creating an account. In order to reach Graphite, you must earn 1,000 points within 12 months. In order to reach full Diamond, you must earn 2,00 points within 12 months. Once you earn your way into a new tier, you have 12 months to earn that same amount to keep your tier or you can keep earning to level up!<\/p>"
+          }
+        },
+        "faq_HCzfXC": {
+          "type": "faq",
+          "settings": {
+            "question": "Returns",
+            "answer": "<p>We accept returns within 30 days of receipt. Items must be in their original cIf you make a return the points for that purchase will be deducted from your account.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_VqycmJ",
+        "faq_wn9ccV",
+        "faq_TG6AMH",
+        "faq_eDc3k8",
+        "faq_Vmnfrk",
+        "faq_eYji9e",
+        "faq_HCzfXC"
+      ],
+      "settings": {
+        "title": "Carbon38 rewards"
+      }
+    }
+  },
+  "order": [
+    "faq-menu",
+    "faq",
+    "faq_38CzPf",
+    "faq_JqBpdJ",
+    "faq_DXEXEr",
+    "faq_VYep4y",
+    "faq_tNh4qJ",
+    "faq_4g99TX"
+  ]
+}

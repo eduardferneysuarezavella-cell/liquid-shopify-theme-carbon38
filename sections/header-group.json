@@ -1,0 +1,359 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_NWGXXK": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p>JOIN OUR LOYALTY PROGRAM AND EARN POINTS ON EVERY PURCHASE! </p>",
+            "link": "shopify://pages/rewards"
+          }
+        },
+        "announcement_bYnYH4": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p>FREE SHIPPING ON ORDERS $199 + FREE RETURNS</p>",
+            "link": "shopify://collections/new-arrivals"
+          }
+        },
+        "announcement_cLAeja": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Take 25% off select styles | Use Code: CORE25</p>",
+            "link": "shopify://collections/deal-of-the-day"
+          }
+        },
+        "announcement_YKjGdM": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "<p>STILL GOING! 🎉TAKE AN EXTRA 15% OFF ALL SALE ITEMS WITH CODE EXTRA15 </p>",
+            "link": "shopify://collections/sale"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_NWGXXK",
+        "announcement_bYnYH4",
+        "announcement_cLAeja",
+        "announcement_YKjGdM"
+      ],
+      "settings": {
+        "background": "#284871",
+        "text_color": "#ffffff",
+        "autoplay_speed": 5
+      }
+    },
+    "announcement_bar_international_apDHmH": {
+      "type": "announcement-bar-international",
+      "disabled": true,
+      "settings": {
+        "background": "#ffffff",
+        "text_color": "#1c1b1b",
+        "autoplay_speed": 5,
+        "hide_ge_banner": false
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "33bf05f6-a464-48d3-8653-ead15119f5e1": {
+          "type": "mega_menu",
+          "settings": {
+            "navigation_mega_menu": "NEW",
+            "push_1_image": "shopify://shop_images/081825_New_Nav_copy.jpg",
+            "push_1_heading": "",
+            "push_1_subheading": "",
+            "push_1_url": "shopify://collections/new-arrivals",
+            "push_2_heading": "",
+            "push_2_subheading": "",
+            "push_2_url": "",
+            "colored_nav_name": "",
+            "colored_nav_color": "#aa0313"
+          }
+        },
+        "2a98d635-798a-4cbc-958e-daa319f0d0c4": {
+          "type": "mega_menu",
+          "settings": {
+            "navigation_mega_menu": "clothing",
+            "push_1_heading": "",
+            "push_1_subheading": "",
+            "push_1_url": "",
+            "push_2_heading": "",
+            "push_2_subheading": "",
+            "push_2_url": "",
+            "colored_nav_name": "",
+            "colored_nav_color": "#aa0313"
+          }
+        },
+        "a1f463f6-8184-46fe-84c5-23e3d8590f70": {
+          "type": "mega_menu",
+          "settings": {
+            "navigation_mega_menu": "SHOPS",
+            "push_1_image": "shopify://shop_images/010325_Enamel_blue_takara_Nav_NEWTOSALE.jpg",
+            "push_1_heading": "",
+            "push_1_subheading": "",
+            "push_1_url": "shopify://collections/carbon38",
+            "push_2_heading": "",
+            "push_2_subheading": "",
+            "push_2_url": "",
+            "colored_nav_name": "",
+            "colored_nav_color": "#aa0313"
+          }
+        },
+        "bab7e73e-5f6f-44de-be2d-8396cdf39278": {
+          "type": "mega_menu",
+          "settings": {
+            "navigation_mega_menu": "shoes",
+            "push_1_image": "shopify://shop_images/081825_Shoes_Nav_copy.jpg",
+            "push_1_heading": "",
+            "push_1_subheading": "",
+            "push_1_url": "shopify://collections/shoes",
+            "push_2_heading": "",
+            "push_2_subheading": "",
+            "push_2_url": "",
+            "colored_nav_name": "",
+            "colored_nav_color": "#aa0313"
+          }
+        },
+        "228f763b-5009-4446-bff8-64a52c6d2613": {
+          "type": "mega_menu",
+          "settings": {
+            "navigation_mega_menu": "accessories",
+            "push_1_image": "shopify://shop_images/081825_Accessories_Nav_copy.jpg",
+            "push_1_heading": "",
+            "push_1_subheading": "",
+            "push_1_url": "shopify://collections/accessories",
+            "push_2_heading": "",
+            "push_2_subheading": "",
+            "push_2_url": "",
+            "colored_nav_name": "",
+            "colored_nav_color": "#aa0313"
+          }
+        },
+        "3ccb67b4-639d-4724-ae90-5b0d836e9160": {
+          "type": "mega_menu",
+          "settings": {
+            "navigation_mega_menu": "sale",
+            "push_1_image": "shopify://shop_images/081825_Sale_Nav_copy.jpg",
+            "push_1_heading": "",
+            "push_1_subheading": "",
+            "push_1_url": "shopify://collections/sale",
+            "push_2_heading": "",
+            "push_2_subheading": "",
+            "push_2_url": "",
+            "colored_nav_name": "",
+            "colored_nav_color": "#1c1b1b"
+          }
+        },
+        "mega_menu_LVCt9M": {
+          "type": "mega_menu",
+          "settings": {
+            "navigation_mega_menu": "SALE",
+            "push_1_image": "shopify://shop_images/081825_Sale_Nav_copy.jpg",
+            "push_1_heading": "",
+            "push_1_subheading": "",
+            "push_1_url": "",
+            "push_2_heading": "Example heading",
+            "push_2_subheading": "Example sub-heading",
+            "push_2_url": "",
+            "colored_nav_name": "THE ARCHIVE SALE",
+            "colored_nav_color": "#1c1b1b"
+          }
+        },
+        "color_swatch_QETK7F": {
+          "type": "color_swatch",
+          "settings": {
+            "title": "SALE",
+            "color": "#1c1b1b"
+          }
+        },
+        "c07bf617-d844-4d73-af57-b77b5309ba25": {
+          "type": "mega_menu",
+          "settings": {
+            "navigation_mega_menu": "GIFT GUIDE",
+            "push_1_image": "shopify://shop_images/NAV-gift_guide.jpg",
+            "push_1_heading": "",
+            "push_1_subheading": "",
+            "push_1_url": "shopify://pages/gift-shop-2024",
+            "push_2_heading": "",
+            "push_2_subheading": "",
+            "push_2_url": "shopify://pages/gift-guide-2023",
+            "colored_nav_name": "",
+            "colored_nav_color": "#aa0313"
+          }
+        }
+      },
+      "block_order": [
+        "33bf05f6-a464-48d3-8653-ead15119f5e1",
+        "2a98d635-798a-4cbc-958e-daa319f0d0c4",
+        "a1f463f6-8184-46fe-84c5-23e3d8590f70",
+        "bab7e73e-5f6f-44de-be2d-8396cdf39278",
+        "228f763b-5009-4446-bff8-64a52c6d2613",
+        "3ccb67b4-639d-4724-ae90-5b0d836e9160",
+        "mega_menu_LVCt9M",
+        "color_swatch_QETK7F",
+        "c07bf617-d844-4d73-af57-b77b5309ba25"
+      ],
+      "name": "Header / Nav Images",
+      "settings": {
+        "logo_position": "middle-left",
+        "menu": "main-menu-ab-test",
+        "menu_type_desktop": "mega",
+        "sticky_header_type": "always",
+        "show_line_separator": true,
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "scheme-1",
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "enable_customer_avatar": true,
+        "mobile_logo_position": "center",
+        "margin_bottom": 0,
+        "show_icons": false,
+        "enable_transparent_header": false,
+        "enable_transparent_header_collection": false,
+        "show_transparent_header_border": true,
+        "transparent_text_color": "#ffffff",
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "sticky_subnav_R7EkiK": {
+      "type": "sticky-subnav",
+      "settings": {
+        "sticky_nav_list": "sticky-subnav"
+      }
+    },
+    "popup_yRgE4x": {
+      "type": "popup",
+      "settings": {
+        "show_popup": false,
+        "show_only_on_index": true,
+        "show_only_for_visitors": true,
+        "show_only_once": true,
+        "title": "Popup",
+        "content": "<p>You can use this popup to display some useful information to your customers.</p>",
+        "show_newsletter": true,
+        "apparition_delay": 5
+      }
+    },
+    "gw-customer-accounts": {
+      "type": "gw-customer-accounts",
+      "blocks": {
+        "last_order_U6KakB": {
+          "type": "last-order",
+          "settings": {}
+        },
+        "recent_collections_zta8iP": {
+          "type": "recent-collections",
+          "settings": {}
+        },
+        "recent_products_9bkkED": {
+          "type": "recent-products",
+          "settings": {}
+        },
+        "cart_products_YHr9fF": {
+          "type": "cart-products",
+          "settings": {}
+        },
+        "favorites_dkzCfT": {
+          "type": "favorites",
+          "settings": {}
+        },
+        "card": {
+          "type": "card",
+          "settings": {
+            "title": "Discover Now",
+            "description": "",
+            "image": "shopify://shop_images/URL_image.jpg",
+            "url": "shopify://collections/new-arrivals"
+          }
+        },
+        "quick_links_fic8dN": {
+          "type": "quick-links",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "last_order_U6KakB",
+        "recent_collections_zta8iP",
+        "recent_products_9bkkED",
+        "cart_products_YHr9fF",
+        "favorites_dkzCfT",
+        "card",
+        "quick_links_fic8dN"
+      ],
+      "settings": {
+        "base_url": "https://accounts-carbon38-43a19492dfeb.herokuapp.com",
+        "quick_links": "customer-accounts-quick-link",
+        "header_font": "inter_n4",
+        "header_font_family": "Moneta, serif;",
+        "header_font_weight": "600",
+        "body_font": "inter_n4",
+        "body_font_family": "Euclid, sans-serif;",
+        "body_font_weight": "300",
+        "corners": 0,
+        "border_color": "#eaeaea",
+        "image_ratio": "133",
+        "color_text": "#2e2e2e",
+        "color_subdued": "#6d7278",
+        "solid_button_text_color": "#ffffff",
+        "solid_button_background_color": "#2e2e2e",
+        "solid_button_border_color": "#2e2e2e",
+        "solid_button_hover_text_color": "#2e2e2e",
+        "solid_button_hover_background_color": "#ffffff",
+        "solid_button_hover_border_color": "#2e2e2e",
+        "stroke_button_text_color": "#333333",
+        "stroke_button_background_color": "#ffffff",
+        "stroke_button_border_color": "#333333",
+        "stroke_button_hover_text_color": "#ffffff",
+        "stroke_button_hover_background_color": "#333333",
+        "stroke_button_hover_border_color": "#333333",
+        "disabled_button_text_color": "#9f9f9f",
+        "disabled_button_background_color": "#eaeaea",
+        "color_notifications_label": "#ffffff",
+        "color_notifications_background": "#333333",
+        "color_drawer_background": "#ffffff",
+        "color_drawer_header_background": "#ffffff",
+        "color_drawer_footer_background": "#ffffff",
+        "color_drawer_overlay": "#000000",
+        "opacity_drawer_overlay": 0.5,
+        "form_font": "inter_n4",
+        "form_font_family": "Euclid, sans-serif;",
+        "form_elements_text_case": "normal",
+        "form_elements_font_weight": "300",
+        "form_elements_corner_radius": 0,
+        "form_elements_thickness": 1,
+        "text_case": "uppercase",
+        "button_font": "inter_n4",
+        "button_font_family": "Euclid, sans-serif;",
+        "button_font_weight": "600",
+        "corner_radius": 0,
+        "thickness": 1,
+        "drawer_placement": "start",
+        "sign_in_type": "password"
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "announcement_bar_international_apDHmH",
+    "header",
+    "sticky_subnav_R7EkiK",
+    "popup_yRgE4x",
+    "gw-customer-accounts"
+  ]
+}
